@@ -21,7 +21,25 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "stream": [
+        "node_modules/stream-browserify"
+      ],
+      "util": [
+        "node_modules/util"
+      ],
+      "url": [
+        "node_modules/url"
+      ],
+      "events": [
+        "node_modules/events"
+      ],
+      "path": [
+        "node_modules/path-browserify"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

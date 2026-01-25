@@ -25,7 +25,10 @@ import html2canvas from 'html2canvas';
 import { environment } from '../../environments/environment';
 import { ChatSidebarComponent } from '../components/chat-sidebar/chat-sidebar.component';
 import { TemplateDropdownComponent } from '../components/template-dropdown/template-dropdown.component';
+import { FormTemplate6973bcfbdf2766fbee178f68Component } from './form-edit-templates/form-template-6973bcfbdf2766fbee178f68/form-template-6973bcfbdf2766fbee178f68.component';
+import { FormTemplate69760da5141f61da2dbb924eComponent } from './form-edit-templates/form-template-69760da5141f61da2dbb924e/form-template-69760da5141f61da2dbb924e.component';
 // HistorySidebarComponent removed in favor of embedded implementation
+
 
 // 1. Extension to preserve data attributes
 const DataAttributeExtension = Extension.create({
@@ -109,10 +112,12 @@ const DivExtension = Node.create({
   },
 });
 
+import { SafeHtmlPipe } from '../shared/pipes/safe-html.pipe';
+
 @Component({
   selector: 'app-resume-editor',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, FormsModule, ChatSidebarComponent, TemplateDropdownComponent],
+  imports: [CommonModule, HttpClientModule, FormsModule, ChatSidebarComponent, TemplateDropdownComponent, FormTemplate6973bcfbdf2766fbee178f68Component, FormTemplate69760da5141f61da2dbb924eComponent, SafeHtmlPipe],
   templateUrl: './resume-editor.component.html',
   styleUrl: './resume-editor.component.css'
 })
@@ -121,6 +126,22 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   @HostListener('document:keydown')
   onUserInteraction() {
     this.clearHighlights();
+  }
+
+  // Listen for browser back button
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event: any) {
+    // If editor is visible and we hit back, we should show gallery if possible?
+    // Angular router usually handles this if we updated the URL.
+    // If the URL changed from ...?templateId=1 to .../editor, Angular routing will kick in.
+    // We need to ensure our state syncs with the URL.
+    // The route params subscription in ngOnInit handles chatID changes.
+    // The query params subscription in ngOnInit handles templateID changes.
+    // So if the user presses back, the URL changes, ngOnInit subscriptions fire.
+    
+    // Check if we need to hide editor
+    // We'll rely on route subscriptions, BUT we might need to manually reset some flags if not covered.
+    console.log('🔙 Browser Back Button Detected');
   }
 
   // Clear all highlight spans but keep content
@@ -145,8 +166,18 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
 
+
   editor!: Editor;
-  templates: ResumeTemplate[] = [];
+  templates: ResumeTemplate[] = []; 
+  backendTemplates: any[] = []; // Store backend templates
+  filteredBackendTemplates: any[] = []; // For gallery view
+  galleryViewMode: 'grid' | 'list' = 'grid';
+  galleryFilter: 'all' | 'free' | 'form' = 'all';
+  gallerySearch: string = '';
+  
+  isFormEditMode: boolean = false;
+  selectedFormTemplateId: string | null = null;
+  
   selectedTemplate: string = '';
 
   // Sidebar state
@@ -159,9 +190,32 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   currentTemplateId: string | undefined;
 
   // Handle template selection from backend API
+  // Handle template selection from backend API
   onBackendTemplateSelected(templateId: string, updateUrl: boolean = true): void {
     console.log('📌 Backend Template Selected:', templateId);
     this.currentTemplateId = templateId;
+
+    // Check if this is a Form Edit template (Type 2)
+    // We check against known Form Template IDs
+    if (templateId === '6973bcfbdf2766fbee178f68' || templateId === '69760da5141f61da2dbb924e') {
+        console.log('📝 Switching to Form Edit Mode for template:', templateId);
+        this.isFormEditMode = true;
+        this.selectedFormTemplateId = templateId;
+        this.isEditorVisible = true;
+        
+        // Refresh history when template changes
+        this.refreshHistory();
+        
+        if (updateUrl) {
+            this.updateUrlWithParams(this.currentChatId, templateId);
+        }
+        return;
+    }
+    
+    // Default: Free Edit Mode
+    this.isFormEditMode = false;
+    this.selectedFormTemplateId = null;
+    this.isEditorVisible = true;
     
     // Refresh history when template changes
     this.refreshHistory();
@@ -201,6 +255,17 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
+  // Back button handler
+  goBackToGallery(): void {
+      this.isEditorVisible = false;
+      this.isFormEditMode = false;
+      this.currentTemplateId = undefined;
+      this.selectedFormTemplateId = null;
+      this.currentChatId = null;
+      
+      this.updateUrlWithParams(null, null);
+  }
+
   // Update URL with chatId and optional templateId
   private updateUrlWithParams(chatId: string | null, templateId: string | null): void {
       const commands: any[] = ['/editor'];
@@ -211,19 +276,22 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
       const queryParams: any = {};
       if (templateId) {
           queryParams.templateId = templateId;
+      } else {
+        // Explicitly remove templateId if not provided (e.g. going back to gallery)
+        queryParams.templateId = null;
       }
       
       this.router.navigate(commands, { 
           queryParams: queryParams,
           queryParamsHandling: 'merge', // Merge with existing params
-          replaceUrl: true 
+          replaceUrl: !templateId // Replace history if we are clearing template (going back)
       });
   }
 
   // Load the first available template from the backend
   private loadDefaultBackendTemplate(): void {
-      console.log('🔄 Loading default backend template...');
-      this.templateService.getBackendTemplates(1, 1, 'asc').subscribe({
+      console.log('🔄 Loading backend templates...');
+      this.templateService.getBackendTemplates(1, 100, 'asc').subscribe({ // Load more for gallery
           next: (response: any) => {
               // Handle various response structures
               let templates: any[] = [];
@@ -239,16 +307,109 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
                   }
               }
 
+              this.backendTemplates = templates;
+              this.applyGalleryFilters();
+
+              // Only auto-select if we came from a reload with no params, 
+              // BUT now we want to show Gallery if no chat/template is selected.
+              // So we might NOT want to auto-select a template unless we really want one.
+              // The user said: "if the chat and template is not selected we get... welcome... now i want to show a grid"
+              // So removing auto-selection logic for default view.
+              
               if (templates.length > 0) {
-                  const firstTemplateId = templates[0].id;
-                  console.log('✅ Default template found:', firstTemplateId);
-                  this.onBackendTemplateSelected(firstTemplateId, true); // Update URL too
-              } else {
-                  console.warn('⚠️ No templates available from backend.');
+                 // Verify if specific ID needs type injection (Mocking for dev if backend isn't ready)
+                 // Also map templateTypeId to type if present (1=Free, 2=Form)
+                 templates.forEach(t => {
+                     if (t.templateTypeId) {
+                         t.type = t.templateTypeId;
+                     }
+                     // Fallback/Override for specific ID if backend data is missing type
+                     if (t.id === '6973bcfbdf2766fbee178f68' || t.id === '69760da5141f61da2dbb924e') {
+                         t.type = 2;
+                     } else if (!t.type) {
+                         t.type = 1; // Default to free if unknown
+                     }
+                 });
               }
           },
           error: (err) => console.error('Failed to load default template list', err)
       });
+  }
+
+  applyGalleryFilters() {
+      this.filteredBackendTemplates = this.backendTemplates.filter(t => {
+          const matchesSearch = !this.gallerySearch || t.templateName.toLowerCase().includes(this.gallerySearch.toLowerCase());
+          const matchesFilter = this.galleryFilter === 'all' || 
+                               (this.galleryFilter === 'free' && t.type === 1) ||
+                               (this.galleryFilter === 'form' && t.type === 2);
+          return matchesSearch && matchesFilter;
+      });
+  }
+
+  onGalleryTemplateSelect(template: any) {
+    console.log('Gallery Template Selected:', template);
+    
+    // Call API to create a new chat session with this template
+    this.templateService.createChatSession(template.id).subscribe({
+      next: (response) => {
+        if (response.status && response.data) {
+          // Assuming response.data contains the chat object with _id
+          const chatId = response.data._id || response.data.chatId;
+          console.log('✅ Created new chat session:', chatId);
+          
+          this.currentChatId = chatId;
+          this.currentTemplateId = template.id;
+
+          // Check for initial/dummy resume data in the response
+          if (response.data.current_resume || response.data.resume_data) {
+             this.currentResumeData = response.data.current_resume || response.data.resume_data;
+          }
+
+          // Check type
+          const type = template.type || (['6973bcfbdf2766fbee178f68', '69760da5141f61da2dbb924e'].includes(template.id) ? 2 : 1); // Fallback logic
+          
+          if (type === 2) {
+              // Form Edit Logic
+              this.isFormEditMode = true;
+              this.selectedFormTemplateId = template.id;
+              this.currentTemplateName = template.templateName;
+              
+              // If we have resume Data, the Form component should pick it up via Input or Service
+              // Ensure dirty checking or initial state is set
+              
+          } else {
+              // Free Edit (HTML) Logic - Standard Flow
+              this.isFormEditMode = false;
+              this.selectedFormTemplateId = null;
+              
+              // Load the external template HTML logic will be triggered by URL update
+              // via ngOnInit subscription
+          }
+
+          // Show the editor
+          this.isEditorVisible = true;
+          
+          // Update URL
+          this.updateUrlWithParams(chatId, template.id);
+          
+        } else {
+          console.error('❌ Failed to create chat session:', response.message);
+          // Fallback or Alert?
+          // For now, alert to notify user
+          alert('Could not start a new session. Please try again.');
+        }
+      },
+      error: (err) => {
+        console.error('❌ Error creating chat session:', err);
+        alert('Error connecting to server.');
+      }
+    });
+  }
+  
+  // Handling data change from Form Component
+  onFormDataChange(newData: any) {
+      this.currentResumeData = newData;
+      // Maybe auto-save or simple local state update
   }
 
 
@@ -266,7 +427,7 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
     // Refresh history for the new chat
     this.refreshHistory();
     
-    // Load resume data for this chat
+    // 1. Load resume data for this chat
     this.templateService.getChatSession(chatId).subscribe({
       next: (response: any) => {
         if (response.status && response.data) {
@@ -277,33 +438,48 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
           // Use currentResume from the response
           let resumeData = response.data.currentResume || response.data.resumeData || response.data;
           
-          // Normalize data keys to handle potential discrepancies between API and Template (e.g. typos in legacy templates)
+          // Normalize data keys
           if (resumeData) {
             this.normalizeResumeData(resumeData);
-            this.cdr.detectChanges(); // Force view update to reveal editor container
-            
-            // Store valid resume data in global variable
-            this.currentResumeData = resumeData;
+            this.currentResumeData = resumeData; // Store valid resume data
+            this.cdr.detectChanges(); 
           }
           
-          // If we have a selected template, reload it with new data
-          if (this.selectedTemplate && this.currentResumeData) {
-            this.loadTemplateWithData(this.selectedTemplate, this.currentResumeData);
-          } else if (this.currentResumeData) {
-            // Try to load default template or first available
-            if (this.templates.length > 0) {
-              this.selectedTemplate = this.templates[0].path;
-              this.loadTemplateWithData(this.selectedTemplate, this.currentResumeData);
-            } else {
-              // Wait for templates to load if they haven't yet
-              this.templateService.getTemplates().subscribe(templates => {
-                if (templates.length > 0) {
-                  this.selectedTemplate = templates[0].path;
-                  this.loadTemplateWithData(this.selectedTemplate, this.currentResumeData);
-                }
-              });
+          // 2. Fetch the latest history to find the correct Template ID
+          console.log('🔍 resolving template from latest history...');
+          this.templateService.getChatHistory(chatId, 1, 1, 'desc').subscribe({
+            next: (historyResp) => {
+              if (historyResp.status && historyResp.data && historyResp.data.length > 0) {
+                 const latest = historyResp.data[0];
+                 if (latest.templateId) {
+                   console.log('📍 Found template ID from history:', latest.templateId);
+                   // Load this specific template
+                   this.onBackendTemplateSelected(latest.templateId, true);
+                   return;
+                 }
+              }
+              
+              // Fallback: If no history or no templateId in history, check URL or keep current
+              console.warn('⚠️ No template ID found in history. Checking current state or URL...');
+              
+              // If we have a query param templateId, use that (it would have been set in ngOnInit)
+              // But onChatSelected might overwrite logic.
+              if (this.currentTemplateId) {
+                 this.onBackendTemplateSelected(this.currentTemplateId, true);
+              } else {
+                 // Try to load default or first available if nothing else
+                 this.loadDefaultBackendTemplate();
+              }
+            },
+            error: (err) => {
+              console.error('❌ Failed to resolve template from history:', err);
+              // Fallback to current
+              if (this.currentTemplateId) {
+                this.onBackendTemplateSelected(this.currentTemplateId, true);
+              }
             }
-          }
+          });
+
         } else {
           console.error('❌ Failed to load chat session data:', response.message);
         }
@@ -716,14 +892,22 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
           // Load this template (false = don't update URL to avoid loops)
           this.onBackendTemplateSelected(templateId, false);
       } else {
-          // No template ID in URL? Load the default one.
-          // We only do this if we haven't loaded a template yet (or on first load)
-          // To avoid overriding if the user is just navigating chats.
-          // But "if available load the template if not load the very first one" implies enforcement.
-          
-          // Let's load default ONLY if we are initializing and no template is selected yet.
-          // But since this is an Observable, it fires on init.
-          this.loadDefaultBackendTemplate();
+          // No template ID? 
+          // If we ARE in editor mode, this means we should go back to gallery.
+          if (this.isEditorVisible) {
+              console.log('🔙 No template ID in URL - returning to gallery');
+              this.isEditorVisible = false;
+              this.isFormEditMode = false;
+              this.currentTemplateId = undefined;
+              this.selectedFormTemplateId = null;
+          } else {
+             // Initial load with no template ID - Load gallery (already default state)
+             // We DO NOT auto-select a template anymore as per request for Gallery View.
+             // Just ensure we load the list.
+             if (this.backendTemplates.length === 0) {
+                 this.loadDefaultBackendTemplate(); 
+             }
+          }
       }
     });
   }
@@ -1318,329 +1502,347 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   
 
 
-  // Download as DOCX
-  async downloadDocx(): Promise<void> {
-    try {
-      // Get the actual rendered editor content
-      const editorElement = document.querySelector('.editor .ProseMirror') as HTMLElement;
-      if (!editorElement) {
-        alert('No content to download');
-        return;
+  // Helper to prepare form content for export (flattens inputs to text)
+  private async prepareFormForExport(): Promise<HTMLElement | null> {
+      const sourceElement = document.getElementById('form-template-container');
+      if (!sourceElement) return null;
+
+      // Clone the element
+      const clonedElement = sourceElement.cloneNode(true) as HTMLElement;
+      
+      // Fix styles for export - Ensure it looks like a page
+      clonedElement.id = 'form-export-container';
+      clonedElement.style.position = 'absolute';
+      clonedElement.style.top = '0'; 
+      clonedElement.style.left = '0';
+      clonedElement.style.width = '794px'; 
+      clonedElement.style.minHeight = '1123px';
+      clonedElement.style.margin = '0';
+      clonedElement.style.padding = '0'; 
+      clonedElement.style.background = '#ffffff';
+      clonedElement.style.zIndex = '-1000'; 
+      
+      // Normalize specific template styles for PDF
+      const resumeContainer = clonedElement.querySelector('.resume-container') as HTMLElement;
+      if (resumeContainer) {
+          resumeContainer.style.width = '100%';
+          resumeContainer.style.maxWidth = '100%';
+          resumeContainer.style.boxShadow = 'none';
+          resumeContainer.style.margin = '0';
       }
 
-      // Clone the editor content
-      const clonedContent = editorElement.cloneNode(true) as HTMLElement;
+      // 1. Flatten INPUTS
+      // We explicitly pull styles from the SOURCE element because getComputedStyle() 
+      // fails on detached nodes (the clone is not in DOM yet).
+      const sourceInputs = sourceElement.querySelectorAll('input');
+      const cloneInputs = clonedElement.querySelectorAll('input');
       
-      // Function to recursively apply computed styles as inline styles
-      const applyComputedStyles = (sourceElement: HTMLElement, targetElement: HTMLElement) => {
-        // Get computed styles from the source
-        const computedStyle = window.getComputedStyle(sourceElement);
-        
-        // List of important CSS properties to preserve
-        const importantProps = [
-          'color', 'background-color', 'background-image', 'background',
-          'font-family', 'font-size', 'font-weight', 'font-style',
-          'text-align', 'text-decoration', 'text-transform',
-          'line-height', 'letter-spacing', 'word-spacing',
-          'margin', 'margin-top', 'margin-right', 'margin-bottom', 'margin-left',
-          'padding', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left',
-          'border', 'border-top', 'border-right', 'border-bottom', 'border-left',
-          'border-color', 'border-width', 'border-style',
-          'border-top-color', 'border-right-color', 'border-bottom-color', 'border-left-color',
-          'border-top-width', 'border-right-width', 'border-bottom-width', 'border-left-width',
-          'border-top-style', 'border-right-style', 'border-bottom-style', 'border-left-style',
-          'width', 'height', 'min-width', 'min-height', 'max-width', 'max-height',
-          'display', 'vertical-align',
-          'list-style-type', 'list-style-position'
-        ];
-        
-        let inlineStyle = '';
-        
-        importantProps.forEach(prop => {
-          const value = computedStyle.getPropertyValue(prop);
-          if (value && value !== 'none' && value !== 'normal' && value !== '0px' && value !== 'auto') {
-            // Skip default values
-            if (prop === 'color' && value === 'rgb(0, 0, 0)') return;
-            if (prop === 'background-color' && (value === 'rgba(0, 0, 0, 0)' || value === 'transparent')) return;
-            
-            // Convert gradients to solid colors (Word doesn't support gradients well)
-            if (prop === 'background-image' && value.includes('gradient')) {
-              // Extract first color from gradient
-              const colorMatch = value.match(/rgba?\([^)]+\)|#[0-9a-fA-F]{3,6}/);
-              if (colorMatch) {
-                inlineStyle += `background-color: ${colorMatch[0]}; `;
-              }
-              return; // Skip the gradient itself
-            }
-            
-            // Simplify display values for Word compatibility
-            if (prop === 'display') {
-              if (value === 'flex' || value === 'grid' || value === 'inline-flex') {
-                inlineStyle += 'display: block; '; // Word doesn't support flex/grid
-                return;
-              }
-            }
-            
-            inlineStyle += `${prop}: ${value}; `;
-          }
-        });
-        
-        // Handle box-shadow by converting to border (Word doesn't support box-shadow)
-        const boxShadow = computedStyle.getPropertyValue('box-shadow');
-        if (boxShadow && boxShadow !== 'none') {
-          // If there's a box shadow but no border, add a subtle border
-          const hasBorder = computedStyle.getPropertyValue('border-width') !== '0px';
-          if (!hasBorder) {
-            inlineStyle += 'border: 1px solid #e0e0e0; ';
-          }
-        }
-        
-        // Handle border-radius by ensuring borders are visible (Word has limited border-radius support)
-        const borderRadius = computedStyle.getPropertyValue('border-radius');
-        if (borderRadius && borderRadius !== '0px') {
-          // Ensure there's a border if border-radius is set
-          const borderWidth = computedStyle.getPropertyValue('border-width');
-          const borderStyle = computedStyle.getPropertyValue('border-style');
-          const borderColor = computedStyle.getPropertyValue('border-color');
+      sourceInputs.forEach((sourceInput, index) => {
+          if (!cloneInputs[index]) return;
+          const cloneInput = cloneInputs[index];
           
-          if (borderWidth === '0px' || borderStyle === 'none') {
-            // Add a default border if none exists
-            inlineStyle += 'border: 1px solid #d0d0d0; ';
+          const computedStyle = window.getComputedStyle(sourceInput);
+          
+          // Use div for block-level inputs (like headers), span for inline
+          const isBlock = computedStyle.display === 'block' || computedStyle.display === 'flex';
+          const replacement = document.createElement(isBlock ? 'div' : 'span');
+          
+          replacement.textContent = sourceInput.value;
+          
+          // Explicitly copy all font text styles
+          replacement.style.fontFamily = computedStyle.fontFamily;
+          replacement.style.fontSize = computedStyle.fontSize;
+          replacement.style.fontWeight = computedStyle.fontWeight;
+          replacement.style.fontStyle = computedStyle.fontStyle;
+          replacement.style.color = computedStyle.color;
+          replacement.style.textAlign = computedStyle.textAlign;
+          replacement.style.textTransform = computedStyle.textTransform;
+          replacement.style.letterSpacing = computedStyle.letterSpacing;
+          replacement.style.lineHeight = computedStyle.lineHeight;
+          
+          // Copy box model properties that affect layout
+          replacement.style.width = computedStyle.width;
+          replacement.style.margin = computedStyle.margin;
+          replacement.style.padding = computedStyle.padding;
+          replacement.style.display = computedStyle.display;
+          
+          // Remove form styles
+          replacement.style.border = 'none';
+          replacement.style.background = 'transparent';
+          replacement.style.outline = 'none';
+          replacement.style.minHeight = 'auto'; // allow text to define height
+          
+          if (cloneInput.parentNode) {
+              cloneInput.parentNode.replaceChild(replacement, cloneInput);
           }
-        }
-        
-        if (inlineStyle) {
-          targetElement.setAttribute('style', inlineStyle);
-        }
-        
-        // Recursively process children
-        const sourceChildren = Array.from(sourceElement.children) as HTMLElement[];
-        const targetChildren = Array.from(targetElement.children) as HTMLElement[];
-        
-        for (let i = 0; i < sourceChildren.length && i < targetChildren.length; i++) {
-          applyComputedStyles(sourceChildren[i], targetChildren[i]);
-        }
-      };
-      
-      // Apply all computed styles to the cloned content
-      applyComputedStyles(editorElement, clonedContent);
-      
-      // Post-process the cloned content for better Word compatibility
-      const cleanForWord = (element: HTMLElement) => {
-        // Remove background images (Word doesn't handle them well)
-        const bgImage = element.style.backgroundImage;
-        if (bgImage && bgImage !== 'none') {
-          element.style.backgroundImage = 'none';
-          // If there was a background image, add a border to maintain visual structure
-          if (!element.style.border || element.style.border === 'none') {
-            element.style.border = '2px solid #e0e0e0';
-          }
-        }
-        
-        // Convert flex/grid containers to simple blocks
-        if (element.style.display === 'flex' || element.style.display === 'grid') {
-          element.style.display = 'block';
-        }
-        
-        // Remove absolute/fixed positioning
-        if (element.style.position === 'absolute' || element.style.position === 'fixed') {
-          element.style.position = 'relative';
-        }
-        
-        // Recursively clean children
-        Array.from(element.children).forEach(child => {
-          if (child instanceof HTMLElement) {
-            cleanForWord(child);
-          }
-        });
-      };
-      
-      cleanForWord(clonedContent);
-      
-      // Get the template CSS for reference (though we're using inline styles now)
-      let templateCss = '';
-      const templateStyleElement = document.querySelector('style[data-template-styles="true"]');
-      if (templateStyleElement) {
-        templateCss = templateStyleElement.textContent || '';
-        // Remove the .editor scoping
-        templateCss = templateCss.replace(/\.editor\s+/g, '');
-      }
-      
-      // Create the DOCX HTML structure
-      const docxContent = `
-        <html xmlns:o='urn:schemas-microsoft-com:office:office' 
-              xmlns:w='urn:schemas-microsoft-com:office:word' 
-              xmlns='http://www.w3.org/TR/REC-html40'>
-          <head>
-            <meta charset='utf-8'>
-            <meta name="ProgId" content="Word.Document">
-            <meta name="Generator" content="Microsoft Word 15">
-            <meta name="Originator" content="Microsoft Word 15">
-            <title>Resume</title>
-            <!--[if gte mso 9]>
-            <xml>
-              <w:WordDocument>
-                <w:View>Print</w:View>
-                <w:Zoom>100</w:Zoom>
-                <w:DoNotOptimizeForBrowser/>
-              </w:WordDocument>
-            </xml>
-            <![endif]-->
-            <style>
-              /* Base styles for Word compatibility */
-              @page {
-                size: 8.5in 11in;
-                margin: 1in;
-              }
-              
-              body {
-                font-family: 'Calibri', 'Arial', sans-serif;
-                font-size: 11pt;
-                line-height: 1.6;
-                color: #000000;
-              }
-              
-              /* Preserve table layouts */
-              table {
-                border-collapse: collapse;
-                width: 100%;
-              }
-              
-              td, th {
-                vertical-align: top;
-              }
-              
-              /* Additional template CSS as fallback */
-              ${templateCss}
-            </style>
-          </head>
-          <body>
-            ${clonedContent.innerHTML}
-          </body>
-        </html>
-      `;
-
-      // Create blob with proper DOCX MIME type
-      const blob = new Blob(['\ufeff', docxContent], {
-        type: 'application/msword'
       });
 
-      // Save the file
-      const fileName = `resume_${new Date().toISOString().split('T')[0]}.doc`;
-      saveAs(blob, fileName);
+      // 2. Flatten TEXTAREAS
+      const sourceTextareas = sourceElement.querySelectorAll('textarea');
+      const cloneTextareas = clonedElement.querySelectorAll('textarea');
       
-      console.log('DOCX file generated successfully');
-    } catch (error) {
-      console.error('Error generating document:', error);
-      alert('Failed to generate document file. Please try again.');
-    }
+      sourceTextareas.forEach((sourceTextarea, index) => {
+          if (!cloneTextareas[index]) return;
+          const cloneTextarea = cloneTextareas[index];
+          
+          const computedStyle = window.getComputedStyle(sourceTextarea);
+          
+          const div = document.createElement('div');
+          // Preserve newlines
+          div.innerHTML = (sourceTextarea.value || '').replace(/\n/g, '<br>');
+          
+          // Copy font styles
+          div.style.fontFamily = computedStyle.fontFamily;
+          div.style.fontSize = computedStyle.fontSize;
+          div.style.fontWeight = computedStyle.fontWeight;
+          div.style.fontStyle = computedStyle.fontStyle;
+          div.style.color = computedStyle.color;
+          div.style.textAlign = computedStyle.textAlign;
+          div.style.textTransform = computedStyle.textTransform;
+          div.style.letterSpacing = computedStyle.letterSpacing;
+          div.style.lineHeight = computedStyle.lineHeight;
+
+          // Copy box layout
+          div.style.width = computedStyle.width;
+          div.style.margin = computedStyle.margin;
+          div.style.padding = computedStyle.padding;
+          
+          div.style.border = 'none';
+          div.style.background = 'transparent';
+          div.style.outline = 'none';
+          div.style.height = 'auto'; // Auto expand to fit content
+          div.style.overflow = 'visible';
+          
+          if (cloneTextarea.parentNode) {
+              cloneTextarea.parentNode.replaceChild(div, cloneTextarea);
+          }
+      });
+
+      // Remove UI buttons (Add/Remove)
+      const buttons = clonedElement.querySelectorAll('button');
+      buttons.forEach(btn => btn.remove());
+      
+      // Append to body to ensure it is rendered for capture
+      document.body.appendChild(clonedElement);
+      
+      // Small delay to allow rendering and font loading
+      await new Promise(resolve => setTimeout(resolve, 100));
+      
+      return clonedElement;
+  }
+
+
+
+  // Download as DOCX using html-to-docx library
+  async downloadDocx(): Promise<void> {
+    alert('DOCX download is currently disabled as it requires server-side processing.');
+    console.warn('DOCX download disabled to resolve browser-stream compatibility issues.');
+  }
+
+  // Post-process for Word compatibility (Helper)
+  private cleanForWord(element: HTMLElement): void {
+     // Clean background images
+     const bgImage = element.style.backgroundImage;
+     if (bgImage && bgImage !== 'none') {
+         element.style.backgroundImage = 'none';
+     }
+     
+     // Remove positioning that breaks Word flow
+     if (element.style.position === 'absolute' || element.style.position === 'fixed') {
+         element.style.position = 'static'; 
+     }
+     
+     // Recursion
+     Array.from(element.children).forEach(child => {
+         if (child instanceof HTMLElement) this.cleanForWord(child);
+     });
+  }
+  
+  // Heuristic to convert Flexbox layouts to Tables for Word (Helper)
+  private convertFlexToTable(element: HTMLElement): void {
+      // Check if this element is a row-oriented flex container
+      const style = element.style;
+      const display = style.display;
+      // specific check for the main resume container or large layout blocks
+      if (display === 'flex' || display === 'inline-flex' || element.classList.contains('row') || element.style.display.includes('flex')) {
+           // Check flex direction
+           if (style.flexDirection === 'column' || style.flexDirection === 'column-reverse') {
+               // Keep as block, just process children
+           } else {
+               // Assume Row: Convert to Table
+               const children = Array.from(element.children) as HTMLElement[];
+               if (children.length > 1) {
+                    const table = document.createElement('table');
+                    table.setAttribute('width', '100%');
+                    table.style.width = '100%';
+                    table.style.borderCollapse = 'collapse';
+                    table.style.tableLayout = 'fixed'; 
+                    
+                    // Copy background and borders
+                    table.style.backgroundColor = style.backgroundColor;
+                    table.style.background = style.background;
+                    table.style.border = style.border;
+                    
+                    const tr = document.createElement('tr');
+                    
+                    children.forEach(child => {
+                         const td = document.createElement('td');
+                         td.style.verticalAlign = 'top';
+                         
+                         // Determine width
+                         const childWidth = child.style.width;
+                         const childFlex = child.style.flex;
+                         
+                         if (childWidth && childWidth !== 'auto') {
+                             td.style.width = childWidth;
+                         } else if (childFlex && childFlex !== '0 1 auto' && !childFlex.startsWith('0')) {
+                             td.style.width = `${100 / children.length}%`; 
+                         }
+                         
+                         child.style.margin = '0'; 
+                         td.appendChild(child);
+                         tr.appendChild(td);
+                    });
+                    
+                    table.appendChild(tr);
+                    
+                    if (element.parentNode) {
+                        element.parentNode.replaceChild(table, element);
+                    }
+                    return; // Done with this level
+               }
+           }
+      }
+      
+      // Recurse
+      Array.from(element.children).forEach(child => {
+          if (child instanceof HTMLElement) this.convertFlexToTable(child);
+      });
   }
 
   // Download as PDF
   async downloadPdf(): Promise<void> {
+    let exportElement: HTMLElement | null = null;
+    let isTemp = false;
+
+    // 1. Prepare Content
+    if (this.isFormEditMode) {
+        console.log('📄 Preparing PDF for Form Template...');
+        exportElement = await this.prepareFormForExport();
+        if (!exportElement) return;
+        isTemp = true;
+    } else {
+        // Free Edit Mode - Use existing logic via Free Edit helper but adapted to specific flow if needed
+        return this.downloadPdfFreeEdit();
+    }
+
     try {
-      // Ensure html2canvas is available globally for jsPDF
+        // 2. Setup jsPDF
+        const a4WidthPx = 794;
+        const a4HeightPx = 1123;
+        
+        const pdf = new jsPDF({
+            orientation: 'portrait',
+            unit: 'px', 
+            format: [a4WidthPx, a4HeightPx],
+            compress: true,
+            hotfixes: ['px_scaling']
+        });
+
+        // 3. Render HTML to PDF
+        // Using pdf.html which creates selectable text vectors mostly
+        await pdf.html(exportElement, {
+            callback: function(doc) {
+                doc.save(`resume_${new Date().toISOString().split('T')[0]}.pdf`);
+                
+                // Cleanup inside callback
+                if (isTemp && exportElement && exportElement.parentNode) {
+                    exportElement.parentNode.removeChild(exportElement);
+                }
+                console.log('PDF generated.');
+            },
+            x: 0,
+            y: 0,
+            width: a4WidthPx,
+            windowWidth: a4WidthPx,
+            margin: [0, 0, 0, 0], // No extra margins, we control padding in CSS
+            autoPaging: 'text',
+            html2canvas: {
+                scale: 1,
+                useCORS: true, 
+                logging: false,
+                letterRendering: true,
+                backgroundColor: '#ffffff'
+            }
+        });
+
+    } catch (err) {
+        console.error('Error generating PDF:', err);
+        if (isTemp && exportElement && exportElement.parentNode) {
+            exportElement.parentNode.removeChild(exportElement);
+        }
+    }
+  }
+
+  // Legacy PDF Logic for Free Edit (Preserved/Renamed)
+  async downloadPdfFreeEdit(): Promise<void> {
+    try {
+       // ... (Original logic from downloadPdf lines 1727-1867)
+       // We need to include this entire block here
       if (typeof window !== 'undefined') {
         (window as any).html2canvas = html2canvas;
       }
-
-      const htmlContent = this.getHTML();
-      
-      // Get the injected template CSS
+      const htmlContent = this.editor.getHTML();
       let templateCss = '';
       const templateStyleElement = document.querySelector('style[data-template-styles="true"]');
       if (templateStyleElement) {
         templateCss = templateStyleElement.textContent || '';
-        // Remove the .editor scoping for the PDF
         templateCss = templateCss.replace(/\.editor\s+/g, '');
       }
       
-      // Parse the HTML
       const parser = new DOMParser();
       const doc = parser.parseFromString(htmlContent, 'text/html');
       
-      // Create a temporary container
       const tempContainer = document.createElement('div');
       tempContainer.id = 'pdf-temp-container';
-      
-      
-      // Set dimensions to A4 at 96 DPI (standard screen resolution)
-      // A4 width = 794px
       const a4WidthPx = 794;
-      const pagePadding = 40; // 40px padding on each side
+      const pagePadding = 40;
       
-      // We set the container to exactly A4 width
       tempContainer.style.width = `${a4WidthPx}px`; 
-      // Allow height to grow as needed, we'll paginate or cut it
       tempContainer.style.minHeight = '1123px';
-      
-      // Add padding to create margins
       tempContainer.style.padding = `${pagePadding}px`; 
       tempContainer.style.backgroundColor = '#ffffff';
       tempContainer.style.boxSizing = 'border-box';
-      
-      // Ensure base font settings match browser defaults
       tempContainer.style.fontFamily = 'Arial, Helvetica, sans-serif';
       tempContainer.style.fontSize = '16px'; 
       tempContainer.style.lineHeight = '1.5';
       tempContainer.style.color = '#000000';
-      
-      // Position off-screen
       tempContainer.style.position = 'fixed';
       tempContainer.style.top = '0';
       tempContainer.style.left = '0';
       tempContainer.style.zIndex = '-1000';
       
-      // Add a style element to the container
       const styleElement = document.createElement('style');
       styleElement.textContent = `
         ${templateCss}
-        #pdf-temp-container {
-          box-sizing: border-box;
-        }
-        #pdf-temp-container * {
-          box-sizing: border-box;
-        }
-        
-        /* Force the resume container to fit exactly in our PDF container */
-        .resume-container, .container, .main-container {
-          width: 100% !important;
-          max-width: 100% !important;
-          box-shadow: none !important; /* Remove shadows for cleaner print */
-        }
-        
-        /* Ensure tables render correctly */
-        table {
-          width: 100%;
-          border-collapse: collapse;
-        }
+        #pdf-temp-container { box-sizing: border-box; }
+        .resume-container, .container { width: 100% !important; box-shadow: none !important; }
+        table { width: 100%; border-collapse: collapse; }
       `;
       tempContainer.appendChild(styleElement);
       
-      // Add the content
       const contentDiv = document.createElement('div');
       contentDiv.innerHTML = doc.body.innerHTML;
       tempContainer.appendChild(contentDiv);
-      
-      // Append to body
       document.body.appendChild(tempContainer);
       
-      // Wait for rendering
       await new Promise(resolve => setTimeout(resolve, 500));
       
-      // Get the actual height of the content
-      const contentHeight = tempContainer.scrollHeight;
       const a4HeightPx = 1123;
-      
-      // Create PDF with jsPDF using PIXEL units
-      // We set the format height to the content height to avoid ugly cutoffs if it's a single page
-      // OR we stick to A4. Let's stick to A4 multiple pages logic if possible, 
-      // but autoPaging of jsPDF works better if we give it the whole container.
-      
       const pdf = new jsPDF({
         orientation: 'portrait',
         unit: 'px', 
-        format: [a4WidthPx, a4HeightPx], // Standard A4
+        format: [a4WidthPx, a4HeightPx],
         compress: true,
         hotfixes: ['px_scaling']
       });
@@ -1648,35 +1850,20 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
       await pdf.html(tempContainer, {
         callback: function(doc) {
           doc.save(`resume_${new Date().toISOString().split('T')[0]}.pdf`);
-          
           if (document.body.contains(tempContainer)) {
             document.body.removeChild(tempContainer);
           }
-          console.log('PDF file generated successfully');
         },
-        x: 0,
-        y: 0,
-        width: a4WidthPx, 
-        windowWidth: a4WidthPx,
-        margin: [0, 0, 0, 0], // No extra margins since we're using padding on the container
+        x: 0, y: 0,
+        width: a4WidthPx, windowWidth: a4WidthPx,
+        margin: [0, 0, 0, 0],
         autoPaging: 'text',
-        html2canvas: {
-          scale: 1,
-          useCORS: true,
-          logging: false,
-          letterRendering: true,
-          backgroundColor: '#ffffff'
-        }
+        html2canvas: { scale: 1, useCORS: true, logging: false, letterRendering: true, backgroundColor: '#ffffff' }
       });
-      
     } catch (error) {
-      console.error('Error generating PDF:', error);
-      alert('Failed to generate PDF file. Please try again.');
-      
-      const tempContainer = document.getElementById('pdf-temp-container');
-      if (tempContainer && document.body.contains(tempContainer)) {
-         document.body.removeChild(tempContainer);
-      }
+       console.error('Error generating PDF (Free Edit):', error);
+       const temp = document.getElementById('pdf-temp-container');
+       if (temp) temp.remove();
     }
   }
 
@@ -1744,15 +1931,25 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
     this.isSending = true;
     
     try {
-      // Get current HTML content from the editor
-      const resumeHtml = this.getHTML();
-      
-      // Extract structured data from the HTML
-      const extractedData = this.extractDataFromHTML(resumeHtml);
+      let resumeHtml = '';
+      let extractedData: any = {};
+
+      if (this.isFormEditMode) {
+          // In Form Edit Mode, we use the live object from the form component
+          console.log('📝 Form Mode: Sending structured data directly');
+          extractedData = this.currentResumeData;
+          // We don't send HTML in this mode as it's not the primary source of truth
+          // unless we want to send what's in the background editor, which might be stale.
+          resumeHtml = ''; 
+      } else {
+          // Free Edit Mode: Extract from Tiptap HTML
+          resumeHtml = this.getHTML();
+          extractedData = this.extractDataFromHTML(resumeHtml);
+      }
       
       console.log('User Message:', this.chatInput);
-      console.log('Resume HTML:', resumeHtml);
-      console.log('Extracted Data from Resume:', extractedData);
+      console.log('Resume HTML Length:', resumeHtml.length);
+      console.log('Extracted Data:', extractedData);
       
       // Send to backend API for enhancement
       const chatId = this.currentChatId || '';

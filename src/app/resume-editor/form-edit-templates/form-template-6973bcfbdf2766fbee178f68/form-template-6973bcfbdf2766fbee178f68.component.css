@@ -1,0 +1,109 @@
+.resume-container {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 20px auto;
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 40px;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  padding: 5px 0;
+}
+
+input, textarea {
+  border: 1px solid transparent;
+  width: 100%;
+  font-family: inherit;
+  background: transparent;
+  padding: 2px 5px;
+  box-sizing: border-box;
+}
+
+input:hover, textarea:hover, input:focus, textarea:focus {
+  border: 1px dashed #ccc;
+  outline: none;
+}
+
+.header {
+  text-align: center;
+  border-bottom: 2px solid #333;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.header input.name {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.header input.contact {
+  font-size: 14px;
+  text-align: center;
+  color: #666;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-size: 16px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #333;
+}
+
+.job-item {
+  margin-bottom: 15px;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.job-role {
+  font-size: 14px;
+}
+
+.job-company {
+  font-size: 14px;
+  font-style: italic;
+}
+
+.job-duration {
+  font-size: 12px;
+  text-align: right;
+}
+
+.job-desc {
+  font-size: 13px;
+  color: #444;
+  margin-top: 5px;
+}
+
+.add-btn, .remove-btn {
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  margin-top: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.add-btn:hover {
+  background: #e0e0e0;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 60px;
+}

@@ -80,15 +80,79 @@
   (sidebarToggled)="onSidebarToggled($event)"
 ></app-chat-sidebar>
 
-<div class="empty-state" [hidden]="isEditorVisible" [class.sidebar-open]="sidebarOpen">
-  <div class="empty-content">
-    <h2>Welcome to Resume Builder</h2>
-    <p>Select an existing chat or create a new one to start editing your resume.</p>
+<!-- Template Gallery (replaces empty state) -->
+<div class="gallery-container" [hidden]="isEditorVisible" [class.sidebar-open]="sidebarOpen">
+  <div class="gallery-header">
+    <h2>Select a Template</h2>
+    <div class="gallery-controls">
+      <input 
+        type="text" 
+        placeholder="Search templates..." 
+        [(ngModel)]="gallerySearch"
+        (input)="applyGalleryFilters()"
+        class="gallery-search">
+      
+      <select [(ngModel)]="galleryFilter" (change)="applyGalleryFilters()" class="gallery-filter">
+        <option value="all">All Templates</option>
+        <option value="free">Free Edit (HTML)</option>
+        <option value="form">Form Edit (Interactive)</option>
+      </select>
+
+      <div class="view-toggle">
+        <button [class.active]="galleryViewMode === 'grid'" (click)="galleryViewMode = 'grid'" title="Grid View">
+           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        </button>
+        <button [class.active]="galleryViewMode === 'list'" (click)="galleryViewMode = 'list'" title="List View">
+           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-content" [class.grid-view]="galleryViewMode === 'grid'" [class.list-view]="galleryViewMode === 'list'">
+     <div *ngFor="let theme of filteredBackendTemplates" class="template-card" (click)="onGalleryTemplateSelect(theme)">
+        <div class="template-preview">
+           <!-- Render HTML Preview if available (Free Edit) -->
+           <div *ngIf="theme.type === 1 && theme.htmlTemplate" class="html-preview-container">
+             <div class="scaled-preview" [innerHTML]="theme.htmlTemplate | safeHtml"></div>
+           </div>
+           
+           <!-- Placeholder for Form Edit or missing HTML -->
+           <div *ngIf="theme.type === 2 || !theme.htmlTemplate" class="preview-placeholder">
+              <span>{{ theme.templateName.charAt(0) }}</span>
+           </div>
+           
+           <div class="template-badge" [class.form-badge]="theme.type === 2">
+              {{ theme.type === 2 ? 'Form Edit' : 'Free Edit' }}
+           </div>
+        </div>
+        <div class="template-info">
+           <h3>{{ theme.templateName }}</h3>
+           <button class="select-btn">Use Template</button>
+        </div>
+     </div>
+     
+     <div *ngIf="filteredBackendTemplates.length === 0" class="no-results">
+        <p>No templates found matching your criteria.</p>
+     </div>
   </div>
 </div>
 
 <div class="editor-container" [class.sidebar-open]="sidebarOpen" [hidden]="!isEditorVisible">
   <div class="toolbar">
+    <!-- Back Button -->
+    <div class="toolbar-group">
+        <button class="toolbar-btn back-btn" (click)="goBackToGallery()" title="Back to Gallery">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <path d="M12 19l-7-7 7-7"></path>
+            </svg>
+            <span class="back-text">Back</span>
+        </button>
+    </div>
+
+    <div class="toolbar-divider"></div>
+
     <!-- Template Selector -->
     <div class="toolbar-group">
       <app-template-dropdown 
@@ -480,14 +544,15 @@
         [class.active]="useHtmlMode"
         [title]="useHtmlMode ? 'HTML Mode: Using enhancedHtml from API' : 'JSON Mode: Preserving your styling'"
         style="width: auto; padding: 0 8px; gap: 4px;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path *ngIf="!useHtmlMode" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-          <polyline *ngIf="!useHtmlMode" points="14 2 14 8 20 8"></polyline>
-          <line *ngIf="!useHtmlMode" x1="12" y1="18" x2="12" y2="12"></line>
-          <line *ngIf="!useHtmlMode" x1="9" y1="15" x2="15" y2="15"></line>
-          
-          <polyline *ngIf="useHtmlMode" points="16 18 22 12 16 6"></polyline>
-          <polyline *ngIf="useHtmlMode" points="8 6 2 12 8 18"></polyline>
+        <svg *ngIf="!useHtmlMode" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="12" y1="18" x2="12" y2="12"></line>
+          <line x1="9" y1="15" x2="15" y2="15"></line>
+        </svg>
+        <svg *ngIf="useHtmlMode" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
         </svg>
         <span style="font-size: 11px; font-weight: 600;">{{ useHtmlMode ? 'HTML' : 'JSON' }}</span>
       </button>
@@ -514,7 +579,19 @@
 
   <!-- Editor Content Area -->
   <div class="editor-wrapper">
-    <div class="editor"></div>
+    <div class="editor" [hidden]="isFormEditMode"></div>
+    <div *ngIf="isFormEditMode" id="form-template-container" style="overflow-y: auto; height: 100%; padding: 20px;">
+        <app-form-template-6973bcfbdf2766fbee178f68 
+            *ngIf="selectedFormTemplateId === '6973bcfbdf2766fbee178f68'"
+            [resumeData]="currentResumeData"
+            (dataChange)="onFormDataChange($event)">
+        </app-form-template-6973bcfbdf2766fbee178f68>
+        <app-form-template-69760da5141f61da2dbb924e 
+            *ngIf="selectedFormTemplateId === '69760da5141f61da2dbb924e'"
+            [resumeData]="currentResumeData"
+            (dataChange)="onFormDataChange($event)">
+        </app-form-template-69760da5141f61da2dbb924e>
+    </div>
   </div>
 
   <!-- Chat Interface -->

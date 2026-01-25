@@ -1,0 +1,62 @@
+<div class="resume-container">
+  <!-- Header -->
+  <div class="header">
+    <input class="name" [(ngModel)]="resumeData.name" (ngModelChange)="onModelChange()" placeholder="Your Name">
+    <div style="display: flex; justify-content: center; gap: 10px; margin-top: 5px;">
+      <input class="contact" style="width: auto;" [(ngModel)]="resumeData.email" (ngModelChange)="onModelChange()" placeholder="Email">
+      <span>|</span>
+      <input class="contact" style="width: auto;" [(ngModel)]="resumeData.phone" (ngModelChange)="onModelChange()" placeholder="Phone">
+      <span>|</span>
+      <input class="contact" style="width: auto;" [(ngModel)]="resumeData.location" (ngModelChange)="onModelChange()" placeholder="Location">
+    </div>
+    <div style="display: flex; justify-content: center; gap: 10px; margin-top: 5px;">
+      <input class="contact" style="width: auto;" [(ngModel)]="resumeData.linkedin" (ngModelChange)="onModelChange()" placeholder="LinkedIn">
+      <span>|</span>
+      <input class="contact" style="width: auto;" [(ngModel)]="resumeData.github" (ngModelChange)="onModelChange()" placeholder="GitHub">
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="section">
+    <div class="section-title">Professional Summary</div>
+    <textarea [(ngModel)]="resumeData.summary" (ngModelChange)="onModelChange()" placeholder="Write a professional summary..."></textarea>
+  </div>
+
+  <!-- Experience -->
+  <div class="section">
+    <div class="section-title">Experience</div>
+    
+    <div class="job-item" *ngFor="let job of resumeData.experience; let i = index">
+      <div class="job-header">
+        <input style="font-weight: bold; width: 48%;" [(ngModel)]="job.role" (ngModelChange)="onModelChange()" placeholder="Role">
+        <input style="text-align: right; width: 48%;" [(ngModel)]="job.duration" (ngModelChange)="onModelChange()" placeholder="Date Range">
+      </div>
+      <input style="font-style: italic; margin-bottom: 5px;" [(ngModel)]="job.company" (ngModelChange)="onModelChange()" placeholder="Company Name">
+      <textarea class="job-desc" [(ngModel)]="job.description" (ngModelChange)="onModelChange()" placeholder="Description of responsibilities..."></textarea>
+      
+      <button class="remove-btn" (click)="removeExperience(i)">Remove Role</button>
+    </div>
+
+    <button class="add-btn" (click)="addExperience()">+ Add Experience</button>
+  </div>
+
+  <!-- Skills -->
+  <div class="section">
+    <div class="section-title">Skills</div>
+    <textarea [(ngModel)]="resumeData.skills" (ngModelChange)="onModelChange()" placeholder="List your skills (comma separated or lines)..."></textarea>
+  </div>
+
+  <!-- Education -->
+   <div class="section">
+    <div class="section-title">Education</div>
+    <!-- Simple flexible education list for now -->
+    <div *ngIf="resumeData.education">
+         <div *ngFor="let edu of resumeData.education; let i = index" style="margin-bottom: 10px;">
+             <input style="font-weight: bold;" [(ngModel)]="edu.degree" (ngModelChange)="onModelChange()" placeholder="Degree">
+             <input style="font-style: italic;" [(ngModel)]="edu.university" (ngModelChange)="onModelChange()" placeholder="University">
+             <input [(ngModel)]="edu.year" (ngModelChange)="onModelChange()" placeholder="Year">
+         </div>
+    </div>
+  </div>
+
+</div>

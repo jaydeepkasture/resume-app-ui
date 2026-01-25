@@ -12,6 +12,7 @@ export interface ResumeTemplate {
 export interface BackendTemplate {
   id: string;
   templateName: string;
+  type: number; // 1 = Free Edit (HTML), 2 = Form Edit (Component)
 }
 
 export interface TemplateListResponse {
@@ -134,6 +135,15 @@ export class TemplateService {
    */
   getChatSession(chatId: string): Observable<any> {
     return this.httpService.get(`resume/chat/${chatId}`);
+  }
+
+  /**
+   * Create a new chat session for a specific template
+   * @param templateId - The ID of the template
+   * @returns Observable with chat session details
+   */
+  createChatSession(templateId: string): Observable<any> {
+    return this.httpService.post('resume/chat/create', { templateId });
   }
 
   /**

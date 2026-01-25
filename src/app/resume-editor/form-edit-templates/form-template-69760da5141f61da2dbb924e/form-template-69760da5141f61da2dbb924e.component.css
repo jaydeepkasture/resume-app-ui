@@ -1,0 +1,330 @@
+/* Main Container */
+.resume-container {
+    width: 100%;
+    max-width: 800px; /* A4 width approx */
+    background: white;
+    font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+    color: #000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* Header Section */
+.header-section {
+    background-color: #000;
+    color: #fff;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    min-height: 250px;
+    display: flex;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+}
+
+.identity {
+    margin-bottom: 40px;
+}
+
+.name-input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    width: 100%;
+    display: block;
+    margin-bottom: 5px;
+    outline: none;
+}
+
+.name-input::placeholder { color: #ccc; }
+
+.role-input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    width: 100%;
+    display: block;
+    outline: none;
+    letter-spacing: 1px;
+}
+
+.role-input::placeholder { color: #ccc; }
+
+/* Contact Section */
+.contact-section {
+    margin-top: 20px;
+}
+
+.contact-title {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.contact-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.contact-row {
+    display: flex;
+    align-items: center;
+}
+
+.contact-row .label {
+    font-weight: 700;
+    font-size: 0.8rem;
+    width: 80px;
+    text-transform: uppercase;
+}
+
+.contact-row input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 0.8rem;
+    font-family: inherit;
+    flex: 1;
+    outline: none;
+}
+
+/* Header Art - CSS X Shapes */
+.header-art {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.x-shape {
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    background: #fff;
+    opacity: 0.9;
+    /* Create an X using pseudo elements or just rotation? Let's use rotation on the div and a pseudo element for the other bar */
+}
+
+.x-shape::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 40px; /* Center of width 100 */
+    width: 20px;
+    height: 100px;
+    background: #fff;
+    transform: translateY(-40px);
+}
+
+/* Try a simpler approach for the rough look: just blocks for now */
+.x-shape {
+    background: transparent;
+    width: 100px;
+    height: 100px;
+}
+
+.x-shape::after, .x-shape::before {
+    content: '';
+    position: absolute;
+    background: #fff;
+    /* Rough edges simulation could be done with mask or border-image, but for now straight lines */
+}
+
+.x-shape::before {
+    width: 100%;
+    height: 20px;
+    top: 40px;
+    left: 0;
+    transform: rotate(0deg); /* Main bar horizontal-ish relative to x-shape */
+    clip-path: polygon(0 2px, 100% 0, 98% 100%, 2% 95%); /* Slight irregularity */
+}
+
+.x-shape::after {
+    width: 20px;
+    height: 100%;
+    left: 40px;
+    top: 0;
+    transform: rotate(0deg); /* Main bar vertical-ish */
+    clip-path: polygon(2px 0, 95% 2%, 100% 100%, 0 98%);
+}
+
+/* Positioning the Xs randomly */
+.x-1 { top: -20px; right: 100px; transform: rotate(15deg) scale(1.2); }
+.x-2 { top: 50px; right: 20px; transform: rotate(45deg); }
+.x-3 { top: 120px; right: 150px; transform: rotate(-10deg) scale(0.8); }
+.x-4 { bottom: -20px; right: 80px; transform: rotate(30deg); }
+.x-5 { top: 10px; right: -30px; transform: rotate(-25deg); }
+
+
+/* Body Content */
+.body-content {
+    display: flex;
+    padding: 40px;
+}
+
+.left-column {
+    flex: 6; /* Approx 60% */
+    padding-right: 30px;
+}
+
+.vertical-divider {
+    width: 2px;
+    background-color: #000;
+    margin: 0 10px;
+}
+
+.right-column {
+    flex: 4; /* Approx 40% */
+    padding-left: 30px;
+}
+
+/* Section Styles */
+.section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+/* Form Inputs styling to look like text */
+input, textarea {
+    border: 1px dashed transparent; /* Show editability on hover/focus maybe? */
+    width: 100%;
+    font-family: inherit;
+    resize: none;
+    background: transparent;
+}
+
+input:hover, textarea:hover, input:focus, textarea:focus {
+    border: 1px dashed #ccc;
+    outline: none;
+}
+
+textarea {
+    overflow: hidden;
+    min-height: 1.5em; /* Auto grow not implemented in pure CSS, need directives or rows. For now fixed-ish */
+    height: auto;
+}
+
+/* Specific Field Styles */
+.profile-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    height: 100px;
+}
+
+/* Job Styling */
+.job-item {
+    margin-bottom: 20px;
+}
+
+.job-header-row {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.company-name {
+    font-weight: 800;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    width: auto !important;
+    display: inline-block;
+}
+
+.separator { margin: 0 5px; }
+
+.job-role {
+    font-weight: 400;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    width: auto !important;
+    color: #444;
+}
+
+.job-date {
+    font-size: 0.85rem;
+    color: #000;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.job-desc {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    height: 80px;
+    margin-top: 5px;
+}
+
+/* Education Styling */
+.edu-item {
+    margin-bottom: 20px;
+}
+
+.school-name {
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.edu-date {
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+}
+
+.edu-details {
+    font-size: 0.9rem;
+    height: 60px;
+}
+
+.skills-text, .hobbies-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    height: 150px;
+    white-space: pre-wrap;
+}
+
+/* Buttons */
+.add-btn, .remove-btn {
+    font-size: 0.7rem;
+    background: #eee;
+    border: none;
+    padding: 2px 5px;
+    cursor: pointer;
+    margin-top: 5px;
+    display: none; /* Hide by default, show on hover of section? OR always show */
+}
+
+/* Make buttons visible for better UX in editor */
+.add-btn, .remove-btn {
+    display: inline-block;
+    opacity: 0.5;
+}
+.add-btn:hover, .remove-btn:hover {
+    opacity: 1;
+    background: #ddd;
+}

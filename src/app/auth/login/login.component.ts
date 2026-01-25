@@ -97,7 +97,7 @@ export class LoginComponent implements OnInit {
               console.log('✅ Navigation successful:', success);
             },
             error => {
-              console.error('❌ Navigation failed:', error);
+              console.error('❌ Navigation failed:', error, this.returnUrl);
               this.error = 'Navigation failed. Please try again.';
               this.loading = false;
             }
