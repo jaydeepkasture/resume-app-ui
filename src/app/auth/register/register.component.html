@@ -1,0 +1,183 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="auth-header">
+      <h1>Create Account</h1>
+      <p>Sign up to get started with your resume</p>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="auth-form">
+      <!-- Error Message -->
+      <div class="alert alert-error" *ngIf="error">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        {{ error }}
+      </div>
+
+      <!-- First Name Field -->
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input
+          type="text"
+          id="firstName"
+          formControlName="firstName"
+          class="form-control"
+          [class.is-invalid]="submitted && f['firstName'].errors"
+          placeholder="Enter your first name"
+        />
+        <div class="invalid-feedback" *ngIf="submitted && f['firstName'].errors">
+          <span *ngIf="f['firstName'].errors['required']">First name is required</span>
+          <span *ngIf="f['firstName'].errors['minlength']">First name must be at least 2 characters</span>
+        </div>
+      </div>
+
+      <!-- Last Name Field -->
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input
+          type="text"
+          id="lastName"
+          formControlName="lastName"
+          class="form-control"
+          [class.is-invalid]="submitted && f['lastName'].errors"
+          placeholder="Enter your last name"
+        />
+        <div class="invalid-feedback" *ngIf="submitted && f['lastName'].errors">
+          <span *ngIf="f['lastName'].errors['required']">Last name is required</span>
+          <span *ngIf="f['lastName'].errors['minlength']">Last name must be at least 2 characters</span>
+        </div>
+      </div>
+
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form-control"
+          [class.is-invalid]="submitted && f['email'].errors"
+          placeholder="Enter your email"
+        />
+        <div class="invalid-feedback" *ngIf="submitted && f['email'].errors">
+          <span *ngIf="f['email'].errors['required']">Email is required</span>
+          <span *ngIf="f['email'].errors['email']">Please enter a valid email</span>
+        </div>
+      </div>
+
+      <!-- Phone Field (Optional) -->
+      <div class="form-group">
+        <label for="phone">Phone Number <span class="optional">(Optional)</span></label>
+        <input
+          type="tel"
+          id="phone"
+          formControlName="phone"
+          class="form-control"
+          [class.is-invalid]="submitted && f['phone'].errors"
+          placeholder="Enter your phone number"
+        />
+        <div class="invalid-feedback" *ngIf="submitted && f['phone'].errors">
+          <span *ngIf="f['phone'].errors['pattern']">Please enter a valid 10-digit phone number</span>
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="password-input-wrapper">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            id="password"
+            formControlName="password"
+            class="form-control"
+            [class.is-invalid]="submitted && f['password'].errors"
+            placeholder="Create a password"
+          />
+          <button
+            type="button"
+            class="password-toggle"
+            (click)="togglePasswordVisibility('password')"
+            tabindex="-1"
+          >
+            <svg *ngIf="!showPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <svg *ngIf="showPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+              <line x1="1" y1="1" x2="23" y2="23"></line>
+            </svg>
+          </button>
+        </div>
+        <div class="invalid-feedback" *ngIf="submitted && f['password'].errors">
+          <span *ngIf="f['password'].errors['required']">Password is required</span>
+          <span *ngIf="f['password'].errors['minlength']">Password must be at least 6 characters</span>
+        </div>
+      </div>
+
+      <!-- Confirm Password Field -->
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <div class="password-input-wrapper">
+          <input
+            [type]="showConfirmPassword ? 'text' : 'password'"
+            id="confirmPassword"
+            formControlName="confirmPassword"
+            class="form-control"
+            [class.is-invalid]="submitted && f['confirmPassword'].errors"
+            placeholder="Confirm your password"
+          />
+          <button
+            type="button"
+            class="password-toggle"
+            (click)="togglePasswordVisibility('confirmPassword')"
+            tabindex="-1"
+          >
+            <svg *ngIf="!showConfirmPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <svg *ngIf="showConfirmPassword" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+              <line x1="1" y1="1" x2="23" y2="23"></line>
+            </svg>
+          </button>
+        </div>
+        <div class="invalid-feedback" *ngIf="submitted && f['confirmPassword'].errors">
+          <span *ngIf="f['confirmPassword'].errors['required']">Please confirm your password</span>
+          <span *ngIf="f['confirmPassword'].errors['passwordMismatch']">Passwords do not match</span>
+        </div>
+      </div>
+
+      <!-- Terms and Conditions -->
+      <div class="form-group">
+        <label class="checkbox-label">
+          <input type="checkbox" formControlName="acceptTerms" />
+          <span>I agree to the <a href="#" class="link">Terms and Conditions</a></span>
+        </label>
+        <div class="invalid-feedback" *ngIf="submitted && f['acceptTerms'].errors">
+          <span *ngIf="f['acceptTerms'].errors['required']">You must accept the terms and conditions</span>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary" [disabled]="loading">
+        <span *ngIf="!loading">Create Account</span>
+        <span *ngIf="loading" class="loading-spinner">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" opacity="0.25"></circle>
+            <path d="M12 2a10 10 0 0 1 10 10" opacity="0.75"></path>
+          </svg>
+          Creating account...
+        </span>
+      </button>
+    </form>
+
+    <!-- Sign In Link -->
+    <div class="auth-footer">
+      <p>Already have an account? <a routerLink="/login">Sign in</a></p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="template-dropdown">
+  <button class="dropdown-toggle" (click)="toggleDropdown()">
+    <span class="selected-text">{{ currentTemplateName }}</span>
+    <svg class="dropdown-icon" [class.open]="isOpen" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+
+  <div class="dropdown-menu" *ngIf="isOpen">
+    <!-- Search Box -->
+    <div class="search-container">
+      <input 
+        type="text" 
+        class="search-input" 
+        [(ngModel)]="searchQuery" 
+        (keyup.enter)="onSearch()"
+        placeholder="Search templates..."
+        (click)="$event.stopPropagation()">
+      <button class="search-btn" (click)="onSearch()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Template List -->
+    <div class="template-list" (scroll)="onScroll($event)">
+      <div 
+        *ngFor="let template of templates" 
+        class="template-item"
+        (click)="selectTemplate(template)">
+        {{ template.templateName }}
+      </div>
+
+      <!-- Loading Indicator -->
+      <div *ngIf="isLoading" class="loading-item">
+        <div class="spinner-small"></div>
+        <span>Loading...</span>
+      </div>
+
+      <!-- No More Items -->
+      <div *ngIf="!hasMore && templates.length > 0" class="no-more-item">
+        No more templates
+      </div>
+
+      <!-- Empty State -->
+      <div *ngIf="!isLoading && templates.length === 0" class="empty-state">
+        No templates found
+      </div>
+    </div>
+  </div>
+</div>

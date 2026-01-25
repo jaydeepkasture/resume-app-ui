@@ -1,0 +1,147 @@
+<table width="100%" cellpadding="0" cellspacing="0"
+  style="border-collapse:collapse; font-family:Arial, Helvetica, sans-serif; color:#000;">
+
+  <!-- PAGE WRAPPER -->
+  <tr>
+    <td style="padding:55px 65px;">
+
+      <!-- HEADER -->
+      <table width="100%" style="border-collapse:collapse; margin-bottom:40px;">
+        <tr>
+          <td style="border-bottom:2px solid #000; padding-bottom:25px;">
+            <div style="font-size:36pt; font-weight:700; letter-spacing:1px; text-transform:uppercase;"
+              data-field="name">{{name}}</div>
+
+            <table style="margin-top:10px; font-size:10.5pt; color:#333;">
+              <tr>
+                <td style="padding-right:20px;" data-field="email">{{email}}</td>
+                <td style="padding-right:20px;" data-field="phoneno">{{phoneno}}</td>
+                <td style="padding-right:20px;" data-field="location">{{location}}</td>
+                <td data-field="linkedin">{{linkedin}}</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <!-- SUMMARY -->
+      <table width="100%" style="margin-bottom:30px;">
+        <tr>
+          <td style="font-size:16pt; font-weight:700; letter-spacing:1px;
+              text-transform:uppercase; padding-bottom:8px;
+              border-bottom:1px solid #000;">
+            Summary
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:15px 0 0 0;
+              font-size:11pt; line-height:1.6;"
+              data-field="summary">
+            {{summary}}
+          </td>
+        </tr>
+      </table>
+
+      <!-- EXPERIENCE -->
+      <table width="100%" style="margin-bottom:30px;">
+        <tr>
+          <td style="font-size:16pt; font-weight:700; letter-spacing:1px;
+              text-transform:uppercase; padding-bottom:8px;
+              border-bottom:1px solid #000;">
+            Experience
+          </td>
+        </tr>
+
+        <tr data-repeat="experiance">
+          <td style="padding-top:20px;">
+            <table width="100%">
+              <tr>
+                <td style="font-size:12pt; font-weight:700; color:#000;"
+                  data-field="position">{{position}}</td>
+                <td align="right" style="font-size:10.5pt; font-weight:600;
+                    color:#000;">
+                  <span data-field="from">{{from}}</span> - <span data-field="to">{{to}}</span>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="font-size:11pt; color:#444; font-weight:600; font-style:italic;"
+                    data-field="company">
+                  {{company}}
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="font-size:11pt; line-height:1.6;
+                    padding-top:5px;" data-field="description">
+                  {{description}}
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <!-- SKILLS -->
+      <table width="100%" style="margin-bottom:30px;">
+        <tr>
+          <td style="font-size:16pt; font-weight:700; letter-spacing:1px;
+              text-transform:uppercase; padding-bottom:8px;
+              border-bottom:1px solid #000;">
+            Skills
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-top:15px;">
+            <table data-repeat="skills" style="display:inline-block;">
+                <!-- Note: display:inline-block might not work perfectly in some email clients but fine for pdf gen -->
+              <tr>
+                <td style="padding:5px 15px 5px 0;
+                    font-size:11pt; font-weight:normal;"
+                    data-field="skill">
+                  • {{skill}}
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <!-- EDUCATION -->
+      <table width="100%">
+        <tr>
+          <td style="font-size:16pt; font-weight:700; letter-spacing:1px;
+              text-transform:uppercase; padding-bottom:8px;
+              border-bottom:1px solid #000;">
+            Education
+          </td>
+        </tr>
+
+        <tr data-repeat="eduction">
+          <td style="padding-top:20px;">
+            <table width="100%">
+              <tr>
+                <td style="font-size:12pt; font-weight:700; color:#000;">
+                  <span data-field="degree">{{degree}}</span>
+                  in <span data-field="field">{{field}}</span>
+                </td>
+              </tr>
+              <tr>
+                <td style="font-size:11pt; color:#000; font-style:italic;"
+                  data-field="institution">
+                  {{institution}}
+                </td>
+              </tr>
+              <tr>
+                <td style="font-size:10.5pt; color:#444; font-weight:600;"
+                  data-field="year">
+                  {{year}}
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+    </td>
+  </tr>
+</table>
+ 

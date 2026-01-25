@@ -1,0 +1,43 @@
+<div class="history-sidebar" [class.open]="isOpen">
+  <div class="sidebar-header">
+    <h3>Enhancement History</h3>
+    <button class="close-btn" (click)="closeSidebar.emit()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  <div #scrollContainer class="history-list" (scroll)="onScroll($event)">
+    <div *ngFor="let item of historyItems" class="history-card" (click)="onCardClick(item.id)" style="cursor: pointer;">
+      <div class="card-content" [title]="item.userMessage.length > 100 ? item.userMessage.substring(0, 1000) + (item.userMessage.length > 1000 ? '...' : '') : ''">
+        <p class="message-text">
+          {{ truncate(item.userMessage, 100) }}
+        </p>
+        <div class="card-footer">
+          <span class="timestamp">{{ formatDate(item.createdAt) }}</span>
+          <button class="copy-btn" (click)="copyToClipboard(item.userMessage, $event)" title="Copy to clipboard">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span class="copy-feedback">Copied!</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="loading" class="loading-indicator">
+      <div class="spinner"></div>
+    </div>
+
+    <div *ngIf="!loading && historyItems.length === 0 && !error" class="empty-state">
+      <p>No history available.</p>
+    </div>
+
+    <div *ngIf="error" class="error-message">
+      {{ error }}
+    </div>
+  </div>
+</div>
