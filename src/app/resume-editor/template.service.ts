@@ -78,6 +78,19 @@ export class TemplateService {
     private httpService: HttpService
   ) {}
 
+  // Temporary storage for passing data during navigation
+  public tempResumeData: any = null;
+
+  setTempResumeData(data: any) {
+      this.tempResumeData = data;
+  }
+  
+  getAndClearTempResumeData(): any {
+      const data = this.tempResumeData;
+      this.tempResumeData = null;
+      return data;
+  }
+
   getTemplates(): Observable<ResumeTemplate[]> {
     return this.http.get<ResumeTemplate[]>(`${this.templatesBasePath}/manifest.json`);
   }
@@ -154,13 +167,10 @@ export class TemplateService {
    * @param templateId - Optional template ID
    * @returns Observable with history data
    */
-  getChatHistory(chatId: string, page: number = 1, pageSize: number = 20, sortOrder: string = 'desc', search: string = '', templateId?: string): Observable<any> {
+  getChatHistory(chatId: string, page: number = 1, pageSize: number = 20, sortOrder: string = 'desc', search: string = ''): Observable<any> {
     let url = `resume/chat/${chatId}/history?page=${page}&pageSize=${pageSize}&sortOrder=${sortOrder}`;
     if (search) {
       url += `&search=${encodeURIComponent(search)}`;
-    }
-    if (templateId) {
-      url += `&templateId=${templateId}`;
     }
     return this.httpService.get(url);
   }

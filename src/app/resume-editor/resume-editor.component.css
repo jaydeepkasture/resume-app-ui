@@ -1145,3 +1145,91 @@
       display: none;
   }
 }
+
+/* Toolbar Logo */
+.toolbar-logo {
+  height: 32px;
+  width: auto;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.form-preview-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #2196f3;
+  padding: 20px;
+}
+
+.form-preview-placeholder svg {
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.form-label {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+  text-align: center;
+}
+
+/* Form Preview Container */
+.form-preview-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-scaled-preview {
+  transform: scale(0.15);
+  transform-origin: top left;
+  width: 666.67%; /* 100% / 0.15 */
+  height: 666.67%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+/* Hidden container for rendering components for preview capture */
+.preview-render-container {
+  position: fixed;
+  top: -10000px;
+  left: -10000px;
+  width: 850px;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Image preview container */
+.image-preview-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Loading spinner for preview generation */
+.loading-spinner-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}

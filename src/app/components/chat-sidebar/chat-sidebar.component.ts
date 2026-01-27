@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { HttpService, ApiResponse } from '../../services/http.service';
 
 // DTOs
@@ -28,10 +29,20 @@ export interface CreateChatResponse {
   createdAt: string;
 }
 
+export interface UpdateChatTitleRequest {
+  title: string;
+}
+
+export interface UpdateChatTitleResponse {
+  chatId: string;
+  title: string;
+  updatedAt: string;
+}
+
 @Component({
   selector: 'app-chat-sidebar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './chat-sidebar.component.html',
   styleUrl: './chat-sidebar.component.css'
 })
@@ -51,6 +62,10 @@ export class ChatSidebarComponent implements OnInit, OnDestroy {
   pageSize = 20;
   totalCount = 0;
   hasMore = false;
+  
+  // Edit state
+  editingChatId: string | null = null;
+  editingTitle: string = '';
 
   constructor(private httpService: HttpService) {}
 
@@ -219,7 +234,7 @@ export class ChatSidebarComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.httpService.delete<ApiResponse<void>>(`chat/${chatId}`).subscribe({
+    this.httpService.delete<ApiResponse<void>>(`resume/chat/${chatId}`).subscribe({
       next: (response) => {
         if (response.status) {
           console.log('✅ Deleted chat:', chatId);
@@ -234,6 +249,75 @@ export class ChatSidebarComponent implements OnInit, OnDestroy {
         this.error = 'Failed to delete chat';
       }
     });
+  }
+
+  /**
+   * Start editing chat title
+   */
+  startEditingTitle(chatId: string, currentTitle: string, event: Event): void {
+    event.stopPropagation(); // Prevent chat selection
+    this.editingChatId = chatId;
+    this.editingTitle = currentTitle;
+  }
+
+  /**
+   * Cancel editing chat title
+   */
+  cancelEditingTitle(event?: Event): void {
+    if (event) {
+      event.stopPropagation();
+    }
+    this.editingChatId = null;
+    this.editingTitle = '';
+  }
+
+  /**
+   * Save updated chat title
+   */
+  saveTitle(chatId: string, event: Event): void {
+    event.stopPropagation();
+    
+    const newTitle = this.editingTitle.trim();
+    if (!newTitle) {
+      this.error = 'Title cannot be empty';
+      return;
+    }
+
+    const body: UpdateChatTitleRequest = { title: newTitle };
+
+    this.httpService.patch<ApiResponse<UpdateChatTitleResponse>>(`resume/chat/${chatId}/title`, body).subscribe({
+      next: (response) => {
+        if (response.status && response.data) {
+          console.log('✅ Updated chat title:', response.data);
+          
+          // Update the session in the list
+          const session = this.sessions.find(s => s.chatId === chatId);
+          if (session) {
+            session.title = response.data.title;
+            session.updatedAt = response.data.updatedAt;
+          }
+          
+          this.cancelEditingTitle();
+        } else {
+          this.error = response.message || 'Failed to update title';
+        }
+      },
+      error: (error) => {
+        console.error('❌ Error updating title:', error);
+        this.error = 'Failed to update title';
+      }
+    });
+  }
+
+  /**
+   * Handle Enter key in title input
+   */
+  onTitleKeydown(event: KeyboardEvent, chatId: string): void {
+    if (event.key === 'Enter') {
+      this.saveTitle(chatId, event);
+    } else if (event.key === 'Escape') {
+      this.cancelEditingTitle(event);
+    }
   }
 
   /**

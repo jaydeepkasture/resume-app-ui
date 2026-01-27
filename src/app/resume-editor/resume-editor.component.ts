@@ -1,6 +1,13 @@
-import { Component, OnInit, OnDestroy, AfterViewInit, ChangeDetectorRef, HostListener, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ChangeDetectorRef, HostListener, ViewChild, ElementRef, ViewContainerRef, Type, ComponentRef } from '@angular/core';
+
+// Map of Template IDs to Component Classes
+const FORM_TEMPLATE_COMPONENTS: { [key: string]: Type<any> } = {
+  '6973bcfbdf2766fbee178f68': FormTemplate6973bcfbdf2766fbee178f68Component,
+  '69760da5141f61da2dbb924e': FormTemplate69760da5141f61da2dbb924eComponent
+};
+
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Editor, Extension, Node, mergeAttributes } from '@tiptap/core';
@@ -122,6 +129,9 @@ import { SafeHtmlPipe } from '../shared/pipes/safe-html.pipe';
   styleUrl: './resume-editor.component.css'
 })
 export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild('dynamicFormContainer', { read: ViewContainerRef }) dynamicFormContainer!: ViewContainerRef;
+  private currentFormComponentRef: ComponentRef<any> | null = null;
+
   @HostListener('document:click')
   @HostListener('document:keydown')
   onUserInteraction() {
@@ -132,15 +142,6 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   @HostListener('window:popstate', ['$event'])
   onPopState(event: any) {
     // If editor is visible and we hit back, we should show gallery if possible?
-    // Angular router usually handles this if we updated the URL.
-    // If the URL changed from ...?templateId=1 to .../editor, Angular routing will kick in.
-    // We need to ensure our state syncs with the URL.
-    // The route params subscription in ngOnInit handles chatID changes.
-    // The query params subscription in ngOnInit handles templateID changes.
-    // So if the user presses back, the URL changes, ngOnInit subscriptions fire.
-    
-    // Check if we need to hide editor
-    // We'll rely on route subscriptions, BUT we might need to manually reset some flags if not covered.
     console.log('🔙 Browser Back Button Detected');
   }
 
@@ -152,25 +153,16 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
       highlights.forEach(el => {
         // Remove the class to stop highlighting (CSS transition handles fade if defined)
         el.classList.remove('change-highlight');
-        
-        // Optional: unwrapping logic if we want to remove the span entirely
-        // But removing class is safer and sufficient for visual change.
-        // If we want to strictly remove the span wrapper:
-        // const parent = el.parentNode;
-        // if (parent) {
-        //   while (el.firstChild) parent.insertBefore(el.firstChild, el);
-        //   parent.removeChild(el);
-        // }
       });
     }
   }
 
-
-
   editor!: Editor;
   templates: ResumeTemplate[] = []; 
-  backendTemplates: any[] = []; // Store backend templates
-  filteredBackendTemplates: any[] = []; // For gallery view
+  
+  // Legacy Gallery Properties (Dead Code - Gallery moved to TemplateGalleryComponent)
+  backendTemplates: any[] = []; 
+  filteredBackendTemplates: any[] = [];
   galleryViewMode: 'grid' | 'list' = 'grid';
   galleryFilter: 'all' | 'free' | 'form' = 'all';
   gallerySearch: string = '';
@@ -190,26 +182,48 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   currentTemplateId: string | undefined;
 
   // Handle template selection from backend API
-  // Handle template selection from backend API
   onBackendTemplateSelected(templateId: string, updateUrl: boolean = true): void {
     console.log('📌 Backend Template Selected:', templateId);
     this.currentTemplateId = templateId;
 
-    // Check if this is a Form Edit template (Type 2)
-    // We check against known Form Template IDs
-    if (templateId === '6973bcfbdf2766fbee178f68' || templateId === '69760da5141f61da2dbb924e') {
-        console.log('📝 Switching to Form Edit Mode for template:', templateId);
+    // Check if this is a Form Edit template (Type 2) OR present in our map
+    const componentClass = FORM_TEMPLATE_COMPONENTS[templateId];
+
+    if (componentClass) {
+        console.log('📝 Switching to Dynamic Form Edit Mode for template:', templateId);
         this.isFormEditMode = true;
         this.selectedFormTemplateId = templateId;
         this.isEditorVisible = true;
         
+        // Dynamically load the component
+        this.loadDynamicFormTemplate(templateId);
+
         // Refresh history when template changes
         this.refreshHistory();
         
         if (updateUrl) {
             this.updateUrlWithParams(this.currentChatId, templateId);
         }
+        
+        // Avoid NG0100 by running detection
+        this.cdr.detectChanges();
         return;
+    }
+    // Backward compatibility for potential unmapped IDs if hardcoded before
+    if (templateId === '6973bcfbdf2766fbee178f68' || templateId === '69760da5141f61da2dbb924e') {
+       console.log('📝 Switching to Legacy Form Edit Mode for template:', templateId);
+       this.isFormEditMode = true;
+       this.selectedFormTemplateId = templateId;
+       this.isEditorVisible = true;
+       
+       this.loadDynamicFormTemplate(templateId); 
+       this.refreshHistory();
+        
+       if (updateUrl) {
+           this.updateUrlWithParams(this.currentChatId, templateId);
+       }
+       this.cdr.detectChanges();
+       return;
     }
     
     // Default: Free Edit Mode
@@ -224,6 +238,9 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
       this.updateUrlWithParams(this.currentChatId, templateId);
     }
 
+    // Avoid NG0100
+    this.cdr.detectChanges();
+
     this.templateService.getTemplateById(templateId).subscribe({
       next: (response) => {
         if (response.status && response.data) {
@@ -234,10 +251,6 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
           
           if (this.currentResumeData) {
             // If we have data, bind it to the new template
-            // We use a dummy path "backend/template" as we don't need to resolve relative assets 
-            // from file system if the backend provides full HTML (assuming assets are absolute or embedded)
-            // But if assets are relative, we might need a base URL.
-            // For now assuming HTML is self-contained or assets are absolute.
             this.processTemplateAndData(htmlContent, 'backend/template', this.currentResumeData);
           } else {
             // Just load the empty template
@@ -245,25 +258,49 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
           }
         } else {
           console.error('❌ Failed to load template:', response.message);
-          alert('Failed to load template.');
         }
       },
       error: (error) => {
         console.error('❌ Error loading template:', error);
-        alert('Error loading template.');
       }
     });
   }
 
+  // Helper to load dynamic form component
+  private loadDynamicFormTemplate(templateId: string): void {
+      if (!this.dynamicFormContainer) {
+          // If container is not ready (e.g. initial load), wait for next tick or ViewInit
+          setTimeout(() => this.loadDynamicFormTemplate(templateId), 0);
+          return;
+      }
+
+      this.dynamicFormContainer.clear();
+      this.currentFormComponentRef = null;
+      
+      const componentClass = FORM_TEMPLATE_COMPONENTS[templateId];
+      if (componentClass) {
+          const componentRef = this.dynamicFormContainer.createComponent(componentClass);
+          this.currentFormComponentRef = componentRef;
+          
+          // Set Inputs
+          if (componentRef.instance) {
+              (componentRef.instance as any).resumeData = this.currentResumeData;
+              
+              // Subscribe to Outputs
+              if ((componentRef.instance as any).dataChange) {
+                  (componentRef.instance as any).dataChange.subscribe((newData: any) => {
+                      this.onFormDataChange(newData);
+                  });
+              }
+          }
+      } else {
+          console.warn(`No component mapped for template ID: ${templateId}`);
+      }
+  }
+
   // Back button handler
   goBackToGallery(): void {
-      this.isEditorVisible = false;
-      this.isFormEditMode = false;
-      this.currentTemplateId = undefined;
-      this.selectedFormTemplateId = null;
-      this.currentChatId = null;
-      
-      this.updateUrlWithParams(null, null);
+      this.router.navigate(['/templates']);
   }
 
   // Update URL with chatId and optional templateId
@@ -324,8 +361,10 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
                          t.type = t.templateTypeId;
                      }
                      // Fallback/Override for specific ID if backend data is missing type
-                     if (t.id === '6973bcfbdf2766fbee178f68' || t.id === '69760da5141f61da2dbb924e') {
+                     if (FORM_TEMPLATE_COMPONENTS[t.id]) {
                          t.type = 2;
+                         // Load preview HTML for form templates
+                         this.loadFormTemplatePreview(t);
                      } else if (!t.type) {
                          t.type = 1; // Default to free if unknown
                      }
@@ -336,15 +375,69 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
       });
   }
 
-  applyGalleryFilters() {
-      this.filteredBackendTemplates = this.backendTemplates.filter(t => {
-          const matchesSearch = !this.gallerySearch || t.templateName.toLowerCase().includes(this.gallerySearch.toLowerCase());
-          const matchesFilter = this.galleryFilter === 'all' || 
-                               (this.galleryFilter === 'free' && t.type === 1) ||
-                               (this.galleryFilter === 'form' && t.type === 2);
-          return matchesSearch && matchesFilter;
-      });
+  /**
+   * Load preview HTML for form edit templates
+   * Uses pre-created static HTML files from assets folder
+   */
+  private loadFormTemplatePreview(template: any): void {
+    const previewPath = `assets/templates/form-preview-${template.id}.html`;
+    
+    this.http.get(previewPath, { responseType: 'text' }).subscribe({
+      next: (html: string) => {
+        template.htmlTemplate = html;
+        this.cdr.detectChanges();
+      },
+      error: (err: any) => {
+        console.warn(`Preview HTML not found for template ${template.id}`, err);
+        // Preview will fall back to icon
+      }
+    });
   }
+
+  /**
+   * Get sample data for form template preview
+   */
+  getPreviewData(): any {
+    return {
+      name: 'JOHN DOE',
+      role: 'SOFTWARE ENGINEER',
+      email: 'john.doe@email.com',
+      phone: '(555) 123-4567',
+      location: 'New York, NY',
+      website: 'www.johndoe.com',
+      linkedin: 'linkedin.com/in/johndoe',
+      github: 'github.com/johndoe',
+      summary: 'Experienced software engineer with 5+ years of expertise in full-stack development.',
+      experience: [
+        {
+          company: 'TECH COMPANY INC',
+          role: 'SENIOR SOFTWARE ENGINEER',
+          duration: '2020 - PRESENT',
+          description: 'Led development of enterprise applications using modern technologies.'
+        }
+      ],
+      education: [
+        {
+          university: 'STANFORD UNIVERSITY',
+          degree: 'Bachelor of Science in Computer Science',
+          year: '2016 - 2020'
+        }
+      ],
+      skills: 'JavaScript, TypeScript, Angular, React, Node.js, Python, AWS',
+      hobbies: 'Photography, Hiking, Reading'
+    };
+  }
+
+  /**
+   * Handle data change from preview (no-op for gallery preview)
+   */
+  onPreviewDataChange(data: any): void {
+    // No action needed for preview
+  }
+  
+  applyGalleryFilters() {}
+
+
 
   onGalleryTemplateSelect(template: any) {
     console.log('Gallery Template Selected:', template);
@@ -360,18 +453,21 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
           this.currentChatId = chatId;
           this.currentTemplateId = template.id;
 
-          // Check for initial/dummy resume data in the response
-          if (response.data.current_resume || response.data.resume_data) {
-             this.currentResumeData = response.data.current_resume || response.data.resume_data;
-          }
+          // Check type
 
           // Check type
-          const type = template.type || (['6973bcfbdf2766fbee178f68', '69760da5141f61da2dbb924e'].includes(template.id) ? 2 : 1); // Fallback logic
+          // Check type: Use existing type or check if ID is in our component map
+          // FORM_TEMPLATE_COMPONENTS check determines if it is a Form Template (Type 2) recursively without hardcoding
+          const type = template.type || (FORM_TEMPLATE_COMPONENTS[template.id] ? 2 : 1);
           
           if (type === 2) {
               // Form Edit Logic
               this.isFormEditMode = true;
               this.selectedFormTemplateId = template.id;
+              
+              // Load Dynamic Component
+              this.loadDynamicFormTemplate(template.id);
+
               this.currentTemplateName = template.templateName;
               
               // If we have resume Data, the Form component should pick it up via Input or Service
@@ -438,11 +534,24 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
           // Use currentResume from the response
           let resumeData = response.data.currentResume || response.data.resumeData || response.data;
           
-          // Normalize data keys
-          if (resumeData) {
-            this.normalizeResumeData(resumeData);
-            this.currentResumeData = resumeData; // Store valid resume data
-            this.cdr.detectChanges(); 
+          // Check validity
+          const hasLocalData = this.currentResumeData && (this.currentResumeData.name || this.currentResumeData.phoneno || this.currentResumeData.email);
+          const hasRemoteData = resumeData && (resumeData.name || resumeData.phoneno || resumeData.email);
+
+          // Update logic: Prefer remote if valid, otherwise keep local if valid
+          if (hasRemoteData) {
+             console.log('📥 Updating editor with remote resume data');
+             this.normalizeResumeData(resumeData);
+             this.currentResumeData = resumeData;
+             this.cdr.detectChanges(); 
+          } else if (hasLocalData) {
+             console.warn('⚠️ Remote chat session has empty data. Preserving local/initial resume data.');
+             // Do NOT overwrite this.currentResumeData
+          } else if (resumeData) {
+             // Both empty/sparse? Just take remote
+             this.normalizeResumeData(resumeData);
+             this.currentResumeData = resumeData; 
+             this.cdr.detectChanges(); 
           }
           
           // 2. Fetch the latest history to find the correct Template ID
@@ -459,16 +568,14 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
                  }
               }
               
-              // Fallback: If no history or no templateId in history, check URL or keep current
-              console.warn('⚠️ No template ID found in history. Checking current state or URL...');
               
-              // If we have a query param templateId, use that (it would have been set in ngOnInit)
-              // But onChatSelected might overwrite logic.
+              // Fallback: If no history or no templateId in history, check URL or keep current
               if (this.currentTemplateId) {
+                 console.log('ℹ️ Using current template ID as fallback:', this.currentTemplateId);
                  this.onBackendTemplateSelected(this.currentTemplateId, true);
               } else {
-                 // Try to load default or first available if nothing else
-                 this.loadDefaultBackendTemplate();
+                 console.warn('⚠️ No template ID found in history or current state. Redirecting to gallery.');
+                 this.router.navigate(['/templates']);
               }
             },
             error: (err) => {
@@ -505,6 +612,17 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
           if (historyData.enhancedResume) {
              this.currentResumeData = historyData.enhancedResume;
              this.normalizeResumeData(this.currentResumeData);
+             
+             // Critical: If in Form Edit Mode, we must update the dynamic component instance explicitly
+             if (this.isFormEditMode && this.currentFormComponentRef) {
+                 console.log('📝 Updating dynamic form component with history data...');
+                 (this.currentFormComponentRef.instance as any).resumeData = this.currentResumeData;
+                 // Force change detection on the child component if it uses OnPush or needs manual trigger
+                 if ((this.currentFormComponentRef.instance as any).cdr) {
+                     (this.currentFormComponentRef.instance as any).cdr.markForCheck(); 
+                 }
+                 this.cdr.detectChanges();
+             }
           }
           
           // 2. Patch resume HTML to editor
@@ -701,8 +819,7 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
         this.historyPage, 
         this.historyPageSize,
         this.historySortOrder,
-        this.historySearchQuery,
-        this.currentTemplateId
+        this.historySearchQuery
       ).subscribe({
           next: (response) => {
               if (response.status && response.data) {
@@ -864,7 +981,8 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
     private templateService: TemplateService, 
     private cdr: ChangeDetectorRef,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private http: HttpClient
   ) {
     this.templateService.getTemplates().subscribe(templates => {
       this.templates = templates;
@@ -874,6 +992,14 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    // Check for passed data from navigation (e.g. Create Chat flow)
+    const tempData = this.templateService.getAndClearTempResumeData();
+    if (tempData) {
+        console.log('🔄 Restoring temp resume data from navigation');
+        this.currentResumeData = tempData;
+        this.normalizeResumeData(this.currentResumeData);
+    }
+
     // Check if there's a chatId in the URL
     this.route.params.subscribe(params => {
       const chatId = params['chatId'];
@@ -894,19 +1020,9 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
       } else {
           // No template ID? 
           // If we ARE in editor mode, this means we should go back to gallery.
-          if (this.isEditorVisible) {
-              console.log('🔙 No template ID in URL - returning to gallery');
-              this.isEditorVisible = false;
-              this.isFormEditMode = false;
-              this.currentTemplateId = undefined;
-              this.selectedFormTemplateId = null;
-          } else {
-             // Initial load with no template ID - Load gallery (already default state)
-             // We DO NOT auto-select a template anymore as per request for Gallery View.
-             // Just ensure we load the list.
-             if (this.backendTemplates.length === 0) {
-                 this.loadDefaultBackendTemplate(); 
-             }
+          // Or if we just landed on /editor with no params
+          if (!this.currentChatId) {
+             this.router.navigate(['/templates']);
           }
       }
     });
@@ -956,7 +1072,6 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
           types: ['heading', 'paragraph'],
           alignments: ['left', 'center', 'right', 'justify']
         }),
-        Underline,
         Underline,
         TextStyle.extend({
           addAttributes() {
@@ -1150,14 +1265,30 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
     this.editor.chain().focus().setParagraph().run();
   }
 
+  // Getter for current heading value to support ngModel
+  get currentHeadingValue(): string {
+    if (this.isActive('paragraph')) return 'paragraph';
+    if (this.isActive('heading', { level: 1 })) return '1';
+    if (this.isActive('heading', { level: 2 })) return '2';
+    if (this.isActive('heading', { level: 3 })) return '3';
+    if (this.isActive('heading', { level: 4 })) return '4';
+    if (this.isActive('heading', { level: 5 })) return '5';
+    if (this.isActive('heading', { level: 6 })) return '6';
+    return 'paragraph';
+  }
+
+  setHeadingValue(value: string): void {
+      if (value === 'paragraph') {
+        this.setParagraph();
+      } else {
+        const level = parseInt(value) as 1 | 2 | 3 | 4 | 5 | 6;
+        this.setHeading(level);
+      }
+  }
+
   onHeadingChange(event: Event): void {
     const value = (event.target as HTMLSelectElement).value;
-    if (value === 'paragraph') {
-      this.setParagraph();
-    } else {
-      const level = parseInt(value) as 1 | 2 | 3 | 4 | 5 | 6;
-      this.setHeading(level);
-    }
+    this.setHeadingValue(value);
   }
 
   toggleBulletList(): void {
@@ -1325,6 +1456,16 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   private bindDataToTemplate(htmlContent: string, data: any, oldData: any = null): string {
     const parser = new DOMParser();
     const doc = parser.parseFromString(htmlContent, 'text/html');
+    
+    // Sanitize broken images from Word export or local paths
+    const images = doc.querySelectorAll('img');
+    images.forEach(img => {
+        const src = img.getAttribute('src');
+        if (src && (src.includes('Document') && src.includes('_files') || src.startsWith('file:'))) {
+            console.warn('Removing broken image link from template:', src);
+            img.remove();
+        }
+    });
     
     // Helper function to replace placeholders
     const replacePlaceholders = (element: Element, dataObj: any, oldDataObj: any) => {
@@ -2016,7 +2157,35 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   // Helper method to update resume content with enhanced data
   private updateResumeWithEnhancedData(responseData: any): void {
     
-    // Check which mode we're in
+    // Check if we are in Form Edit Mode
+    if (this.isFormEditMode) {
+        console.log('📝 Form Mode: Updating dynamic component with enhanced data');
+        const enhancedData = responseData.currentResume || responseData;
+        
+        if (enhancedData) {
+            // Update global data
+            this.currentResumeData = enhancedData;
+            this.normalizeResumeData(this.currentResumeData);
+            
+            // Update the Dynamic Component using stored reference
+            if (this.currentFormComponentRef) {
+                 // Update Input
+                 (this.currentFormComponentRef.instance as any).resumeData = this.currentResumeData;
+                 
+                 // Force Change Detection
+                 if ((this.currentFormComponentRef.instance as any).cdr) {
+                     (this.currentFormComponentRef.instance as any).cdr.markForCheck(); 
+                 }
+                 
+                 // Also try standard detection cycle
+                 this.cdr.detectChanges();
+                 console.log('✅ Dynamic Form Component updated with new data');
+            }
+        }
+        return; // Stop here for Form Mode
+    }
+
+    // Check which mode we're in (Free Edit)
     if (this.useHtmlMode) {
       // HTML MODE: Use enhancedHtml from API response
       console.log('📄 HTML Mode: Using enhancedHtml from API');
@@ -2219,6 +2388,31 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
       resumeData.phoneno = resumeData.phoneNo;
     } else if (resumeData.phoneno && !resumeData.phoneNo) {
       resumeData.phoneNo = resumeData.phoneno;
+    }
+
+    // Ensure contact structure exists (Bridge for Form Templates that expect 'contact' object)
+    if (!resumeData.contact) {
+        resumeData.contact = {
+            phone: resumeData.phoneNo || resumeData.phoneno || '',
+            email: resumeData.email || '',
+            linkedin: resumeData.linkedIn || resumeData.linkedin || '',
+            location: resumeData.location || '',
+            website: resumeData.website || ''
+        };
+    } else {
+        // Ensure contact fields are populated if they exist at root but not in contact
+        if (!resumeData.contact.phone && (resumeData.phoneNo || resumeData.phoneno)) {
+            resumeData.contact.phone = resumeData.phoneNo || resumeData.phoneno;
+        }
+        if (!resumeData.contact.email && resumeData.email) {
+            resumeData.contact.email = resumeData.email;
+        }
+        if (!resumeData.contact.linkedin && (resumeData.linkedIn || resumeData.linkedin)) {
+            resumeData.contact.linkedin = resumeData.linkedIn || resumeData.linkedin;
+        }
+        if (!resumeData.contact.location && resumeData.location) {
+            resumeData.contact.location = resumeData.location;
+        }
     }
 
     // Handle LinkedIn (camelCase vs lowercase)

@@ -2,11 +2,18 @@ import { Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
-  // Default route - redirect to resume editor
+  // Default route - redirect to resume templates
   {
     path: '',
-    redirectTo: '/editor',
+    redirectTo: '/templates',
     pathMatch: 'full'
+  },
+  
+  // Template Gallery
+  {
+    path: 'templates',
+    loadComponent: () => import('./template-gallery/template-gallery.component').then(m => m.TemplateGalleryComponent),
+    canActivate: [AuthGuard]
   },
   
   // Authentication routes (public)
