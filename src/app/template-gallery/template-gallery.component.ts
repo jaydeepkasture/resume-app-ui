@@ -7,10 +7,12 @@ import { TemplateService } from '../resume-editor/template.service';
 import { SafeHtmlPipe } from '../shared/pipes/safe-html.pipe';
 import { ChatSidebarComponent } from '../components/chat-sidebar/chat-sidebar.component';
 
+import { TemplatePreviewComponent } from './template-preview.component';
+
 @Component({
   selector: 'app-template-gallery',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule, SafeHtmlPipe, ChatSidebarComponent],
+  imports: [CommonModule, FormsModule, HttpClientModule, ChatSidebarComponent, TemplatePreviewComponent],
   templateUrl: './template-gallery.component.html',
   styleUrl: './template-gallery.component.css'
 })

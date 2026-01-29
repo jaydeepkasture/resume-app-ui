@@ -37,12 +37,12 @@
         <div class="template-preview">
            <!-- Render HTML Preview for Free Edit templates -->
            <div *ngIf="theme.type === 1 && theme.htmlTemplate" class="html-preview-container">
-             <div class="scaled-preview" [innerHTML]="theme.htmlTemplate | safeHtml"></div>
+             <app-template-preview [htmlContent]="theme.htmlTemplate"></app-template-preview>
            </div>
            
            <!-- Render HTML Preview for Form Edit templates (if loaded) -->
            <div *ngIf="theme.type === 2 && theme.htmlTemplate" class="html-preview-container">
-             <div class="scaled-preview" [innerHTML]="theme.htmlTemplate | safeHtml"></div>
+             <app-template-preview [htmlContent]="theme.htmlTemplate"></app-template-preview>
            </div>
            
            <!-- Form Edit Preview with Icon (fallback when HTML not loaded yet) -->
