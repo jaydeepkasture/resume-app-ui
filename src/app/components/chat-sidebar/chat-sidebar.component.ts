@@ -1,7 +1,9 @@
 import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HttpService, ApiResponse } from '../../services/http.service';
+import { AuthService } from '../../auth/auth.service';
 
 // DTOs
 export interface ChatSession {
@@ -67,7 +69,11 @@ export class ChatSidebarComponent implements OnInit, OnDestroy {
   editingChatId: string | null = null;
   editingTitle: string = '';
 
-  constructor(private httpService: HttpService) {}
+  constructor(
+    private httpService: HttpService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     // Emit initial state
@@ -323,6 +329,7 @@ export class ChatSidebarComponent implements OnInit, OnDestroy {
   /**
    * Format date for display
    */
+  /* Existing formatDate method */
   formatDate(dateString: string): string {
     const date = new Date(dateString);
     const now = new Date();
@@ -338,4 +345,58 @@ export class ChatSidebarComponent implements OnInit, OnDestroy {
     
     return date.toLocaleDateString();
   }
+
+  // User Profile Methods
+  
+  get currentUser(): any {
+    return this.authService.currentUserValue;
+  }
+  
+  getUserInitials(): string {
+    const user = this.currentUser;
+    if (!user) return 'U';
+    
+    if (user.firstName && user.lastName) {
+      return `${user.firstName[0]}${user.lastName[0]}`.toUpperCase();
+    } else if (user.name) {
+      return user.name.substring(0, 2).toUpperCase();
+    } else if (user.email) {
+      return user.email.substring(0, 2).toUpperCase();
+    }
+    
+    return 'U';
+  }
+  
+  getUserDisplayName(): string {
+    const user = this.currentUser;
+    if (!user) return 'User';
+    
+    if (user.firstName && user.lastName) {
+      return `${user.firstName} ${user.lastName}`;
+    } else if (user.name) {
+      return user.name;
+    } else if (user.email) {
+      // Return email prefix if no name
+      const atIndex = user.email.indexOf('@');
+      return atIndex > -1 ? user.email.substring(0, atIndex) : user.email;
+    }
+    
+    return 'User';
+  }
+  
+  navigateToProfile(): void {
+    // Close sidebar on mobile
+    if (window.innerWidth < 768) {
+      this.isOpen = false;
+      this.sidebarToggled.emit(false);
+    }
+    this.router.navigate(['/profile']);
+  }
+  
+  logout(): void {
+    if (confirm('Are you sure you want to sign out?')) {
+      this.authService.logout();
+    }
+  }
 }
+

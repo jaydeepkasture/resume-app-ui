@@ -337,51 +337,48 @@ export class HttpService {
       this.isRefreshing = true;
       this.refreshTokenSubject.next(null);
 
-      const refreshToken = this.stateService.getRefreshToken();
-      const email = this.stateService.getCurrentUser()?.email;
-
-      if (refreshToken && email) {
-        const fullUrl = this.prepareUrl('account/refresh-token');
-        const body = { email, refreshToken };
-        
-        // Use raw http post to avoid circular interceptor logic
-        return this.http.post<any>(fullUrl, body).pipe(
-          switchMap((response: any) => {
-            this.isRefreshing = false;
+      // We no longer rely on local refresh token or email manually for the refresh call
+      // The backend handles it via HttpOnly cookies
+      const fullUrl = this.prepareUrl('account/refresh-token');
+      
+      // Send GET request with credentials (cookies)
+      return this.http.get<any>(fullUrl, { withCredentials: true }).pipe(
+        switchMap((response: any) => {
+          this.isRefreshing = false;
+          
+          if (response.status && response.data) {
+            // Update state with new access token
+            // Note: Refresh token is handled electronically by cookies, no need to save it manually
+            const currentUser = this.stateService.getCurrentUser() || response.data.user;
             
-            if (response.status && response.data) {
-              // Update state with new tokens
-              const currentUser = this.stateService.getCurrentUser();
-              if (currentUser) {
-                  this.stateService.setAuthState(
-                    response.data.token, 
-                    currentUser, 
-                    response.data.refreshToken
-                  );
-              }
-              
-              this.refreshTokenSubject.next(response.data.token);
-              
-              // Retry the original request
-              return next();
-            } else {
-              // Refresh failed
-              this.stateService.clearAuthState();
-              return this.throwError(error);
+            if (currentUser) {
+                // Keep existing refresh token placeholder or null if purely cookie-based
+                // We just update the access token in memory/storage
+                this.stateService.setAuthState(
+                  response.data.token, 
+                  currentUser, 
+                  undefined // No local refresh token needed if using cookies
+                );
             }
-          }),
-          catchError((refreshError) => {
-            this.isRefreshing = false;
+            
+            this.refreshTokenSubject.next(response.data.token);
+            
+            // Retry the original request
+            return next();
+          } else {
+            // Refresh failed
             this.stateService.clearAuthState();
-            return this.throwError(refreshError);
-          })
-        );
-      } else {
-        // No refresh token available
-        this.isRefreshing = false;
-        this.stateService.clearAuthState();
-        return this.throwError(error);
-      }
+            return this.throwError(error);
+          }
+        }),
+        catchError((refreshError) => {
+          console.error('Refresh token failed:', refreshError);
+          this.isRefreshing = false;
+          this.stateService.clearAuthState();
+          return this.throwError(refreshError);
+        })
+      );
+
     } else {
       // WaitFor refresh token
       return this.refreshTokenSubject.pipe(

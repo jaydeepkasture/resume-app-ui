@@ -129,14 +129,37 @@ export class AuthService {
    * GET /api/account/refresh-token
    */
   refreshToken(): Observable<ApiResponse<LoginResponse>> {
+    // We utilize the HttpOnly cookie for refresh token, so no need to send it in body
     return this.httpService.get<ApiResponse<LoginResponse>>(
       'account/refresh-token'
     ).pipe(
       tap(response => {
         if (response.status && response.data) {
-          const { token, refreshToken, user } = response.data;
-          this.stateService.setAuthState(token, user, refreshToken);
-          console.log('✅ Token refreshed');
+          const { token, user } = response.data;
+          
+          // Update state with new access token
+          // Refresh token is handled server-side via cookies
+          this.stateService.setAuthState(token, user, undefined);
+          console.log('✅ Token refreshed via cookie');
+        }
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  /**
+   * Update user profile
+   * PUT /api/account/profile
+   */
+  updateProfile(data: Partial<User>): Observable<ApiResponse<User>> {
+    return this.httpService.put<ApiResponse<User>>(
+      'account/profile',
+      data
+    ).pipe(
+      tap(response => {
+        if (response.status && response.data) {
+          this.stateService.updateUser(response.data);
+          console.log('✅ Profile updated:', response.data.email);
         }
       }),
       catchError(this.handleError)
