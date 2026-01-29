@@ -13,11 +13,11 @@
         <div class="contact-grid">
           <div class="contact-row">
             <span class="label">PHONE:</span>
-            <input [(ngModel)]="resumeData.phone" (ngModelChange)="onModelChange()" placeholder="123-456-7890">
+            <input [(ngModel)]="resumeData.phoneNo" (ngModelChange)="onModelChange()" placeholder="123-456-7890">
           </div>
           <div class="contact-row">
             <span class="label">WEBSITE:</span>
-            <input [(ngModel)]="resumeData.website" (ngModelChange)="onModelChange()" placeholder="www.website.com">
+            <input [(ngModel)]="resumeData['website']" (ngModelChange)="onModelChange()" placeholder="www.website.com">
           </div>
           <div class="contact-row">
             <span class="label">EMAIL:</span>
@@ -46,7 +46,7 @@
       <!-- Profile -->
       <div class="section">
         <div class="section-title">PROFILE</div>
-        <textarea class="profile-text" [(ngModel)]="resumeData.summary" (ngModelChange)="onModelChange()" placeholder="Experienced professional dedicated to..."></textarea>
+        <textarea class="profile-text" [(ngModel)]="resumeData.summary" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="Experienced professional dedicated to..."></textarea>
       </div>
 
       <!-- Work Experience -->
@@ -57,11 +57,15 @@
           <div class="job-header-row">
             <input class="company-name" [(ngModel)]="job.company" (ngModelChange)="onModelChange()" placeholder="COMPANY NAME">
             <span class="separator">, </span>
-            <input class="job-role" [(ngModel)]="job.role" (ngModelChange)="onModelChange()" placeholder="JOB TITLE">
+            <input class="job-role" [(ngModel)]="job.position" (ngModelChange)="onModelChange()" placeholder="JOB TITLE">
           </div>
-          <input class="job-date" [(ngModel)]="job.duration" (ngModelChange)="onModelChange()" placeholder="20XX - PRESENT">
+          <div class="job-date" style="display: flex; gap: 5px;">
+             <input [(ngModel)]="job.from" (ngModelChange)="onModelChange()" placeholder="YYYY">
+             <span>-</span>
+             <input [(ngModel)]="job.to" (ngModelChange)="onModelChange()" placeholder="Present">
+          </div>
           
-          <textarea class="job-desc" [(ngModel)]="job.description" (ngModelChange)="onModelChange()" placeholder="Describe your responsibilities..."></textarea>
+          <textarea class="job-desc" [(ngModel)]="job.description" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="Describe your responsibilities..."></textarea>
           
           <button class="remove-btn" (click)="removeExperience(i)">Remove</button>
         </div>
@@ -84,9 +88,9 @@
         <div class="section-title">EDUCATION</div>
         
         <div class="edu-item" *ngFor="let edu of resumeData.education; let i = index">
-          <input class="school-name" [(ngModel)]="edu.university" (ngModelChange)="onModelChange()" placeholder="UNIVERSITY NAME">
+          <input class="school-name" [(ngModel)]="edu.institution" (ngModelChange)="onModelChange()" placeholder="UNIVERSITY NAME">
           <input class="edu-date" [(ngModel)]="edu.year" (ngModelChange)="onModelChange()" placeholder="20XX - 20XX">
-          <textarea class="edu-details" [(ngModel)]="edu.degree" (ngModelChange)="onModelChange()" placeholder="Degree and details..."></textarea>
+          <textarea class="edu-details" [(ngModel)]="edu.degree" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="Degree and details..."></textarea>
            <button class="remove-btn" (click)="removeEducation(i)">Remove</button>
         </div>
         <button class="add-btn" (click)="addEducation()">+ Add Education</button>
@@ -95,13 +99,13 @@
       <!-- Skills -->
       <div class="section">
         <div class="section-title">SKILLS</div>
-        <textarea class="skills-text" [(ngModel)]="resumeData.skills" (ngModelChange)="onModelChange()" placeholder="List your skills..."></textarea>
+        <textarea class="skills-text" [(ngModel)]="resumeData.skills" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="List your skills..."></textarea>
       </div>
 
       <!-- Hobbies (Optional, checking if data supports it, using generic or skills field if not) -->
       <div class="section">
         <div class="section-title">HOBBIES</div>
-        <textarea class="hobbies-text" [(ngModel)]="resumeData.hobbies" (ngModelChange)="onModelChange()" placeholder="List your hobbies..."></textarea>
+        <textarea class="hobbies-text" [(ngModel)]="resumeData['hobbies']" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="List your hobbies..."></textarea>
       </div>
 
     </div>

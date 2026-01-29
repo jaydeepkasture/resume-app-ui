@@ -1,0 +1,82 @@
+<div class="resume-container">
+    <!-- Header -->
+    <div class="header-section">
+        <input class="name-input" [(ngModel)]="resumeData.name" (ngModelChange)="onModelChange()" placeholder="YOUR NAME">
+        <input class="role-input" [(ngModel)]="resumeData.role" (ngModelChange)="onModelChange()" placeholder="YOUR ROLE">
+        
+        <div class="contact-row">
+            <input [(ngModel)]="resumeData.phoneNo" (ngModelChange)="onModelChange()" placeholder="Phone">
+            <span>|</span>
+            <input [(ngModel)]="resumeData.email" (ngModelChange)="onModelChange()" placeholder="Email">
+            <span>|</span>
+            <input [(ngModel)]="resumeData['website']" (ngModelChange)="onModelChange()" placeholder="Website">
+        </div>
+    </div>
+
+    <div class="body-content">
+        <!-- Left Column -->
+        <div class="left-column">
+            
+            <!-- Background / Summary -->
+            <div class="section">
+                <div class="section-title">BACKGROUND</div>
+                <textarea class="summary-text" [(ngModel)]="resumeData.summary" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="Summary of your background..."></textarea>
+            </div>
+
+            <!-- Experience -->
+            <div class="section">
+                <div class="section-title">EXPERIENCE</div>
+                
+                <div class="job-item" *ngFor="let job of resumeData.experience; let i = index">
+                    <div class="job-header">
+                        <input class="job-company" [(ngModel)]="job.company" (ngModelChange)="onModelChange()" placeholder="COMPANY">
+                        <span class="separator">|</span>
+                        <input class="job-position" [(ngModel)]="job.position" (ngModelChange)="onModelChange()" placeholder="POSITION">
+                    </div>
+                    <div class="job-location-date">
+                        <!-- Assuming location stored in generic structure or just ignoring specific city field for now if not in interface, using single string or formatted -->
+                        <!-- The interface has from/to. Location isn't explicit in Experience interface but we can assume nice formatting or just put dates -->
+                        <span style="color: #ccc;">Location, State, </span> <!-- Hardcoded placeholder for layout, or bind if we add location to job -->
+                        <input [(ngModel)]="job.from" (ngModelChange)="onModelChange()" placeholder="YYYY">
+                        <span>–</span>
+                        <input [(ngModel)]="job.to" (ngModelChange)="onModelChange()" placeholder="Present">
+                    </div>
+                    
+                    <textarea class="job-desc" [(ngModel)]="job.description" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="Job description..."></textarea>
+                    
+                    <button class="remove-btn" (click)="removeExperience(i)">Remove</button>
+                </div>
+                
+                <button class="add-btn" (click)="addExperience()">+ Add Position</button>
+            </div>
+
+            <!-- Skills -->
+            <div class="section">
+                <div class="section-title">SKILLS</div>
+                <textarea class="skills-text" [(ngModel)]="resumeData.skills" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="List your skills (e.g. Java, C#, Angular)..."></textarea>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+            
+            <!-- Education -->
+            <div class="section">
+                <div class="section-title">EDUCATION</div>
+                
+                <div class="edu-item" *ngFor="let edu of resumeData.education; let i = index">
+                    <textarea class="edu-degree" [(ngModel)]="edu.degree" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="DEGREE"></textarea>
+                    <input class="edu-school" [(ngModel)]="edu.institution" (ngModelChange)="onModelChange()" placeholder="University/College">
+                    <input class="edu-date" [(ngModel)]="edu.year" (ngModelChange)="onModelChange()" placeholder="Year">
+                    <!-- description/details for education if needed, mapped to field? -->
+                    <!-- The interface has field?, but let's just use a description text -->
+                    <!-- <textarea class="edu-desc" [(ngModel)]="edu.description" ... -->
+                     <button class="remove-btn" (click)="removeEducation(i)">Remove</button>
+                </div>
+
+                <button class="add-btn" (click)="addEducation()">+ Add Education</button>
+            </div>
+
+        </div>
+    </div>
+</div>

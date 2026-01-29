@@ -33,23 +33,43 @@ export interface TemplateDetailResponse {
 }
 
 
+export interface ResumeExperience {
+  position?: string;
+  company: string;
+  from?: string;
+  to?: string;
+  description: string;
+}
+
+export interface ResumeEducation {
+  degree: string;
+  field?: string;
+  institution: string;
+  year: string;
+}
+
+export interface ResumeData {
+  name: string;
+  role: string;
+  phoneNo: string;
+  email: string;
+  location: string;
+  linkedIn: string;
+  gitHub: string;
+  summary: string;
+  experience: ResumeExperience[];
+  skills: string[];
+  education: ResumeEducation[];
+  // Allow for other properties during transition or if the backend sends extra data
+  [key: string]: any;
+}
+
 export interface EnhanceResumeRequest {
   chatId: string;
   templateId?: string; // Added optional templateId
   message: string;
   resumeHtml?: string;
-  resumeData: {
-    name: string;
-    phoneNo: string;
-    email: string;
-    location: string;
-    linkedIn: string;
-    gitHub: string;
-    summary: string;
-    experience: any[];
-    skills: string[];
-    education: any[];
-  };
+  resumeData: ResumeData;
 }
 
 export interface EnhanceResumeResponse {
@@ -59,7 +79,7 @@ export interface EnhanceResumeResponse {
     chatId: string;
     userMessage: string;
     assistantMessage: string;
-    currentResume: any;
+    currentResume: ResumeData;
     processingTimeMs?: number;
     timestamp?: string;
     enhancedHtml?: string; // Ensure we support enhancedHtml
@@ -79,13 +99,13 @@ export class TemplateService {
   ) {}
 
   // Temporary storage for passing data during navigation
-  public tempResumeData: any = null;
+  public tempResumeData: ResumeData | null = null;
 
-  setTempResumeData(data: any) {
+  setTempResumeData(data: ResumeData) {
       this.tempResumeData = data;
   }
   
-  getAndClearTempResumeData(): any {
+  getAndClearTempResumeData(): ResumeData | null {
       const data = this.tempResumeData;
       this.tempResumeData = null;
       return data;
@@ -99,8 +119,8 @@ export class TemplateService {
     return this.http.get(templatePath, { responseType: 'text' });
   }
   
-  loadResumeData(): Observable<any> {
-    return this.http.get('assets/resume-data.json');
+  loadResumeData(): Observable<ResumeData> {
+    return this.http.get<ResumeData>('assets/resume-data.json');
   }
 
   /**
@@ -112,19 +132,20 @@ export class TemplateService {
    * @param templateId - The ID of the current template (optional)
    * @returns Observable with enhanced resume data
    */
-  enhanceResume(chatId: string, message: string, resumeData: any, resumeHtml?: string, templateId?: string): Observable<EnhanceResumeResponse> {
+  enhanceResume(chatId: string, message: string, resumeData: ResumeData, resumeHtml?: string, templateId?: string): Observable<EnhanceResumeResponse> {
     // Transform data to match API requirements (camelCase)
     const formattedData = {
       name: resumeData.name || '',
-      phoneNo: resumeData.phoneno || resumeData.phoneNo || '',
+      role: resumeData.role || '',
+      phoneNo: resumeData['phoneno'] || resumeData.phoneNo || '',
       email: resumeData.email || '',
       location: resumeData.location || '',
-      linkedIn: resumeData.linkedin || resumeData.linkedIn || '',
-      gitHub: resumeData.github || resumeData.gitHub || '',
+      linkedIn: resumeData['linkedin'] || resumeData.linkedIn || '',
+      gitHub: resumeData['github'] || resumeData.gitHub || '',
       summary: resumeData.summary || '',
-      experience: resumeData.experiance || resumeData.experience || [], // Handle typo
+      experience: resumeData['experiance'] || resumeData.experience || [], // Handle typo
       skills: resumeData.skills || [],
-      education: resumeData.eduction || resumeData.education || []   // Handle typo
+      education: resumeData['eduction'] || resumeData.education || []   // Handle typo
     };
 
     const payload: EnhanceResumeRequest = {

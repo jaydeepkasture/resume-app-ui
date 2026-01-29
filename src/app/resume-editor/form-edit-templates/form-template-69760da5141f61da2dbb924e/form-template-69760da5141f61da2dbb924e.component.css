@@ -232,7 +232,7 @@ textarea {
 .profile-text {
     font-size: 0.9rem;
     line-height: 1.6;
-    height: 100px;
+    min-height: 50px;
 }
 
 /* Job Styling */
@@ -275,7 +275,7 @@ textarea {
 .job-desc {
     font-size: 0.9rem;
     line-height: 1.5;
-    height: 80px;
+    min-height: 50px;
     margin-top: 5px;
 }
 
@@ -298,13 +298,13 @@ textarea {
 
 .edu-details {
     font-size: 0.9rem;
-    height: 60px;
+    min-height: 40px;
 }
 
 .skills-text, .hobbies-text {
     font-size: 0.9rem;
     line-height: 1.6;
-    height: 150px;
+    min-height: 100px;
     white-space: pre-wrap;
 }
 

@@ -1,16 +1,16 @@
-import { Component, Input, Output, EventEmitter, OnInit, AfterViewInit, OnChanges, SimpleChanges, ElementRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ResumeData } from '../../template.service';
 
 @Component({
-  selector: 'app-form-template-69760da5141f61da2dbb924e',
+  selector: 'app-form-template-697a55ac89449a11f51085ec',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './form-template-69760da5141f61da2dbb924e.component.html',
-  styleUrls: ['./form-template-69760da5141f61da2dbb924e.component.css']
+  templateUrl: './form-template-697a55ac89449a11f51085ec.component.html',
+  styleUrls: ['./form-template-697a55ac89449a11f51085ec.component.css']
 })
-export class FormTemplate69760da5141f61da2dbb924eComponent implements OnInit, AfterViewInit, OnChanges {
+export class FormTemplate697a55ac89449a11f51085ecComponent implements OnInit, AfterViewInit {
   private _resumeData!: ResumeData;
 
   @Input() 
@@ -46,7 +46,7 @@ export class FormTemplate69760da5141f61da2dbb924eComponent implements OnInit, Af
     if (!this._resumeData.experience) this._resumeData.experience = [];
     if (!this._resumeData.education) this._resumeData.education = [];
     if (!this._resumeData.skills) this._resumeData.skills = [];
-    // Ensure contact structure exists - using bracket notation for index signature property
+    // Ensure contact structure exists
     if (!this._resumeData['contact']) {
         this._resumeData['contact'] = {
             phone: this._resumeData.phoneNo || '',
@@ -58,22 +58,15 @@ export class FormTemplate69760da5141f61da2dbb924eComponent implements OnInit, Af
     }
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    // handled by setter
-  }
-
   ngAfterViewInit() {
     this.resizeAllTextareas();
   }
 
   resizeAllTextareas() {
-    // Initial resize for all textareas
-    // We increase delay to ensure data binding has updated the DOM
     setTimeout(() => {
         const textareas = this.elementRef.nativeElement.querySelectorAll('textarea');
         textareas.forEach((ta: HTMLTextAreaElement) => {
             if (ta) {
-                // Reset height to auto first to get correct scrollHeight if it shrank
                 ta.style.height = 'auto';
                 ta.style.height = ta.scrollHeight + 'px';
             }
@@ -101,12 +94,8 @@ export class FormTemplate69760da5141f61da2dbb924eComponent implements OnInit, Af
       to: 'Present',
       description: 'Description of your responsibilities and achievements...'
     });
-    // Trigger height adjustment after DOM update
-    setTimeout(() => {
-        const textareas = this.elementRef.nativeElement.querySelectorAll('textarea');
-        const lastTextarea = textareas[textareas.length - 1]; // Assume newly added is last or close to end
-        if(lastTextarea) this.adjustTextAreaHeight({ target: lastTextarea });
-    }, 0);
+    // Trigger height adjustment
+    this.resizeAllTextareas();
     this.onModelChange();
   }
 
@@ -121,6 +110,7 @@ export class FormTemplate69760da5141f61da2dbb924eComponent implements OnInit, Af
           institution: 'University Name',
           year: 'Year'
       });
+      this.resizeAllTextareas();
       this.onModelChange();
   }
 

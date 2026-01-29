@@ -3,7 +3,8 @@ import { Component, OnInit, OnDestroy, AfterViewInit, ChangeDetectorRef, HostLis
 // Map of Template IDs to Component Classes
 const FORM_TEMPLATE_COMPONENTS: { [key: string]: Type<any> } = {
   '6973bcfbdf2766fbee178f68': FormTemplate6973bcfbdf2766fbee178f68Component,
-  '69760da5141f61da2dbb924e': FormTemplate69760da5141f61da2dbb924eComponent
+  '69760da5141f61da2dbb924e': FormTemplate69760da5141f61da2dbb924eComponent,
+  '697a55ac89449a11f51085ec': FormTemplate697a55ac89449a11f51085ecComponent
 };
 
 import { CommonModule } from '@angular/common';
@@ -26,7 +27,7 @@ import TableCell from '@tiptap/extension-table-cell';
 import TableHeader from '@tiptap/extension-table-header';
 import HorizontalRule from '@tiptap/extension-horizontal-rule';
 import { saveAs } from 'file-saver';
-import { TemplateService, ResumeTemplate, EnhanceResumeResponse } from './template.service';
+import { TemplateService, ResumeTemplate, EnhanceResumeResponse, ResumeData } from './template.service';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { environment } from '../../environments/environment';
@@ -34,6 +35,7 @@ import { ChatSidebarComponent } from '../components/chat-sidebar/chat-sidebar.co
 import { TemplateDropdownComponent } from '../components/template-dropdown/template-dropdown.component';
 import { FormTemplate6973bcfbdf2766fbee178f68Component } from './form-edit-templates/form-template-6973bcfbdf2766fbee178f68/form-template-6973bcfbdf2766fbee178f68.component';
 import { FormTemplate69760da5141f61da2dbb924eComponent } from './form-edit-templates/form-template-69760da5141f61da2dbb924e/form-template-69760da5141f61da2dbb924e.component';
+import { FormTemplate697a55ac89449a11f51085ecComponent } from './form-edit-templates/form-template-697a55ac89449a11f51085ec/form-template-697a55ac89449a11f51085ec.component';
 // HistorySidebarComponent removed in favor of embedded implementation
 
 
@@ -124,7 +126,7 @@ import { SafeHtmlPipe } from '../shared/pipes/safe-html.pipe';
 @Component({
   selector: 'app-resume-editor',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, FormsModule, ChatSidebarComponent, TemplateDropdownComponent, FormTemplate6973bcfbdf2766fbee178f68Component, FormTemplate69760da5141f61da2dbb924eComponent, SafeHtmlPipe],
+  imports: [CommonModule, HttpClientModule, FormsModule, ChatSidebarComponent, TemplateDropdownComponent, FormTemplate6973bcfbdf2766fbee178f68Component, FormTemplate69760da5141f61da2dbb924eComponent, FormTemplate697a55ac89449a11f51085ecComponent, SafeHtmlPipe],
   templateUrl: './resume-editor.component.html',
   styleUrl: './resume-editor.component.css'
 })
@@ -177,7 +179,7 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   historySidebarOpen = false;
   currentChatId: string | null = null;
   isEditorVisible = false;
-  currentResumeData: any = null;
+  currentResumeData: ResumeData | null = null;
   currentTemplateName: string = 'Select Template';
   currentTemplateId: string | undefined;
 
@@ -288,7 +290,7 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
               
               // Subscribe to Outputs
               if ((componentRef.instance as any).dataChange) {
-                  (componentRef.instance as any).dataChange.subscribe((newData: any) => {
+                  (componentRef.instance as any).dataChange.subscribe((newData: ResumeData) => {
                       this.onFormDataChange(newData);
                   });
               }
@@ -397,33 +399,50 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   /**
    * Get sample data for form template preview
    */
-  getPreviewData(): any {
+  getEmptyResumeData(): ResumeData {
+    return {
+      name: '',
+      role: '',
+      phoneNo: '',
+      email: '',
+      location: '',
+      linkedIn: '',
+      gitHub: '',
+      summary: '',
+      experience: [],
+      skills: [],
+      education: []
+    };
+  }
+
+  getPreviewData(): ResumeData {
     return {
       name: 'JOHN DOE',
       role: 'SOFTWARE ENGINEER',
       email: 'john.doe@email.com',
-      phone: '(555) 123-4567',
+      phoneNo: '(555) 123-4567',
       location: 'New York, NY',
-      website: 'www.johndoe.com',
-      linkedin: 'linkedin.com/in/johndoe',
-      github: 'github.com/johndoe',
+      linkedIn: 'linkedin.com/in/johndoe',
+      gitHub: 'github.com/johndoe',
       summary: 'Experienced software engineer with 5+ years of expertise in full-stack development.',
       experience: [
         {
           company: 'TECH COMPANY INC',
-          role: 'SENIOR SOFTWARE ENGINEER',
-          duration: '2020 - PRESENT',
+          position: 'SENIOR SOFTWARE ENGINEER',
+          from: '2020',
+          to: 'PRESENT',
           description: 'Led development of enterprise applications using modern technologies.'
         }
       ],
       education: [
         {
-          university: 'STANFORD UNIVERSITY',
+          institution: 'STANFORD UNIVERSITY',
           degree: 'Bachelor of Science in Computer Science',
           year: '2016 - 2020'
         }
       ],
-      skills: 'JavaScript, TypeScript, Angular, React, Node.js, Python, AWS',
+      skills: ['JavaScript', 'TypeScript', 'Angular', 'React', 'Node.js', 'Python', 'AWS'],
+      // Allow hobbies as extra property via index signature if needed, or remove if strict
       hobbies: 'Photography, Hiking, Reading'
     };
   }
@@ -503,7 +522,7 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   
   // Handling data change from Form Component
-  onFormDataChange(newData: any) {
+  onFormDataChange(newData: ResumeData) {
       this.currentResumeData = newData;
       // Maybe auto-save or simple local state update
   }
@@ -535,8 +554,8 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
           let resumeData = response.data.currentResume || response.data.resumeData || response.data;
           
           // Check validity
-          const hasLocalData = this.currentResumeData && (this.currentResumeData.name || this.currentResumeData.phoneno || this.currentResumeData.email);
-          const hasRemoteData = resumeData && (resumeData.name || resumeData.phoneno || resumeData.email);
+          const hasLocalData = this.currentResumeData && (this.currentResumeData.name || this.currentResumeData.phoneNo || this.currentResumeData.email);
+          const hasRemoteData = resumeData && (resumeData.name || resumeData.phoneNo || resumeData.email);
 
           // Update logic: Prefer remote if valid, otherwise keep local if valid
           if (hasRemoteData) {
@@ -664,7 +683,7 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   /**
    * Helper to load a template with specific data
    */
-  private loadTemplateWithData(templatePath: string, resumeData: any, oldData: any = null): void {
+  private loadTemplateWithData(templatePath: string, resumeData: ResumeData, oldData: ResumeData | null = null): void {
     this.templateService.loadTemplate(templatePath).subscribe({
       next: (htmlContent) => {
         // ... (reuse logic from onTemplateChange, simplified)
@@ -680,7 +699,7 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   /**
    * Process HTML content and data to update editor
    */
-  private processTemplateAndData(htmlContent: string, templatePath: string, resumeData: any, oldData: any = null): void {
+  private processTemplateAndData(htmlContent: string, templatePath: string, resumeData: ResumeData, oldData: ResumeData | null = null): void {
          console.log('Processing template with data...');
          
          const tempParser = new DOMParser();
@@ -1453,7 +1472,7 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   // Bind JSON data to template
-  private bindDataToTemplate(htmlContent: string, data: any, oldData: any = null): string {
+  private bindDataToTemplate(htmlContent: string, data: ResumeData, oldData: ResumeData | null = null): string {
     const parser = new DOMParser();
     const doc = parser.parseFromString(htmlContent, 'text/html');
     
@@ -1629,7 +1648,7 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
             error: (error) => {
                console.error('Error loading resume data:', error);
                // Fallback: load template without data (empty object)
-               this.processTemplateAndData(htmlContent, templatePath, {});
+               this.processTemplateAndData(htmlContent, templatePath, this.getEmptyResumeData());
             }
           });
         }

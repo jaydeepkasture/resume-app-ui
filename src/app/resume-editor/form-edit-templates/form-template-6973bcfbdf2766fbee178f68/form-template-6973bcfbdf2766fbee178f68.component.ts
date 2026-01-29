@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ResumeData } from '../../template.service';
 
 @Component({
   selector: 'app-form-template-6973bcfbdf2766fbee178f68',
@@ -10,12 +11,24 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./form-template-6973bcfbdf2766fbee178f68.component.css']
 })
 export class FormTemplate6973bcfbdf2766fbee178f68Component implements OnInit {
-  @Input() resumeData: any;
-  @Output() dataChange = new EventEmitter<any>();
+  @Input() resumeData!: ResumeData;
+  @Output() dataChange = new EventEmitter<ResumeData>();
 
   ngOnInit() {
     if (!this.resumeData) {
-      this.resumeData = {};
+      this.resumeData = {
+        name: '',
+        role: '',
+        phoneNo: '',
+        email: '',
+        location: '',
+        linkedIn: '',
+        gitHub: '',
+        summary: '',
+        experience: [],
+        skills: [],
+        education: []
+      };
     }
     // Initialize arrays if missing to prevent errors
     if (!this.resumeData.experience) this.resumeData.experience = [];
@@ -29,9 +42,10 @@ export class FormTemplate6973bcfbdf2766fbee178f68Component implements OnInit {
 
   addExperience() {
     this.resumeData.experience.push({
-      role: 'Role',
+      position: 'Role',
       company: 'Company',
-      duration: 'Duration',
+      from: 'YYYY',
+      to: 'Present',
       description: 'Description'
     });
     this.onModelChange();
