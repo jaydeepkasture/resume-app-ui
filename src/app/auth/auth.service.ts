@@ -148,6 +148,26 @@ export class AuthService {
   }
 
   /**
+   * Verify Google Token
+   * POST /api/account/google/verify-token
+   */
+  verifyGoogleToken(token: string): Observable<ApiResponse<LoginResponse>> {
+    return this.httpService.post<ApiResponse<LoginResponse>>(
+      'account/google/verify-token',
+      { token }
+    ).pipe(
+      tap(response => {
+        if (response.status && response.data) {
+          const { token, refreshToken, user } = response.data;
+          this.stateService.setAuthState(token, user, refreshToken);
+          console.log('✅ Google login successful:', user.email);
+        }
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  /**
    * Update user profile
    * PUT /api/account/profile
    */

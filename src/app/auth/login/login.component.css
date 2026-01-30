@@ -249,6 +249,27 @@
   color: #764ba2;
 }
 
+.auth-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+  color: #a0aec0;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.auth-divider span {
+  padding: 0 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
 /* Responsive */
 @media (max-width: 480px) {
   .auth-card {

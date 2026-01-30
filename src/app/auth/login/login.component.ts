@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { environment } from '../../../environments/environment';
+
+declare var google: any;
 
 @Component({
   selector: 'app-login',
@@ -23,7 +26,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private ngZone: NgZone
   ) {}
 
   ngOnInit(): void {
@@ -41,6 +45,61 @@ export class LoginComponent implements OnInit {
 
     // Get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
+    // Load Google Sign-In Script
+    this.loadGoogleScript();
+  }
+
+  loadGoogleScript() {
+    const script = document.createElement('script');
+    script.src = 'https://accounts.google.com/gsi/client';
+    script.async = true;
+    script.defer = true;
+    script.onload = () => {
+      this.initializeGoogleSignIn();
+    };
+    document.body.appendChild(script);
+  }
+
+  initializeGoogleSignIn() {
+    google.accounts.id.initialize({
+      client_id: environment.googleClientId,
+      callback: this.handleGoogleCredentialResponse.bind(this)
+    });
+    
+    const buttonDiv = document.getElementById('google-btn');
+    if (buttonDiv) {
+      google.accounts.id.renderButton(
+        buttonDiv,
+        { theme: 'outline', size: 'large', width: '100%', text: 'continue_with' }
+      );
+    }
+  }
+
+  handleGoogleCredentialResponse(response: any) {
+    this.ngZone.run(() => {
+      console.log('Google response', response);
+      if (response.credential) {
+        this.loading = true; // Show loading state
+        this.authService.verifyGoogleToken(response.credential).subscribe({
+          next: (res) => {
+            if (res.status) {
+               console.log('✅ Google Login successful, navigating to:', this.returnUrl);
+               this.loading = false;
+               this.router.navigate([this.returnUrl]);
+            } else {
+               this.error = res.message || 'Google login failed';
+               this.loading = false;
+            }
+          },
+          error: (err) => {
+            console.error('❌ Google Login error:', err);
+            this.error = err.message || 'Google login failed';
+            this.loading = false;
+          }
+        });
+      }
+    });
   }
 
   // Convenience getter for easy access to form fields
