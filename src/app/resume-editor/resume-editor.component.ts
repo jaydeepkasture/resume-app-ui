@@ -200,8 +200,6 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
         // Dynamically load the component
         this.loadDynamicFormTemplate(templateId);
 
-        // Refresh history when template changes
-        this.refreshHistory();
         
         if (updateUrl) {
             this.updateUrlWithParams(this.currentChatId, templateId);
@@ -233,8 +231,6 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
     this.selectedFormTemplateId = null;
     this.isEditorVisible = true;
     
-    // Refresh history when template changes
-    this.refreshHistory();
     
     if (updateUrl) {
       this.updateUrlWithParams(this.currentChatId, templateId);
@@ -530,82 +526,62 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Sidebar Handlers
   onChatSelected(chatId: string): void {
+    // Prevent reload if clicking the same chat
+    if (this.currentChatId === chatId && this.isEditorVisible) {
+        console.log('⏩ Already viewing this chat:', chatId);
+        return;
+    }
+
     console.log('📝 Resume Editor: Chat selected:', chatId);
     this.currentChatId = chatId;
-    
-    // Update the URL to include the chat ID, preserving query params (like templateId)
-    this.router.navigate(['/editor', chatId], { 
-      queryParamsHandling: 'merge',
-      replaceUrl: true 
-    });
     
     // Refresh history for the new chat
     this.refreshHistory();
     
-    // 1. Load resume data for this chat
+    // Load resume data and template for this chat
     this.templateService.getChatSession(chatId).subscribe({
       next: (response: any) => {
         if (response.status && response.data) {
           console.log('✅ Loaded chat session data:', response.data);
+          const data = response.data;
           
           this.isEditorVisible = true; // Show editor when chat is loaded
           
-          // Use currentResume from the response
-          let resumeData = response.data.currentResume || response.data.resumeData || response.data;
+          // 1. Handle Resume Data
+          const resumeData = data.currentResume || data.resumeData || data; 
           
-          // Check validity
-          const hasLocalData = this.currentResumeData && (this.currentResumeData.name || this.currentResumeData.phoneNo || this.currentResumeData.email);
-          const hasRemoteData = resumeData && (resumeData.name || resumeData.phoneNo || resumeData.email);
-
-          // Update logic: Prefer remote if valid, otherwise keep local if valid
-          if (hasRemoteData) {
+          if (resumeData) {
              console.log('📥 Updating editor with remote resume data');
-             this.normalizeResumeData(resumeData);
              this.currentResumeData = resumeData;
-             this.cdr.detectChanges(); 
-          } else if (hasLocalData) {
-             console.warn('⚠️ Remote chat session has empty data. Preserving local/initial resume data.');
-             // Do NOT overwrite this.currentResumeData
-          } else if (resumeData) {
-             // Both empty/sparse? Just take remote
-             this.normalizeResumeData(resumeData);
-             this.currentResumeData = resumeData; 
+             this.normalizeResumeData(this.currentResumeData);
              this.cdr.detectChanges(); 
           }
-          
-          // 2. Fetch the latest history to find the correct Template ID
-          console.log('🔍 resolving template from latest history...');
-          this.templateService.getChatHistory(chatId, 1, 1, 'desc').subscribe({
-            next: (historyResp) => {
-              if (historyResp.status && historyResp.data && historyResp.data.length > 0) {
-                 const latest = historyResp.data[0];
-                 if (latest.templateId) {
-                   console.log('📍 Found template ID from history:', latest.templateId);
-                   // Load this specific template
-                   this.onBackendTemplateSelected(latest.templateId, true);
-                   return;
-                 }
-              }
-              
-              
-              // Fallback: If no history or no templateId in history, check URL or keep current
-              if (this.currentTemplateId) {
-                 console.log('ℹ️ Using current template ID as fallback:', this.currentTemplateId);
-                 this.onBackendTemplateSelected(this.currentTemplateId, true);
-              } else {
-                 console.warn('⚠️ No template ID found in history or current state. Redirecting to gallery.');
-                 this.router.navigate(['/templates']);
-              }
-            },
-            error: (err) => {
-              console.error('❌ Failed to resolve template from history:', err);
-              // Fallback to current
-              if (this.currentTemplateId) {
-                this.onBackendTemplateSelected(this.currentTemplateId, true);
-              }
-            }
-          });
 
+          // 2. Handle Template ID (from templateId)
+          // Use this variable to load the editor url
+          if (data.templateId) {
+             console.log('📍 Found templateId from chat session:', data.templateId);
+             this.currentTemplateId = data.templateId;
+             
+             // Navigate directly with the templateId
+             this.router.navigate(['/editor', chatId], { 
+                queryParams: { templateId: data.templateId },
+                replaceUrl: true 
+             });
+             
+             // Load this specific template (updateUrl=false because we just navigated)
+             this.onBackendTemplateSelected(data.templateId, false);
+             
+          } else {
+             console.warn('⚠️ No templateId found in chat session.');
+             
+             // Fallback navigation (no template param)
+             this.router.navigate(['/editor', chatId], { replaceUrl: true });
+             
+             if (this.currentTemplateId) {
+                 this.onBackendTemplateSelected(this.currentTemplateId, false);
+             }
+          }
         } else {
           console.error('❌ Failed to load chat session data:', response.message);
         }
@@ -879,10 +855,13 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
 
   copyHistoryToClipboard(text: string, event: Event) {
       event.stopPropagation();
+      const btn = (event.currentTarget as HTMLElement);
+      
       navigator.clipboard.writeText(text).then(() => {
-          const btn = (event.currentTarget as HTMLElement);
-          btn.classList.add('copied');
-          setTimeout(() => btn.classList.remove('copied'), 2000);
+          if (btn) {
+            btn.classList.add('copied');
+            setTimeout(() => btn.classList.remove('copied'), 2000);
+          }
       });
   }
   
@@ -1012,6 +991,7 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     // Check for passed data from navigation (e.g. Create Chat flow)
+    
     const tempData = this.templateService.getAndClearTempResumeData();
     if (tempData) {
         console.log('🔄 Restoring temp resume data from navigation');
@@ -1024,8 +1004,8 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
       const chatId = params['chatId'];
       if (chatId && chatId !== this.currentChatId) {
         console.log('📍 Chat ID from URL:', chatId);
-        // Load this chat automatically
-        this.onChatSelected(chatId);
+        this.currentChatId = chatId
+        // this.onChatSelected(chatId);
       }
     });
 
@@ -1040,9 +1020,9 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
           // No template ID? 
           // If we ARE in editor mode, this means we should go back to gallery.
           // Or if we just landed on /editor with no params
-          if (!this.currentChatId) {
-             this.router.navigate(['/templates']);
-          }
+          // if (!this.currentChatId) {
+          //    this.router.navigate(['/templates']);
+          // }
       }
     });
   }

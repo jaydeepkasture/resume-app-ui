@@ -39,7 +39,23 @@ export class TemplateGalleryComponent implements OnInit {
 
   onChatSelected(chatId: string): void {
      console.log('Chat selected from gallery:', chatId);
-     this.router.navigate(['/editor', chatId]);
+     
+     this.templateService.getChatSession(chatId).subscribe({
+        next: (response: any) => {
+          const initialData = response.data.resumeData ;
+          console.log('📦 API Response:', response.data,initialData);
+            if (initialData) {
+                console.log('📦 Passing initial resume data to editor via service');
+                this.templateService.setTempResumeData(initialData);
+            }
+          
+            // Navigate to editor with chat session
+            this.router.navigate(['/editor', chatId], { 
+              queryParams: { templateId: response.data.templateId }
+            });
+        },
+        error: (err) => console.error('Failed to load default template list', err)
+     });
   }
 
   ngOnInit() {

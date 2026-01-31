@@ -40,8 +40,14 @@ export class TemplatePreviewComponent implements OnChanges {
   constructor(private sanitizer: DomSanitizer) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['htmlContent']) { // access via string key for safety
-      this.safeContent = this.sanitizer.bypassSecurityTrustHtml(this.htmlContent || '');
+    if (changes['htmlContent']) { 
+      let rawHtml = this.htmlContent || '';
+      
+      // Sanitize: Remove broken local image paths typical of Word exports (e.g. "Document 4_files/image001.png")
+      // This prevents 404 errors in the console.
+      rawHtml = rawHtml.replace(/src=["'][^"']*_files\/[^"']*["']/gi, 'src="" style="display:none"');
+      
+      this.safeContent = this.sanitizer.bypassSecurityTrustHtml(rawHtml);
     }
   }
 }
