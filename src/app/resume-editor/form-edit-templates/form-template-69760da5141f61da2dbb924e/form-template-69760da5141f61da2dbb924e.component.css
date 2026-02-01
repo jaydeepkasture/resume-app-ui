@@ -328,3 +328,40 @@ textarea {
     opacity: 1;
     background: #ddd;
 }
+
+@media (max-width: 768px) {
+    .resume-container {
+        width: 100%;
+        max-width: 100%;
+        min-height: auto;
+        box-shadow: none;
+    }
+
+    .body-content {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .left-column, .right-column {
+        flex: auto;
+        width: 100%;
+        padding: 0;
+    }
+
+    .vertical-divider {
+        display: none;
+    }
+    
+    .header-section {
+        padding: 20px;
+        min-height: auto;
+    }
+    
+    .name-input {
+        font-size: 1.8rem;
+    }
+    
+    .header-art {
+        display: none; /* Hide background shapes on mobile to save space/clean up */
+    }
+}

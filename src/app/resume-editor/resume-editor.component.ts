@@ -177,6 +177,16 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   // Sidebar state
   sidebarOpen = false;
   historySidebarOpen = false;
+  
+  // Mobile Toolbar Toggle
+  isToolbarVisible = true;
+  
+  toggleToolbar(): void {
+    this.isToolbarVisible = !this.isToolbarVisible;
+    // Re-calculate scale after layout change (giving time for DOM to update)
+    setTimeout(() => this.updateMobileScale(), 100);
+  }
+  
   currentChatId: string | null = null;
   isEditorVisible = false;
   currentResumeData: ResumeData | null = null;
@@ -1159,6 +1169,43 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
         preserveWhitespace: 'full'
       }
     });
+    
+    // Initial scale check for mobile
+    setTimeout(() => this.updateMobileScale(), 100);
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.updateMobileScale();
+  }
+
+  updateMobileScale() {
+    const editorEl = document.querySelector('.editor') as HTMLElement;
+    if (!editorEl) return;
+
+    // If using Form Edit Mode (Templates), disable scaling and let CSS media queries handle responsiveness
+    if (this.isFormEditMode) {
+        editorEl.style.transform = 'none';
+        editorEl.style.margin = '0 auto';
+        return;
+    }
+
+    const containerWidth = window.innerWidth;
+    const targetWidth = 840; // 8.5in (816px) + padding
+
+    if (containerWidth < targetWidth) {
+      // Scale to fit, leaving small padding (20px total)
+      // 816px is the specific width of the resume paper
+      const scale = (containerWidth - 20) / 816;
+      const safeScale = Math.min(Math.max(scale, 0.3), 1); // Cap scale between 0.3 and 1
+
+      editorEl.style.transform = `scale(${safeScale})`;
+      editorEl.style.transformOrigin = 'top center'; 
+      editorEl.style.margin = '0 auto'; 
+    } else {
+      editorEl.style.transform = 'none';
+      editorEl.style.margin = '0 auto';
+    }
   }
 
   ngOnDestroy(): void {
@@ -1762,6 +1809,42 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
       const buttons = clonedElement.querySelectorAll('button');
       buttons.forEach(btn => btn.remove());
       
+      // Force Desktop Layout (Override Mobile Styles)
+      const bodyContent = clonedElement.querySelector('.body-content') as HTMLElement;
+      if (bodyContent) {
+          bodyContent.style.flexDirection = 'row';
+          bodyContent.style.padding = '40px';
+      }
+
+      const leftColumn = clonedElement.querySelector('.left-column') as HTMLElement;
+      if (leftColumn) {
+          leftColumn.style.flex = '6';
+          leftColumn.style.width = 'auto'; // Reset width from 100%
+          leftColumn.style.paddingRight = '30px';
+      }
+
+      const rightColumn = clonedElement.querySelector('.right-column') as HTMLElement;
+      if (rightColumn) {
+          rightColumn.style.flex = '4';
+          rightColumn.style.width = 'auto'; // Reset width from 100%
+          rightColumn.style.paddingLeft = '30px';
+      }
+
+      const vDivider = clonedElement.querySelector('.vertical-divider') as HTMLElement;
+      if (vDivider) {
+          vDivider.style.display = 'block';
+      }
+      
+      const headerArt = clonedElement.querySelector('.header-art') as HTMLElement;
+      if (headerArt) {
+          headerArt.style.display = 'block';
+      }
+
+      const headerSection = clonedElement.querySelector('.header-section') as HTMLElement;
+      if (headerSection) {
+          headerSection.style.padding = '40px';
+      }
+
       // Append to body to ensure it is rendered for capture
       document.body.appendChild(clonedElement);
       

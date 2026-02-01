@@ -325,7 +325,8 @@ export class HttpService {
    */
   private handleError(error: HttpErrorResponse, retryFn?: () => Observable<any>): Observable<any> {
     // If error is 401 Unauthorized and we have a retry function
-    if (error.status === 401 && retryFn) {
+    // Don't attempt to refresh token if the failed request itself was a login attempt
+    if (error.status === 401 && retryFn && !error.url?.includes('/login')) {
       return this.handle401Error(error, retryFn);
     }
 

@@ -107,3 +107,21 @@ textarea {
   resize: vertical;
   min-height: 60px;
 }
+
+@media (max-width: 768px) {
+  .resume-container {
+    width: 100% !important;
+    min-height: auto;
+    padding: 15px;
+    box-shadow: none;
+    margin: 0;
+  }
+
+  .header input.name {
+    font-size: 20px;
+  }
+
+  .header div[style*="display: flex"] {
+    flex-wrap: wrap;
+  }
+}

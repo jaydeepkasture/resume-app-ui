@@ -15,6 +15,29 @@
   .editor-container.sidebar-open {
     margin-left: 280px;
   }
+  
+  .floating-toggle-btn {
+    display: none;
+  }
+}
+
+/* Floating Toggle Button (Mobile) */
+.floating-toggle-btn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1001; /* Above toolbar */
+  width: 40px;
+  height: 40px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  cursor: pointer;
+  color: #333;
 }
 
 /* Toolbar Styles */
@@ -437,12 +460,14 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .editor {
-    padding: 0.5in;
+    padding: 10px;
     min-height: auto;
+    /* transition: transform 0.2s ease; */ 
   }
 
   .editor-wrapper {
     padding: 20px 10px;
+    /* When toolbar is hidden, we might want less top padding or different layout */
   }
 
   .toolbar {
