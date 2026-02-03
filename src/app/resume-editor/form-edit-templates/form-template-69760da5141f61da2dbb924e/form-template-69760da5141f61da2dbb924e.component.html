@@ -46,7 +46,12 @@
       <!-- Profile -->
       <div class="section">
         <div class="section-title">PROFILE</div>
-        <textarea class="profile-text" [(ngModel)]="resumeData.summary" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="Experienced professional dedicated to..."></textarea>
+        <app-rich-text-input 
+            class="profile-text" 
+            [value]="resumeData.summary" 
+            (valueChange)="resumeData.summary = $event; onModelChange()" 
+            placeholder="Experienced professional dedicated to...">
+        </app-rich-text-input>
       </div>
 
       <!-- Work Experience -->
@@ -65,7 +70,12 @@
              <input [(ngModel)]="job.to" (ngModelChange)="onModelChange()" placeholder="Present">
           </div>
           
-          <textarea class="job-desc" [(ngModel)]="job.description" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="Describe your responsibilities..."></textarea>
+          <app-rich-text-input 
+            class="job-desc" 
+            [value]="job.description" 
+            (valueChange)="job.description = $event; onModelChange()" 
+            placeholder="Describe your responsibilities...">
+          </app-rich-text-input>
           
           <button class="remove-btn" (click)="removeExperience(i)">Remove</button>
         </div>
@@ -90,7 +100,12 @@
         <div class="edu-item" *ngFor="let edu of resumeData.education; let i = index">
           <input class="school-name" [(ngModel)]="edu.institution" (ngModelChange)="onModelChange()" placeholder="UNIVERSITY NAME">
           <input class="edu-date" [(ngModel)]="edu.year" (ngModelChange)="onModelChange()" placeholder="20XX - 20XX">
-          <textarea class="edu-details" [(ngModel)]="edu.degree" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="Degree and details..."></textarea>
+          <app-rich-text-input 
+            class="edu-details" 
+            [value]="edu.degree" 
+            (valueChange)="edu.degree = $event; onModelChange()" 
+            placeholder="Degree and details...">
+          </app-rich-text-input>
            <button class="remove-btn" (click)="removeEducation(i)">Remove</button>
         </div>
         <button class="add-btn" (click)="addEducation()">+ Add Education</button>
@@ -99,13 +114,23 @@
       <!-- Skills -->
       <div class="section">
         <div class="section-title">SKILLS</div>
-        <textarea class="skills-text" [(ngModel)]="resumeData.skills" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="List your skills..."></textarea>
+        <app-rich-text-input 
+            class="skills-text" 
+            [value]="resumeData.skills" 
+            (valueChange)="resumeData.skills = $any($event); onModelChange()" 
+            placeholder="List your skills...">
+        </app-rich-text-input>
       </div>
 
       <!-- Hobbies (Optional, checking if data supports it, using generic or skills field if not) -->
       <div class="section">
         <div class="section-title">HOBBIES</div>
-        <textarea class="hobbies-text" [(ngModel)]="resumeData['hobbies']" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="List your hobbies..."></textarea>
+        <app-rich-text-input 
+            class="hobbies-text" 
+            [value]="resumeData['hobbies']" 
+            (valueChange)="resumeData['hobbies'] = $event; onModelChange()" 
+            placeholder="List your hobbies...">
+        </app-rich-text-input>
       </div>
 
     </div>

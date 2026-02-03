@@ -1960,7 +1960,29 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     try {
+        // Collect links BEFORE generating PDF (while element is in DOM)
+        // We need to calculate their position relative to the A4 page container
+        const linksToInject: { x: number, y: number, w: number, h: number, url: string }[] = [];
+        const containerRect = exportElement.getBoundingClientRect();
+        const anchors = exportElement.querySelectorAll('a');
+        
+        anchors.forEach(a => {
+            const rect = a.getBoundingClientRect();
+            // Calculate relative position to the container
+            // We use the same units (px) as the PDF generator
+            if (rect.width > 0 && rect.height > 0 && a.href) {
+                linksToInject.push({
+                   x: rect.left - containerRect.left,
+                   y: rect.top - containerRect.top,
+                   w: rect.width,
+                   h: rect.height,
+                   url: a.href
+                });
+            }
+        });
+
         // 2. Setup jsPDF
+        // A4 Size in px at 96 DPI is approx 794x1123
         const a4WidthPx = 794;
         const a4HeightPx = 1123;
         
@@ -1973,9 +1995,17 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
         });
 
         // 3. Render HTML to PDF
-        // Using pdf.html which creates selectable text vectors mostly
         await pdf.html(exportElement, {
             callback: function(doc) {
+                // MANUALLY INJECT LINKS
+                // This bypasses html2canvas interactivity issues completely
+                console.log(`🔗 Injecting ${linksToInject.length} links into PDF manually.`);
+                linksToInject.forEach(link => {
+                    doc.link(link.x, link.y, link.w, link.h, { url: link.url });
+                    // Optional debug: draw rect to verify position
+                    // doc.rect(link.x, link.y, link.w, link.h);
+                });
+
                 doc.save(`resume_${new Date().toISOString().split('T')[0]}.pdf`);
                 
                 // Cleanup inside callback

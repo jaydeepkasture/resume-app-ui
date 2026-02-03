@@ -2,11 +2,12 @@ import { Component, Input, Output, EventEmitter, OnInit, AfterViewInit, OnChange
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ResumeData } from '../../template.service';
+import { RichTextInputComponent } from '../../../shared/components/rich-text-input/rich-text-input.component';
 
 @Component({
   selector: 'app-form-template-69760da5141f61da2dbb924e',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RichTextInputComponent],
   templateUrl: './form-template-69760da5141f61da2dbb924e.component.html',
   styleUrls: ['./form-template-69760da5141f61da2dbb924e.component.css']
 })
