@@ -229,4 +229,30 @@ export class TemplateService {
   getTemplateById(templateId: string): Observable<TemplateDetailResponse> {
     return this.httpService.get<TemplateDetailResponse>(`template/${templateId}`);
   }
+
+  /**
+   * Save the current resume state
+   * @param resumeData - The resume data to save
+   * @param templateId - The template ID
+   * @param chatId - The chat ID
+   * @returns Observable with the save response
+   */
+  saveResume(resumeData: ResumeData, templateId: string, chatId: string): Observable<any> {
+    const formattedData = {
+      name: resumeData.name || '',
+      role: resumeData.role || '',
+      phoneNo: resumeData['phoneno'] || resumeData.phoneNo || '',
+      email: resumeData.email || '',
+      location: resumeData.location || '',
+      linkedIn: resumeData['linkedin'] || resumeData.linkedIn || '',
+      gitHub: resumeData['github'] || resumeData.gitHub || '',
+      summary: resumeData.summary || '',
+      experience: resumeData['experiance'] || resumeData.experience || [],
+      skills: resumeData.skills || [],
+      education: resumeData['eduction'] || resumeData.education || [],
+      ...(resumeData as any) // Include any other properties
+    };
+    
+    return this.httpService.put(`resume/save?chatId=${chatId}&templateId=${templateId}`, resumeData);
+  }
 }

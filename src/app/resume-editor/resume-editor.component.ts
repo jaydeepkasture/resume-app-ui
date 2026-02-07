@@ -140,6 +140,53 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
     this.clearHighlights();
   }
 
+  isManualEdit: boolean = false;
+  isSaving: boolean = false;
+  private isProgrammaticUpdate: boolean = false;
+
+  saveResume(): void {
+    if (!this.isManualEdit || this.isSaving) return;
+    
+    if (!this.currentResumeData) {
+      console.warn('Cannot save: No resume data available');
+      return;
+    }
+
+    // If templateId is not set, we can't save effectively? Or we use default?
+    // The requirement says "send templateid in query paramater".
+    const templateId = this.currentTemplateId || this.currentChatId; // Fallback? No, chatId is not templateId.
+    const chatId = this.currentChatId;
+
+    if (!templateId) {
+      alert('Cannot save: No template selected.');
+      return;
+    }
+
+    if (!chatId) {
+      alert('Cannot save: No chat session active.');
+      return;
+    }
+
+    this.isSaving = true;
+    console.log('💾 Saving resume data...', this.currentResumeData);
+
+    this.templateService.saveResume(this.currentResumeData, templateId, chatId).subscribe({
+      next: (response) => {
+        console.log('✅ Resume saved successfully:', response);
+        this.isSaving = false;
+        this.isManualEdit = false; // Reset modification flag
+        
+        // Refresh history to show the latest saved state if applicable
+        this.refreshHistory();
+      },
+      error: (err) => {
+        console.error('❌ Failed to save resume:', err);
+        this.isSaving = false;
+        alert('Failed to save resume. Please try again.');
+      }
+    });
+  }
+
   // Listen for browser back button
   @HostListener('window:popstate', ['$event'])
   onPopState(event: any) {
@@ -262,7 +309,7 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
             this.processTemplateAndData(htmlContent, 'backend/template', this.currentResumeData);
           } else {
             // Just load the empty template
-            this.editor.commands.setContent(htmlContent);
+            this.setContent(htmlContent);
           }
         } else {
           console.error('❌ Failed to load template:', response.message);
@@ -530,6 +577,7 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   // Handling data change from Form Component
   onFormDataChange(newData: ResumeData) {
       this.currentResumeData = newData;
+      this.isManualEdit = true;
       // Maybe auto-save or simple local state update
   }
 
@@ -633,7 +681,7 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
           // 2. Patch resume HTML to editor
           if (historyData.resumeHtml) {
             console.log('Updating editor with history HTML...');
-            this.editor.commands.setContent(historyData.resumeHtml);
+            this.setContent(historyData.resumeHtml);
             
             // Optionally re-bind events or styles if needed, but setContent handles most
             // If the HTML relies on template-specific CSS being present, we should ensure the correct template is loaded.
@@ -760,12 +808,12 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
              editorElement.style.backgroundColor = body.getAttribute('bgcolor') || '';
            }
            if (body.hasAttribute('text')) {
-             editorElement.style.color = body.getAttribute('text') || '';
-           }
-         }
+              editorElement.style.color = body.getAttribute('text') || '';
+            }
+          }
          
          // Set content
-         this.editor.commands.setContent(doc.body.innerHTML);
+         this.setContent(doc.body.innerHTML);
   }
 
   onSidebarToggled(isOpen: boolean): void {
@@ -885,6 +933,48 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
     this.historyItems = [];
     this.loadHistory();
   }
+  
+  /**
+   * Load the first history item automatically when editor URL is opened
+   */
+  loadFirstHistoryItem() {
+    if (!this.currentChatId) {
+      console.warn('⚠️ Cannot load first history item: No chat ID');
+      return;
+    }
+    
+    console.log('📜 Loading first history item for chat:', this.currentChatId);
+    
+    // Load the first page of history with page size 1 to get only the first item
+    this.templateService.getChatHistory(
+      this.currentChatId, 
+      1, // page 1
+      1, // pageSize 1 (only get first item)
+      'desc', // most recent first
+      '' // no search
+    ).subscribe({
+      next: (response) => {
+        if (response.status && response.data && response.data.length > 0) {
+          const firstHistoryItem = response.data[0];
+          console.log('✅ Loaded first history item:', firstHistoryItem);
+          
+          // Automatically select this history item
+          if (firstHistoryItem._id || firstHistoryItem.id) {
+            const historyId = firstHistoryItem._id || firstHistoryItem.id;
+            this.onHistorySelected(historyId);
+          } else {
+            console.error('❌ First history item has no ID');
+          }
+        } else {
+          console.log('ℹ️ No history items found for this chat');
+        }
+      },
+      error: (err) => {
+        console.error('❌ Error loading first history item:', err);
+      }
+    });
+  }
+
   
   /**
    * Activate highlighting and set up event listeners to remove it
@@ -1014,8 +1104,10 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
       const chatId = params['chatId'];
       if (chatId && chatId !== this.currentChatId) {
         console.log('📍 Chat ID from URL:', chatId);
-        this.currentChatId = chatId
-        // this.onChatSelected(chatId);
+        this.currentChatId = chatId;
+        
+        // Load the first history item automatically when chat is loaded
+        this.loadFirstHistoryItem();
       }
     });
 
@@ -1167,6 +1259,16 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
       // More permissive parsing to preserve HTML structure
       parseOptions: {
         preserveWhitespace: 'full'
+      },
+      onUpdate: () => {
+        if (this.isProgrammaticUpdate) {
+            this.isProgrammaticUpdate = false;
+            return;
+        }
+        if (!this.isManualEdit) {
+            console.log('✏️ Manual edit detected in editor');
+            this.isManualEdit = true;
+        }
       }
     });
     
@@ -1477,7 +1579,10 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Set content
   setContent(content: string): void {
+    this.isProgrammaticUpdate = true;
     this.editor.commands.setContent(content);
+    // Reset manual edit flag as this is a programmatic set
+    this.isManualEdit = false;
   }
 
   private linkify(text: string): string {
@@ -2274,7 +2379,7 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
       
       if (responseData.enhancedHtml) {
         // Directly set the enhanced HTML content
-        this.editor.commands.setContent(responseData.enhancedHtml);
+        this.setContent(responseData.enhancedHtml);
         console.log('✅ Editor content replaced with enhancedHtml');
         
         // Update global resume data
@@ -2309,10 +2414,20 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // Patch the content directly into the existing editor HTML
     console.log('Patching enhanced data into existing editor content...');
+    
+    this.isProgrammaticUpdate = true;
     this.patchEnhancedDataIntoEditor(enhancedData, oldData);
     
+    // Safety timeout to reset flag if onUpdate doesn't fire or fires late
+    setTimeout(() => {
+        if (this.isProgrammaticUpdate) {
+            this.isProgrammaticUpdate = false;
+        }
+    }, 500);
+
     // Update global variable
     this.currentResumeData = enhancedData;
+    this.isManualEdit = false; // Ensure patches don't count as manual edits
   }
   
   /**
