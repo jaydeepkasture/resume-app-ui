@@ -136,7 +136,7 @@
     <div class="toolbar-divider"></div>
 
     <!-- History Controls -->
-    <div class="toolbar-group">
+    <div class="toolbar-group" *ngIf="!isFormEditMode">
       <button 
         class="toolbar-btn" 
         (click)="undo()" 
@@ -159,10 +159,10 @@
       </button>
     </div>
 
-    <div class="toolbar-divider"></div>
+    <div class="toolbar-divider" *ngIf="!isFormEditMode"></div>
 
     <!-- Text Formatting -->
-    <div class="toolbar-group">
+    <div class="toolbar-group" *ngIf="!isFormEditMode">
       <button 
         class="toolbar-btn" 
         (click)="toggleBold()" 
@@ -193,10 +193,10 @@
       </button>
     </div>
 
-    <div class="toolbar-divider"></div>
+    <div class="toolbar-divider" *ngIf="!isFormEditMode"></div>
 
     <!-- Font Styling -->
-    <div class="toolbar-group">
+    <div class="toolbar-group" *ngIf="!isFormEditMode">
       <!-- Font Family -->
       <select class="toolbar-select font-family-select" style="width: 140px;" (change)="setFontFamily($any($event.target).value)">
         <option value="" disabled selected>Font Family</option>
@@ -235,10 +235,10 @@
       </select>
     </div>
 
-    <div class="toolbar-divider"></div>
+    <div class="toolbar-divider" *ngIf="!isFormEditMode"></div>
 
     <!-- Heading Styles -->
-  <div class="toolbar-group">
+  <div class="toolbar-group" *ngIf="!isFormEditMode">
       <select class="toolbar-select" [ngModel]="currentHeadingValue" (ngModelChange)="setHeadingValue($event)">
         <option value="paragraph">Paragraph</option>
         <option value="1">Heading 1</option>
@@ -250,10 +250,10 @@
       </select>
     </div>
 
-    <div class="toolbar-divider"></div>
+    <div class="toolbar-divider" *ngIf="!isFormEditMode"></div>
 
     <!-- Lists -->
-    <div class="toolbar-group">
+    <div class="toolbar-group" *ngIf="!isFormEditMode">
       <button 
         class="toolbar-btn" 
         (click)="toggleBulletList()" 
@@ -284,10 +284,10 @@
       </button>
     </div>
 
-    <div class="toolbar-divider"></div>
+    <div class="toolbar-divider" *ngIf="!isFormEditMode"></div>
 
     <!-- Text Alignment -->
-    <div class="toolbar-group">
+    <div class="toolbar-group" *ngIf="!isFormEditMode">
       <button 
         class="toolbar-btn" 
         (click)="setTextAlign('left')" 
@@ -334,10 +334,10 @@
       </button>
     </div>
 
-    <div class="toolbar-divider"></div>
+    <div class="toolbar-divider" *ngIf="!isFormEditMode"></div>
 
     <!-- Insert Options -->
-    <div class="toolbar-group">
+    <div class="toolbar-group" *ngIf="!isFormEditMode">
       <button 
         class="toolbar-btn" 
         (click)="setLink()" 
@@ -465,7 +465,7 @@
     <div class="toolbar-divider"></div>
 
     <!-- Blockquote -->
-    <div class="toolbar-group">
+    <div class="toolbar-group" *ngIf="!isFormEditMode">
       <button 
         class="toolbar-btn" 
         (click)="toggleBlockquote()" 
@@ -478,7 +478,7 @@
       </button>
     </div>
 
-    <div class="toolbar-divider"></div>
+    <div class="toolbar-divider" *ngIf="!isFormEditMode"></div>
 
     <!-- Download -->
     <div class="toolbar-group">
@@ -508,8 +508,11 @@
     
     <div class="toolbar-divider"></div>
 
+
+    <div class="toolbar-divider" *ngIf="!isFormEditMode"></div>
+
     <!-- Enhancement Mode Toggle -->
-    <div class="toolbar-group">
+    <div class="toolbar-group" *ngIf="!isFormEditMode">
       <button 
         class="toolbar-btn enhancement-mode-toggle" 
         (click)="toggleEnhancementMode()" 
@@ -530,7 +533,7 @@
       </button>
     </div>
     
-    <div class="toolbar-divider"></div>
+    <div class="toolbar-divider" *ngIf="!isFormEditMode"></div>
 
     <!-- History Toggle -->
     <div class="toolbar-group">
