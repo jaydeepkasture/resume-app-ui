@@ -217,6 +217,48 @@ export class ChatSidebarComponent implements OnInit, OnDestroy {
   }
 
   /**
+   * Handle resume file upload
+   */
+  onFileSelected(event: any): void {
+    const file: File = event.target.files[0];
+    if (!file) return;
+
+    // Validate file type
+    const allowedTypes = ['.docx', '.pdf', '.doc'];
+    const extension = file.name.substring(file.name.lastIndexOf('.')).toLowerCase();
+    if (!allowedTypes.includes(extension)) {
+      alert('Invalid file type. Only DOCX, DOC, and PDF files are allowed.');
+      return;
+    }
+
+    this.loading = true;
+    console.log('📤 Uploading resume:', file.name);
+
+    this.httpService.uploadFile<ApiResponse<any>>('resume/upload', file).subscribe({
+      next: (response) => {
+        if (response.status) {
+          console.log('✅ Resume uploaded successfully');
+          alert('Resume uploaded successfully. We will enhance it for you!');
+          this.loadSessions(1); // Refresh sessions to show the potential new chat
+        } else {
+          console.error('❌ Upload failed:', response.message);
+          alert(response.message || 'Failed to upload resume.');
+        }
+        this.loading = false;
+        // Reset file input
+        event.target.value = '';
+      },
+      error: (err) => {
+        console.error('❌ Upload error:', err);
+        alert('An error occurred during upload. Please try again.');
+        this.loading = false;
+        // Reset file input
+        event.target.value = '';
+      }
+    });
+  }
+
+  /**
    * Select a chat session
    */
   selectChat(chatId: string): void {

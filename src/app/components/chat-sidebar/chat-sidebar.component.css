@@ -382,6 +382,65 @@
   color: white;
 }
 
+/* Upload Resume Section */
+.upload-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.upload-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  color: #667eea;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.upload-btn:hover:not(:disabled) {
+  background: rgba(102, 126, 234, 0.15);
+  transform: translateY(-1px);
+}
+
+.upload-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.info-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: help;
+  transition: color 0.2s;
+}
+
+.info-icon-container:hover {
+  color: #667eea;
+}
+
+.btn-text {
+  display: inline-block;
+}
+
+@media (max-width: 400px) {
+  .btn-text {
+    display: none;
+  }
+}
+
 /* ... existing styles ... */
 
 /* Collapsed Sidebar (Desktop) */

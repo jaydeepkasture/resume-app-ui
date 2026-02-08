@@ -223,6 +223,7 @@ export class HttpService {
    * Upload file
    */
   uploadFile<T>(url: string, file: File, fieldName: string = 'file', additionalData?: any): Observable<T> {
+    const fullUrl = this.prepareUrl(url);
     const formData = new FormData();
     formData.append(fieldName, file, file.name);
 
@@ -233,7 +234,7 @@ export class HttpService {
     }
 
     const headers = this.buildHeaders(undefined, false); // Don't set Content-Type for FormData
-    return this.http.post<T>(url, formData, { headers })
+    return this.http.post<T>(fullUrl, formData, { headers })
       .pipe(catchError(error => this.handleError(error, () => this.uploadFile<T>(url, file, fieldName, additionalData)))); // Basic retry for upload might need careful handling, but consistency is key
   }
 
@@ -241,8 +242,9 @@ export class HttpService {
    * Download file
    */
   downloadFile(url: string, filename?: string): Observable<Blob> {
+    const fullUrl = this.prepareUrl(url);
     const headers = this.buildHeaders();
-    return this.http.get(url, { 
+    return this.http.get(fullUrl, { 
       headers, 
       responseType: 'blob' 
     }).pipe(

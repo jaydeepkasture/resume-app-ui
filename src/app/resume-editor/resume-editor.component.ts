@@ -1206,14 +1206,6 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
             class: 'editor-link'
           }
         }),
-        Image.configure({
-          inline: true,
-          allowBase64: true,
-          HTMLAttributes: {
-            class: null,
-            style: null
-          }
-        }),
         Table.configure({
           resizable: true,
           HTMLAttributes: {

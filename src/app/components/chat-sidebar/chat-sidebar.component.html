@@ -8,7 +8,39 @@
     <div class="sidebar-header">
       <div class="header-actions">
 
-        
+        <!-- Upload Resume Button -->
+        <div class="upload-container">
+          <input 
+            type="file" 
+            #fileInput 
+            (change)="onFileSelected($event)" 
+            style="display: none" 
+            accept=".docx,.pdf,.doc"
+          >
+          <button 
+            class="sidebar-action-btn upload-btn" 
+            (click)="fileInput.click()" 
+            [disabled]="loading"
+            title="Upload Resume"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+            <span class="btn-text">Upload</span>
+          </button>
+          
+          <!-- Info Icon with Tooltip -->
+          <div class="info-icon-container" title="Upload existing resume will we enhance it or you can continue with our templates">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+          </div>
+        </div>
+
         <!-- Close Sidebar Button (Desktop) -->
         <button class="close-sidebar-btn" (click)="toggleSidebar()" title="Close Sidebar">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
