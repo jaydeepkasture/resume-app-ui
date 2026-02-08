@@ -662,8 +662,8 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
           const historyData = response.data;
           
           // 1. Update global resume data variable
-          if (historyData.enhancedResume) {
-             this.currentResumeData = historyData.enhancedResume;
+          if (historyData.enhancedResume || historyData.originalResume) {
+             this.currentResumeData = historyData.enhancedResume || historyData.originalResume;
              this.normalizeResumeData(this.currentResumeData);
              
              // Critical: If in Form Edit Mode, we must update the dynamic component instance explicitly
