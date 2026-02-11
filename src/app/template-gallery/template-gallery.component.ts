@@ -6,6 +6,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TemplateService } from '../resume-editor/template.service'; 
 import { SafeHtmlPipe } from '../shared/pipes/safe-html.pipe';
 import { ChatSidebarComponent } from '../components/chat-sidebar/chat-sidebar.component';
+import { BenefitsService } from '../billing/services/benefits.service';
+import { HttpService } from '../services/http.service';
 
 import { TemplatePreviewComponent } from './template-preview.component';
 
@@ -25,6 +27,8 @@ export class TemplateGalleryComponent implements OnInit {
 
   constructor(
     private templateService: TemplateService,
+    private benefitsService: BenefitsService,
+    private httpService: HttpService,
     private router: Router,
     private http: HttpClient,
     private cdr: ChangeDetectorRef
@@ -160,7 +164,31 @@ export class TemplateGalleryComponent implements OnInit {
   onGalleryTemplateSelect(template: any) {
     console.log('Gallery Template Selected:', template);
     
-    // Call API to create a new chat session with this template
+    // Check template limit before creating
+    const limit = this.benefitsService.get('TEMPLATE_LIMIT');
+    
+    this.httpService.get<any>('resume/chat/sessions?page=1&pageSize=1').subscribe({
+      next: (res) => {
+        const currentCount = res.data?.totalCount || (Array.isArray(res.data) ? res.data.length : 0);
+        
+        if (currentCount >= limit && limit > 0) {
+          alert(`Template limit reached (${limit}). Please upgrade your plan to create more resumes.`);
+          this.router.navigate(['/billing/plans']);
+          return;
+        }
+
+        // Proceed to create
+        this.createSession(template);
+      },
+      error: (err) => {
+        console.error('Error checking sessions count:', err);
+        // If check fails, try to proceed anyway or show error
+        this.createSession(template); 
+      }
+    });
+  }
+
+  private createSession(template: any) {
     this.templateService.createChatSession(template.id).subscribe({
       next: (response) => {
         if (response.status && response.data) {

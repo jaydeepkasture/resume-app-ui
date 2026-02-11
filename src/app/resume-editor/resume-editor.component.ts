@@ -2310,9 +2310,14 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
         },
         error: (error) => {
           console.error('API Error:', error);
-          this.isSending = false; // Stop animation on error!
+          this.isSending = false;
           
-          // Check if it's a network error or backend is not running
+          if (error.status === 429) {
+            // Rate limit handled by HttpService alert, but we add redirect here
+            this.router.navigate(['/billing/plans']);
+            return;
+          }
+
           if (error.status === 0) {
             alert(`Cannot connect to backend server. Please ensure the backend is running on ${environment.apiUrl.replace('/api', '')}`);
           } else if (error.status === 404) {

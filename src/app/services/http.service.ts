@@ -400,7 +400,10 @@ export class HttpService {
       errorMessage = error.error.message;
     } else {
       // Server-side error
-      if (error.error?.message) {
+      if (error.status === 429) {
+        errorMessage = 'Rate limit exceeded. Please upgrade to Pro for higher limits or wait a minute.';
+        alert(errorMessage);
+      } else if (error.error?.message) {
         errorMessage = error.error.message;
       } else if (error.error?.error) {
         errorMessage = error.error.error;

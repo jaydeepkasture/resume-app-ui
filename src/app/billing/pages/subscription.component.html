@@ -1,0 +1,61 @@
+<div class="billing-page">
+  <div class="billing-header">
+    <h1>Your Subscription</h1>
+    <p>Manage your billing and subscription details.</p>
+  </div>
+
+  <div *ngIf="loading" class="loading-state">
+    <div class="spinner"></div>
+  </div>
+
+  <div *ngIf="!loading && !subscription" class="no-subscription-card">
+    <div class="card-icon">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+        <line x1="3" y1="10" x2="21" y2="10"></line>
+      </svg>
+    </div>
+    <h3>No Active Subscription</h3>
+    <p>Get started by choosing a plan that works for you.</p>
+    <button class="primary-btn" (click)="goToPlans()">Browse Plans</button>
+  </div>
+
+  <div *ngIf="!loading && subscription" class="subscription-card">
+    <div class="subscription-status" [class.active]="subscription.status === 'Active'">
+      {{ subscription.status }}
+    </div>
+    
+    <div class="plan-info">
+      <h3>{{ subscription.plan }} Plan</h3>
+      <div class="date-info">
+        <div class="date-row">
+          <span class="label">Renewing/Ending on:</span>
+          <span class="value">{{ subscription.endDate | date:'mediumDate' }}</span>
+        </div>
+      </div>
+      
+      <div class="benefits-section">
+        <h4>Included Benefits:</h4>
+        <ul class="benefits-list">
+          <li>
+            <strong>Templates:</strong> 
+            {{ subscription.benefits['TEMPLATE_LIMIT'] }}
+          </li>
+          <li>
+            <strong>AI Rate Limit:</strong> 
+            {{ subscription.benefits['RATE_LIMIT_PER_MINUTE'] }} requests/min
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <button class="cancel-btn" (click)="cancel()" *ngIf="subscription.status === 'Active'">
+        Cancel Auto-Renewal
+      </button>
+      <div class="renewal-info" *ngIf="subscription.status !== 'Active'">
+        Your access will continue until {{ subscription.endDate | date }}
+      </div>
+    </div>
+  </div>
+</div>

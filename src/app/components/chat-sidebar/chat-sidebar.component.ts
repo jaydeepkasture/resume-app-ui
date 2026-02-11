@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpService, ApiResponse } from '../../services/http.service';
 import { AuthService } from '../../auth/auth.service';
+import { BenefitsService } from '../../billing/services/benefits.service';
 
 // DTOs
 export interface ChatSession {
@@ -72,6 +73,7 @@ export class ChatSidebarComponent implements OnInit, OnDestroy {
   constructor(
     private httpService: HttpService,
     private authService: AuthService,
+    private benefitsService: BenefitsService,
     private router: Router
   ) {}
 
@@ -180,6 +182,13 @@ export class ChatSidebarComponent implements OnInit, OnDestroy {
    * Create new chat session
    */
   createNewChat(): void {
+    const limit = this.benefitsService.get('TEMPLATE_LIMIT');
+    if (this.sessions.length >= limit && limit > 0) {
+      alert(`Template limit reached (${limit}). Please upgrade your plan to create more resumes.`);
+      this.router.navigate(['/billing/plans']);
+      return;
+    }
+
     this.loading = true;
     this.error = '';
     const body: CreateChatRequest = { title: 'New Resume Chat' };
@@ -210,6 +219,10 @@ export class ChatSidebarComponent implements OnInit, OnDestroy {
       },
       error: (error) => {
         console.error('❌ Error creating chat:', error);
+        if (error.status === 429) {
+          this.router.navigate(['/billing/plans']);
+          return;
+        }
         this.error = 'Failed to create new chat';
         this.loading = false;
       }
@@ -228,6 +241,13 @@ export class ChatSidebarComponent implements OnInit, OnDestroy {
     const extension = file.name.substring(file.name.lastIndexOf('.')).toLowerCase();
     if (!allowedTypes.includes(extension)) {
       alert('Invalid file type. Only DOCX, DOC, and PDF files are allowed.');
+      return;
+    }
+
+    const limit = this.benefitsService.get('TEMPLATE_LIMIT');
+    if (this.sessions.length >= limit && limit > 0) {
+      alert(`Template limit reached (${limit}). Please upgrade your plan to upload more resumes.`);
+      this.router.navigate(['/billing/plans']);
       return;
     }
 
@@ -250,6 +270,10 @@ export class ChatSidebarComponent implements OnInit, OnDestroy {
       },
       error: (err) => {
         console.error('❌ Upload error:', err);
+        if (err.status === 429) {
+          this.router.navigate(['/billing/plans']);
+          return;
+        }
         alert('An error occurred during upload. Please try again.');
         this.loading = false;
         // Reset file input

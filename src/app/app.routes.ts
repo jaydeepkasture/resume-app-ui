@@ -47,6 +47,18 @@ export const routes: Routes = [
     canActivate: [AuthGuard]
   },
   
+  // Billing and Subscription
+  {
+    path: 'billing/plans',
+    loadComponent: () => import('./billing/pages/plans.component').then(m => m.PlansComponent),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'billing/subscription',
+    loadComponent: () => import('./billing/pages/subscription.component').then(m => m.SubscriptionComponent),
+    canActivate: [AuthGuard]
+  },
+  
   // Wildcard route - redirect to home
   {
     path: '**',

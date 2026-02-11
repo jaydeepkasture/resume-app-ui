@@ -47,6 +47,10 @@ export class ProfileComponent implements OnInit {
     this.location.back();
   }
 
+  goToBilling(): void {
+    this.router.navigate(['/billing/plans']);
+  }
+
   onSubmit(): void {
     if (!this.user) return;
     

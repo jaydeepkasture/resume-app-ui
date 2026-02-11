@@ -1,0 +1,67 @@
+<div class="plans-container">
+  <div class="plans-header">
+    <h1>Choose Your Plan</h1>
+    <p>Unlock premium features and templates to build your career.</p>
+  </div>
+
+  <div *ngIf="loading" class="loading-state">
+    <div class="spinner"></div>
+    <p>Loading plans...</p>
+  </div>
+
+  <div *ngIf="!loading && plans.length === 0" class="empty-state">
+    <p>No plans available at the moment.</p>
+  </div>
+
+  <div class="plans-grid" *ngIf="!loading && plans.length > 0">
+    <div *ngFor="let plan of plans" class="plan-card" [class.pro-plan]="plan.planCode === 'PRO'">
+      <div class="plan-badge" *ngIf="plan.planCode === 'PRO'">Popular</div>
+      <h2 class="plan-name">{{ plan.planName }}</h2>
+      
+      <div class="prices-container">
+        <div class="price-box">
+          <div class="price-value">
+            <span class="currency">{{ plan.currency }}</span>
+            <span class="amount">{{ plan.price === 0 ? 'Free' : plan.price }}</span>
+            <span class="cycle" *ngIf="plan.price > 0">/ {{ plan.billingCycle }}</span>
+          </div>
+
+          <button
+            class="subscribe-btn"
+            [class.processing]="processing"
+            (click)="subscribe(plan)"
+            [disabled]="processing">
+            {{ processing ? 'Processing...' : (plan.price === 0 ? 'Current Plan' : 'Upgrade Now') }}
+          </button>
+        </div>
+      </div>
+
+      <div class="plan-features">
+        <div class="feature-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span><strong>{{ plan.benefits['TEMPLATE_LIMIT'] }}</strong> Templates Allowed</span>
+        </div>
+        <div class="feature-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span><strong>{{ plan.benefits['RATE_LIMIT_PER_MINUTE'] }}</strong> API calls / min</span>
+        </div>
+        <div class="feature-item" *ngIf="plan.planCode === 'PRO'">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span>Priority AI Processing</span>
+        </div>
+        <div class="feature-item" *ngIf="plan.planCode === 'PRO'">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span>Premium Support</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

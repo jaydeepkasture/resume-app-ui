@@ -4,6 +4,8 @@ import { map, tap, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { HttpService, ApiResponse } from '../services/http.service';
 import { StateService, User } from '../services/state.service';
+import { BillingApiService } from '../billing/services/billing-api.service';
+import { BenefitsService } from '../billing/services/benefits.service';
 
 // ============================================
 // DTOs (Data Transfer Objects)
@@ -47,6 +49,8 @@ export class AuthService {
   constructor(
     private httpService: HttpService,
     private stateService: StateService,
+    private billingApi: BillingApiService,
+    private benefitsService: BenefitsService,
     private router: Router
   ) {
     console.log('🔐 AuthService initialized');
@@ -75,6 +79,7 @@ export class AuthService {
           console.log('🔐 Extracted user:', user);
           console.log('🔐 Calling setAuthState...');
           this.stateService.setAuthState(token, user, refreshToken);
+          this.loadUserBenefits();
           console.log('✅ Login successful, state saved for:', user.email);
         } else {
           console.log('⚠️ Response status is false or no data');
@@ -97,6 +102,7 @@ export class AuthService {
         if (response.status && response.data) {
           const { token, refreshToken, user } = response.data;
           this.stateService.setAuthState(token, user, refreshToken);
+          this.loadUserBenefits();
           console.log('✅ Registration successful:', user.email);
         }
       }),
@@ -140,6 +146,7 @@ export class AuthService {
           // Update state with new access token
           // Refresh token is handled server-side via cookies
           this.stateService.setAuthState(token, user, undefined);
+          this.loadUserBenefits();
           console.log('✅ Token refreshed via cookie');
         }
       }),
@@ -160,6 +167,7 @@ export class AuthService {
         if (response.status && response.data) {
           const { token, refreshToken, user } = response.data;
           this.stateService.setAuthState(token, user, refreshToken);
+          this.loadUserBenefits();
           console.log('✅ Google login successful:', user.email);
         }
       }),
@@ -283,5 +291,22 @@ export class AuthService {
     console.log('Token:', this.getToken()?.substring(0, 20) + '...');
     console.log('Token Expiry:', this.getTokenExpiry());
     console.log('======================');
+  }
+
+  /**
+   * Load user benefits from subscription
+   */
+  public loadUserBenefits(): void {
+    this.billingApi.getMySubscription().subscribe({
+      next: (sub) => {
+        if (sub && sub.benefits) {
+          this.benefitsService.set(sub.benefits);
+          console.log('🎁 Benefits loaded:', sub.benefits);
+        }
+      },
+      error: (err) => {
+        console.error('❌ Failed to load benefits:', err);
+      }
+    });
   }
 }
