@@ -61,6 +61,17 @@
                   "with": "src/environments/environment.development.ts"
                 }
               ]
+            },
+            "qa": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.qa.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -68,7 +79,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "port": 1800
+            "port": 1800,
+            "ssl": true
           },
           "configurations": {
             "production": {
@@ -76,6 +88,9 @@
             },
             "development": {
               "buildTarget": "resume-in-1-min:build:development"
+            },
+            "qa": {
+              "buildTarget": "resume-in-1-min:build:qa"
             }
           },
           "defaultConfiguration": "development"
