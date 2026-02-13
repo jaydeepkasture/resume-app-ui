@@ -14167,7 +14167,7 @@ var environment = {
   production: false,
   name: "qa",
   // API Configuration
-  apiUrl: "http://ec2-13-127-164-107.ap-south-1.compute.amazonaws.com:5000/api/v1",
+  apiUrl: "http://ec2-13-127-164-107.ap-south-1.compute.amazonaws.com/api/v1",
   // Update with your QA API URL
   apiTimeout: 3e4,
   // Feature Flags
@@ -14974,4 +14974,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-3GNCNFJI.js.map
+//# sourceMappingURL=chunk-JRWJBEP5.js.map

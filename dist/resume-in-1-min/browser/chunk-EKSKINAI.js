@@ -1,7 +1,7 @@
 import {
   ChatSidebarComponent,
   TemplateService
-} from "./chunk-STJ2STJU.js";
+} from "./chunk-EFGNWVWU.js";
 import {
   DefaultValueAccessor,
   FormsModule,
@@ -10,8 +10,8 @@ import {
   NgSelectOption,
   SelectControlValueAccessor,
   ɵNgSelectMultipleOption
-} from "./chunk-R3IVFHC3.js";
-import "./chunk-Z3Q7F4VG.js";
+} from "./chunk-NO66OTWS.js";
+import "./chunk-AP4R7XYF.js";
 import {
   ActivatedRoute,
   CommonModule,
@@ -23,7 +23,7 @@ import {
   NgIf,
   Router,
   environment
-} from "./chunk-3GNCNFJI.js";
+} from "./chunk-JRWJBEP5.js";
 import {
   ChangeDetectorRef,
   ElementRef,
@@ -44042,4 +44042,4 @@ jspdf/dist/jspdf.es.min.js:
    * http://opensource.org/licenses/mit-license
    *)
 */
-//# sourceMappingURL=chunk-KPL4JTT5.js.map
+//# sourceMappingURL=chunk-EKSKINAI.js.map
