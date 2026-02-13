@@ -14165,29 +14165,27 @@ var VERSION3 = new Version("17.3.12");
 // src/environments/environment.ts
 var environment = {
   production: false,
-  name: "development",
+  name: "qa",
   // API Configuration
-  apiUrl: "http://localhost:5000/api/v1",
+  apiUrl: "http://ec2-13-127-164-107.ap-south-1.compute.amazonaws.com:5000/api/v1",
+  // Update with your QA API URL
   apiTimeout: 3e4,
   // Feature Flags
   enableDebugMode: true,
   enableConsoleLogging: true,
-  enableErrorReporting: false,
+  enableErrorReporting: true,
   enableAnalytics: false,
   // Storage Configuration
-  storagePrefix: "_app_dev_",
+  storagePrefix: "_app_qa_",
   useEncryption: true,
   storageType: "sessionStorage",
   // Authentication
   tokenExpiryBuffer: 300,
-  // 5 minutes
   sessionTimeout: 36e5,
-  // 1 hour
   googleClientId: "617323131977-a63i2vg58ko2i701g1uqjuaa9gs5ale5.apps.googleusercontent.com",
-  // Replace with actual Google Client ID
   // Application
-  appName: "Resume In One Minute",
-  appVersion: "1.0.0",
+  appName: "Resume In One Minute (QA)",
+  appVersion: "1.0.0-qa",
   // Validation
   minPasswordLength: 6,
   maxPasswordLength: 128,
@@ -14195,7 +14193,6 @@ var environment = {
   // UI
   itemsPerPage: 10,
   maxFileSize: 5242880,
-  // 5MB
   allowedFileTypes: ["pdf", "doc", "docx", "txt"]
 };
 
@@ -14977,4 +14974,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-O56GZWMN.js.map
+//# sourceMappingURL=chunk-3GNCNFJI.js.map

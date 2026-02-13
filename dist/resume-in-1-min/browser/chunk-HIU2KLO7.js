@@ -4,7 +4,7 @@ import {
   DatePipe,
   NgIf,
   Router
-} from "./chunk-O56GZWMN.js";
+} from "./chunk-3GNCNFJI.js";
 import {
   ɵsetClassDebugInfo,
   ɵɵStandaloneFeature,
@@ -221,4 +221,4 @@ var SubscriptionComponent = class _SubscriptionComponent {
 export {
   SubscriptionComponent
 };
-//# sourceMappingURL=chunk-BYNSIHMJ.js.map
+//# sourceMappingURL=chunk-HIU2KLO7.js.map
