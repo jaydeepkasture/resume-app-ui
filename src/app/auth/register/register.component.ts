@@ -81,14 +81,24 @@ export class RegisterComponent implements OnInit {
 
     this.loading = true;
 
-    const userData = {
+    const userData: any = { // Keeping it any for now to avoid potential type mismatch if the interface in auth.service isn't perfectly matched with the component form
+      firstName: this.f['firstName'].value,
+      lastName: this.f['lastName'].value,
       email: this.f['email'].value,
-      password: this.f['password'].value
+      phone: this.f['phone'].value,
+      password: this.f['password'].value,
+      confirmPassword: this.f['confirmPassword'].value
     };
 
-    console.log('📤 Sending registration request:', { email: userData.email });
+
+    console.log('📤 Sending registration request:', { 
+      email: userData.email,
+      firstName: userData.firstName,
+      lastName: userData.lastName
+    });
 
     this.authService.register(userData).subscribe({
+
       next: (response) => {
         console.log('✅ Registration response:', response);
         if (response.status) {

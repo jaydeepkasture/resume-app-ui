@@ -8,7 +8,7 @@ export const environment = {
   name: 'development',
   
   // API Configuration
-  apiUrl: 'http://localhost:5000/api/v1',
+  apiUrl: 'https://localhost:7200/api/v1',
   apiTimeout: 30000,
   
   // Feature Flags
