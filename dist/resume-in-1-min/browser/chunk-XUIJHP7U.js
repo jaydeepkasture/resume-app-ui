@@ -9,10 +9,10 @@ import {
   ReactiveFormsModule,
   Validators,
   ɵNgNoValidate
-} from "./chunk-IJPL72L2.js";
+} from "./chunk-WXY4V3NJ.js";
 import {
   AuthService
-} from "./chunk-H4BXM6O2.js";
+} from "./chunk-LJYI5RV2.js";
 import {
   CommonModule,
   NgIf,
@@ -20,7 +20,7 @@ import {
   RouterLink,
   RouterModule,
   environment
-} from "./chunk-JD2JENED.js";
+} from "./chunk-YV4ENLGT.js";
 import {
   ɵsetClassDebugInfo,
   ɵɵStandaloneFeature,
@@ -525,4 +525,4 @@ var RegisterComponent = class _RegisterComponent {
 export {
   RegisterComponent
 };
-//# sourceMappingURL=chunk-44LZD6PK.js.map
+//# sourceMappingURL=chunk-XUIJHP7U.js.map

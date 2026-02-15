@@ -9,19 +9,18 @@ import {
   ReactiveFormsModule,
   Validators,
   ɵNgNoValidate
-} from "./chunk-IJPL72L2.js";
+} from "./chunk-WXY4V3NJ.js";
 import {
   AuthService
-} from "./chunk-H4BXM6O2.js";
+} from "./chunk-LJYI5RV2.js";
 import {
   ActivatedRoute,
   CommonModule,
   NgIf,
   Router,
   RouterLink,
-  RouterModule,
-  environment
-} from "./chunk-JD2JENED.js";
+  RouterModule
+} from "./chunk-YV4ENLGT.js";
 import {
   NgZone,
   ɵsetClassDebugInfo,
@@ -162,6 +161,7 @@ var LoginComponent = class _LoginComponent {
     this.error = "";
     this.returnUrl = "";
     this.showPassword = false;
+    this.googleClientId = "";
   }
   ngOnInit() {
     if (this.authService.isAuthenticated()) {
@@ -173,7 +173,16 @@ var LoginComponent = class _LoginComponent {
       rememberMe: [false]
     });
     this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/";
-    this.loadGoogleScript();
+    this.authService.getGoogleClientId().subscribe({
+      next: (clientId) => {
+        this.googleClientId = clientId;
+        this.loadGoogleScript();
+      },
+      error: (err) => {
+        console.error("\u274C Failed to load Google Client ID:", err);
+        this.error = "Failed to initialize Google login. Refresh the page.";
+      }
+    });
   }
   loadGoogleScript() {
     const script = document.createElement("script");
@@ -186,8 +195,12 @@ var LoginComponent = class _LoginComponent {
     document.body.appendChild(script);
   }
   initializeGoogleSignIn() {
+    if (!this.googleClientId) {
+      console.error("\u274C Google Client ID is missing");
+      return;
+    }
     google.accounts.id.initialize({
-      client_id: environment.googleClientId,
+      client_id: this.googleClientId,
       callback: this.handleGoogleCredentialResponse.bind(this)
     });
     const buttonDiv = document.getElementById("google-btn");
@@ -373,4 +386,4 @@ var LoginComponent = class _LoginComponent {
 export {
   LoginComponent
 };
-//# sourceMappingURL=chunk-J535HZZM.js.map
+//# sourceMappingURL=chunk-ROGE23ZP.js.map

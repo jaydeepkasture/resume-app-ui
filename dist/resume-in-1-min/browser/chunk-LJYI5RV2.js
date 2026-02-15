@@ -3,9 +3,10 @@ import {
   HttpService,
   Router,
   StateService
-} from "./chunk-JD2JENED.js";
+} from "./chunk-YV4ENLGT.js";
 import {
   catchError,
+  map,
   tap,
   throwError,
   ɵɵdefineInjectable,
@@ -131,6 +132,20 @@ var AuthService = class _AuthService {
     }), catchError(this.handleError));
   }
   /**
+   * Get Google Client ID from backend and decrypt it
+   * GET /api/account/google/clientid
+   */
+  getGoogleClientId() {
+    return this.httpService.get("account/google/clientid").pipe(map((response) => {
+      if (response.status && response.data) {
+        const decryptedId = this.stateService.decrypt(response.data);
+        console.log("\u{1F510} Google Client ID fetched and decrypted");
+        return decryptedId;
+      }
+      throw new Error(response.message || "Failed to fetch Google Client ID");
+    }), catchError(this.handleError));
+  }
+  /**
    * Update user profile
    * PUT /api/account/profile
    */
@@ -252,4 +267,4 @@ export {
   BenefitsService,
   AuthService
 };
-//# sourceMappingURL=chunk-H4BXM6O2.js.map
+//# sourceMappingURL=chunk-LJYI5RV2.js.map

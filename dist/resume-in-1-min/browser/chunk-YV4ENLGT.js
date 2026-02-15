@@ -14182,7 +14182,6 @@ var environment = {
   // Authentication
   tokenExpiryBuffer: 300,
   sessionTimeout: 36e5,
-  googleClientId: "617323131977-a63i2vg58ko2i701g1uqjuaa9gs5ale5.apps.googleusercontent.com",
   // Application
   appName: "Resume In One Minute (QA)",
   appVersion: "1.0.0-qa",
@@ -14974,4 +14973,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-JD2JENED.js.map
+//# sourceMappingURL=chunk-YV4ENLGT.js.map
