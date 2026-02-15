@@ -107,7 +107,8 @@ export class StateService {
   /**
    * Decrypt the encrypted data
    */
-  private decrypt(encryptedData: string): string {
+  public decrypt(encryptedData: string): string {
+
     try {
       const key = this.ENCRYPTION_KEY;
       // Base64 decode first

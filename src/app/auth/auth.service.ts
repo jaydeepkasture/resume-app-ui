@@ -181,6 +181,25 @@ export class AuthService {
   }
 
   /**
+   * Get Google Client ID from backend and decrypt it
+   * GET /api/account/google/clientid
+   */
+  getGoogleClientId(): Observable<string> {
+    return this.httpService.get<ApiResponse<string>>('account/google/clientid').pipe(
+      map(response => {
+        if (response.status && response.data) {
+          // Decrypt the ID using StateService decryption pattern
+          const decryptedId = this.stateService.decrypt(response.data);
+          console.log('🔐 Google Client ID fetched and decrypted');
+          return decryptedId;
+        }
+        throw new Error(response.message || 'Failed to fetch Google Client ID');
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  /**
    * Update user profile
    * PUT /api/account/profile
    */

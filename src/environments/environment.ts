@@ -25,7 +25,6 @@ export const environment = {
   // Authentication
   tokenExpiryBuffer: 300, // 5 minutes
   sessionTimeout: 3600000, // 1 hour
-  googleClientId: '617323131977-a63i2vg58ko2i701g1uqjuaa9gs5ale5.apps.googleusercontent.com', // Replace with actual Google Client ID
   
   // Application
   appName: 'Resume In One Minute',
