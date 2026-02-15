@@ -288,14 +288,40 @@ export class AuthService {
   private handleError(error: any): Observable<never> {
     let errorMessage = 'An error occurred';
     
-    if (error.error instanceof ErrorEvent) {
+    if (error instanceof Error) {
+      // This might be an error thrown by HttpService with a pre-formatted message
+      errorMessage = error.message;
+    } else if (error.error instanceof ErrorEvent) {
       // Client-side error
       errorMessage = error.error.message;
     } else {
-      // Server-side error
-      errorMessage = error.error?.message || error.message || errorMessage;
+      // Server-side error from HttpErrorResponse
+      const serverError = error.error;
+      if (serverError) {
+        if (serverError.errors) {
+          const validationErrors: string[] = [];
+          Object.keys(serverError.errors).forEach(key => {
+            const messages = serverError.errors[key];
+            if (Array.isArray(messages)) {
+              validationErrors.push(...messages);
+            } else {
+              validationErrors.push(messages);
+            }
+          });
+          errorMessage = validationErrors.length > 0 ? validationErrors.join(', ') : (serverError.title || errorMessage);
+        } else {
+          errorMessage = serverError.message || serverError.title || serverError.error || error.message || errorMessage;
+        }
+      } else {
+        errorMessage = error.message || errorMessage;
+      }
     }
     
+    // Clean up generic Angular error prefix if it exists
+    if (errorMessage.includes('Http failure response')) {
+      errorMessage = `Server Error: ${error.status || ''} ${error.statusText || ''}`.trim() || 'Connection failed';
+    }
+
     console.error('❌ Auth Service Error:', error);
     return throwError(() => new Error(errorMessage));
   }

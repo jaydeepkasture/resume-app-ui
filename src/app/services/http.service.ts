@@ -400,17 +400,46 @@ export class HttpService {
       errorMessage = error.error.message;
     } else {
       // Server-side error
+      const serverError = error.error;
+
       if (error.status === 429) {
         errorMessage = 'Rate limit exceeded. Please upgrade to Pro for higher limits or wait a minute.';
-        alert(errorMessage);
-      } else if (error.error?.message) {
-        errorMessage = error.error.message;
-      } else if (error.error?.error) {
-        errorMessage = error.error.error;
-      } else if (error.message) {
-        errorMessage = error.message;
+        // Optional: show alert or notification
+      } else if (serverError) {
+        // Handle ASP.NET Core validation errors (ProblemDetails)
+        if (serverError.errors) {
+          const validationErrors: string[] = [];
+          Object.keys(serverError.errors).forEach(key => {
+            const messages = serverError.errors[key];
+            if (Array.isArray(messages)) {
+              validationErrors.push(...messages);
+            } else {
+              validationErrors.push(messages);
+            }
+          });
+          errorMessage = validationErrors.length > 0 ? validationErrors.join(', ') : (serverError.title || errorMessage);
+        } 
+        // Handle standard message property
+        else if (serverError.message) {
+          errorMessage = serverError.message;
+        } 
+        // Handle title property
+        else if (serverError.title) {
+          errorMessage = serverError.title;
+        }
+        // Handle error property
+        else if (serverError.error) {
+          errorMessage = typeof serverError.error === 'string' ? serverError.error : JSON.stringify(serverError.error);
+        }
+        // Fallback to default message
+        else if (error.message && !error.message.includes('Http failure response')) {
+          errorMessage = error.message;
+        }
+        else {
+          errorMessage = `Error ${error.status}: ${error.statusText || 'Unknown Error'}`;
+        }
       } else {
-        errorMessage = `Error Code: ${error.status}\nMessage: ${error.statusText}`;
+        errorMessage = error.message || `Error ${error.status}: ${error.statusText || 'Unknown Error'}`;
       }
     }
 
