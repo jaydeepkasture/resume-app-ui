@@ -190,7 +190,6 @@ export class AuthService {
         if (response.status && response.data) {
           // Decrypt the ID using StateService decryption pattern
           const decryptedId = this.stateService.decrypt(response.data);
-          console.log('🔐 Google Client ID fetched and decrypted');
           return decryptedId;
         }
         throw new Error(response.message || 'Failed to fetch Google Client ID');

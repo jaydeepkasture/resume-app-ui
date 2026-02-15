@@ -5,8 +5,8 @@ import {
   ɵɵelementEnd,
   ɵɵelementStart,
   ɵɵtext
-} from "./chunk-V66YKGVO.js";
-import "./chunk-ASLTLD6L.js";
+} from "./chunk-ZOCQLSFQ.js";
+import "./chunk-PZQZAEDH.js";
 
 // src/app/auth/forgot-password/forgot-password.component.ts
 var ForgotPasswordComponent = class _ForgotPasswordComponent {
@@ -31,4 +31,4 @@ var ForgotPasswordComponent = class _ForgotPasswordComponent {
 export {
   ForgotPasswordComponent
 };
-//# sourceMappingURL=chunk-SK4K63SX.js.map
+//# sourceMappingURL=chunk-EEZFOZJV.js.map

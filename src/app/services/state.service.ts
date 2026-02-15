@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import * as CryptoJS from 'crypto-js';
 
 /**
  * State Management Service with Encrypted SessionStorage
  * 
  * Features:
  * - Data persists across page refreshes (within same browser session)
- * - Data is encrypted so users cannot easily read it
+ * - Data is encrypted so users cannot easily read it (AES-256)
  * - Data is cleared when browser/tab is closed
  * - Uses sessionStorage (more secure than localStorage)
  */
@@ -38,8 +39,11 @@ export interface AuthState {
   providedIn: 'root'
 })
 export class StateService {
-  // Encryption key - In production, this should be generated dynamically or from environment
-  private readonly ENCRYPTION_KEY = this.generateEncryptionKey();
+  // Encryption configuration
+  // For AES-256, key should be 32 bytes and IV should be 16 bytes
+  private readonly AES_KEY = CryptoJS.enc.Utf8.parse('ResumeInOneMinute_AES_Key_2026_!'); // 32 chars
+  private readonly AES_IV = CryptoJS.enc.Utf8.parse('1234567890123456'); // 16 chars
+  
   private readonly STORAGE_PREFIX = '_app_';
   private readonly AUTH_STATE_KEY = `${this.STORAGE_PREFIX}auth`;
 
@@ -60,7 +64,7 @@ export class StateService {
   private appState = new Map<string, any>();
 
   constructor() {
-    console.log('🔧 StateService initialized with encrypted sessionStorage');
+    console.log('🔧 StateService initialized with AES encrypted sessionStorage');
     this.loadPersistedState();
   }
 
@@ -69,35 +73,16 @@ export class StateService {
   // ============================================
 
   /**
-   * Generate encryption key for session storage
-   * Using a static key so data can be decrypted after page refresh
-   * Note: This is obfuscation, not security. Real auth is handled by HTTP-only cookies.
-   */
-  private generateEncryptionKey(): string {
-    // Use a static key that doesn't change on refresh
-    // This allows sessionStorage data to persist across page refreshes
-    // Security note: The real authentication is handled by HTTP-only cookies from backend
-    // This encrypted storage is just for UI state (user info, preferences, etc.)
-    return 'resume-app-session-key-v1';
-  }
-
-  /**
-   * Simple XOR-based encryption with Base64 encoding
-   * Note: This is obfuscation, not military-grade encryption
-   * For production, consider using Web Crypto API or a library like crypto-js
+   * AES Encryption
    */
   private encrypt(data: string): string {
     try {
-      const key = this.ENCRYPTION_KEY;
-      let encrypted = '';
-      
-      for (let i = 0; i < data.length; i++) {
-        const charCode = data.charCodeAt(i) ^ key.charCodeAt(i % key.length);
-        encrypted += String.fromCharCode(charCode);
-      }
-      
-      // Base64 encode to make it storage-safe and harder to read
-      return btoa(encrypted);
+      const encrypted = CryptoJS.AES.encrypt(data, this.AES_KEY, {
+        iv: this.AES_IV,
+        mode: CryptoJS.mode.CBC,
+        padding: CryptoJS.pad.Pkcs7
+      });
+      return encrypted.toString();
     } catch (error) {
       console.error('Encryption error:', error);
       return '';
@@ -105,22 +90,16 @@ export class StateService {
   }
 
   /**
-   * Decrypt the encrypted data
+   * AES Decryption
    */
   public decrypt(encryptedData: string): string {
-
     try {
-      const key = this.ENCRYPTION_KEY;
-      // Base64 decode first
-      const encrypted = atob(encryptedData);
-      let decrypted = '';
-      
-      for (let i = 0; i < encrypted.length; i++) {
-        const charCode = encrypted.charCodeAt(i) ^ key.charCodeAt(i % key.length);
-        decrypted += String.fromCharCode(charCode);
-      }
-      
-      return decrypted;
+      const decrypted = CryptoJS.AES.decrypt(encryptedData, this.AES_KEY, {
+        iv: this.AES_IV,
+        mode: CryptoJS.mode.CBC,
+        padding: CryptoJS.pad.Pkcs7
+      });
+      return decrypted.toString(CryptoJS.enc.Utf8);
     } catch (error) {
       console.error('Decryption error:', error);
       return '';

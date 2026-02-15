@@ -91,20 +91,26 @@ export class LoginComponent implements OnInit {
     if (buttonDiv) {
       google.accounts.id.renderButton(
         buttonDiv,
-        { theme: 'outline', size: 'large', width: '100%', text: 'continue_with' }
+        { 
+          theme: 'outline', 
+          size: 'large', 
+          width: buttonDiv.offsetWidth || 344, // Match container width or fallback
+          text: 'continue_with',
+          shape: 'rectangular',
+          logo_alignment: 'left'
+        }
       );
+
     }
   }
 
   handleGoogleCredentialResponse(response: any) {
     this.ngZone.run(() => {
-      console.log('Google response', response);
       if (response.credential) {
         this.loading = true; // Show loading state
         this.authService.verifyGoogleToken(response.credential).subscribe({
           next: (res) => {
             if (res.status) {
-               console.log('✅ Google Login successful, navigating to:', this.returnUrl);
                this.loading = false;
                this.router.navigate([this.returnUrl]);
             } else {
@@ -135,14 +141,8 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     this.error = '';
 
-    console.log('=== LOGIN FORM DEBUG ===');
-    console.log('Form valid:', this.loginForm.valid);
-    console.log('Form value:', this.loginForm.value);
-    console.log('Form errors:', this.loginForm.errors);
-
     // Stop if form is invalid
     if (this.loginForm.invalid) {
-      console.log('❌ Form is invalid, stopping');
       return;
     }
 
@@ -153,44 +153,20 @@ export class LoginComponent implements OnInit {
       password: this.f['password'].value
     };
 
-    console.log('📤 Sending credentials:', credentials);
-    console.log('📤 Credentials type:', typeof credentials);
-    console.log('📤 Credentials JSON:', JSON.stringify(credentials));
-
     this.authService.login(credentials).subscribe({
       next: (response) => {
-        console.log('✅ Login response received:', response);
-        console.log('  Response status:', response.status);
-        console.log('  Response message:', response.message);
-        console.log('  Response data:', response.data);
-        
         if (response.status) {
-          console.log('✅ Login successful, navigating to:', this.returnUrl);
-          
           // Set loading to false before navigation
           this.loading = false;
           
           // Navigate to return url or home
-          this.router.navigate([this.returnUrl]).then(
-            success => {
-              console.log('✅ Navigation successful:', success);
-            },
-            error => {
-              console.error('❌ Navigation failed:', error, this.returnUrl);
-              this.error = 'Navigation failed. Please try again.';
-              this.loading = false;
-            }
-          );
+          this.router.navigate([this.returnUrl]);
         } else {
-          console.log('❌ Login failed:', response.message);
           this.error = response.message || 'Login failed. Please try again.';
           this.loading = false;
         }
       },
       error: (error) => {
-        console.error('❌ Login error:', error);
-        console.error('  Error message:', error.message);
-        console.error('  Error object:', error);
         this.error = error.message || 'Login failed. Please check your credentials.';
         this.loading = false;
       }

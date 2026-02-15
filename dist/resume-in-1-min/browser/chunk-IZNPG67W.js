@@ -3,7 +3,7 @@ import {
   HttpService,
   Router,
   StateService
-} from "./chunk-YV4ENLGT.js";
+} from "./chunk-ARZYYT3N.js";
 import {
   catchError,
   map,
@@ -11,7 +11,7 @@ import {
   throwError,
   ɵɵdefineInjectable,
   ɵɵinject
-} from "./chunk-V66YKGVO.js";
+} from "./chunk-ZOCQLSFQ.js";
 
 // src/app/billing/services/benefits.service.ts
 var BenefitsService = class _BenefitsService {
@@ -139,7 +139,6 @@ var AuthService = class _AuthService {
     return this.httpService.get("account/google/clientid").pipe(map((response) => {
       if (response.status && response.data) {
         const decryptedId = this.stateService.decrypt(response.data);
-        console.log("\u{1F510} Google Client ID fetched and decrypted");
         return decryptedId;
       }
       throw new Error(response.message || "Failed to fetch Google Client ID");
@@ -267,4 +266,4 @@ export {
   BenefitsService,
   AuthService
 };
-//# sourceMappingURL=chunk-LJYI5RV2.js.map
+//# sourceMappingURL=chunk-IZNPG67W.js.map

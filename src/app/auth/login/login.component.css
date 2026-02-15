@@ -270,6 +270,18 @@
   font-weight: 500;
 }
 
+.google-btn-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+#google-btn {
+  width: 100%;
+  max-width: 400px;
+}
+
 /* Responsive */
 @media (max-width: 480px) {
   .auth-card {
