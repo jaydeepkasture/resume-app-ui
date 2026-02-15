@@ -9,10 +9,10 @@ import {
   ReactiveFormsModule,
   Validators,
   ɵNgNoValidate
-} from "./chunk-NO66OTWS.js";
+} from "./chunk-IJPL72L2.js";
 import {
   AuthService
-} from "./chunk-AP4R7XYF.js";
+} from "./chunk-H4BXM6O2.js";
 import {
   CommonModule,
   NgIf,
@@ -20,7 +20,7 @@ import {
   RouterLink,
   RouterModule,
   environment
-} from "./chunk-JRWJBEP5.js";
+} from "./chunk-JD2JENED.js";
 import {
   ɵsetClassDebugInfo,
   ɵɵStandaloneFeature,
@@ -342,10 +342,18 @@ var RegisterComponent = class _RegisterComponent {
     }
     this.loading = true;
     const userData = {
+      firstName: this.f["firstName"].value,
+      lastName: this.f["lastName"].value,
       email: this.f["email"].value,
-      password: this.f["password"].value
+      phone: this.f["phone"].value,
+      password: this.f["password"].value,
+      confirmPassword: this.f["confirmPassword"].value
     };
-    console.log("\u{1F4E4} Sending registration request:", { email: userData.email });
+    console.log("\u{1F4E4} Sending registration request:", {
+      email: userData.email,
+      firstName: userData.firstName,
+      lastName: userData.lastName
+    });
     this.authService.register(userData).subscribe({
       next: (response) => {
         console.log("\u2705 Registration response:", response);
@@ -517,4 +525,4 @@ var RegisterComponent = class _RegisterComponent {
 export {
   RegisterComponent
 };
-//# sourceMappingURL=chunk-YE3FPT2J.js.map
+//# sourceMappingURL=chunk-44LZD6PK.js.map

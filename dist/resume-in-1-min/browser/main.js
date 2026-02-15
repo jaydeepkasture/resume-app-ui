@@ -1,13 +1,13 @@
 import {
   AuthService
-} from "./chunk-AP4R7XYF.js";
+} from "./chunk-H4BXM6O2.js";
 import {
   Router,
   RouterOutlet,
   bootstrapApplication,
   provideHttpClient,
   provideRouter
-} from "./chunk-JRWJBEP5.js";
+} from "./chunk-JD2JENED.js";
 import {
   ɵsetClassDebugInfo,
   ɵɵStandaloneFeature,
@@ -2112,17 +2112,17 @@ var routes = [
   // Template Gallery
   {
     path: "templates",
-    loadComponent: () => import("./chunk-DE3XPIHC.js").then((m) => m.TemplateGalleryComponent),
+    loadComponent: () => import("./chunk-CR4RWCWK.js").then((m) => m.TemplateGalleryComponent),
     canActivate: [AuthGuard]
   },
   // Authentication routes (public)
   {
     path: "login",
-    loadComponent: () => import("./chunk-DVWN75RM.js").then((m) => m.LoginComponent)
+    loadComponent: () => import("./chunk-J535HZZM.js").then((m) => m.LoginComponent)
   },
   {
     path: "register",
-    loadComponent: () => import("./chunk-YE3FPT2J.js").then((m) => m.RegisterComponent)
+    loadComponent: () => import("./chunk-44LZD6PK.js").then((m) => m.RegisterComponent)
   },
   {
     path: "forgot-password",
@@ -2131,28 +2131,28 @@ var routes = [
   // Protected routes (require authentication)
   {
     path: "editor",
-    loadComponent: () => import("./chunk-EKSKINAI.js").then((m) => m.ResumeEditorComponent),
+    loadComponent: () => import("./chunk-4TSLZCTQ.js").then((m) => m.ResumeEditorComponent),
     canActivate: [AuthGuard]
   },
   {
     path: "editor/:chatId",
-    loadComponent: () => import("./chunk-EKSKINAI.js").then((m) => m.ResumeEditorComponent),
+    loadComponent: () => import("./chunk-4TSLZCTQ.js").then((m) => m.ResumeEditorComponent),
     canActivate: [AuthGuard]
   },
   {
     path: "profile",
-    loadComponent: () => import("./chunk-PFZJEUNX.js").then((m) => m.ProfileComponent),
+    loadComponent: () => import("./chunk-WU6BC3JM.js").then((m) => m.ProfileComponent),
     canActivate: [AuthGuard]
   },
   // Billing and Subscription
   {
     path: "billing/plans",
-    loadComponent: () => import("./chunk-42Q7YIGA.js").then((m) => m.PlansComponent),
+    loadComponent: () => import("./chunk-5LUV4SFC.js").then((m) => m.PlansComponent),
     canActivate: [AuthGuard]
   },
   {
     path: "billing/subscription",
-    loadComponent: () => import("./chunk-CIO6Z27H.js").then((m) => m.SubscriptionComponent),
+    loadComponent: () => import("./chunk-MD67KUH7.js").then((m) => m.SubscriptionComponent),
     canActivate: [AuthGuard]
   },
   // Wildcard route - redirect to home
