@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/auth/forgot-password/forgot-password.component.ts", "src/app/auth/forgot-password/forgot-password.component.html"],
-  "sourcesContent": ["import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-forgot-password',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './forgot-password.component.html',\r\n  styleUrl: './forgot-password.component.css'\r\n})\r\nexport class ForgotPasswordComponent {\r\n\r\n}\r\n", "<p>forgot-password works!</p>\r\n"],
-  "mappings": ";;;;;;;;;;;AASM,IAAO,0BAAP,MAAO,yBAAuB;;;uBAAvB,0BAAuB;IAAA;EAAA;;yEAAvB,0BAAuB,WAAA,CAAA,CAAA,qBAAA,CAAA,GAAA,YAAA,MAAA,UAAA,CAAA,6BAAA,GAAA,OAAA,GAAA,MAAA,GAAA,UAAA,SAAA,iCAAA,IAAA,KAAA;AAAA,UAAA,KAAA,GAAA;ACTpC,QAAA,yBAAA,GAAA,GAAA;AAAG,QAAA,iBAAA,GAAA,wBAAA;AAAsB,QAAA,uBAAA;;;;;;6EDSZ,yBAAuB,EAAA,WAAA,2BAAA,UAAA,iEAAA,YAAA,GAAA,CAAA;AAAA,GAAA;",
-  "names": []
-}

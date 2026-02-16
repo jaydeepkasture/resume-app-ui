@@ -2,16 +2,14 @@ import {
   BillingApiService,
   HttpService,
   Router,
-  StateService
-} from "./chunk-ARZYYT3N.js";
-import {
+  StateService,
   catchError,
   map,
   tap,
   throwError,
   ɵɵdefineInjectable,
   ɵɵinject
-} from "./chunk-ZOCQLSFQ.js";
+} from "./chunk-NPJVZ2QG.js";
 
 // src/app/billing/services/benefits.service.ts
 var BenefitsService = class _BenefitsService {
@@ -102,6 +100,13 @@ var AuthService = class _AuthService {
    */
   forgotPassword(data) {
     return this.httpService.post("account/forgot-password", data).pipe(catchError(this.handleError));
+  }
+  /**
+   * Reset password
+   * POST /api/account/reset-password
+   */
+  resetPassword(data) {
+    return this.httpService.post("account/reset-password", data).pipe(catchError(this.handleError));
   }
   /**
    * Refresh token
@@ -214,10 +219,33 @@ var AuthService = class _AuthService {
    */
   handleError(error) {
     let errorMessage = "An error occurred";
-    if (error.error instanceof ErrorEvent) {
+    if (error instanceof Error) {
+      errorMessage = error.message;
+    } else if (error.error instanceof ErrorEvent) {
       errorMessage = error.error.message;
     } else {
-      errorMessage = error.error?.message || error.message || errorMessage;
+      const serverError = error.error;
+      if (serverError) {
+        if (serverError.errors) {
+          const validationErrors = [];
+          Object.keys(serverError.errors).forEach((key) => {
+            const messages = serverError.errors[key];
+            if (Array.isArray(messages)) {
+              validationErrors.push(...messages);
+            } else {
+              validationErrors.push(messages);
+            }
+          });
+          errorMessage = validationErrors.length > 0 ? validationErrors.join(", ") : serverError.title || errorMessage;
+        } else {
+          errorMessage = serverError.message || serverError.title || serverError.error || error.message || errorMessage;
+        }
+      } else {
+        errorMessage = error.message || errorMessage;
+      }
+    }
+    if (errorMessage.includes("Http failure response")) {
+      errorMessage = `Server Error: ${error.status || ""} ${error.statusText || ""}`.trim() || "Connection failed";
     }
     console.error("\u274C Auth Service Error:", error);
     return throwError(() => new Error(errorMessage));
@@ -266,4 +294,4 @@ export {
   BenefitsService,
   AuthService
 };
-//# sourceMappingURL=chunk-IZNPG67W.js.map
+//# sourceMappingURL=chunk-OWHTODNA.js.map
