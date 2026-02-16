@@ -30,6 +30,13 @@ export interface ForgotPasswordDto {
   email: string;
 }
 
+export interface ResetPasswordDto {
+  email: string;
+  token: string;
+  password: string;
+  confirmPassword: string;
+}
+
 export interface LoginResponse {
   token: string;
   refreshToken?: string;
@@ -131,6 +138,17 @@ export class AuthService {
   forgotPassword(data: ForgotPasswordDto): Observable<ApiResponse> {
     return this.httpService.post<ApiResponse>(
       'account/forgot-password',
+      data
+    ).pipe(catchError(this.handleError));
+  }
+
+  /**
+   * Reset password
+   * POST /api/account/reset-password
+   */
+  resetPassword(data: ResetPasswordDto): Observable<ApiResponse> {
+    return this.httpService.post<ApiResponse>(
+      'account/reset-password',
       data
     ).pipe(catchError(this.handleError));
   }
