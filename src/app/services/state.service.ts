@@ -3,13 +3,12 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import * as CryptoJS from 'crypto-js';
 
 /**
- * State Management Service with Encrypted SessionStorage
+ * State Management Service with Encrypted LocalStorage
  * 
  * Features:
- * - Data persists across page refreshes (within same browser session)
+ * - Data persists across page refreshes and browser restarts
  * - Data is encrypted so users cannot easily read it (AES-256)
- * - Data is cleared when browser/tab is closed
- * - Uses sessionStorage (more secure than localStorage)
+ * - Uses localStorage for persistent authentication
  */
 
 export interface User {
@@ -64,7 +63,7 @@ export class StateService {
   private appState = new Map<string, any>();
 
   constructor() {
-    console.log('🔧 StateService initialized with AES encrypted sessionStorage');
+    console.log('🔧 StateService initialized with AES encrypted localStorage');
     this.loadPersistedState();
   }
 
@@ -111,24 +110,24 @@ export class StateService {
   // ============================================
 
   /**
-   * Save encrypted data to sessionStorage
+   * Save encrypted data to localStorage
    */
   private saveToStorage(key: string, data: any): void {
     try {
       const jsonString = JSON.stringify(data);
       const encrypted = this.encrypt(jsonString);
-      sessionStorage.setItem(key, encrypted);
+      localStorage.setItem(key, encrypted);
     } catch (error) {
       console.error('Failed to save to storage:', error);
     }
   }
 
   /**
-   * Load and decrypt data from sessionStorage
+   * Load and decrypt data from localStorage
    */
   private loadFromStorage<T>(key: string): T | null {
     try {
-      const encrypted = sessionStorage.getItem(key);
+      const encrypted = localStorage.getItem(key);
       if (!encrypted) return null;
       
       const decrypted = this.decrypt(encrypted);
@@ -142,11 +141,11 @@ export class StateService {
   }
 
   /**
-   * Remove data from sessionStorage
+   * Remove data from localStorage
    */
   private removeFromStorage(key: string): void {
     try {
-      sessionStorage.removeItem(key);
+      localStorage.removeItem(key);
     } catch (error) {
       console.error('Failed to remove from storage:', error);
     }
@@ -191,10 +190,10 @@ export class StateService {
     this.user$.next(user);
     this.isAuthenticated$.next(true);
 
-    // Persist to encrypted sessionStorage
+    // Persist to encrypted localStorage
     this.saveToStorage(this.AUTH_STATE_KEY, authState);
 
-    console.log('✅ Auth state updated and encrypted in sessionStorage:', { email: user.email });
+    console.log('✅ Auth state updated and encrypted in localStorage:', { email: user.email });
   }
 
   /**
@@ -237,7 +236,6 @@ export class StateService {
     // Check token expiration
     if (this.isTokenExpired(state.token)) {
       console.warn('⚠️ Token expired');
-      this.clearAuthState();
       return false;
     }
     
@@ -279,7 +277,7 @@ export class StateService {
     this.user$.next(null);
     this.isAuthenticated$.next(false);
     
-    // Remove from sessionStorage
+    // Remove from localStorage
     this.removeFromStorage(this.AUTH_STATE_KEY);
     
     console.log('🔓 Auth state cleared from memory and storage');
@@ -334,7 +332,7 @@ export class StateService {
    * Check if state exists
    */
   hasState(key: string): boolean {
-    return this.appState.has(key) || sessionStorage.getItem(`${this.STORAGE_PREFIX}${key}`) !== null;
+    return this.appState.has(key) || localStorage.getItem(`${this.STORAGE_PREFIX}${key}`) !== null;
   }
 
   /**
@@ -344,15 +342,15 @@ export class StateService {
     this.appState.clear();
     this.clearAuthState();
     
-    // Clear all app-related items from sessionStorage
+    // Clear all app-related items from localStorage
     const keysToRemove: string[] = [];
-    for (let i = 0; i < sessionStorage.length; i++) {
-      const key = sessionStorage.key(i);
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
       if (key && key.startsWith(this.STORAGE_PREFIX)) {
         keysToRemove.push(key);
       }
     }
-    keysToRemove.forEach(key => sessionStorage.removeItem(key));
+    keysToRemove.forEach(key => localStorage.removeItem(key));
     
     console.log('🧹 All state cleared from memory and storage');
   }
@@ -429,17 +427,17 @@ export class StateService {
       user: this.authStateSubject.value.user
     });
     console.log('App State Keys:', this.getStateKeys());
-    console.log('SessionStorage Keys:', this.getSessionStorageKeys());
+    console.log('LocalStorage Keys:', this.getLocalStorageKeys());
     console.log('==================');
   }
 
   /**
-   * Get all app-related sessionStorage keys (for debugging)
+   * Get all app-related localStorage keys (for debugging)
    */
-  private getSessionStorageKeys(): string[] {
+  private getLocalStorageKeys(): string[] {
     const keys: string[] = [];
-    for (let i = 0; i < sessionStorage.length; i++) {
-      const key = sessionStorage.key(i);
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
       if (key && key.startsWith(this.STORAGE_PREFIX)) {
         keys.push(key);
       }

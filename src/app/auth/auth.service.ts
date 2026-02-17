@@ -264,8 +264,7 @@ export class AuthService {
     console.log('🔐 Token expired:', isExpired);
     
     if (isExpired) {
-      console.warn('⚠️ Token expired, logging out');
-      this.logout();
+      console.warn('⚠️ Token expired');
       return false;
     }
     
