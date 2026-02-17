@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "resume-in-1-min": {
+    "1mincv": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/resume-in-1-min",
+            "outputPath": "dist/1mincv",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -84,13 +84,13 @@
           },
           "configurations": {
             "production": {
-              "buildTarget": "resume-in-1-min:build:production"
+              "buildTarget": "1mincv:build:production"
             },
             "development": {
-              "buildTarget": "resume-in-1-min:build:development"
+              "buildTarget": "1mincv:build:development"
             },
             "qa": {
-              "buildTarget": "resume-in-1-min:build:qa"
+              "buildTarget": "1mincv:build:qa"
             }
           },
           "defaultConfiguration": "development"
@@ -98,7 +98,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "resume-in-1-min:build"
+            "buildTarget": "1mincv:build"
           }
         },
         "test": {

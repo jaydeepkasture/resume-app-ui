@@ -20,14 +20,14 @@ export const environment = {
   // Storage Configuration
   storagePrefix: '_app_qa_',
   useEncryption: true,
-  storageType: 'sessionStorage' as 'localStorage' | 'sessionStorage',
+  storageType: 'localStorage' as 'localStorage' | 'sessionStorage',
   
   // Authentication
   tokenExpiryBuffer: 300, 
   sessionTimeout: 3600000, 
   
   // Application
-  appName: 'Resume In One Minute (QA)',
+  appName: '1mincv.com (QA)',
   appVersion: '1.0.0-qa',
   
   // Validation

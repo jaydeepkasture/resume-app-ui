@@ -98,7 +98,7 @@ export class PlansComponent implements OnInit {
             amount: order.amount,
             currency: order.currency,
             order_id: order.orderId,
-            name: 'Resume In 1 Min',
+            name: '1mincv.com',
             description: 'Subscription Plan',
             handler: (response: any) => this.confirmPayment(response),
             modal: {

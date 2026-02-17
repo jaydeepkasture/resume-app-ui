@@ -10,7 +10,7 @@ import { AuthService } from './auth/auth.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  title = 'resume-in-1-min';
+  title = '1mincv.com';
 
   constructor(private authService: AuthService) {}
 

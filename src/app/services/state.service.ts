@@ -40,7 +40,7 @@ export interface AuthState {
 export class StateService {
   // Encryption configuration
   // For AES-256, key should be 32 bytes and IV should be 16 bytes
-  private readonly AES_KEY = CryptoJS.enc.Utf8.parse('ResumeInOneMinute_AES_Key_2026_!'); // 32 chars
+  private readonly AES_KEY = CryptoJS.enc.Utf8.parse('1mincv.com_AES_Key_2026_!*******'); // 32 chars
   private readonly AES_IV = CryptoJS.enc.Utf8.parse('1234567890123456'); // 16 chars
   
   private readonly STORAGE_PREFIX = '_app_';

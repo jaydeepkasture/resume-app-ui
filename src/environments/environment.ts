@@ -20,14 +20,14 @@ export const environment = {
   // Storage Configuration
   storagePrefix: '_app_',
   useEncryption: true,
-  storageType: 'sessionStorage' as 'localStorage' | 'sessionStorage',
+  storageType: 'localStorage' as 'localStorage' | 'sessionStorage',
   
   // Authentication
   tokenExpiryBuffer: 300, // 5 minutes
   sessionTimeout: 3600000, // 1 hour
   
   // Application
-  appName: 'Resume In One Minute',
+  appName: '1mincv.com',
   appVersion: '1.0.0',
   
   // Validation
