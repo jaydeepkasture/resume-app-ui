@@ -2141,7 +2141,7 @@ var routes = [
   },
   {
     path: "reset-password",
-    loadComponent: () => import("./chunk-7HIAKBZI.js").then((m) => m.ResetPasswordComponent)
+    loadComponent: () => import("./chunk-3KZPUY2P.js").then((m) => m.ResetPasswordComponent)
   },
   // Protected routes (require authentication)
   {
