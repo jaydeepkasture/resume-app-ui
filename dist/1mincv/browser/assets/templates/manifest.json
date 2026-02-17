@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Template 2 - Minimalist",
+    "folder": "template2",
+    "path": "assets/templates/template2/Resume.html"
+  },
+  {
+    "name": "Template 3 - Two Column",
+    "folder": "template3",
+    "path": "assets/templates/template3/Resume.html"
+  },
+  {
+    "name": "Template 4 - Clean ATS",
+    "folder": "template4",
+    "path": "assets/templates/template4/Resume.html"
+  },
+  {
+    "name": "Template 5 - Professional",
+    "folder": "template5",
+    "path": "assets/templates/template5/Resume.html"
+  }
+]

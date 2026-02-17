@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Resume - Two Column Dark</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Calibri', 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: white;
+        }
+        
+        .resume-container {
+            max-width: 8.5in;
+            min-height: 11in;
+            margin: 0 auto;
+            background: white;
+            display: flex;
+            border: 1px solid #ddd; /* Optional border for definition */
+        }
+        
+        .sidebar {
+            width: 35%;
+            background: #f4f4f4; /* Light gray instead of dark gradient */
+            color: #000;
+            padding: 30px 20px;
+            border-right: 1px solid #ddd;
+        }
+                
+        .main-content {
+            width: 65%;
+            padding: 30px;
+            background: white;
+        }
+        
+        .profile-section {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        
+        .profile-section h1 {
+            font-size: 24pt;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #000;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+        
+        .sidebar-title {
+            font-size: 14pt;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #000;
+            padding-bottom: 5px;
+        }
+        
+        .contact-item {
+            margin-bottom: 12px;
+            font-size: 10.5pt;
+            word-wrap: break-word;
+        }
+        
+        .contact-label {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 2px;
+            font-size: 9pt;
+            text-transform: uppercase;
+            color: #444;
+        }
+        
+        .skill-item {
+            margin-bottom: 8px;
+            font-size: 10.5pt;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 18pt;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #000;
+            padding-bottom: 5px;
+        }
+        
+        .summary {
+            font-size: 11pt;
+            line-height: 1.6;
+            color: #000;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        
+        .experience-item, .education-item {
+            margin-bottom: 25px;
+        }
+        
+        .job-title {
+            font-size: 13pt;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 3px;
+        }
+        
+        .company-name {
+            font-size: 11pt;
+            color: #000;
+            font-weight: 600;
+            font-style: italic;
+            display: inline-block;
+        }
+        
+        .job-date {
+            font-size: 10.5pt;
+            color: #000;
+            font-weight: 600;
+            float: right;
+        }
+        
+        .job-description {
+            font-size: 11pt;
+            line-height: 1.6;
+            color: #000;
+            margin-top: 8px;
+            text-align: left;
+            clear: both;
+        }
+        
+        .degree {
+            font-size: 12pt;
+            font-weight: 700;
+            color: #000;
+        }
+        
+        .institution {
+            font-size: 11pt;
+            color: #000;
+            margin-top: 3px;
+            font-style: italic;
+        }
+        
+        .year {
+            font-size: 10.5pt;
+            color: #000;
+            font-weight: 600;
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <div class="sidebar">
+            <div class="profile-section">
+                <h1 data-field="name">{{name}}</h1>
+            </div>
+            
+            <div class="sidebar-section">
+                <h2 class="sidebar-title">Contact</h2>
+                <div class="contact-item">
+                    <span class="contact-label">Email</span>
+                    <span data-field="email">{{email}}</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Phone</span>
+                    <span data-field="phoneno">{{phoneno}}</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Location</span>
+                    <span data-field="location">{{location}}</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">LinkedIn</span>
+                    <span data-field="linkedin">{{linkedin}}</span>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h2 class="sidebar-title">Skills</h2>
+                <div data-repeat="skills">
+                    <div class="skill-item" data-field="skill">{{skill}}</div>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h2 class="sidebar-title">Education</h2>
+                <div data-repeat="eduction">
+                    <div class="education-item">
+                        <div class="degree" data-field="degree">{{degree}}</div>
+                        <div class="institution" data-field="field">{{field}}</div>
+                        <div class="institution" data-field="institution">{{institution}}</div>
+                        <div class="year" data-field="year">{{year}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="section">
+                <h2 class="section-title">Profile</h2>
+                <p class="summary" data-field="summary">{{summary}}</p>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Experience</h2>
+                <div data-repeat="experiance">
+                    <div class="experience-item">
+                        <h3 class="job-title" data-field="position">{{position}}</h3>
+                        <div class="company-name" data-field="company">{{company}}</div>
+                        <div class="job-date"><span data-field="from">{{from}}</span> - <span data-field="to">{{to}}</span></div>
+                        <p class="job-description" data-field="description">{{description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
