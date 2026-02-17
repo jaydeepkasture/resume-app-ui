@@ -9,10 +9,10 @@ import {
   ReactiveFormsModule,
   Validators,
   ɵNgNoValidate
-} from "./chunk-6S4JDILR.js";
+} from "./chunk-VSQLX2S4.js";
 import {
   AuthService
-} from "./chunk-OWHTODNA.js";
+} from "./chunk-NXIL4QZT.js";
 import {
   CommonModule,
   NgIf,
@@ -36,7 +36,7 @@ import {
   ɵɵtemplate,
   ɵɵtext,
   ɵɵtextInterpolate1
-} from "./chunk-NPJVZ2QG.js";
+} from "./chunk-CIOGX3QQ.js";
 import "./chunk-PZQZAEDH.js";
 
 // src/app/auth/register/register.component.ts
@@ -523,4 +523,4 @@ var RegisterComponent = class _RegisterComponent {
 export {
   RegisterComponent
 };
-//# sourceMappingURL=chunk-XX56VBCD.js.map
+//# sourceMappingURL=chunk-72H6ZEN7.js.map

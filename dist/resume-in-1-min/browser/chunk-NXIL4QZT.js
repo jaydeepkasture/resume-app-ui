@@ -9,7 +9,7 @@ import {
   throwError,
   ɵɵdefineInjectable,
   ɵɵinject
-} from "./chunk-NPJVZ2QG.js";
+} from "./chunk-CIOGX3QQ.js";
 
 // src/app/billing/services/benefits.service.ts
 var BenefitsService = class _BenefitsService {
@@ -184,8 +184,7 @@ var AuthService = class _AuthService {
     const isExpired = this.stateService.isTokenExpired(token);
     console.log("\u{1F510} Token expired:", isExpired);
     if (isExpired) {
-      console.warn("\u26A0\uFE0F Token expired, logging out");
-      this.logout();
+      console.warn("\u26A0\uFE0F Token expired");
       return false;
     }
     const stateAuth = this.stateService.isAuthenticated();
@@ -294,4 +293,4 @@ export {
   BenefitsService,
   AuthService
 };
-//# sourceMappingURL=chunk-OWHTODNA.js.map
+//# sourceMappingURL=chunk-NXIL4QZT.js.map

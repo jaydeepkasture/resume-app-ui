@@ -41178,7 +41178,7 @@ var StateService = class _StateService {
     this.user$ = new BehaviorSubject(null);
     this.isAuthenticated$ = new BehaviorSubject(false);
     this.appState = /* @__PURE__ */ new Map();
-    console.log("\u{1F527} StateService initialized with AES encrypted sessionStorage");
+    console.log("\u{1F527} StateService initialized with AES encrypted localStorage");
     this.loadPersistedState();
   }
   // ============================================
@@ -41220,23 +41220,23 @@ var StateService = class _StateService {
   // STORAGE OPERATIONS
   // ============================================
   /**
-   * Save encrypted data to sessionStorage
+   * Save encrypted data to localStorage
    */
   saveToStorage(key, data) {
     try {
       const jsonString = JSON.stringify(data);
       const encrypted = this.encrypt(jsonString);
-      sessionStorage.setItem(key, encrypted);
+      localStorage.setItem(key, encrypted);
     } catch (error) {
       console.error("Failed to save to storage:", error);
     }
   }
   /**
-   * Load and decrypt data from sessionStorage
+   * Load and decrypt data from localStorage
    */
   loadFromStorage(key) {
     try {
-      const encrypted = sessionStorage.getItem(key);
+      const encrypted = localStorage.getItem(key);
       if (!encrypted)
         return null;
       const decrypted = this.decrypt(encrypted);
@@ -41249,11 +41249,11 @@ var StateService = class _StateService {
     }
   }
   /**
-   * Remove data from sessionStorage
+   * Remove data from localStorage
    */
   removeFromStorage(key) {
     try {
-      sessionStorage.removeItem(key);
+      localStorage.removeItem(key);
     } catch (error) {
       console.error("Failed to remove from storage:", error);
     }
@@ -41292,7 +41292,7 @@ var StateService = class _StateService {
     this.user$.next(user);
     this.isAuthenticated$.next(true);
     this.saveToStorage(this.AUTH_STATE_KEY, authState);
-    console.log("\u2705 Auth state updated and encrypted in sessionStorage:", { email: user.email });
+    console.log("\u2705 Auth state updated and encrypted in localStorage:", { email: user.email });
   }
   /**
    * Get current auth state
@@ -41328,7 +41328,6 @@ var StateService = class _StateService {
     }
     if (this.isTokenExpired(state.token)) {
       console.warn("\u26A0\uFE0F Token expired");
-      this.clearAuthState();
       return false;
     }
     return true;
@@ -41403,7 +41402,7 @@ var StateService = class _StateService {
    * Check if state exists
    */
   hasState(key) {
-    return this.appState.has(key) || sessionStorage.getItem(`${this.STORAGE_PREFIX}${key}`) !== null;
+    return this.appState.has(key) || localStorage.getItem(`${this.STORAGE_PREFIX}${key}`) !== null;
   }
   /**
    * Clear all state from memory and storage
@@ -41412,13 +41411,13 @@ var StateService = class _StateService {
     this.appState.clear();
     this.clearAuthState();
     const keysToRemove = [];
-    for (let i = 0; i < sessionStorage.length; i++) {
-      const key = sessionStorage.key(i);
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
       if (key && key.startsWith(this.STORAGE_PREFIX)) {
         keysToRemove.push(key);
       }
     }
-    keysToRemove.forEach((key) => sessionStorage.removeItem(key));
+    keysToRemove.forEach((key) => localStorage.removeItem(key));
     console.log("\u{1F9F9} All state cleared from memory and storage");
   }
   /**
@@ -41479,16 +41478,16 @@ var StateService = class _StateService {
       user: this.authStateSubject.value.user
     });
     console.log("App State Keys:", this.getStateKeys());
-    console.log("SessionStorage Keys:", this.getSessionStorageKeys());
+    console.log("LocalStorage Keys:", this.getLocalStorageKeys());
     console.log("==================");
   }
   /**
-   * Get all app-related sessionStorage keys (for debugging)
+   * Get all app-related localStorage keys (for debugging)
    */
-  getSessionStorageKeys() {
+  getLocalStorageKeys() {
     const keys = [];
-    for (let i = 0; i < sessionStorage.length; i++) {
-      const key = sessionStorage.key(i);
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
       if (key && key.startsWith(this.STORAGE_PREFIX)) {
         keys.push(key);
       }
@@ -41892,6 +41891,7 @@ var BillingApiService = class _BillingApiService {
 
 export {
   from,
+  of,
   throwError,
   map,
   forkJoin,
@@ -42103,4 +42103,4 @@ crypto-js/mode-ctr-gladman.js:
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-NPJVZ2QG.js.map
+//# sourceMappingURL=chunk-CIOGX3QQ.js.map
