@@ -2173,11 +2173,11 @@ var routes = [
   },
   {
     path: "privacy-policy",
-    loadComponent: () => import("./chunk-J76FKCX3.js").then((m) => m.PrivacyPolicyComponent)
+    loadComponent: () => import("./chunk-YROLFOE5.js").then((m) => m.PrivacyPolicyComponent)
   },
   {
     path: "terms-of-service",
-    loadComponent: () => import("./chunk-27R25HJF.js").then((m) => m.TermsOfServiceComponent)
+    loadComponent: () => import("./chunk-D2YT4UH4.js").then((m) => m.TermsOfServiceComponent)
   },
   // Wildcard route - redirect to home
   {
