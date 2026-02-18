@@ -1,6 +1,7 @@
 import {
   AuthService
-} from "./chunk-FEHFFYQA.js";
+} from "./chunk-Y3QV4HHY.js";
+import "./chunk-VXOSVJKN.js";
 import {
   Router,
   RouterOutlet,
@@ -17,7 +18,7 @@ import {
   ɵɵdirectiveInject,
   ɵɵelement,
   ɵɵinject
-} from "./chunk-IWCV675V.js";
+} from "./chunk-TRI43INR.js";
 import {
   __commonJS,
   __toESM
@@ -2123,52 +2124,60 @@ var routes = [
   // Template Gallery
   {
     path: "templates",
-    loadComponent: () => import("./chunk-VZ7S3H4F.js").then((m) => m.TemplateGalleryComponent),
+    loadComponent: () => import("./chunk-CERZYO2E.js").then((m) => m.TemplateGalleryComponent),
     canActivate: [AuthGuard]
   },
   // Authentication routes (public)
   {
     path: "login",
-    loadComponent: () => import("./chunk-JQKAODQ2.js").then((m) => m.LoginComponent)
+    loadComponent: () => import("./chunk-LRGW2VSZ.js").then((m) => m.LoginComponent)
   },
   {
     path: "register",
-    loadComponent: () => import("./chunk-BOUELBNB.js").then((m) => m.RegisterComponent)
+    loadComponent: () => import("./chunk-XIWEKC2U.js").then((m) => m.RegisterComponent)
   },
   {
     path: "forgot-password",
-    loadComponent: () => import("./chunk-KWNC3OJ4.js").then((m) => m.ForgotPasswordComponent)
+    loadComponent: () => import("./chunk-6NA5UQIT.js").then((m) => m.ForgotPasswordComponent)
   },
   {
     path: "reset-password",
-    loadComponent: () => import("./chunk-3KZPUY2P.js").then((m) => m.ResetPasswordComponent)
+    loadComponent: () => import("./chunk-KUVMGRDJ.js").then((m) => m.ResetPasswordComponent)
   },
   // Protected routes (require authentication)
   {
     path: "editor",
-    loadComponent: () => import("./chunk-DU726B42.js").then((m) => m.ResumeEditorComponent),
+    loadComponent: () => import("./chunk-WJJKNQ6F.js").then((m) => m.ResumeEditorComponent),
     canActivate: [AuthGuard]
   },
   {
     path: "editor/:chatId",
-    loadComponent: () => import("./chunk-DU726B42.js").then((m) => m.ResumeEditorComponent),
+    loadComponent: () => import("./chunk-WJJKNQ6F.js").then((m) => m.ResumeEditorComponent),
     canActivate: [AuthGuard]
   },
   {
     path: "profile",
-    loadComponent: () => import("./chunk-OS567ILE.js").then((m) => m.ProfileComponent),
+    loadComponent: () => import("./chunk-TXFNWO7T.js").then((m) => m.ProfileComponent),
     canActivate: [AuthGuard]
   },
   // Billing and Subscription
   {
     path: "billing/plans",
-    loadComponent: () => import("./chunk-LDLCLVEN.js").then((m) => m.PlansComponent),
+    loadComponent: () => import("./chunk-KKYM4UMR.js").then((m) => m.PlansComponent),
     canActivate: [AuthGuard]
   },
   {
     path: "billing/subscription",
-    loadComponent: () => import("./chunk-DH3LVR27.js").then((m) => m.SubscriptionComponent),
+    loadComponent: () => import("./chunk-TYN3B24M.js").then((m) => m.SubscriptionComponent),
     canActivate: [AuthGuard]
+  },
+  {
+    path: "privacy-policy",
+    loadComponent: () => import("./chunk-J76FKCX3.js").then((m) => m.PrivacyPolicyComponent)
+  },
+  {
+    path: "terms-of-service",
+    loadComponent: () => import("./chunk-27R25HJF.js").then((m) => m.TermsOfServiceComponent)
   },
   // Wildcard route - redirect to home
   {
