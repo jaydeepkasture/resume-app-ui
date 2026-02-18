@@ -160,7 +160,7 @@
       <div class="form-group">
         <label class="checkbox-label">
           <input type="checkbox" formControlName="acceptTerms" />
-          <span>I agree to the <a href="#" class="link">Terms and Conditions</a></span>
+          <span>I agree to the <a routerLink="/terms-of-service" class="link">Terms and Conditions</a> & <a routerLink="/privacy-policy" class="link">Privacy Policy</a></span>
         </label>
         <div class="invalid-feedback" *ngIf="submitted && f['acceptTerms'].errors">
           <span *ngIf="f['acceptTerms'].errors['required']">You must accept the terms and conditions</span>
@@ -184,5 +184,11 @@
     <div class="auth-footer">
       <p>Already have an account? <a routerLink="/login">Sign in</a></p>
     </div>
+  </div>
+
+  <div class="legal-footer">
+    <a routerLink="/privacy-policy">Privacy Policy</a>
+    <span class="dot">&bull;</span>
+    <a routerLink="/terms-of-service">Terms of Service</a>
   </div>
 </div>

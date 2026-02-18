@@ -63,6 +63,15 @@ export const routes: Routes = [
     canActivate: [AuthGuard]
   },
   
+  {
+    path: 'privacy-policy',
+    loadComponent: () => import('./pages/privacy-policy/privacy-policy.component').then(m => m.PrivacyPolicyComponent)
+  },
+  {
+    path: 'terms-of-service',
+    loadComponent: () => import('./pages/terms-of-service/terms-of-service.component').then(m => m.TermsOfServiceComponent)
+  },
+  
   // Wildcard route - redirect to home
   {
     path: '**',
