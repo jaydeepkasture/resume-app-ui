@@ -2,13 +2,34 @@ import { Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
-  // Default route - redirect to resume templates
+  // Public Landing Page
   {
     path: '',
-    redirectTo: '/templates',
-    pathMatch: 'full'
+    loadComponent: () => import('./pages/landing/landing.component').then(m => m.LandingComponent)
   },
   
+  // Public Legal and Information Pages
+  {
+    path: 'privacy-policy',
+    loadComponent: () => import('./pages/privacy-policy/privacy-policy.component').then(m => m.PrivacyPolicyComponent)
+  },
+  {
+    path: 'terms-of-service',
+    loadComponent: () => import('./pages/terms-of-service/terms-of-service.component').then(m => m.TermsOfServiceComponent)
+  },
+  {
+    path: 'refund-policy',
+    loadComponent: () => import('./pages/refund-policy/refund-policy.component').then(m => m.RefundPolicyComponent)
+  },
+  {
+    path: 'about',
+    loadComponent: () => import('./pages/about/about.component').then(m => m.AboutComponent)
+  },
+  {
+    path: 'contact',
+    loadComponent: () => import('./pages/contact/contact.component').then(m => m.ContactComponent)
+  },
+
   // Template Gallery
   {
     path: 'templates',
@@ -63,16 +84,7 @@ export const routes: Routes = [
     canActivate: [AuthGuard]
   },
   
-  {
-    path: 'privacy-policy',
-    loadComponent: () => import('./pages/privacy-policy/privacy-policy.component').then(m => m.PrivacyPolicyComponent)
-  },
-  {
-    path: 'terms-of-service',
-    loadComponent: () => import('./pages/terms-of-service/terms-of-service.component').then(m => m.TermsOfServiceComponent)
-  },
-  
-  // Wildcard route - redirect to home
+  // Wildcard route - redirect to editor (which will trigger login if not auth)
   {
     path: '**',
     redirectTo: '/editor'

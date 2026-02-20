@@ -1,0 +1,152 @@
+<div class="contact-container">
+  <div class="contact-header">
+    <div class="container">
+      <a routerLink="/" class="back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Back to Home
+      </a>
+      <h1>Contact Us</h1>
+      <p class="subtitle">Have questions? We're here to help you build your future.</p>
+    </div>
+  </div>
+
+  <div class="contact-content container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="info-card">
+          <div class="icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </div>
+          <div class="info-text">
+            <h3>Email Support</h3>
+            <p>support&#64;1mincv.com</p>
+            <p class="desc">Response time: Within 24 hours</p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <div class="info-text">
+            <h3>Office Address</h3>
+            <p>Nagpur, Maharashtra, India</p>
+            <p class="desc">1mincv Platform Operations</p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+            </svg>
+          </div>
+          <div class="info-text">
+            <h3>Support Hours</h3>
+            <p>Mon - Fri: 9:00 AM - 6:00 PM IST</p>
+            <p class="desc">Weekend support available for premium users</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-card">
+        <h2>Send us a message</h2>
+        
+        <div *ngIf="submitSuccess" class="alert success-alert">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Thank you! Your message has been sent successfully. We'll get back to you soon.
+        </div>
+
+        <div *ngIf="submitError" class="alert error-alert">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          {{ submitError }}
+        </div>
+
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form" *ngIf="!submitSuccess">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input 
+              id="name"
+              type="text" 
+              formControlName="name" 
+              placeholder="Your Name" 
+              [class.invalid]="f['name'].touched && f['name'].invalid"
+            />
+            <div *ngIf="f['name'].touched && f['name'].invalid" class="error-message">
+              <span *ngIf="f['name'].errors?.['required']">Name is required</span>
+              <span *ngIf="f['name'].errors?.['maxlength']">Name cannot exceed 100 characters</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input 
+              id="email"
+              type="email" 
+              formControlName="email" 
+              placeholder="Your Email" 
+              [class.invalid]="f['email'].touched && f['email'].invalid"
+            />
+            <div *ngIf="f['email'].touched && f['email'].invalid" class="error-message">
+              <span *ngIf="f['email'].errors?.['required']">Email is required</span>
+              <span *ngIf="f['email'].errors?.['email']">Invalid email format</span>
+              <span *ngIf="f['email'].errors?.['maxlength']">Email cannot exceed 255 characters</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea 
+              id="message"
+              rows="4" 
+              formControlName="message" 
+              placeholder="How can we help?"
+              [class.invalid]="f['message'].touched && f['message'].invalid"
+            ></textarea>
+            <div *ngIf="f['message'].touched && f['message'].invalid" class="error-message">
+              <span *ngIf="f['message'].errors?.['required']">Message is required</span>
+              <span *ngIf="f['message'].errors?.['maxlength']">Message cannot exceed 2000 characters</span>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn" [disabled]="isSubmitting">
+            <span *ngIf="!isSubmitting">Send Message</span>
+            <span *ngIf="isSubmitting" class="loader-text">
+              <svg class="spinner" viewBox="0 0 50 50">
+                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+              </svg>
+              Sending...
+            </span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="contact-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a routerLink="/privacy-policy">Privacy Policy</a>
+        <a routerLink="/terms-of-service">Terms of Service</a>
+        <a routerLink="/refund-policy">Refund Policy</a>
+        <a routerLink="/about">About Us</a>
+      </div>
+      <p>&copy; {{ currentYear }} 1mincv.com. All rights reserved.</p>
+    </div>
+  </footer>
+</div>

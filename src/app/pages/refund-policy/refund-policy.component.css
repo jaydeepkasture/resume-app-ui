@@ -1,0 +1,148 @@
+.policy-container {
+    min-height: 100vh;
+    background: #f8fafc;
+    color: #1e293b;
+    display: flex;
+    flex-direction: column;
+}
+
+.policy-header {
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    color: white;
+    padding: 80px 0 60px;
+    text-align: center;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: white;
+}
+
+.policy-header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.last-updated {
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+.policy-content {
+    flex: 1;
+    margin-top: -40px;
+    padding-bottom: 80px;
+}
+
+.policy-card {
+    background: white;
+    padding: 60px;
+    border-radius: 24px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+section:last-child {
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 4px;
+    background: #6366f1;
+    border-radius: 2px;
+}
+
+p {
+    line-height: 1.7;
+    color: #475569;
+    font-size: 1.05rem;
+    margin-bottom: 16px;
+}
+
+ul {
+    list-style: disc;
+    padding-left: 24px;
+    color: #475569;
+}
+
+ul li {
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.policy-footer {
+    padding: 40px 0;
+    background: white;
+    border-top: 1px solid #e2e8f0;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: #64748b;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #6366f1;
+}
+
+.policy-footer p {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .policy-header {
+        padding: 60px 0 40px;
+    }
+    
+    .policy-card {
+        padding: 30px;
+        border-radius: 16px;
+    }
+}
