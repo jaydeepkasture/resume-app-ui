@@ -1,7 +1,12 @@
 import {
+  require_html2canvas
+} from "./chunk-HEOKDC4C.js";
+import {
   ChatSidebarComponent,
   TemplateService
-} from "./chunk-U6IDS2GB.js";
+} from "./chunk-6V6A7ROY.js";
+import "./chunk-6TPTVFIG.js";
+import "./chunk-L2AZJT22.js";
 import {
   DefaultValueAccessor,
   FormsModule,
@@ -11,10 +16,9 @@ import {
   SelectControlValueAccessor,
   ɵNgSelectMultipleOption
 } from "./chunk-U2NUFKCF.js";
-import "./chunk-Y3QV4HHY.js";
 import {
   environment
-} from "./chunk-VXOSVJKN.js";
+} from "./chunk-UE6KENAU.js";
 import {
   ActivatedRoute,
   ChangeDetectorRef,
@@ -67,9 +71,6 @@ import {
   ɵɵtwoWayProperty,
   ɵɵviewQuery
 } from "./chunk-TRI43INR.js";
-import {
-  require_html2canvas
-} from "./chunk-HEOKDC4C.js";
 import {
   __async,
   __objRest,
@@ -44045,4 +44046,4 @@ jspdf/dist/jspdf.es.min.js:
    * http://opensource.org/licenses/mit-license
    *)
 */
-//# sourceMappingURL=chunk-WJJKNQ6F.js.map
+//# sourceMappingURL=chunk-G7LLLPFJ.js.map

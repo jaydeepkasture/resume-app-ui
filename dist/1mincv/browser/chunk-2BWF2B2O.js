@@ -1,4 +1,8 @@
 import {
+  AuthService
+} from "./chunk-6TPTVFIG.js";
+import "./chunk-L2AZJT22.js";
+import {
   DefaultValueAccessor,
   FormBuilder,
   FormControlName,
@@ -9,10 +13,7 @@ import {
   Validators,
   ɵNgNoValidate
 } from "./chunk-U2NUFKCF.js";
-import {
-  AuthService
-} from "./chunk-Y3QV4HHY.js";
-import "./chunk-VXOSVJKN.js";
+import "./chunk-UE6KENAU.js";
 import {
   ActivatedRoute,
   CommonModule,
@@ -47,10 +48,10 @@ import "./chunk-PZQZAEDH.js";
 // src/app/auth/reset-password/reset-password.component.ts
 function ResetPasswordComponent_form_13_div_1_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 28);
+    \u0275\u0275elementStart(0, "div", 31);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 29);
-    \u0275\u0275element(2, "circle", 30)(3, "line", 31)(4, "line", 32);
+    \u0275\u0275elementStart(1, "svg", 32);
+    \u0275\u0275element(2, "circle", 33)(3, "line", 34)(4, "line", 35);
     \u0275\u0275elementEnd();
     \u0275\u0275text(5);
     \u0275\u0275elementEnd();
@@ -64,16 +65,16 @@ function ResetPasswordComponent_form_13_div_1_Template(rf, ctx) {
 function ResetPasswordComponent_form_13__svg_svg_8_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 29);
-    \u0275\u0275element(1, "path", 33)(2, "circle", 34);
+    \u0275\u0275elementStart(0, "svg", 32);
+    \u0275\u0275element(1, "path", 36)(2, "circle", 37);
     \u0275\u0275elementEnd();
   }
 }
 function ResetPasswordComponent_form_13__svg_svg_9_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 29);
-    \u0275\u0275element(1, "path", 35)(2, "line", 36);
+    \u0275\u0275elementStart(0, "svg", 32);
+    \u0275\u0275element(1, "path", 38)(2, "line", 39);
     \u0275\u0275elementEnd();
   }
 }
@@ -93,8 +94,8 @@ function ResetPasswordComponent_form_13_div_10_span_2_Template(rf, ctx) {
 }
 function ResetPasswordComponent_form_13_div_10_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 37);
-    \u0275\u0275template(1, ResetPasswordComponent_form_13_div_10_span_1_Template, 2, 0, "span", 26)(2, ResetPasswordComponent_form_13_div_10_span_2_Template, 2, 0, "span", 26);
+    \u0275\u0275elementStart(0, "div", 40);
+    \u0275\u0275template(1, ResetPasswordComponent_form_13_div_10_span_1_Template, 2, 0, "span", 29)(2, ResetPasswordComponent_form_13_div_10_span_2_Template, 2, 0, "span", 29);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -108,16 +109,16 @@ function ResetPasswordComponent_form_13_div_10_Template(rf, ctx) {
 function ResetPasswordComponent_form_13__svg_svg_17_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 29);
-    \u0275\u0275element(1, "path", 33)(2, "circle", 34);
+    \u0275\u0275elementStart(0, "svg", 32);
+    \u0275\u0275element(1, "path", 36)(2, "circle", 37);
     \u0275\u0275elementEnd();
   }
 }
 function ResetPasswordComponent_form_13__svg_svg_18_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 29);
-    \u0275\u0275element(1, "path", 35)(2, "line", 36);
+    \u0275\u0275elementStart(0, "svg", 32);
+    \u0275\u0275element(1, "path", 38)(2, "line", 39);
     \u0275\u0275elementEnd();
   }
 }
@@ -137,8 +138,8 @@ function ResetPasswordComponent_form_13_div_19_span_2_Template(rf, ctx) {
 }
 function ResetPasswordComponent_form_13_div_19_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 37);
-    \u0275\u0275template(1, ResetPasswordComponent_form_13_div_19_span_1_Template, 2, 0, "span", 26)(2, ResetPasswordComponent_form_13_div_19_span_2_Template, 2, 0, "span", 26);
+    \u0275\u0275elementStart(0, "div", 40);
+    \u0275\u0275template(1, ResetPasswordComponent_form_13_div_19_span_1_Template, 2, 0, "span", 29)(2, ResetPasswordComponent_form_13_div_19_span_2_Template, 2, 0, "span", 29);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -158,10 +159,10 @@ function ResetPasswordComponent_form_13_span_21_Template(rf, ctx) {
 }
 function ResetPasswordComponent_form_13_span_22_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 38);
+    \u0275\u0275elementStart(0, "span", 41);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 29);
-    \u0275\u0275element(2, "circle", 39)(3, "path", 40);
+    \u0275\u0275elementStart(1, "svg", 32);
+    \u0275\u0275element(2, "circle", 42)(3, "path", 43);
     \u0275\u0275elementEnd();
     \u0275\u0275text(4, " Updating... ");
     \u0275\u0275elementEnd();
@@ -170,45 +171,45 @@ function ResetPasswordComponent_form_13_span_22_Template(rf, ctx) {
 function ResetPasswordComponent_form_13_Template(rf, ctx) {
   if (rf & 1) {
     const _r1 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "form", 14);
+    \u0275\u0275elementStart(0, "form", 17);
     \u0275\u0275listener("ngSubmit", function ResetPasswordComponent_form_13_Template_form_ngSubmit_0_listener() {
       \u0275\u0275restoreView(_r1);
       const ctx_r1 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r1.onSubmit());
     });
-    \u0275\u0275template(1, ResetPasswordComponent_form_13_div_1_Template, 6, 1, "div", 15);
-    \u0275\u0275elementStart(2, "div", 16)(3, "label", 17);
+    \u0275\u0275template(1, ResetPasswordComponent_form_13_div_1_Template, 6, 1, "div", 18);
+    \u0275\u0275elementStart(2, "div", 19)(3, "label", 20);
     \u0275\u0275text(4, "New Password");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(5, "div", 18);
-    \u0275\u0275element(6, "input", 19);
-    \u0275\u0275elementStart(7, "button", 20);
+    \u0275\u0275elementStart(5, "div", 21);
+    \u0275\u0275element(6, "input", 22);
+    \u0275\u0275elementStart(7, "button", 23);
     \u0275\u0275listener("click", function ResetPasswordComponent_form_13_Template_button_click_7_listener() {
       \u0275\u0275restoreView(_r1);
       const ctx_r1 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r1.togglePasswordVisibility("password"));
     });
-    \u0275\u0275template(8, ResetPasswordComponent_form_13__svg_svg_8_Template, 3, 0, "svg", 21)(9, ResetPasswordComponent_form_13__svg_svg_9_Template, 3, 0, "svg", 21);
+    \u0275\u0275template(8, ResetPasswordComponent_form_13__svg_svg_8_Template, 3, 0, "svg", 24)(9, ResetPasswordComponent_form_13__svg_svg_9_Template, 3, 0, "svg", 24);
     \u0275\u0275elementEnd()();
-    \u0275\u0275template(10, ResetPasswordComponent_form_13_div_10_Template, 3, 2, "div", 22);
+    \u0275\u0275template(10, ResetPasswordComponent_form_13_div_10_Template, 3, 2, "div", 25);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(11, "div", 16)(12, "label", 23);
+    \u0275\u0275elementStart(11, "div", 19)(12, "label", 26);
     \u0275\u0275text(13, "Confirm Password");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(14, "div", 18);
-    \u0275\u0275element(15, "input", 24);
-    \u0275\u0275elementStart(16, "button", 20);
+    \u0275\u0275elementStart(14, "div", 21);
+    \u0275\u0275element(15, "input", 27);
+    \u0275\u0275elementStart(16, "button", 23);
     \u0275\u0275listener("click", function ResetPasswordComponent_form_13_Template_button_click_16_listener() {
       \u0275\u0275restoreView(_r1);
       const ctx_r1 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r1.togglePasswordVisibility("confirmPassword"));
     });
-    \u0275\u0275template(17, ResetPasswordComponent_form_13__svg_svg_17_Template, 3, 0, "svg", 21)(18, ResetPasswordComponent_form_13__svg_svg_18_Template, 3, 0, "svg", 21);
+    \u0275\u0275template(17, ResetPasswordComponent_form_13__svg_svg_17_Template, 3, 0, "svg", 24)(18, ResetPasswordComponent_form_13__svg_svg_18_Template, 3, 0, "svg", 24);
     \u0275\u0275elementEnd()();
-    \u0275\u0275template(19, ResetPasswordComponent_form_13_div_19_Template, 3, 2, "div", 22);
+    \u0275\u0275template(19, ResetPasswordComponent_form_13_div_19_Template, 3, 2, "div", 25);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(20, "button", 25);
-    \u0275\u0275template(21, ResetPasswordComponent_form_13_span_21_Template, 2, 0, "span", 26)(22, ResetPasswordComponent_form_13_span_22_Template, 5, 0, "span", 27);
+    \u0275\u0275elementStart(20, "button", 28);
+    \u0275\u0275template(21, ResetPasswordComponent_form_13_span_21_Template, 2, 0, "span", 29)(22, ResetPasswordComponent_form_13_span_22_Template, 5, 0, "span", 30);
     \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
@@ -244,15 +245,15 @@ function ResetPasswordComponent_form_13_Template(rf, ctx) {
 }
 function ResetPasswordComponent_div_14_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 41)(1, "div", 28);
+    \u0275\u0275elementStart(0, "div", 44)(1, "div", 31);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(2, "svg", 29);
-    \u0275\u0275element(3, "circle", 30)(4, "line", 31)(5, "line", 32);
+    \u0275\u0275elementStart(2, "svg", 32);
+    \u0275\u0275element(3, "circle", 33)(4, "line", 34)(5, "line", 35);
     \u0275\u0275elementEnd();
     \u0275\u0275text(6);
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(7, "button", 42);
+    \u0275\u0275elementStart(7, "button", 45);
     \u0275\u0275text(8, "Request New Link");
     \u0275\u0275elementEnd()();
   }
@@ -264,10 +265,10 @@ function ResetPasswordComponent_div_14_Template(rf, ctx) {
 }
 function ResetPasswordComponent_div_15_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 43)(1, "div", 44);
+    \u0275\u0275elementStart(0, "div", 46)(1, "div", 47);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(2, "svg", 45);
-    \u0275\u0275element(3, "path", 46)(4, "polyline", 47);
+    \u0275\u0275elementStart(2, "svg", 48);
+    \u0275\u0275element(3, "path", 49)(4, "polyline", 50);
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
     \u0275\u0275elementStart(5, "h2");
@@ -276,7 +277,7 @@ function ResetPasswordComponent_div_15_Template(rf, ctx) {
     \u0275\u0275elementStart(7, "p");
     \u0275\u0275text(8);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(9, "button", 48);
+    \u0275\u0275elementStart(9, "button", 51);
     \u0275\u0275text(10, "Back to Login");
     \u0275\u0275elementEnd()();
   }
@@ -288,9 +289,9 @@ function ResetPasswordComponent_div_15_Template(rf, ctx) {
 }
 function ResetPasswordComponent_div_16_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 49)(1, "p");
+    \u0275\u0275elementStart(0, "div", 52)(1, "p");
     \u0275\u0275text(2, "Already know your password? ");
-    \u0275\u0275elementStart(3, "a", 50);
+    \u0275\u0275elementStart(3, "a", 53);
     \u0275\u0275text(4, "Sign in");
     \u0275\u0275elementEnd()()();
   }
@@ -379,7 +380,7 @@ var ResetPasswordComponent = class _ResetPasswordComponent {
     };
   }
   static {
-    this.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _ResetPasswordComponent, selectors: [["app-reset-password"]], standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 24, vars: 4, consts: [[1, "auth-container"], [1, "auth-card"], [1, "auth-header"], [1, "brand-logo-container"], [1, "brand-logo"], [1, "logo-text"], ["class", "auth-form", 3, "formGroup", "ngSubmit", 4, "ngIf"], ["class", "error-state", 4, "ngIf"], ["class", "success-message", 4, "ngIf"], ["class", "auth-footer", 4, "ngIf"], [1, "legal-footer"], ["routerLink", "/privacy-policy"], [1, "dot"], ["routerLink", "/terms-of-service"], [1, "auth-form", 3, "ngSubmit", "formGroup"], ["class", "alert alert-error", 4, "ngIf"], [1, "form-group"], ["for", "password"], [1, "password-input-wrapper"], ["id", "password", "formControlName", "password", "autocomplete", "new-password", "placeholder", "Enter new password", 1, "form-control", 3, "type"], ["type", "button", "tabindex", "-1", 1, "password-toggle", 3, "click"], ["width", "20", "height", "20", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", 4, "ngIf"], ["class", "invalid-feedback", 4, "ngIf"], ["for", "confirmPassword"], ["id", "confirmPassword", "formControlName", "confirmPassword", "autocomplete", "new-password", "placeholder", "Re-enter password", 1, "form-control", 3, "type"], ["type", "submit", 1, "btn", "btn-primary", 3, "disabled"], [4, "ngIf"], ["class", "loading-spinner", 4, "ngIf"], [1, "alert", "alert-error"], ["width", "20", "height", "20", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["cx", "12", "cy", "12", "r", "10"], ["x1", "12", "y1", "8", "x2", "12", "y2", "12"], ["x1", "12", "y1", "16", "x2", "12.01", "y2", "16"], ["d", "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"], ["cx", "12", "cy", "12", "r", "3"], ["d", "M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"], ["x1", "1", "y1", "1", "x2", "23", "y2", "23"], [1, "invalid-feedback"], [1, "loading-spinner"], ["cx", "12", "cy", "12", "r", "10", "opacity", "0.25"], ["d", "M12 2a10 10 0 0 1 10 10", "opacity", "0.75"], [1, "error-state"], ["routerLink", "/forgot-password", 1, "btn", "btn-primary"], [1, "success-message"], [1, "success-icon"], ["width", "48", "height", "48", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["d", "M22 11.08V12a10 10 0 1 1-5.93-9.14"], ["points", "22 4 12 14.01 9 11.01"], ["routerLink", "/login", 1, "btn", "btn-primary"], [1, "auth-footer"], ["routerLink", "/login"]], template: function ResetPasswordComponent_Template(rf, ctx) {
+    this.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _ResetPasswordComponent, selectors: [["app-reset-password"]], standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 36, vars: 4, consts: [[1, "auth-container"], [1, "auth-card"], [1, "auth-header"], [1, "brand-logo-container"], [1, "brand-logo"], [1, "logo-text"], ["class", "auth-form", 3, "formGroup", "ngSubmit", 4, "ngIf"], ["class", "error-state", 4, "ngIf"], ["class", "success-message", 4, "ngIf"], ["class", "auth-footer", 4, "ngIf"], [1, "legal-footer"], ["routerLink", "/privacy-policy"], [1, "dot"], ["routerLink", "/terms-of-service"], ["routerLink", "/refund-policy"], ["routerLink", "/about"], ["routerLink", "/contact"], [1, "auth-form", 3, "ngSubmit", "formGroup"], ["class", "alert alert-error", 4, "ngIf"], [1, "form-group"], ["for", "password"], [1, "password-input-wrapper"], ["id", "password", "formControlName", "password", "autocomplete", "new-password", "placeholder", "Enter new password", 1, "form-control", 3, "type"], ["type", "button", "tabindex", "-1", 1, "password-toggle", 3, "click"], ["width", "20", "height", "20", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", 4, "ngIf"], ["class", "invalid-feedback", 4, "ngIf"], ["for", "confirmPassword"], ["id", "confirmPassword", "formControlName", "confirmPassword", "autocomplete", "new-password", "placeholder", "Re-enter password", 1, "form-control", 3, "type"], ["type", "submit", 1, "btn", "btn-primary", 3, "disabled"], [4, "ngIf"], ["class", "loading-spinner", 4, "ngIf"], [1, "alert", "alert-error"], ["width", "20", "height", "20", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["cx", "12", "cy", "12", "r", "10"], ["x1", "12", "y1", "8", "x2", "12", "y2", "12"], ["x1", "12", "y1", "16", "x2", "12.01", "y2", "16"], ["d", "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"], ["cx", "12", "cy", "12", "r", "3"], ["d", "M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"], ["x1", "1", "y1", "1", "x2", "23", "y2", "23"], [1, "invalid-feedback"], [1, "loading-spinner"], ["cx", "12", "cy", "12", "r", "10", "opacity", "0.25"], ["d", "M12 2a10 10 0 0 1 10 10", "opacity", "0.75"], [1, "error-state"], ["routerLink", "/forgot-password", 1, "btn", "btn-primary"], [1, "success-message"], [1, "success-icon"], ["width", "48", "height", "48", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["d", "M22 11.08V12a10 10 0 1 1-5.93-9.14"], ["points", "22 4 12 14.01 9 11.01"], ["routerLink", "/login", 1, "btn", "btn-primary"], [1, "auth-footer"], ["routerLink", "/login"]], template: function ResetPasswordComponent_Template(rf, ctx) {
       if (rf & 1) {
         \u0275\u0275elementStart(0, "div", 0)(1, "div", 1)(2, "div", 2)(3, "div", 3)(4, "div", 4)(5, "div", 5);
         \u0275\u0275text(6, "1min");
@@ -402,6 +403,24 @@ var ResetPasswordComponent = class _ResetPasswordComponent {
         \u0275\u0275elementEnd();
         \u0275\u0275elementStart(22, "a", 13);
         \u0275\u0275text(23, "Terms of Service");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(24, "span", 12);
+        \u0275\u0275text(25, "\u2022");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(26, "a", 14);
+        \u0275\u0275text(27, "Refund Policy");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(28, "span", 12);
+        \u0275\u0275text(29, "\u2022");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(30, "a", 15);
+        \u0275\u0275text(31, "About Us");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(32, "span", 12);
+        \u0275\u0275text(33, "\u2022");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(34, "a", 16);
+        \u0275\u0275text(35, "Contact Us");
         \u0275\u0275elementEnd()()();
       }
       if (rf & 2) {
@@ -423,4 +442,4 @@ var ResetPasswordComponent = class _ResetPasswordComponent {
 export {
   ResetPasswordComponent
 };
-//# sourceMappingURL=chunk-KUVMGRDJ.js.map
+//# sourceMappingURL=chunk-2BWF2B2O.js.map

@@ -1,4 +1,8 @@
 import {
+  AuthService
+} from "./chunk-6TPTVFIG.js";
+import "./chunk-L2AZJT22.js";
+import {
   CheckboxControlValueAccessor,
   DefaultValueAccessor,
   FormBuilder,
@@ -11,11 +15,8 @@ import {
   ɵNgNoValidate
 } from "./chunk-U2NUFKCF.js";
 import {
-  AuthService
-} from "./chunk-Y3QV4HHY.js";
-import {
   environment
-} from "./chunk-VXOSVJKN.js";
+} from "./chunk-UE6KENAU.js";
 import {
   CommonModule,
   NgIf,
@@ -44,10 +45,10 @@ import "./chunk-PZQZAEDH.js";
 // src/app/auth/register/register.component.ts
 function RegisterComponent_div_14_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 39);
+    \u0275\u0275elementStart(0, "div", 42);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 40);
-    \u0275\u0275element(2, "circle", 41)(3, "line", 42)(4, "line", 43);
+    \u0275\u0275elementStart(1, "svg", 43);
+    \u0275\u0275element(2, "circle", 44)(3, "line", 45)(4, "line", 46);
     \u0275\u0275elementEnd();
     \u0275\u0275text(5);
     \u0275\u0275elementEnd();
@@ -74,7 +75,7 @@ function RegisterComponent_div_19_span_2_Template(rf, ctx) {
 }
 function RegisterComponent_div_19_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 44);
+    \u0275\u0275elementStart(0, "div", 47);
     \u0275\u0275template(1, RegisterComponent_div_19_span_1_Template, 2, 0, "span", 31)(2, RegisterComponent_div_19_span_2_Template, 2, 0, "span", 31);
     \u0275\u0275elementEnd();
   }
@@ -102,7 +103,7 @@ function RegisterComponent_div_24_span_2_Template(rf, ctx) {
 }
 function RegisterComponent_div_24_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 44);
+    \u0275\u0275elementStart(0, "div", 47);
     \u0275\u0275template(1, RegisterComponent_div_24_span_1_Template, 2, 0, "span", 31)(2, RegisterComponent_div_24_span_2_Template, 2, 0, "span", 31);
     \u0275\u0275elementEnd();
   }
@@ -130,7 +131,7 @@ function RegisterComponent_div_29_span_2_Template(rf, ctx) {
 }
 function RegisterComponent_div_29_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 44);
+    \u0275\u0275elementStart(0, "div", 47);
     \u0275\u0275template(1, RegisterComponent_div_29_span_1_Template, 2, 0, "span", 31)(2, RegisterComponent_div_29_span_2_Template, 2, 0, "span", 31);
     \u0275\u0275elementEnd();
   }
@@ -151,7 +152,7 @@ function RegisterComponent_div_36_span_1_Template(rf, ctx) {
 }
 function RegisterComponent_div_36_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 44);
+    \u0275\u0275elementStart(0, "div", 47);
     \u0275\u0275template(1, RegisterComponent_div_36_span_1_Template, 2, 0, "span", 31);
     \u0275\u0275elementEnd();
   }
@@ -164,16 +165,16 @@ function RegisterComponent_div_36_Template(rf, ctx) {
 function RegisterComponent__svg_svg_43_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 40);
-    \u0275\u0275element(1, "path", 45)(2, "circle", 46);
+    \u0275\u0275elementStart(0, "svg", 43);
+    \u0275\u0275element(1, "path", 48)(2, "circle", 49);
     \u0275\u0275elementEnd();
   }
 }
 function RegisterComponent__svg_svg_44_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 40);
-    \u0275\u0275element(1, "path", 47)(2, "line", 48);
+    \u0275\u0275elementStart(0, "svg", 43);
+    \u0275\u0275element(1, "path", 50)(2, "line", 51);
     \u0275\u0275elementEnd();
   }
 }
@@ -193,7 +194,7 @@ function RegisterComponent_div_45_span_2_Template(rf, ctx) {
 }
 function RegisterComponent_div_45_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 44);
+    \u0275\u0275elementStart(0, "div", 47);
     \u0275\u0275template(1, RegisterComponent_div_45_span_1_Template, 2, 0, "span", 31)(2, RegisterComponent_div_45_span_2_Template, 2, 0, "span", 31);
     \u0275\u0275elementEnd();
   }
@@ -208,16 +209,16 @@ function RegisterComponent_div_45_Template(rf, ctx) {
 function RegisterComponent__svg_svg_52_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 40);
-    \u0275\u0275element(1, "path", 45)(2, "circle", 46);
+    \u0275\u0275elementStart(0, "svg", 43);
+    \u0275\u0275element(1, "path", 48)(2, "circle", 49);
     \u0275\u0275elementEnd();
   }
 }
 function RegisterComponent__svg_svg_53_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 40);
-    \u0275\u0275element(1, "path", 47)(2, "line", 48);
+    \u0275\u0275elementStart(0, "svg", 43);
+    \u0275\u0275element(1, "path", 50)(2, "line", 51);
     \u0275\u0275elementEnd();
   }
 }
@@ -237,7 +238,7 @@ function RegisterComponent_div_54_span_2_Template(rf, ctx) {
 }
 function RegisterComponent_div_54_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 44);
+    \u0275\u0275elementStart(0, "div", 47);
     \u0275\u0275template(1, RegisterComponent_div_54_span_1_Template, 2, 0, "span", 31)(2, RegisterComponent_div_54_span_2_Template, 2, 0, "span", 31);
     \u0275\u0275elementEnd();
   }
@@ -258,7 +259,7 @@ function RegisterComponent_div_65_span_1_Template(rf, ctx) {
 }
 function RegisterComponent_div_65_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 44);
+    \u0275\u0275elementStart(0, "div", 47);
     \u0275\u0275template(1, RegisterComponent_div_65_span_1_Template, 2, 0, "span", 31);
     \u0275\u0275elementEnd();
   }
@@ -277,10 +278,10 @@ function RegisterComponent_span_67_Template(rf, ctx) {
 }
 function RegisterComponent_span_68_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 49);
+    \u0275\u0275elementStart(0, "span", 52);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 40);
-    \u0275\u0275element(2, "circle", 50)(3, "path", 51);
+    \u0275\u0275elementStart(1, "svg", 43);
+    \u0275\u0275element(2, "circle", 53)(3, "path", 54);
     \u0275\u0275elementEnd();
     \u0275\u0275text(4, " Creating account... ");
     \u0275\u0275elementEnd();
@@ -383,7 +384,7 @@ var RegisterComponent = class _RegisterComponent {
     };
   }
   static {
-    this.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _RegisterComponent, selectors: [["app-register"]], standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 81, vars: 30, consts: [[1, "auth-container"], [1, "auth-card"], [1, "auth-header"], [1, "brand-logo-container"], [1, "brand-logo"], [1, "logo-text"], [1, "auth-form", 3, "ngSubmit", "formGroup"], ["class", "alert alert-error", 4, "ngIf"], [1, "form-group"], ["for", "firstName"], ["type", "text", "id", "firstName", "formControlName", "firstName", "placeholder", "Enter your first name", 1, "form-control"], ["class", "invalid-feedback", 4, "ngIf"], ["for", "lastName"], ["type", "text", "id", "lastName", "formControlName", "lastName", "placeholder", "Enter your last name", 1, "form-control"], ["for", "email"], ["type", "email", "id", "email", "formControlName", "email", "placeholder", "Enter your email", 1, "form-control"], ["for", "phone"], [1, "optional"], ["type", "tel", "id", "phone", "formControlName", "phone", "placeholder", "Enter your phone number", 1, "form-control"], ["for", "password"], [1, "password-input-wrapper"], ["id", "password", "formControlName", "password", "placeholder", "Create a password", 1, "form-control", 3, "type"], ["type", "button", "tabindex", "-1", 1, "password-toggle", 3, "click"], ["width", "20", "height", "20", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", 4, "ngIf"], ["for", "confirmPassword"], ["id", "confirmPassword", "formControlName", "confirmPassword", "placeholder", "Confirm your password", 1, "form-control", 3, "type"], [1, "checkbox-label"], ["type", "checkbox", "formControlName", "acceptTerms"], ["routerLink", "/terms-of-service", 1, "link"], ["routerLink", "/privacy-policy", 1, "link"], ["type", "submit", 1, "btn", "btn-primary", 3, "disabled"], [4, "ngIf"], ["class", "loading-spinner", 4, "ngIf"], [1, "auth-footer"], ["routerLink", "/login"], [1, "legal-footer"], ["routerLink", "/privacy-policy"], [1, "dot"], ["routerLink", "/terms-of-service"], [1, "alert", "alert-error"], ["width", "20", "height", "20", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["cx", "12", "cy", "12", "r", "10"], ["x1", "12", "y1", "8", "x2", "12", "y2", "12"], ["x1", "12", "y1", "16", "x2", "12.01", "y2", "16"], [1, "invalid-feedback"], ["d", "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"], ["cx", "12", "cy", "12", "r", "3"], ["d", "M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"], ["x1", "1", "y1", "1", "x2", "23", "y2", "23"], [1, "loading-spinner"], ["cx", "12", "cy", "12", "r", "10", "opacity", "0.25"], ["d", "M12 2a10 10 0 0 1 10 10", "opacity", "0.75"]], template: function RegisterComponent_Template(rf, ctx) {
+    this.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _RegisterComponent, selectors: [["app-register"]], standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 93, vars: 30, consts: [[1, "auth-container"], [1, "auth-card"], [1, "auth-header"], [1, "brand-logo-container"], [1, "brand-logo"], [1, "logo-text"], [1, "auth-form", 3, "ngSubmit", "formGroup"], ["class", "alert alert-error", 4, "ngIf"], [1, "form-group"], ["for", "firstName"], ["type", "text", "id", "firstName", "formControlName", "firstName", "placeholder", "Enter your first name", 1, "form-control"], ["class", "invalid-feedback", 4, "ngIf"], ["for", "lastName"], ["type", "text", "id", "lastName", "formControlName", "lastName", "placeholder", "Enter your last name", 1, "form-control"], ["for", "email"], ["type", "email", "id", "email", "formControlName", "email", "placeholder", "Enter your email", 1, "form-control"], ["for", "phone"], [1, "optional"], ["type", "tel", "id", "phone", "formControlName", "phone", "placeholder", "Enter your phone number", 1, "form-control"], ["for", "password"], [1, "password-input-wrapper"], ["id", "password", "formControlName", "password", "placeholder", "Create a password", 1, "form-control", 3, "type"], ["type", "button", "tabindex", "-1", 1, "password-toggle", 3, "click"], ["width", "20", "height", "20", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", 4, "ngIf"], ["for", "confirmPassword"], ["id", "confirmPassword", "formControlName", "confirmPassword", "placeholder", "Confirm your password", 1, "form-control", 3, "type"], [1, "checkbox-label"], ["type", "checkbox", "formControlName", "acceptTerms"], ["routerLink", "/terms-of-service", 1, "link"], ["routerLink", "/privacy-policy", 1, "link"], ["type", "submit", 1, "btn", "btn-primary", 3, "disabled"], [4, "ngIf"], ["class", "loading-spinner", 4, "ngIf"], [1, "auth-footer"], ["routerLink", "/login"], [1, "legal-footer"], ["routerLink", "/privacy-policy"], [1, "dot"], ["routerLink", "/terms-of-service"], ["routerLink", "/refund-policy"], ["routerLink", "/about"], ["routerLink", "/contact"], [1, "alert", "alert-error"], ["width", "20", "height", "20", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["cx", "12", "cy", "12", "r", "10"], ["x1", "12", "y1", "8", "x2", "12", "y2", "12"], ["x1", "12", "y1", "16", "x2", "12.01", "y2", "16"], [1, "invalid-feedback"], ["d", "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"], ["cx", "12", "cy", "12", "r", "3"], ["d", "M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"], ["x1", "1", "y1", "1", "x2", "23", "y2", "23"], [1, "loading-spinner"], ["cx", "12", "cy", "12", "r", "10", "opacity", "0.25"], ["d", "M12 2a10 10 0 0 1 10 10", "opacity", "0.75"]], template: function RegisterComponent_Template(rf, ctx) {
       if (rf & 1) {
         \u0275\u0275elementStart(0, "div", 0)(1, "div", 1)(2, "div", 2)(3, "div", 3)(4, "div", 4)(5, "div", 5);
         \u0275\u0275text(6, "1min");
@@ -482,6 +483,24 @@ var RegisterComponent = class _RegisterComponent {
         \u0275\u0275elementEnd();
         \u0275\u0275elementStart(79, "a", 38);
         \u0275\u0275text(80, "Terms of Service");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(81, "span", 37);
+        \u0275\u0275text(82, "\u2022");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(83, "a", 39);
+        \u0275\u0275text(84, "Refund Policy");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(85, "span", 37);
+        \u0275\u0275text(86, "\u2022");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(87, "a", 40);
+        \u0275\u0275text(88, "About Us");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(89, "span", 37);
+        \u0275\u0275text(90, "\u2022");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(91, "a", 41);
+        \u0275\u0275text(92, "Contact Us");
         \u0275\u0275elementEnd()()();
       }
       if (rf & 2) {
@@ -541,4 +560,4 @@ var RegisterComponent = class _RegisterComponent {
 export {
   RegisterComponent
 };
-//# sourceMappingURL=chunk-XIWEKC2U.js.map
+//# sourceMappingURL=chunk-B4XO7DI4.js.map

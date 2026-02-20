@@ -1,4 +1,8 @@
 import {
+  AuthService
+} from "./chunk-6TPTVFIG.js";
+import "./chunk-L2AZJT22.js";
+import {
   CheckboxControlValueAccessor,
   DefaultValueAccessor,
   FormBuilder,
@@ -10,10 +14,7 @@ import {
   Validators,
   ɵNgNoValidate
 } from "./chunk-U2NUFKCF.js";
-import {
-  AuthService
-} from "./chunk-Y3QV4HHY.js";
-import "./chunk-VXOSVJKN.js";
+import "./chunk-UE6KENAU.js";
 import {
   ActivatedRoute,
   CommonModule,
@@ -44,10 +45,10 @@ import "./chunk-PZQZAEDH.js";
 // src/app/auth/login/login.component.ts
 function LoginComponent_div_14_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 33);
+    \u0275\u0275elementStart(0, "div", 36);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 34);
-    \u0275\u0275element(2, "circle", 35)(3, "line", 36)(4, "line", 37);
+    \u0275\u0275elementStart(1, "svg", 37);
+    \u0275\u0275element(2, "circle", 38)(3, "line", 39)(4, "line", 40);
     \u0275\u0275elementEnd();
     \u0275\u0275text(5);
     \u0275\u0275elementEnd();
@@ -74,7 +75,7 @@ function LoginComponent_div_19_span_2_Template(rf, ctx) {
 }
 function LoginComponent_div_19_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 38);
+    \u0275\u0275elementStart(0, "div", 41);
     \u0275\u0275template(1, LoginComponent_div_19_span_1_Template, 2, 0, "span", 22)(2, LoginComponent_div_19_span_2_Template, 2, 0, "span", 22);
     \u0275\u0275elementEnd();
   }
@@ -89,16 +90,16 @@ function LoginComponent_div_19_Template(rf, ctx) {
 function LoginComponent__svg_svg_26_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 34);
-    \u0275\u0275element(1, "path", 39)(2, "circle", 40);
+    \u0275\u0275elementStart(0, "svg", 37);
+    \u0275\u0275element(1, "path", 42)(2, "circle", 43);
     \u0275\u0275elementEnd();
   }
 }
 function LoginComponent__svg_svg_27_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 34);
-    \u0275\u0275element(1, "path", 41)(2, "line", 42);
+    \u0275\u0275elementStart(0, "svg", 37);
+    \u0275\u0275element(1, "path", 44)(2, "line", 45);
     \u0275\u0275elementEnd();
   }
 }
@@ -118,7 +119,7 @@ function LoginComponent_div_28_span_2_Template(rf, ctx) {
 }
 function LoginComponent_div_28_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 38);
+    \u0275\u0275elementStart(0, "div", 41);
     \u0275\u0275template(1, LoginComponent_div_28_span_1_Template, 2, 0, "span", 22)(2, LoginComponent_div_28_span_2_Template, 2, 0, "span", 22);
     \u0275\u0275elementEnd();
   }
@@ -139,10 +140,10 @@ function LoginComponent_span_37_Template(rf, ctx) {
 }
 function LoginComponent_span_38_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 43);
+    \u0275\u0275elementStart(0, "span", 46);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 34);
-    \u0275\u0275element(2, "circle", 44)(3, "path", 45);
+    \u0275\u0275elementStart(1, "svg", 37);
+    \u0275\u0275element(2, "circle", 47)(3, "path", 48);
     \u0275\u0275elementEnd();
     \u0275\u0275text(4, " Signing in... ");
     \u0275\u0275elementEnd();
@@ -278,7 +279,7 @@ var LoginComponent = class _LoginComponent {
     };
   }
   static {
-    this.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _LoginComponent, selectors: [["app-login"]], standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 56, vars: 14, consts: [[1, "auth-container"], [1, "auth-card"], [1, "auth-header"], [1, "brand-logo-container"], [1, "brand-logo"], [1, "logo-text"], [1, "auth-form", 3, "ngSubmit", "formGroup"], ["class", "alert alert-error", 4, "ngIf"], [1, "form-group"], ["for", "email"], ["type", "email", "id", "email", "formControlName", "email", "placeholder", "Enter your email", 1, "form-control"], ["class", "invalid-feedback", 4, "ngIf"], ["for", "password"], [1, "password-input-wrapper"], ["id", "password", "formControlName", "password", "placeholder", "Enter your password", 1, "form-control", 3, "type"], ["type", "button", "tabindex", "-1", 1, "password-toggle", 3, "click"], ["width", "20", "height", "20", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", 4, "ngIf"], [1, "form-options"], [1, "checkbox-label"], ["type", "checkbox", "formControlName", "rememberMe"], ["routerLink", "/forgot-password", 1, "forgot-link"], ["type", "submit", 1, "btn", "btn-primary", 3, "disabled"], [4, "ngIf"], ["class", "loading-spinner", 4, "ngIf"], [1, "auth-divider"], [1, "google-btn-container"], ["id", "google-btn"], [1, "auth-footer"], ["routerLink", "/register"], [1, "legal-footer"], ["routerLink", "/privacy-policy"], [1, "dot"], ["routerLink", "/terms-of-service"], [1, "alert", "alert-error"], ["width", "20", "height", "20", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["cx", "12", "cy", "12", "r", "10"], ["x1", "12", "y1", "8", "x2", "12", "y2", "12"], ["x1", "12", "y1", "16", "x2", "12.01", "y2", "16"], [1, "invalid-feedback"], ["d", "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"], ["cx", "12", "cy", "12", "r", "3"], ["d", "M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"], ["x1", "1", "y1", "1", "x2", "23", "y2", "23"], [1, "loading-spinner"], ["cx", "12", "cy", "12", "r", "10", "opacity", "0.25"], ["d", "M12 2a10 10 0 0 1 10 10", "opacity", "0.75"]], template: function LoginComponent_Template(rf, ctx) {
+    this.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _LoginComponent, selectors: [["app-login"]], standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 68, vars: 14, consts: [[1, "auth-container"], [1, "auth-card"], [1, "auth-header"], [1, "brand-logo-container"], [1, "brand-logo"], [1, "logo-text"], [1, "auth-form", 3, "ngSubmit", "formGroup"], ["class", "alert alert-error", 4, "ngIf"], [1, "form-group"], ["for", "email"], ["type", "email", "id", "email", "formControlName", "email", "placeholder", "Enter your email", 1, "form-control"], ["class", "invalid-feedback", 4, "ngIf"], ["for", "password"], [1, "password-input-wrapper"], ["id", "password", "formControlName", "password", "placeholder", "Enter your password", 1, "form-control", 3, "type"], ["type", "button", "tabindex", "-1", 1, "password-toggle", 3, "click"], ["width", "20", "height", "20", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", 4, "ngIf"], [1, "form-options"], [1, "checkbox-label"], ["type", "checkbox", "formControlName", "rememberMe"], ["routerLink", "/forgot-password", 1, "forgot-link"], ["type", "submit", 1, "btn", "btn-primary", 3, "disabled"], [4, "ngIf"], ["class", "loading-spinner", 4, "ngIf"], [1, "auth-divider"], [1, "google-btn-container"], ["id", "google-btn"], [1, "auth-footer"], ["routerLink", "/register"], [1, "legal-footer"], ["routerLink", "/privacy-policy"], [1, "dot"], ["routerLink", "/terms-of-service"], ["routerLink", "/refund-policy"], ["routerLink", "/about"], ["routerLink", "/contact"], [1, "alert", "alert-error"], ["width", "20", "height", "20", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["cx", "12", "cy", "12", "r", "10"], ["x1", "12", "y1", "8", "x2", "12", "y2", "12"], ["x1", "12", "y1", "16", "x2", "12.01", "y2", "16"], [1, "invalid-feedback"], ["d", "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"], ["cx", "12", "cy", "12", "r", "3"], ["d", "M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"], ["x1", "1", "y1", "1", "x2", "23", "y2", "23"], [1, "loading-spinner"], ["cx", "12", "cy", "12", "r", "10", "opacity", "0.25"], ["d", "M12 2a10 10 0 0 1 10 10", "opacity", "0.75"]], template: function LoginComponent_Template(rf, ctx) {
       if (rf & 1) {
         \u0275\u0275elementStart(0, "div", 0)(1, "div", 1)(2, "div", 2)(3, "div", 3)(4, "div", 4)(5, "div", 5);
         \u0275\u0275text(6, "1min");
@@ -345,6 +346,24 @@ var LoginComponent = class _LoginComponent {
         \u0275\u0275elementEnd();
         \u0275\u0275elementStart(54, "a", 32);
         \u0275\u0275text(55, "Terms of Service");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(56, "span", 31);
+        \u0275\u0275text(57, "\u2022");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(58, "a", 33);
+        \u0275\u0275text(59, "Refund Policy");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(60, "span", 31);
+        \u0275\u0275text(61, "\u2022");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(62, "a", 34);
+        \u0275\u0275text(63, "About Us");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(64, "span", 31);
+        \u0275\u0275text(65, "\u2022");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(66, "a", 35);
+        \u0275\u0275text(67, "Contact Us");
         \u0275\u0275elementEnd()()();
       }
       if (rf & 2) {
@@ -381,4 +400,4 @@ var LoginComponent = class _LoginComponent {
 export {
   LoginComponent
 };
-//# sourceMappingURL=chunk-LRGW2VSZ.js.map
+//# sourceMappingURL=chunk-IHUJE3QQ.js.map

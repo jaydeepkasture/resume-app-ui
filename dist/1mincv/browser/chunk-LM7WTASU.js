@@ -1,4 +1,8 @@
 import {
+  AuthService
+} from "./chunk-6TPTVFIG.js";
+import "./chunk-L2AZJT22.js";
+import {
   DefaultValueAccessor,
   FormBuilder,
   FormControlName,
@@ -9,10 +13,7 @@ import {
   Validators,
   ɵNgNoValidate
 } from "./chunk-U2NUFKCF.js";
-import {
-  AuthService
-} from "./chunk-Y3QV4HHY.js";
-import "./chunk-VXOSVJKN.js";
+import "./chunk-UE6KENAU.js";
 import {
   CommonModule,
   NgIf,
@@ -46,10 +47,10 @@ import "./chunk-PZQZAEDH.js";
 // src/app/auth/forgot-password/forgot-password.component.ts
 function ForgotPasswordComponent_form_13_div_1_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 22);
+    \u0275\u0275elementStart(0, "div", 25);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 23);
-    \u0275\u0275element(2, "circle", 24)(3, "line", 25)(4, "line", 26);
+    \u0275\u0275elementStart(1, "svg", 26);
+    \u0275\u0275element(2, "circle", 27)(3, "line", 28)(4, "line", 29);
     \u0275\u0275elementEnd();
     \u0275\u0275text(5);
     \u0275\u0275elementEnd();
@@ -76,8 +77,8 @@ function ForgotPasswordComponent_form_13_div_6_span_2_Template(rf, ctx) {
 }
 function ForgotPasswordComponent_form_13_div_6_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 27);
-    \u0275\u0275template(1, ForgotPasswordComponent_form_13_div_6_span_1_Template, 2, 0, "span", 20)(2, ForgotPasswordComponent_form_13_div_6_span_2_Template, 2, 0, "span", 20);
+    \u0275\u0275elementStart(0, "div", 30);
+    \u0275\u0275template(1, ForgotPasswordComponent_form_13_div_6_span_1_Template, 2, 0, "span", 23)(2, ForgotPasswordComponent_form_13_div_6_span_2_Template, 2, 0, "span", 23);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -97,10 +98,10 @@ function ForgotPasswordComponent_form_13_span_8_Template(rf, ctx) {
 }
 function ForgotPasswordComponent_form_13_span_9_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 28);
+    \u0275\u0275elementStart(0, "span", 31);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(1, "svg", 23);
-    \u0275\u0275element(2, "circle", 29)(3, "path", 30);
+    \u0275\u0275elementStart(1, "svg", 26);
+    \u0275\u0275element(2, "circle", 32)(3, "path", 33);
     \u0275\u0275elementEnd();
     \u0275\u0275text(4, " Sending... ");
     \u0275\u0275elementEnd();
@@ -109,21 +110,21 @@ function ForgotPasswordComponent_form_13_span_9_Template(rf, ctx) {
 function ForgotPasswordComponent_form_13_Template(rf, ctx) {
   if (rf & 1) {
     const _r1 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "form", 13);
+    \u0275\u0275elementStart(0, "form", 16);
     \u0275\u0275listener("ngSubmit", function ForgotPasswordComponent_form_13_Template_form_ngSubmit_0_listener() {
       \u0275\u0275restoreView(_r1);
       const ctx_r1 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r1.onSubmit());
     });
-    \u0275\u0275template(1, ForgotPasswordComponent_form_13_div_1_Template, 6, 1, "div", 14);
-    \u0275\u0275elementStart(2, "div", 15)(3, "label", 16);
+    \u0275\u0275template(1, ForgotPasswordComponent_form_13_div_1_Template, 6, 1, "div", 17);
+    \u0275\u0275elementStart(2, "div", 18)(3, "label", 19);
     \u0275\u0275text(4, "Email Address");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(5, "input", 17);
-    \u0275\u0275template(6, ForgotPasswordComponent_form_13_div_6_Template, 3, 2, "div", 18);
+    \u0275\u0275element(5, "input", 20);
+    \u0275\u0275template(6, ForgotPasswordComponent_form_13_div_6_Template, 3, 2, "div", 21);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(7, "button", 19);
-    \u0275\u0275template(8, ForgotPasswordComponent_form_13_span_8_Template, 2, 0, "span", 20)(9, ForgotPasswordComponent_form_13_span_9_Template, 5, 0, "span", 21);
+    \u0275\u0275elementStart(7, "button", 22);
+    \u0275\u0275template(8, ForgotPasswordComponent_form_13_span_8_Template, 2, 0, "span", 23)(9, ForgotPasswordComponent_form_13_span_9_Template, 5, 0, "span", 24);
     \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
@@ -145,10 +146,10 @@ function ForgotPasswordComponent_form_13_Template(rf, ctx) {
 }
 function ForgotPasswordComponent_div_14_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 31)(1, "div", 32);
+    \u0275\u0275elementStart(0, "div", 34)(1, "div", 35);
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(2, "svg", 33);
-    \u0275\u0275element(3, "path", 34)(4, "polyline", 35);
+    \u0275\u0275elementStart(2, "svg", 36);
+    \u0275\u0275element(3, "path", 37)(4, "polyline", 38);
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
     \u0275\u0275elementStart(5, "h2");
@@ -157,7 +158,7 @@ function ForgotPasswordComponent_div_14_Template(rf, ctx) {
     \u0275\u0275elementStart(7, "p");
     \u0275\u0275text(8);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(9, "button", 36);
+    \u0275\u0275elementStart(9, "button", 39);
     \u0275\u0275text(10, "Back to Login");
     \u0275\u0275elementEnd()();
   }
@@ -169,9 +170,9 @@ function ForgotPasswordComponent_div_14_Template(rf, ctx) {
 }
 function ForgotPasswordComponent_div_15_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 37)(1, "p");
+    \u0275\u0275elementStart(0, "div", 40)(1, "p");
     \u0275\u0275text(2, "Remember your password? ");
-    \u0275\u0275elementStart(3, "a", 38);
+    \u0275\u0275elementStart(3, "a", 41);
     \u0275\u0275text(4, "Sign in");
     \u0275\u0275elementEnd()()();
   }
@@ -227,7 +228,7 @@ var ForgotPasswordComponent = class _ForgotPasswordComponent {
     };
   }
   static {
-    this.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _ForgotPasswordComponent, selectors: [["app-forgot-password"]], standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 23, vars: 3, consts: [[1, "auth-container"], [1, "auth-card"], [1, "auth-header"], [1, "brand-logo-container"], [1, "brand-logo"], [1, "logo-text"], ["class", "auth-form", 3, "formGroup", "ngSubmit", 4, "ngIf"], ["class", "success-message", 4, "ngIf"], ["class", "auth-footer", 4, "ngIf"], [1, "legal-footer"], ["routerLink", "/privacy-policy"], [1, "dot"], ["routerLink", "/terms-of-service"], [1, "auth-form", 3, "ngSubmit", "formGroup"], ["class", "alert alert-error", 4, "ngIf"], [1, "form-group"], ["for", "email"], ["type", "email", "id", "email", "formControlName", "email", "placeholder", "Enter your registered email", 1, "form-control"], ["class", "invalid-feedback", 4, "ngIf"], ["type", "submit", 1, "btn", "btn-primary", 3, "disabled"], [4, "ngIf"], ["class", "loading-spinner", 4, "ngIf"], [1, "alert", "alert-error"], ["width", "20", "height", "20", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["cx", "12", "cy", "12", "r", "10"], ["x1", "12", "y1", "8", "x2", "12", "y2", "12"], ["x1", "12", "y1", "16", "x2", "12.01", "y2", "16"], [1, "invalid-feedback"], [1, "loading-spinner"], ["cx", "12", "cy", "12", "r", "10", "opacity", "0.25"], ["d", "M12 2a10 10 0 0 1 10 10", "opacity", "0.75"], [1, "success-message"], [1, "success-icon"], ["width", "48", "height", "48", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["d", "M22 11.08V12a10 10 0 1 1-5.93-9.14"], ["points", "22 4 12 14.01 9 11.01"], ["routerLink", "/login", 1, "btn", "btn-primary"], [1, "auth-footer"], ["routerLink", "/login"]], template: function ForgotPasswordComponent_Template(rf, ctx) {
+    this.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _ForgotPasswordComponent, selectors: [["app-forgot-password"]], standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 35, vars: 3, consts: [[1, "auth-container"], [1, "auth-card"], [1, "auth-header"], [1, "brand-logo-container"], [1, "brand-logo"], [1, "logo-text"], ["class", "auth-form", 3, "formGroup", "ngSubmit", 4, "ngIf"], ["class", "success-message", 4, "ngIf"], ["class", "auth-footer", 4, "ngIf"], [1, "legal-footer"], ["routerLink", "/privacy-policy"], [1, "dot"], ["routerLink", "/terms-of-service"], ["routerLink", "/refund-policy"], ["routerLink", "/about"], ["routerLink", "/contact"], [1, "auth-form", 3, "ngSubmit", "formGroup"], ["class", "alert alert-error", 4, "ngIf"], [1, "form-group"], ["for", "email"], ["type", "email", "id", "email", "formControlName", "email", "placeholder", "Enter your registered email", 1, "form-control"], ["class", "invalid-feedback", 4, "ngIf"], ["type", "submit", 1, "btn", "btn-primary", 3, "disabled"], [4, "ngIf"], ["class", "loading-spinner", 4, "ngIf"], [1, "alert", "alert-error"], ["width", "20", "height", "20", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["cx", "12", "cy", "12", "r", "10"], ["x1", "12", "y1", "8", "x2", "12", "y2", "12"], ["x1", "12", "y1", "16", "x2", "12.01", "y2", "16"], [1, "invalid-feedback"], [1, "loading-spinner"], ["cx", "12", "cy", "12", "r", "10", "opacity", "0.25"], ["d", "M12 2a10 10 0 0 1 10 10", "opacity", "0.75"], [1, "success-message"], [1, "success-icon"], ["width", "48", "height", "48", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["d", "M22 11.08V12a10 10 0 1 1-5.93-9.14"], ["points", "22 4 12 14.01 9 11.01"], ["routerLink", "/login", 1, "btn", "btn-primary"], [1, "auth-footer"], ["routerLink", "/login"]], template: function ForgotPasswordComponent_Template(rf, ctx) {
       if (rf & 1) {
         \u0275\u0275elementStart(0, "div", 0)(1, "div", 1)(2, "div", 2)(3, "div", 3)(4, "div", 4)(5, "div", 5);
         \u0275\u0275text(6, "1min");
@@ -250,6 +251,24 @@ var ForgotPasswordComponent = class _ForgotPasswordComponent {
         \u0275\u0275elementEnd();
         \u0275\u0275elementStart(21, "a", 12);
         \u0275\u0275text(22, "Terms of Service");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(23, "span", 11);
+        \u0275\u0275text(24, "\u2022");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(25, "a", 13);
+        \u0275\u0275text(26, "Refund Policy");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(27, "span", 11);
+        \u0275\u0275text(28, "\u2022");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(29, "a", 14);
+        \u0275\u0275text(30, "About Us");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(31, "span", 11);
+        \u0275\u0275text(32, "\u2022");
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(33, "a", 15);
+        \u0275\u0275text(34, "Contact Us");
         \u0275\u0275elementEnd()()();
       }
       if (rf & 2) {
@@ -269,4 +288,4 @@ var ForgotPasswordComponent = class _ForgotPasswordComponent {
 export {
   ForgotPasswordComponent
 };
-//# sourceMappingURL=chunk-6NA5UQIT.js.map
+//# sourceMappingURL=chunk-LM7WTASU.js.map
