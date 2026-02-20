@@ -300,7 +300,7 @@ var RegisterComponent = class _RegisterComponent {
   }
   ngOnInit() {
     if (this.authService.isAuthenticated()) {
-      this.router.navigate(["/"]);
+      this.router.navigate(["/templates"]);
     }
     this.registerForm = this.formBuilder.group({
       firstName: ["", [Validators.required, Validators.minLength(2)]],
@@ -359,7 +359,7 @@ var RegisterComponent = class _RegisterComponent {
       next: (response) => {
         console.log("\u2705 Registration response:", response);
         if (response.status) {
-          this.router.navigate(["/"]);
+          this.router.navigate(["/templates"]);
         } else {
           this.error = response.message || "Registration failed. Please try again.";
           this.loading = false;
@@ -560,4 +560,4 @@ var RegisterComponent = class _RegisterComponent {
 export {
   RegisterComponent
 };
-//# sourceMappingURL=chunk-B4XO7DI4.js.map
+//# sourceMappingURL=chunk-ST43N46H.js.map

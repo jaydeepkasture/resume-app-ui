@@ -42544,18 +42544,20 @@ var ResumeEditorComponent = class _ResumeEditorComponent {
     }
     this.route.params.subscribe((params) => {
       const chatId = params["chatId"];
-      if (chatId && chatId !== this.currentChatId) {
-        console.log("\u{1F4CD} Chat ID from URL:", chatId);
+      const templateId = this.route.snapshot.queryParams["templateId"];
+      if (!chatId || !templateId) {
+        console.warn("\u26A0\uFE0F Missing mandatory chatId or templateId, redirecting to gallery");
+        this.router.navigate(["/templates"]);
+        return;
+      }
+      if (chatId !== this.currentChatId) {
+        console.log("\u{1F4CD} Chat ID changed in URL:", chatId);
         this.currentChatId = chatId;
         this.loadFirstHistoryItem();
       }
-    });
-    this.route.queryParams.subscribe((queryParams) => {
-      const templateId = queryParams["templateId"];
-      if (templateId) {
-        console.log("\u{1F4CD} Template ID from URL query param:", templateId);
+      if (templateId !== this.currentTemplateId) {
+        console.log("\u{1F4CD} Template ID changed in URL:", templateId);
         this.onBackendTemplateSelected(templateId, false);
-      } else {
       }
     });
   }
@@ -44046,4 +44048,4 @@ jspdf/dist/jspdf.es.min.js:
    * http://opensource.org/licenses/mit-license
    *)
 */
-//# sourceMappingURL=chunk-G7LLLPFJ.js.map
+//# sourceMappingURL=chunk-NFK4VPDB.js.map

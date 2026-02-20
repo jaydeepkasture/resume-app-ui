@@ -1,11 +1,18 @@
 import {
+  AuthService
+} from "./chunk-6TPTVFIG.js";
+import "./chunk-L2AZJT22.js";
+import "./chunk-UE6KENAU.js";
+import {
   CommonModule,
+  Router,
   RouterLink,
   RouterModule,
   ɵsetClassDebugInfo,
   ɵɵStandaloneFeature,
   ɵɵadvance,
   ɵɵdefineComponent,
+  ɵɵdirectiveInject,
   ɵɵelement,
   ɵɵelementEnd,
   ɵɵelementStart,
@@ -16,12 +23,19 @@ import "./chunk-PZQZAEDH.js";
 
 // src/app/pages/landing/landing.component.ts
 var LandingComponent = class _LandingComponent {
-  constructor() {
+  constructor(authService, router) {
+    this.authService = authService;
+    this.router = router;
     this.currentYear = (/* @__PURE__ */ new Date()).getFullYear();
+  }
+  ngOnInit() {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(["/templates"]);
+    }
   }
   static {
     this.\u0275fac = function LandingComponent_Factory(t) {
-      return new (t || _LandingComponent)();
+      return new (t || _LandingComponent)(\u0275\u0275directiveInject(AuthService), \u0275\u0275directiveInject(Router));
     };
   }
   static {
@@ -207,9 +221,9 @@ var LandingComponent = class _LandingComponent {
   }
 };
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(LandingComponent, { className: "LandingComponent", filePath: "src\\app\\pages\\landing\\landing.component.ts", lineNumber: 12 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(LandingComponent, { className: "LandingComponent", filePath: "src\\app\\pages\\landing\\landing.component.ts", lineNumber: 13 });
 })();
 export {
   LandingComponent
 };
-//# sourceMappingURL=chunk-3O6OKQAD.js.map
+//# sourceMappingURL=chunk-ZS5RTYJT.js.map

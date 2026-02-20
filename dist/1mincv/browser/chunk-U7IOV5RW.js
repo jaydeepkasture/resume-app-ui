@@ -165,14 +165,14 @@ var LoginComponent = class _LoginComponent {
   }
   ngOnInit() {
     if (this.authService.isAuthenticated()) {
-      this.router.navigate(["/"]);
+      this.router.navigate(["/templates"]);
     }
     this.loginForm = this.formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
       password: ["", [Validators.required, Validators.minLength(6)]],
       rememberMe: [false]
     });
-    this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/";
+    this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/templates";
     this.authService.getGoogleClientId().subscribe({
       next: (clientId) => {
         this.googleClientId = clientId;
@@ -400,4 +400,4 @@ var LoginComponent = class _LoginComponent {
 export {
   LoginComponent
 };
-//# sourceMappingURL=chunk-IHUJE3QQ.js.map
+//# sourceMappingURL=chunk-U7IOV5RW.js.map

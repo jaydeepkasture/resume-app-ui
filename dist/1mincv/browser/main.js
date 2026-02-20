@@ -2119,7 +2119,7 @@ var routes = [
   // Public Landing Page
   {
     path: "",
-    loadComponent: () => import("./chunk-3O6OKQAD.js").then((m) => m.LandingComponent)
+    loadComponent: () => import("./chunk-ZS5RTYJT.js").then((m) => m.LandingComponent)
   },
   // Public Legal and Information Pages
   {
@@ -2151,15 +2151,15 @@ var routes = [
   // Authentication routes (public)
   {
     path: "login",
-    loadComponent: () => import("./chunk-IHUJE3QQ.js").then((m) => m.LoginComponent)
+    loadComponent: () => import("./chunk-U7IOV5RW.js").then((m) => m.LoginComponent)
   },
   {
     path: "register",
-    loadComponent: () => import("./chunk-B4XO7DI4.js").then((m) => m.RegisterComponent)
+    loadComponent: () => import("./chunk-ST43N46H.js").then((m) => m.RegisterComponent)
   },
   {
     path: "forgot-password",
-    loadComponent: () => import("./chunk-LM7WTASU.js").then((m) => m.ForgotPasswordComponent)
+    loadComponent: () => import("./chunk-4HBZ5KA2.js").then((m) => m.ForgotPasswordComponent)
   },
   {
     path: "reset-password",
@@ -2168,12 +2168,12 @@ var routes = [
   // Protected routes (require authentication)
   {
     path: "editor",
-    loadComponent: () => import("./chunk-G7LLLPFJ.js").then((m) => m.ResumeEditorComponent),
+    loadComponent: () => import("./chunk-NFK4VPDB.js").then((m) => m.ResumeEditorComponent),
     canActivate: [AuthGuard]
   },
   {
     path: "editor/:chatId",
-    loadComponent: () => import("./chunk-G7LLLPFJ.js").then((m) => m.ResumeEditorComponent),
+    loadComponent: () => import("./chunk-NFK4VPDB.js").then((m) => m.ResumeEditorComponent),
     canActivate: [AuthGuard]
   },
   {

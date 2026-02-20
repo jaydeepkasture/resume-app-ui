@@ -189,7 +189,7 @@ var ForgotPasswordComponent = class _ForgotPasswordComponent {
   }
   ngOnInit() {
     if (this.authService.isAuthenticated()) {
-      this.router.navigate(["/"]);
+      this.router.navigate(["/templates"]);
     }
     this.forgotForm = this.formBuilder.group({
       email: ["", [Validators.required, Validators.email]]
@@ -288,4 +288,4 @@ var ForgotPasswordComponent = class _ForgotPasswordComponent {
 export {
   ForgotPasswordComponent
 };
-//# sourceMappingURL=chunk-LM7WTASU.js.map
+//# sourceMappingURL=chunk-4HBZ5KA2.js.map
