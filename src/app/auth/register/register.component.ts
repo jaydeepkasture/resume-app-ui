@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     // Redirect if already logged in
     if (this.authService.isAuthenticated()) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/templates']);
     }
 
     // Initialize form with validation
@@ -102,7 +102,7 @@ export class RegisterComponent implements OnInit {
       next: (response) => {
         console.log('✅ Registration response:', response);
         if (response.status) {
-          this.router.navigate(['/']);
+          this.router.navigate(['/templates']);
         } else {
           this.error = response.message || 'Registration failed. Please try again.';
           this.loading = false;

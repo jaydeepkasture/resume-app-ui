@@ -27,7 +27,7 @@ export class ForgotPasswordComponent implements OnInit {
   ngOnInit(): void {
     // Redirect if already logged in
     if (this.authService.isAuthenticated()) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/templates']);
     }
 
     // Initialize form

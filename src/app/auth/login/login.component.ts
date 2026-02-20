@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     // Redirect if already logged in
     if (this.authService.isAuthenticated()) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/templates']);
     }
 
     // Initialize form
@@ -45,8 +45,8 @@ export class LoginComponent implements OnInit {
       rememberMe: [false]
     });
 
-    // Get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    // Get return url from route parameters or default to '/templates'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/templates';
 
     // Fetch Google Client ID from backend
     this.authService.getGoogleClientId().subscribe({

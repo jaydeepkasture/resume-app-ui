@@ -1091,7 +1091,6 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     // Check for passed data from navigation (e.g. Create Chat flow)
-    
     const tempData = this.templateService.getAndClearTempResumeData();
     if (tempData) {
         console.log('🔄 Restoring temp resume data from navigation');
@@ -1099,32 +1098,28 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
         this.normalizeResumeData(this.currentResumeData);
     }
 
-    // Check if there's a chatId in the URL
+    // Single source of truth for route monitoring
     this.route.params.subscribe(params => {
       const chatId = params['chatId'];
-      if (chatId && chatId !== this.currentChatId) {
-        console.log('📍 Chat ID from URL:', chatId);
+      const templateId = this.route.snapshot.queryParams['templateId'];
+
+      if (!chatId || !templateId) {
+        console.warn('⚠️ Missing mandatory chatId or templateId, redirecting to gallery');
+        this.router.navigate(['/templates']);
+        return;
+      }
+
+      // Handle chatId changes
+      if (chatId !== this.currentChatId) {
+        console.log('📍 Chat ID changed in URL:', chatId);
         this.currentChatId = chatId;
-        
-        // Load the first history item automatically when chat is loaded
         this.loadFirstHistoryItem();
       }
-    });
 
-    // Check query params for templateId
-    this.route.queryParams.subscribe(queryParams => {
-      const templateId = queryParams['templateId'];
-      if (templateId) {
-          console.log('📍 Template ID from URL query param:', templateId);
-          // Load this template (false = don't update URL to avoid loops)
-          this.onBackendTemplateSelected(templateId, false);
-      } else {
-          // No template ID? 
-          // If we ARE in editor mode, this means we should go back to gallery.
-          // Or if we just landed on /editor with no params
-          // if (!this.currentChatId) {
-          //    this.router.navigate(['/templates']);
-          // }
+      // Handle templateId changes
+      if (templateId !== this.currentTemplateId) {
+        console.log('📍 Template ID changed in URL:', templateId);
+        this.onBackendTemplateSelected(templateId, false);
       }
     });
   }
