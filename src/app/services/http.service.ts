@@ -342,10 +342,10 @@ export class HttpService {
 
       // We no longer rely on local refresh token or email manually for the refresh call
       // The backend handles it via HttpOnly cookies
+      // Send GET request with credentials (cookies) AND the expired access token in header
       const fullUrl = this.prepareUrl('account/refresh-token');
-      
-      // Send GET request with credentials (cookies)
-      return this.http.get<any>(fullUrl, { withCredentials: true }).pipe(
+      const headers = this.buildHeaders();
+      return this.http.get<any>(fullUrl, { headers, withCredentials: true }).pipe(
         switchMap((response: any) => {
           this.isRefreshing = false;
           
