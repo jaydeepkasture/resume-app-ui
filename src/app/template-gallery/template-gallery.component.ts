@@ -161,9 +161,18 @@ export class TemplateGalleryComponent implements OnInit {
     });
   }
 
+  onTryEmptyTemplate(event: Event, template: any) {
+    event.stopPropagation(); // Prevent card selection
+    console.log('Try Empty Template Selected:', template);
+    this.checkLimitAndProceed(template, true);
+  }
+
   onGalleryTemplateSelect(template: any) {
     console.log('Gallery Template Selected:', template);
-    
+    this.checkLimitAndProceed(template, false);
+  }
+
+  private checkLimitAndProceed(template: any, isEmpty: boolean) {
     // Check template limit before creating
     const limit = this.benefitsService.get('TEMPLATE_LIMIT');
     
@@ -178,18 +187,18 @@ export class TemplateGalleryComponent implements OnInit {
         }
 
         // Proceed to create
-        this.createSession(template);
+        this.createSession(template, isEmpty);
       },
       error: (err) => {
         console.error('Error checking sessions count:', err);
         // If check fails, try to proceed anyway or show error
-        this.createSession(template); 
+        this.createSession(template, isEmpty); 
       }
     });
   }
 
-  private createSession(template: any) {
-    this.templateService.createChatSession(template.id).subscribe({
+  private createSession(template: any, isEmpty: boolean = false) {
+    this.templateService.createChatSession(template.id, isEmpty).subscribe({
       next: (response) => {
         if (response.status && response.data) {
           // Assuming response.data contains the chat object with _id

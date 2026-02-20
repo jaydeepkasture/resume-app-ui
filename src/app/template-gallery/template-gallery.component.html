@@ -78,7 +78,10 @@
         </div>
         <div class="template-info">
            <h3>{{ theme.templateName }}</h3>
+        <div class="template-actions">
            <button class="select-btn">Use Template</button>
+           <button class="empty-btn" (click)="onTryEmptyTemplate($event, theme)">Try Empty</button>
+        </div>
         </div>
      </div>
      

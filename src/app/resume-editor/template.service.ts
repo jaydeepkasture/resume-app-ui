@@ -174,10 +174,12 @@ export class TemplateService {
   /**
    * Create a new chat session for a specific template
    * @param templateId - The ID of the template
+   * @param isEmpty - Whether to use an empty template (default false)
    * @returns Observable with chat session details
    */
-  createChatSession(templateId: string): Observable<any> {
-    return this.httpService.post('resume/chat/create', { templateId });
+  createChatSession(templateId: string, isEmpty: boolean = false): Observable<any> {
+    const url = isEmpty ? 'resume/chat/create?isemptytemplate=true' : 'resume/chat/create';
+    return this.httpService.post(url, { templateId });
   }
 
   /**
