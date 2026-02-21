@@ -340,44 +340,33 @@ export class HttpService {
       this.isRefreshing = true;
       this.refreshTokenSubject.next(null);
 
-      // We no longer rely on local refresh token or email manually for the refresh call
-      // The backend handles it via HttpOnly cookies
-      // Send GET request with credentials (cookies) AND the expired access token in header
-      const fullUrl = this.prepareUrl('account/refresh-token');
-      const headers = this.buildHeaders();
-      return this.http.get<any>(fullUrl, { headers, withCredentials: true }).pipe(
+      // Use this.get() to ensure consistent header building and base URL handling
+      return this.get<any>('account/refresh-token').pipe(
         switchMap((response: any) => {
           this.isRefreshing = false;
           
           if (response.status && response.data) {
-            // Update state with new access token
-            // Note: Refresh token is handled electronically by cookies, no need to save it manually
             const currentUser = this.stateService.getCurrentUser() || response.data.user;
             
             if (currentUser) {
-                // Keep existing refresh token placeholder or null if purely cookie-based
-                // We just update the access token in memory/storage
                 this.stateService.setAuthState(
                   response.data.token, 
                   currentUser, 
-                  undefined // No local refresh token needed if using cookies
+                  undefined
                 );
             }
             
             this.refreshTokenSubject.next(response.data.token);
-            
-            // Retry the original request
             return next();
           } else {
-            // Refresh failed
-            this.stateService.clearAuthState();
+            // No longer clearing auth state here as per user requirement
             return this.throwError(error);
           }
         }),
         catchError((refreshError) => {
           console.error('Refresh token failed:', refreshError);
           this.isRefreshing = false;
-          this.stateService.clearAuthState();
+          // No longer clearing auth state here as per user requirement
           return this.throwError(refreshError);
         })
       );
