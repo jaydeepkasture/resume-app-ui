@@ -157,15 +157,21 @@ export class StateService {
   private loadPersistedState(): void {
     const persistedAuthState = this.loadFromStorage<AuthState>(this.AUTH_STATE_KEY);
     
-    if (persistedAuthState && persistedAuthState.isAuthenticated) {
-      // Check if token is still valid
-      if (persistedAuthState.token && !this.isTokenExpired(persistedAuthState.token)) {
-        this.authStateSubject.next(persistedAuthState);
-        this.user$.next(persistedAuthState.user);
-        this.isAuthenticated$.next(true);
+    if (persistedAuthState) {
+      // Restore state even if token is expired, so we can use it for refresh-token calls
+      this.authStateSubject.next(persistedAuthState);
+      this.user$.next(persistedAuthState.user);
+      
+      // Only set the public isAuthenticated$ observable based on actual token validity
+      const isValid = persistedAuthState.token && !this.isTokenExpired(persistedAuthState.token);
+      this.isAuthenticated$.next(!!isValid);
+      
+      if (isValid) {
         console.log('✅ Auth state restored from encrypted storage');
+      } else if (persistedAuthState.token) {
+        console.log('⚠️ Restored expired token for potential refresh');
       } else {
-        console.log('⚠️ Stored token expired, clearing state');
+        // No token or empty auth state
         this.clearAuthState();
       }
     }
