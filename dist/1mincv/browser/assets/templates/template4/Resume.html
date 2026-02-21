@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Resume - Creative Vibrant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            line-height: 1.5;
+            color: #000;
+            background: white;
+        }
+        
+        .resume-container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+        }
+        
+        .header {
+            border-bottom: 2px solid #000;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 28pt;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            color: #000;
+            letter-spacing: 1px;
+        }
+        
+        .contact-bar {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 10pt;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .content {
+            padding: 0;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            font-size: 14pt;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #000;
+            padding-bottom: 5px;
+        }
+        
+        .summary {
+            font-size: 11pt;
+            line-height: 1.6;
+            color: #000;
+            text-align: left;
+        }
+        
+        .experience-item, .education-item {
+            margin-bottom: 20px;
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+        
+        .job-title {
+            font-size: 12pt;
+            font-weight: 700;
+            color: #000;
+        }
+        
+        .job-date {
+            font-size: 10pt;
+            font-weight: 600;
+            color: #000;
+            white-space: nowrap;
+        }
+        
+        .company-name {
+            font-size: 11pt;
+            color: #000;
+            font-weight: 600;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+        
+        .job-description {
+            font-size: 10.5pt;
+            color: #000;
+            text-align: left;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            row-gap: 5px;
+            column-gap: 15px;
+        }
+        
+        .skill-item {
+            font-size: 10.5pt;
+            color: #000;
+            background: transparent;
+            padding: 0;
+            border: none;
+            box-shadow: none;
+        }
+        
+        /* Add bullets between skills just in case, or list style */
+        .skill-item:not(:last-child)::after {
+            content: " •";
+            margin-left: 15px;
+            color: #000;
+        }
+        
+        .degree {
+            font-size: 12pt;
+            font-weight: 700;
+            color: #000;
+        }
+        
+        .institution {
+            font-size: 11pt;
+            color: #000;
+            font-style: italic;
+        }
+        
+        .year {
+            font-size: 10pt;
+            color: #000;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <div class="header">
+            <h1 data-field="name">{{name}}</h1>
+            <div class="contact-bar">
+                <div class="contact-item">
+                    <span data-field="email">{{email}}</span>
+                </div>
+                <div class="contact-item">
+                    <span data-field="phoneno">{{phoneno}}</span>
+                </div>
+                <div class="contact-item">
+                    <span data-field="location">{{location}}</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">About Me</h2>
+                <p class="summary" data-field="summary">{{summary}}</p>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Work Experience</h2>
+                <div data-repeat="experiance">
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <h3 class="job-title" data-field="position">{{position}}</h3>
+                            <span class="job-date"><span data-field="from">{{from}}</span> - <span data-field="to">{{to}}</span></span>
+                        </div>
+                        <div class="company-name" data-field="company">{{company}}</div>
+                        <p class="job-description" data-field="description">{{description}}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-container" data-repeat="skills">
+                    <div class="skill-item" data-field="skill">{{skill}}</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Education</h2>
+                <div data-repeat="eduction">
+                    <div class="education-item">
+                        <div class="degree"><span data-field="degree">{{degree}}</span> in <span data-field="field">{{field}}</span></div>
+                        <div class="institution" data-field="institution">{{institution}}</div>
+                        <div class="year" data-field="year">{{year}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
