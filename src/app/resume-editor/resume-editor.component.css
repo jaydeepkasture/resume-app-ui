@@ -472,7 +472,7 @@
 
   /* decrease ProseMirror inner padding so its 40px doesn't add overflow on small screens */
   .editor ::ng-deep .ProseMirror {
-    padding: 16px !important;
+    padding: 8px 8px 16px 8px !important;
   }
 
   /* also force wrapper and container full width */
