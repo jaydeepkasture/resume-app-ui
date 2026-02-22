@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { catchError, map, switchMap, filter, take } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
 
 import { StateService } from './state.service';
 
@@ -36,7 +37,8 @@ export class HttpService {
 
   constructor(
     private http: HttpClient,
-    private stateService: StateService
+    private stateService: StateService,
+    private router: Router
   ) {
     console.log('🌐 HttpService initialized');
   }
@@ -359,14 +361,16 @@ export class HttpService {
             this.refreshTokenSubject.next(response.data.token);
             return next();
           } else {
-            // No longer clearing auth state here as per user requirement
+            this.stateService.clearAuthState();
+            this.router.navigate(['/login']);
             return this.throwError(error);
           }
         }),
         catchError((refreshError) => {
           console.error('Refresh token failed:', refreshError);
           this.isRefreshing = false;
-          // No longer clearing auth state here as per user requirement
+          this.stateService.clearAuthState();
+          this.router.navigate(['/login']);
           return this.throwError(refreshError);
         })
       );
