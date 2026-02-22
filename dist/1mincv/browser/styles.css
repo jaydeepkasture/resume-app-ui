@@ -53,6 +53,13 @@ body {
     margin: 0 !important;
     overflow-x: hidden;
   }
+  app-resume-editor .editor {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  app-resume-editor .editor::-webkit-scrollbar {
+    display: none;
+  }
 }
 .brand-logo-container {
   display: flex;
