@@ -460,74 +460,41 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-
-  /* make the editor container itself stretch to viewport */
+  /* let styles.css handle the padding and width – just reset margins here */
   .editor {
-    padding: 0 !important;
-    min-height: auto !important;
-    max-width: 100% !important;
-    width: 100% !important;
     margin: 0 !important;
   }
 
-  /* decrease ProseMirror inner padding so its 40px doesn't add overflow on small screens */
-  .editor ::ng-deep .ProseMirror {
-    padding: 8px 8px 16px 8px !important;
-  }
-
-  /* also force wrapper and container full width */
   .editor-wrapper {
-    padding: 0 !important;
     margin: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
   }
 
-  /* ensure the outer container has no side gaps */
   .editor-container {
-    padding: 0 !important;
     margin: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
+  }
+
+  /* minimal internal padding so text doesn't touch edges */
+  .editor ::ng-deep .ProseMirror {
+    padding: 4px !important;
+    box-shadow: none !important;
   }
 
   .editor ::ng-deep .resume-container,
   .editor ::ng-deep .container {
+    width: 100% !important;
     max-width: 100% !important;
-    width: 100% !important;
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 8px !important;
+    box-sizing: border-box !important;
   }
 
-  .editor ::ng-deep .ProseMirror {
-    /* remove page-like padding on small devices */
-    padding: 0;
-    box-shadow: none;
-    min-height: auto;
-    width: 100% !important;
-  }
-
-  /* make sure any template-imposed body/html rules can't shrink the canvas */
-  .editor ::ng-deep body,
-  .editor ::ng-deep html {
-    max-width: 100% !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  /* Force Word template tables to be responsive */
-  .editor ::ng-deep table {
-    width: 100% !important;
-    table-layout: auto !important;
-  }
-
-  .editor ::ng-deep table td,
-  .editor ::ng-deep table th {
-    width: auto !important;
-    display: block;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+  /* ensure text wraps properly and doesn't overflow */
+  .editor ::ng-deep .resume-container p,
+  .editor ::ng-deep .resume-container div,
+  .editor ::ng-deep .resume-container span {
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
   }
 
   /* Override Word page section fixed sizes */

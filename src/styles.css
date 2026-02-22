@@ -18,47 +18,19 @@ html, body {
 @media (max-width: 768px) {
   /* ensure the resume editor spans the viewport when on a small device,
      but keep the content inside padded so it doesn’t touch the edges */
-  app-resume-editor,
-  app-resume-editor html,
-  app-resume-editor body,
-  app-resume-editor .editor-container,
-  app-resume-editor .editor-wrapper,
-  app-resume-editor .editor,
-  app-resume-editor .editor .ProseMirror,
-  app-resume-editor .editor .resume-container,
-  app-resume-editor .editor .container,
-  app-resume-editor .editor,
-  app-resume-editor .editor-wrapper,
-  app-resume-editor .editor .ProseMirror {
-    width: 100% !important;
-    min-width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    padding: 0 16px !important;
-  }
-
-  /* add a little breathing room inside the resume itself */
-  app-resume-editor .editor .resume-container {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-  }
-
-  /* prevent any horizontal scroll from a too-wide template */
   app-resume-editor {
-    overflow-x: hidden !important;
-  }
-
-  html, body {
-    /* ensure the app element fills view so 100vw rules work */
-    width: 100vw !important;
-    overflow-x: hidden !important;
-  }
-
-  /* remove any left/right padding on the page itself */
-  html, body {
-    padding: 0 !important;
+    width: 100% !important;
+    padding: 0 0 !important;
     margin: 0 !important;
-    overflow-x: hidden;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  html, body {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
   }
 
   /* hide scrollbar on editor when viewport is narrow so it doesn't cover text */
