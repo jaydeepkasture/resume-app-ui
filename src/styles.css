@@ -13,6 +13,48 @@ html, body {
   box-sizing: border-box;
 }
 
+
+/* global mobile editor fixes */
+@media (max-width: 768px) {
+  /* ensure the resume editor spans the viewport when on a small device */
+  app-resume-editor,
+  app-resume-editor html,
+  app-resume-editor body,
+  app-resume-editor .editor-container,
+  app-resume-editor .editor-wrapper,
+  app-resume-editor .editor,
+  app-resume-editor .editor .ProseMirror,
+  app-resume-editor .editor .resume-container,
+  app-resume-editor .editor .container,
+  app-resume-editor .editor,
+  app-resume-editor .editor-wrapper,
+  app-resume-editor .editor .ProseMirror {
+    width: 100vw !important;
+    min-width: 100vw !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* prevent any horizontal scroll from a too-wide template */
+  app-resume-editor {
+    overflow-x: hidden !important;
+  }
+
+  html, body {
+    /* ensure the app element fills view so 100vw rules work */
+    width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
+  /* remove any left/right padding on the page itself */
+  html, body {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow-x: hidden;
+  }
+}
+
 /* Global Brand Logo Styles */
 .brand-logo-container {
   display: flex;

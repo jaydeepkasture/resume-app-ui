@@ -1272,28 +1272,23 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
     const editorEl = document.querySelector('.editor') as HTMLElement;
     if (!editorEl) return;
 
-    // If using Form Edit Mode (Templates), disable scaling and let CSS media queries handle responsiveness
-    if (this.isFormEditMode) {
-        editorEl.style.transform = 'none';
-        editorEl.style.margin = '0 auto';
-        return;
-    }
+    // Regardless of edit mode, we no longer scale the editor on narrow viewports.
+    // The CSS rules already force 100vw width and remove padding/margins, so a
+    // transform-based shrinker was only introducing the unwanted gutters.
+    editorEl.style.transform = 'none';
 
-    const containerWidth = window.innerWidth;
-    const targetWidth = 840; // 8.5in (816px) + padding
-
-    if (containerWidth < targetWidth) {
-      // Scale to fit, leaving small padding (20px total)
-      // 816px is the specific width of the resume paper
-      const scale = (containerWidth - 20) / 816;
-      const safeScale = Math.min(Math.max(scale, 0.3), 1); // Cap scale between 0.3 and 1
-
-      editorEl.style.transform = `scale(${safeScale})`;
-      editorEl.style.transformOrigin = 'top center'; 
-      editorEl.style.margin = '0 auto'; 
+    if (window.innerWidth <= 768) {
+      // enforce full-viewport width on small screens
+      editorEl.style.width = '100vw';
+      editorEl.style.maxWidth = '100vw';
+      editorEl.style.margin = '0';
+      editorEl.style.padding = '0';
     } else {
-      editorEl.style.transform = 'none';
+      // reset any manual styles when viewport grows again
+      editorEl.style.width = '';
+      editorEl.style.maxWidth = '';
       editorEl.style.margin = '0 auto';
+      editorEl.style.padding = '';
     }
   }
 
@@ -1307,6 +1302,28 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
     // Clean up highlighting event listeners
     this.removeHighlighting();
   }
+
+  // This method is no longer needed; its logic has been folded into updateMobileScale().
+  // Keeping it commented for reference in case we revisit scaling strategy later.
+  /*
+  private enforceMobileWidth(): void {
+    if (window.innerWidth <= 768) {
+      const editorElem = document.querySelector('.editor') as HTMLElement;
+      if (editorElem) {
+        editorElem.style.width = '100vw';
+        editorElem.style.maxWidth = '100vw';
+        editorElem.style.margin = '0';
+        editorElem.style.padding = '0';
+      }
+      const wrapper = document.querySelector('.editor-wrapper') as HTMLElement;
+      if (wrapper) {
+        wrapper.style.width = '100vw';
+        wrapper.style.margin = '0';
+        wrapper.style.padding = '0';
+      }
+    }
+  }
+  */
 
   // Remove previously injected template styles
   private removeTemplateStyles(): void {
@@ -1329,6 +1346,10 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
     let cleanCss = cssContent.replace(/\/\*[\s\S]*?\*\//g, '');
     
     // Scope the styles to the editor to avoid affecting other parts of the app
+    // Before scoping, neutralize any hard‑coded page widths (e.g. 8.5in, 800px)
+    cleanCss = cleanCss.replace(/max-width\s*:[^;]+;/gi, 'max-width:100% !important;');
+    cleanCss = cleanCss.replace(/width\s*:[^;]+([;\}])/gi, 'width:100% !important$1');
+
     // This regex handles multi-line selectors and preserves @-rules
     const scopedCss = cleanCss.replace(/([^{}]+)\{/g, (match, selector) => {
       const trimmedSelector = selector.trim();

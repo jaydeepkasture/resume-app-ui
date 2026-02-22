@@ -230,7 +230,8 @@
 }
 
 /* Ensure template containers display properly */
-.editor ::ng-deep .resume-container {
+.editor ::ng-deep .resume-container,
+.editor ::ng-deep .container {
   max-width: 100% !important;
   width: 100% !important;
   margin: 0 !important;
@@ -459,15 +460,81 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+
+  /* make the editor container itself stretch to viewport */
   .editor {
-    padding: 10px;
+    padding: 0 !important;
+    min-height: auto !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  /* also force wrapper and container full width */
+  .editor-wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* ensure the outer container has no side gaps */
+  .editor-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .editor ::ng-deep .resume-container,
+  .editor ::ng-deep .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .editor ::ng-deep .ProseMirror {
+    /* remove page-like padding on small devices */
+    padding: 0;
+    box-shadow: none;
     min-height: auto;
-    /* transition: transform 0.2s ease; */ 
+    width: 100% !important;
+  }
+
+  /* make sure any template-imposed body/html rules can't shrink the canvas */
+  .editor ::ng-deep body,
+  .editor ::ng-deep html {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Force Word template tables to be responsive */
+  .editor ::ng-deep table {
+    width: 100% !important;
+    table-layout: auto !important;
+  }
+
+  .editor ::ng-deep table td,
+  .editor ::ng-deep table th {
+    width: auto !important;
+    display: block;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Override Word page section fixed sizes */
+  .editor ::ng-deep div[class*="WordSection"],
+  .editor ::ng-deep div[class*="Section"] {
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   .editor-wrapper {
-    padding: 20px 10px;
-    /* When toolbar is hidden, we might want less top padding or different layout */
+    padding: 0;
+    background: #ffffff;
   }
 
   .toolbar {
