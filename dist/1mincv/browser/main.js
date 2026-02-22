@@ -1,8 +1,8 @@
 import {
   AuthService
-} from "./chunk-ABLK4HI4.js";
-import "./chunk-ODN63HLT.js";
-import "./chunk-QUEFXQWV.js";
+} from "./chunk-Q57KOQKT.js";
+import "./chunk-G6HXRKZP.js";
+import "./chunk-4PD7N7KF.js";
 import {
   Router,
   RouterOutlet,
@@ -2119,7 +2119,7 @@ var routes = [
   // Public Landing Page
   {
     path: "",
-    loadComponent: () => import("./chunk-BMO6WHR3.js").then((m) => m.LandingComponent)
+    loadComponent: () => import("./chunk-5GDFFYQE.js").then((m) => m.LandingComponent)
   },
   // Public Legal and Information Pages
   {
@@ -2140,56 +2140,56 @@ var routes = [
   },
   {
     path: "contact",
-    loadComponent: () => import("./chunk-GAPKQRUF.js").then((m) => m.ContactComponent)
+    loadComponent: () => import("./chunk-AUFLZAML.js").then((m) => m.ContactComponent)
   },
   // Template Gallery
   {
     path: "templates",
-    loadComponent: () => import("./chunk-LQKFKWB2.js").then((m) => m.TemplateGalleryComponent),
+    loadComponent: () => import("./chunk-RTL2JITS.js").then((m) => m.TemplateGalleryComponent),
     canActivate: [AuthGuard]
   },
   // Authentication routes (public)
   {
     path: "login",
-    loadComponent: () => import("./chunk-M7ZQ53LA.js").then((m) => m.LoginComponent)
+    loadComponent: () => import("./chunk-Q7SRJD55.js").then((m) => m.LoginComponent)
   },
   {
     path: "register",
-    loadComponent: () => import("./chunk-T4VG5VIJ.js").then((m) => m.RegisterComponent)
+    loadComponent: () => import("./chunk-7RTPSB2D.js").then((m) => m.RegisterComponent)
   },
   {
     path: "forgot-password",
-    loadComponent: () => import("./chunk-MGAYKTDD.js").then((m) => m.ForgotPasswordComponent)
+    loadComponent: () => import("./chunk-C5MY2YGV.js").then((m) => m.ForgotPasswordComponent)
   },
   {
     path: "reset-password",
-    loadComponent: () => import("./chunk-F6WVXGT6.js").then((m) => m.ResetPasswordComponent)
+    loadComponent: () => import("./chunk-ZOGVUBEM.js").then((m) => m.ResetPasswordComponent)
   },
   // Protected routes (require authentication)
   {
     path: "editor",
-    loadComponent: () => import("./chunk-WGU5ZTR6.js").then((m) => m.ResumeEditorComponent),
+    loadComponent: () => import("./chunk-2OG4VQOR.js").then((m) => m.ResumeEditorComponent),
     canActivate: [AuthGuard]
   },
   {
     path: "editor/:chatId",
-    loadComponent: () => import("./chunk-WGU5ZTR6.js").then((m) => m.ResumeEditorComponent),
+    loadComponent: () => import("./chunk-2OG4VQOR.js").then((m) => m.ResumeEditorComponent),
     canActivate: [AuthGuard]
   },
   {
     path: "profile",
-    loadComponent: () => import("./chunk-OIGRYUL6.js").then((m) => m.ProfileComponent),
+    loadComponent: () => import("./chunk-TMEGJBKA.js").then((m) => m.ProfileComponent),
     canActivate: [AuthGuard]
   },
   // Billing and Subscription
   {
     path: "billing/plans",
-    loadComponent: () => import("./chunk-E2REZXUL.js").then((m) => m.PlansComponent),
+    loadComponent: () => import("./chunk-JGVCRTHR.js").then((m) => m.PlansComponent),
     canActivate: [AuthGuard]
   },
   {
     path: "billing/subscription",
-    loadComponent: () => import("./chunk-5SGXZPEG.js").then((m) => m.SubscriptionComponent),
+    loadComponent: () => import("./chunk-RZNTFVV5.js").then((m) => m.SubscriptionComponent),
     canActivate: [AuthGuard]
   },
   // Wildcard route - redirect to editor (which will trigger login if not auth)

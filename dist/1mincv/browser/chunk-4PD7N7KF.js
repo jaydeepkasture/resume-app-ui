@@ -4,6 +4,7 @@ import {
   HttpHeaders,
   HttpParams,
   Injectable,
+  Router,
   __decorate,
   catchError,
   filter,
@@ -7007,9 +7008,10 @@ var StateService = class _StateService {
 
 // src/app/services/http.service.ts
 var HttpService = class HttpService2 {
-  constructor(http, stateService) {
+  constructor(http, stateService, router) {
     this.http = http;
     this.stateService = stateService;
+    this.router = router;
     this.isRefreshing = false;
     this.refreshTokenSubject = new BehaviorSubject(null);
     console.log("\u{1F310} HttpService initialized");
@@ -7241,11 +7243,15 @@ var HttpService = class HttpService2 {
           this.refreshTokenSubject.next(response.data.token);
           return next();
         } else {
+          this.stateService.clearAuthState();
+          this.router.navigate(["/login"]);
           return this.throwError(error);
         }
       }), catchError((refreshError) => {
         console.error("Refresh token failed:", refreshError);
         this.isRefreshing = false;
+        this.stateService.clearAuthState();
+        this.router.navigate(["/login"]);
         return this.throwError(refreshError);
       }));
     } else {
@@ -7317,7 +7323,7 @@ var HttpService = class HttpService2 {
   }
   static {
     this.\u0275fac = function HttpService_Factory(t) {
-      return new (t || HttpService2)(\u0275\u0275inject(HttpClient), \u0275\u0275inject(StateService));
+      return new (t || HttpService2)(\u0275\u0275inject(HttpClient), \u0275\u0275inject(StateService), \u0275\u0275inject(Router));
     };
   }
   static {
@@ -7356,4 +7362,4 @@ crypto-js/mode-ctr-gladman.js:
    * Jan Hruby jhruby.web@gmail.com
    *)
 */
-//# sourceMappingURL=chunk-QUEFXQWV.js.map
+//# sourceMappingURL=chunk-4PD7N7KF.js.map
