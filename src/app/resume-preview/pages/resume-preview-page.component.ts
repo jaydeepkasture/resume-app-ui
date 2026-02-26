@@ -212,6 +212,7 @@ export class ResumePreviewPageComponent implements OnInit {
     this.error = null;
 
     this.themeId = this.route.snapshot.queryParamMap.get('themeId');
+    const layoutType = this.route.snapshot.queryParamMap.get('layoutType');
     const useEmpty = this.route.snapshot.queryParamMap.get('empty') === 'true';
 
     forkJoin({
@@ -235,6 +236,15 @@ export class ResumePreviewPageComponent implements OnInit {
         
         this.resume = resume;
         this.template = template;
+
+        // Apply layoutType if provided in query params
+        if (layoutType && this.template) {
+           this.template = {
+              ...this.template,
+              layoutType: layoutType as any,
+              layout: layoutType as any
+           };
+        }
 
         // Apply theme if provided
         const extractedTheme = (theme as any)?.data || theme;
