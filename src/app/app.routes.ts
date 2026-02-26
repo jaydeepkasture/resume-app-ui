@@ -37,6 +37,18 @@ export const routes: Routes = [
     canActivate: [AuthGuard]
   },
   
+  // Theme Management
+  {
+    path: 'themes',
+    loadComponent: () => import('./theme-manager/theme-gallery.component').then(m => m.ThemeGalleryComponent),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'themes/:id',
+    loadComponent: () => import('./theme-manager/theme-editor.component').then(m => m.ThemeEditorComponent),
+    canActivate: [AuthGuard]
+  },
+  
   // Authentication routes (public)
   {
     path: 'login',
@@ -84,6 +96,30 @@ export const routes: Routes = [
     canActivate: [AuthGuard]
   },
   
+  // Layout Selection
+  {
+    path: 'layouts',
+    loadComponent: () => import('./resume-preview/pages/layout-selection/layout-selection.component').then(m => m.LayoutSelectionComponent),
+    canActivate: [AuthGuard]
+  },
+  
+  // Preview Resume with Theme Selection
+  {
+    path: 'preview-resume',
+    loadComponent: () => import('./resume-preview/pages/preview-resume/preview-resume-page.component').then(m => m.PreviewResumePageComponent),
+    canActivate: [AuthGuard]
+  },
+
+  // Resume Preview (public)
+  {
+    path: 'resume-preview',
+    loadComponent: () => import('./resume-preview/pages/resume-preview-page.component').then(m => m.ResumePreviewPageComponent)
+  },
+  {
+    path: 'resume-preview/:resumeId/:templateId',
+    loadComponent: () => import('./resume-preview/pages/resume-preview-page.component').then(m => m.ResumePreviewPageComponent)
+  },
+
   // Wildcard route - redirect to editor (which will trigger login if not auth)
   {
     path: '**',

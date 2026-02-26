@@ -2261,33 +2261,28 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   
   // Chat functionality
-  async sendMessage(): Promise<void> {
-    if (!this.chatInput.trim()) return;
+  async sendMessage(customMessage?: string): Promise<void> {
+    const messageToSend = customMessage || this.chatInput;
+    if (!messageToSend.trim()) return;
     
     this.isSending = true;
+    if (!customMessage) {
+        this.chatInput = ''; // Clear input if it wasn't a custom message
+    }
     
     try {
       let resumeHtml = '';
       let extractedData: any = {};
 
       if (this.isFormEditMode) {
-          // In Form Edit Mode, we use the live object from the form component
           console.log('📝 Form Mode: Sending structured data directly');
           extractedData = this.currentResumeData;
-          // We don't send HTML in this mode as it's not the primary source of truth
-          // unless we want to send what's in the background editor, which might be stale.
           resumeHtml = ''; 
       } else {
-          // Free Edit Mode: Extract from Tiptap HTML
           resumeHtml = this.getHTML();
           extractedData = this.extractDataFromHTML(resumeHtml);
       }
       
-      console.log('User Message:', this.chatInput);
-      console.log('Resume HTML Length:', resumeHtml.length);
-      console.log('Extracted Data:', extractedData);
-      
-      // Send to backend API for enhancement
       const chatId = this.currentChatId || '';
       if (!chatId) {
           console.error('No chat ID selected');
@@ -2295,30 +2290,19 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
           return;
       }
 
-      this.templateService.enhanceResume(chatId, this.chatInput, extractedData, resumeHtml, this.currentTemplateId).subscribe({
+      this.templateService.enhanceResume(chatId, messageToSend, extractedData, resumeHtml, this.currentTemplateId).subscribe({
         next: (response) => {
           console.log('Enhancement Response:', response);
           
           if (response.status && response.data && response.data.currentResume) {
-            // Update the global resume data
             this.currentResumeData = response.data.currentResume;
-            
-            // Update the resume with enhanced data (patches content, preserves styling)
-            // Pass the full response data so we can access enhancedHtml if needed
             this.updateResumeWithEnhancedData(response.data);
             
-            // Clear the chat input
-            this.chatInput = '';
+            // Clear the chat input if it was from the textarea
+            if (!customMessage) {
+                this.chatInput = '';
+            }
             
-            // Reset textarea height
-            setTimeout(() => {
-              const textarea = document.querySelector('.chat-input') as HTMLTextAreaElement;
-              if (textarea) {
-                textarea.style.height = 'auto';
-              }
-            }, 0);
-            
-            // IMPORTANT: Refresh the history tab to show the new enhancement
             this.refreshHistory();
           } else {
             alert(response.error || response.message || 'Failed to enhance resume. Please try again.');
@@ -2327,20 +2311,6 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
         error: (error) => {
           console.error('API Error:', error);
           this.isSending = false;
-          
-          if (error.status === 429) {
-            // Rate limit handled by HttpService alert, but we add redirect here
-            this.router.navigate(['/billing/plans']);
-            return;
-          }
-
-          if (error.status === 0) {
-            alert(`Cannot connect to backend server. Please ensure the backend is running on ${environment.apiUrl.replace('/api', '')}`);
-          } else if (error.status === 404) {
-            alert('API endpoint not found. Please check the backend route configuration.');
-          } else {
-            alert(`Error: ${error.error?.message || error.message || 'Failed to enhance resume'}`);
-          }
         },
         complete: () => {
           this.isSending = false;
@@ -2349,8 +2319,38 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
       
     } catch (error) {
       console.error('Error sending message:', error);
-      alert('An unexpected error occurred. Please try again.');
       this.isSending = false;
+    }
+  }
+
+  /**
+   * Apply a quick AI prompt from the toolbar
+   * @param promptType The type of enhancement to apply
+   */
+  applyQuickPrompt(promptType: string): void {
+    let message = '';
+    switch (promptType) {
+      case 'summary':
+        message = 'Please improve my professional summary to be more impactful and professional, highlighting my core strengths.';
+        break;
+      case 'experience':
+        message = 'Enhance my work experience descriptions. Use strong action verbs, quantify achievements where possible, and make them more concise.';
+        break;
+      case 'skills':
+        message = 'Based on my experience, suggest relevant technical and soft skills that I should add to my resume.';
+        break;
+      case 'professional':
+        message = 'Please review my entire resume and adjust the tone to be highly professional and polished throughout.';
+        break;
+      case 'grammar':
+        message = 'Check my resume for any grammatical errors, typos, or punctuation issues and fix them.';
+        break;
+      default:
+        return;
+    }
+    
+    if (message) {
+      this.sendMessage(message);
     }
   }
 

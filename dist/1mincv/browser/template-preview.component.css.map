@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["angular:styles/component:css;dc89c008b13b34c21fda6cdf6b69103067f16f0410d481cdb007943bc98959ce;D:/JD/Angular/resume-in-1-min/resume-app-ui/src/app/template-gallery/template-preview.component.ts"],
-  "sourcesContent": ["\n    :host {\n      display: block;\n      width: 100%;\n      height: 100%;\n      overflow: hidden;\n      background: white;\n      position: relative;\n    }\n    .preview-scaler {\n      width: 210mm; /* A4 width approx */\n      min-height: 297mm; /* A4 height */\n      transform-origin: 0 0;\n      transform: scale(0.23); /* Scale down to fit card */\n      pointer-events: none;\n      background: white;\n      color: black; /* Ensure text is visible */\n    }\n  "],
-  "mappings": ";AACI;AACE,WAAS;AACT,SAAO;AACP,UAAQ;AACR,YAAU;AACV,cAAY;AACZ,YAAU;AACZ;AACA,CAAC;AACC,SAAO;AACP,cAAY;AACZ,oBAAkB,EAAE;AACpB,aAAW,MAAM;AACjB,kBAAgB;AAChB,cAAY;AACZ,SAAO;AACT;",
-  "names": []
-}

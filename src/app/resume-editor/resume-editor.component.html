@@ -547,6 +547,27 @@
         <span>History</span>
       </button>
     </div>
+
+    <div class="toolbar-divider"></div>
+
+    <!-- AI Quick Actions -->
+    <div class="toolbar-group ai-quick-actions">
+      <button class="toolbar-btn ai-btn" (click)="applyQuickPrompt('summary')" [disabled]="isSending" title="Improve Summary">
+        ✨ <span class="btn-label">Summary</span>
+      </button>
+      <button class="toolbar-btn ai-btn" (click)="applyQuickPrompt('experience')" [disabled]="isSending" title="Enhance Experience">
+        💼 <span class="btn-label">Experience</span>
+      </button>
+      <button class="toolbar-btn ai-btn" (click)="applyQuickPrompt('skills')" [disabled]="isSending" title="Suggest Skills">
+        🛠️ <span class="btn-label">Skills</span>
+      </button>
+      <button class="toolbar-btn ai-btn" (click)="applyQuickPrompt('professional')" [disabled]="isSending" title="Professional Tone">
+        👔 <span class="btn-label">Tone</span>
+      </button>
+      <button class="toolbar-btn ai-btn" (click)="applyQuickPrompt('grammar')" [disabled]="isSending" title="Fix Grammar">
+        ✅ <span class="btn-label">Grammar</span>
+      </button>
+    </div>
   </div>
 
   <!-- Editor Content Area -->
