@@ -2,37 +2,18 @@ import { Component, Input, OnChanges, SimpleChanges, Output, EventEmitter } from
 import { CommonModule } from '@angular/common';
 import { ResumeDto } from '../../models/resume.model';
 import { ResumeTemplate } from '../../models/template.model';
-import { SingleColumnLayoutComponent } from '../../layouts/single-column/single-column-layout.component';
-import { TwoColumnLayoutComponent } from '../../layouts/two-column/two-column-layout.component';
-import { SidebarLayoutComponent } from '../../layouts/sidebar/sidebar-layout.component';
+import { DynamicLayoutComponent } from '../../layouts/dynamic-layout/dynamic-layout.component';
 
 @Component({
   selector: 'app-resume-renderer',
   standalone: true,
-  imports: [CommonModule, SingleColumnLayoutComponent, TwoColumnLayoutComponent, SidebarLayoutComponent],
+  imports: [CommonModule, DynamicLayoutComponent],
   template: `
-    <ng-container [ngSwitch]="resolvedLayout">
-      <app-single-column-layout
-        *ngSwitchCase="'single-column'"
-        [resume]="resume"
-        [template]="template"
-        (onEdit)="onEdit.emit()">
-      </app-single-column-layout>
-
-      <app-two-column-layout
-        *ngSwitchCase="'two-column'"
-        [resume]="resume"
-        [template]="template"
-        (onEdit)="onEdit.emit()">
-      </app-two-column-layout>
-
-      <app-sidebar-layout
-        *ngSwitchCase="'sidebar'"
-        [resume]="resume"
-        [template]="template"
-        (onEdit)="onEdit.emit()">
-      </app-sidebar-layout>
-    </ng-container>
+    <app-dynamic-layout
+      [layoutId]="resolvedLayout"
+      [resume]="resume"
+      (onEdit)="onEdit.emit()">
+    </app-dynamic-layout>
   `,
   styles: [`
     :host {

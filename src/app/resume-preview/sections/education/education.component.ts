@@ -9,7 +9,7 @@ import { ResumeDto } from '../../models/resume.model';
   imports: [CommonModule, FormsModule],
   template: `
     <div class="section">
-      <h2 class="section-title">Education</h2>
+      <h2 class="section-title">{{ customTitle || 'Education' }}</h2>
       <div class="education-list">
         <div class="education-item" *ngFor="let edu of resume.education; let i = index; let last = last; trackBy: trackByIndex"
              [class.last-item]="last">
@@ -167,6 +167,7 @@ import { ResumeDto } from '../../models/resume.model';
 })
 export class EducationSectionComponent {
   @Input() resume!: ResumeDto;
+  @Input() customTitle?: string;
   @Output() onEdit = new EventEmitter<void>();
 
   deleteEducation(index: number): void {

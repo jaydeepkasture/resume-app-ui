@@ -8,7 +8,7 @@ import { ResumeDto } from '../../models/resume.model';
   imports: [FormsModule],
   template: `
     <div class="section">
-      <h2 class="section-title">Profile</h2>
+      <h2 class="section-title">{{ customTitle || 'Profile' }}</h2>
       <textarea
         class="editable section-body"
         [(ngModel)]="resume.summary"
@@ -57,6 +57,7 @@ import { ResumeDto } from '../../models/resume.model';
 })
 export class SummarySectionComponent {
   @Input() resume!: ResumeDto;
+  @Input() customTitle?: string;
   @Output() onEdit = new EventEmitter<void>();
 
   autoSizeTextarea(event: any): void {

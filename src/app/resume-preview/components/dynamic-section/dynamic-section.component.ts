@@ -21,24 +21,28 @@ import { SkillsSectionComponent } from '../../sections/skills/skills.component';
       <app-summary-section
         *ngSwitchCase="'summary'"
         [resume]="resume"
+        [customTitle]="customTitle"
         (onEdit)="onEdit.emit()">
       </app-summary-section>
 
       <app-experience-section
         *ngSwitchCase="'experience'"
         [resume]="resume"
+        [customTitle]="customTitle"
         (onEdit)="onEdit.emit()">
       </app-experience-section>
 
       <app-education-section
         *ngSwitchCase="'education'"
         [resume]="resume"
+        [customTitle]="customTitle"
         (onEdit)="onEdit.emit()">
       </app-education-section>
 
       <app-skills-section
         *ngSwitchCase="'skills'"
         [resume]="resume"
+        [customTitle]="customTitle"
         (onEdit)="onEdit.emit()">
       </app-skills-section>
     </ng-container>
@@ -47,5 +51,6 @@ import { SkillsSectionComponent } from '../../sections/skills/skills.component';
 export class DynamicSectionComponent {
   @Input() type: string = '';
   @Input() resume!: ResumeDto;
+  @Input() customTitle?: string;
   @Output() onEdit = new EventEmitter<void>();
 }

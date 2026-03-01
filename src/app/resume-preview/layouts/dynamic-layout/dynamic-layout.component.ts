@@ -1,31 +1,38 @@
-import { Component, Input, Output, EventEmitter, OnInit, AfterViewInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ResumeDto } from '../../models/resume.model';
-import { ResumeTemplate } from '../../models/template.model';
+import { LayoutConfig } from '../../models/layout.model';
 import { DynamicSectionComponent } from '../../components/dynamic-section/dynamic-section.component';
 import { LayoutService } from '../../../services/layout.service';
-import { LayoutConfig } from '../../models/layout.model';
 
 @Component({
-  selector: 'app-single-column-layout',
+  selector: 'app-dynamic-layout',
   standalone: true,
   imports: [CommonModule, FormsModule, DynamicSectionComponent],
   template: `
-    <div *ngIf="backendJson" class="resume-wrapper" [ngStyle]="dynamicStyles">
-      <!-- Header -->
-      <div class="resume-header" [style.text-align]="backendJson.header.alignment">
+    <div *ngIf="layoutConfig" class="resume-wrapper" [ngStyle]="dynamicStyles">
+      
+      <!-- DYNAMIC HEADER -->
+      <div class="resume-header" [style.text-align]="layoutConfig.header.alignment">
+        
+        <!-- Name -->
         <input
-          *ngIf="backendJson.header.name.visible"
+          *ngIf="layoutConfig.header.name.visible"
           class="editable editable-name"
           [(ngModel)]="resume.name"
           (input)="autoSizeInput($event)"
           (focus)="onEdit.emit()" />
         
-        <div class="resume-contact" [style.justify-content]="backendJson.header.alignment === 'center' ? 'center' : (backendJson.header.alignment === 'right' ? 'flex-end' : 'flex-start')">
+        <!-- Contact Information -->
+        <div *ngIf="layoutConfig.header.contact.visible" 
+             class="resume-contact" 
+             [style.justify-content]="layoutConfig.header.alignment === 'center' ? 'center' : (layoutConfig.header.alignment === 'right' ? 'flex-end' : 'flex-start')">
           
           <ng-container *ngFor="let field of getVisibleContactFields(); let i = index">
-            <span class="separator" *ngIf="i > 0">{{ backendJson.header.contact.separator }}</span>
+            <!-- Separator -->
+            <span class="separator" *ngIf="i > 0">{{ layoutConfig.header.contact.separator }}</span>
+            <!-- Contact Field -->
             <input
               class="editable editable-contact editable-contact-inline"
               [(ngModel)]="resume[field]"
@@ -36,29 +43,39 @@ import { LayoutConfig } from '../../models/layout.model';
         </div>
       </div>
 
-      <!-- Header Divider Decoration -->
-      <div
-        *ngIf="backendJson.header.divider.enabled"
-        class="header-divider"
-        [style.height]="backendJson.header.divider.height"
-        [style.background-color]="backendJson.header.divider.color"
-        [style.width]="backendJson.header.divider.width"
-        [style.margin-top]="backendJson.header.divider.marginTop"
-        [style.margin-bottom]="backendJson.header.divider.marginBottom">
+      <!-- HEADER DIVIDER -->
+      <div *ngIf="layoutConfig.header.divider.enabled"
+           class="header-divider"
+           [style.height]="layoutConfig.header.divider.height"
+           [style.background-color]="layoutConfig.header.divider.color"
+           [style.width]="layoutConfig.header.divider.width"
+           [style.margin-top]="layoutConfig.header.divider.marginTop"
+           [style.margin-bottom]="layoutConfig.header.divider.marginBottom">
       </div>
 
-      <!-- Dynamic Sections -->
+      <!-- DYNAMIC SECTIONS -->
       <div class="resume-sections">
-        <!-- Use the section order from backend LayoutConfig, overriding ResumeTemplate if needed -->
-        <ng-container *ngFor="let section of backendJson.sections">
+        <ng-container *ngFor="let section of layoutConfig.sections">
           <div class="section-wrapper" *ngIf="section.enabled">
+             <!-- Inject Custom Title from Layout JSON via input to DynamicSectionComponent if possible, 
+                  Right now DynamicSectionComponent uses hardcoded titles or handles its own logic, 
+                  to fully support layout JSON we can pass [customTitle]="section.title" 
+             -->
             <app-dynamic-section
               [type]="section.type"
-              [resume]="resume">
+              [resume]="resume"
+              [customTitle]="section.title"
+              (onEdit)="onEdit.emit()">
             </app-dynamic-section>
           </div>
         </ng-container>
       </div>
+
+    </div>
+    
+    <!-- Loading State Placeholder -->
+    <div *ngIf="isLoading" class="layout-loading">
+       <p>Loading layout...</p>
     </div>
   `,
   styles: [`
@@ -67,7 +84,7 @@ import { LayoutConfig } from '../../models/layout.model';
     }
 
     .resume-wrapper {
-      /* Apply dynamic styles to this wrapper element */
+      /* Dynamic variables injection happens here */
     }
 
     .resume-header {
@@ -143,29 +160,49 @@ import { LayoutConfig } from '../../models/layout.model';
     .editable-contact-inline {
       width: auto;
     }
+    
+    .layout-loading {
+      padding: 2rem;
+      text-align: center;
+      color: #666;
+    }
   `]
 })
-export class SingleColumnLayoutComponent implements OnInit, AfterViewInit {
+export class DynamicLayoutComponent implements OnInit, OnChanges {
   @Input() resume!: ResumeDto | any;
-  @Input() template!: ResumeTemplate;
+  @Input() layoutId!: string;
   @Output() onEdit = new EventEmitter<void>();
 
-  backendJson: LayoutConfig | null = null;
+  layoutConfig: LayoutConfig | null = null;
+  isLoading = false;
 
   constructor(private layoutService: LayoutService) {}
 
   ngOnInit() {
-    const layoutId = this.template?.id ? this.template.id.toString() : 'single-column-standard';
-    this.layoutService.getLayoutConfig(layoutId).subscribe(config => {
-      this.backendJson = config;
+    this.fetchLayout();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['layoutId'] && !changes['layoutId'].firstChange) {
+      this.fetchLayout();
+    }
+  }
+
+  fetchLayout() {
+    if (!this.layoutId) return;
+    this.isLoading = true;
+    this.layoutService.getLayoutConfig(this.layoutId).subscribe(config => {
+      this.layoutConfig = config;
+      this.isLoading = false;
+      this.triggerAutoResize();
     });
   }
 
   get dynamicStyles() {
-    if (!this.backendJson) return {};
+    if (!this.layoutConfig) return {};
     
-    const styles = this.backendJson.styles;
-    const header = this.backendJson.header;
+    const styles = this.layoutConfig.styles;
+    const header = this.layoutConfig.header;
     
     return {
       '--font-family': styles.fontFamily,
@@ -180,9 +217,9 @@ export class SingleColumnLayoutComponent implements OnInit, AfterViewInit {
   }
 
   getVisibleContactFields(): string[] {
-    if (!this.backendJson || !this.resume) return [];
-    // Only return fields that the backend wants visible AND the user has filled in (to avoid blank fields acting weird)
-    return this.backendJson.header.contact.visibleFields.filter(f => !!this.resume[f]);
+    if (!this.layoutConfig || !this.resume) return [];
+    // Only return fields that the layout JSON wants visible AND the user has filled in (to avoid blank fields acting weird)
+    return this.layoutConfig.header.contact.visibleFields.filter(f => !!this.resume[f]);
   }
 
   autoSizeInput(event: any): void {
@@ -203,7 +240,7 @@ export class SingleColumnLayoutComponent implements OnInit, AfterViewInit {
     document.body.removeChild(tempSpan);
   }
 
-  ngAfterViewInit() {
+  triggerAutoResize() {
     setTimeout(() => {
       const inputs = document.querySelectorAll('.resume-header .editable-contact-inline, .resume-header .editable-name');
       inputs.forEach((el: any) => {
@@ -211,6 +248,6 @@ export class SingleColumnLayoutComponent implements OnInit, AfterViewInit {
           this.sizeInput(el);
         }
       });
-    }, 500); // slightly longer timeout to allow for JSON fetch
+    }, 100);
   }
 }

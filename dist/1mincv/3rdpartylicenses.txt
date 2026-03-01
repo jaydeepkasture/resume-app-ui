@@ -2057,6 +2057,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 --------------------------------------------------------------------------------
+Package: @angular/platform-browser
+License: "MIT"
+
+
+--------------------------------------------------------------------------------
+Package: @angular/router
+License: "MIT"
+
+
+--------------------------------------------------------------------------------
 Package: rxjs
 License: "Apache-2.0"
 
@@ -2286,16 +2296,6 @@ License: "MIT"
 
 --------------------------------------------------------------------------------
 Package: @angular/common
-License: "MIT"
-
-
---------------------------------------------------------------------------------
-Package: @angular/platform-browser
-License: "MIT"
-
-
---------------------------------------------------------------------------------
-Package: @angular/router
 License: "MIT"
 
 

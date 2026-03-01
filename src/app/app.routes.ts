@@ -110,6 +110,12 @@ export const routes: Routes = [
     canActivate: [AuthGuard]
   },
 
+  // Fully JSON-driven Single Layout
+  {
+    path: 'single-layout',
+    loadComponent: () => import('./single-layout/single-layout.component').then(m => m.SingleLayoutComponent)
+  },
+
   // Resume Preview (public)
   {
     path: 'resume-preview',
