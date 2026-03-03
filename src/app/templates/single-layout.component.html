@@ -1,0 +1,115 @@
+<ng-template #fieldRenderer let-field="field" let-context="context" let-parentArray="parentArray" let-index="index">
+    <!-- Group Renderer -->
+    <div *ngIf="field.type === FieldType.Group" 
+         [ngStyle]="layoutEngine.computeStyle(templateConfig.theme, field)">
+      <ng-container *ngFor="let child of field.children">
+        <ng-container *ngTemplateOutlet="fieldRenderer; context: { field: child, context: context, parentArray: parentArray, index: index }"></ng-container>
+      </ng-container>
+    </div>
+
+    <!-- Text / HTML / Tag Renderer -->
+    <ng-container *ngIf="[FieldType.Text, FieldType.Html, FieldType.Tag].includes(field.type)">
+      <span *ngIf="field.prefixFrom && (field.static || getBoundValue(field.binding, context, field.fallbackBinding))" 
+            [ngStyle]="layoutEngine.computeShellStyle(templateConfig.theme, templateConfig.shell.prefixStyle)">
+        {{ templateConfig.labels[field.prefixFrom] }}
+      </span>
+      
+      <span *ngIf="field.staticValueFrom" [ngStyle]="layoutEngine.computeStyle(templateConfig.theme, field)">{{ templateConfig.labels[field.staticValueFrom] }}</span>
+      <span *ngIf="field.static && !field.staticValueFrom" [ngStyle]="layoutEngine.computeStyle(templateConfig.theme, field)">{{ field.value }}</span>
+      
+      <span *ngIf="!field.static && !field.staticValueFrom" 
+            [attr.contenteditable]="templateConfig.renderMode === 'edit' ? 'true' : null"
+            (input)="updateValue($event, field.binding, context, parentArray, index)"
+            [innerText]="getBoundValue(field.binding, context, field.fallbackBinding)"
+            [ngStyle]="layoutEngine.computeStyle(templateConfig.theme, field)"
+            [class.editable-field]="templateConfig.renderMode === 'edit'"></span>
+            
+      <span *ngIf="field.suffixFrom && (field.static || getBoundValue(field.binding, context, field.fallbackBinding))" 
+            [ngStyle]="layoutEngine.computeShellStyle(templateConfig.theme, templateConfig.shell.suffixStyle)">
+        {{ templateConfig.labels[field.suffixFrom] }}
+      </span>
+    </ng-container>
+
+    <!-- List / Repeatable Renderer -->
+    <ng-container *ngIf="field.type === FieldType.List || field.repeatable">
+      <div *ngIf="field.titleFrom" [ngStyle]="layoutEngine.computeTitleStyle(templateConfig.theme, field)">
+        {{ templateConfig.labels[field.titleFrom] }}
+      </div>
+      <div [ngStyle]="layoutEngine.computeListContainerStyle(templateConfig.theme, field)">
+        <div *ngFor="let item of getArray(field.binding, context); let iIdx = index" 
+             [ngStyle]="layoutEngine.computeItemStyle(templateConfig.theme, field)" 
+             class="list-item">
+          
+          <button *ngIf="templateConfig.renderMode === 'edit' && field.allowDelete" 
+                  class="delete-btn item-del-btn" 
+                  [ngStyle]="layoutEngine.computeShellStyle(templateConfig.theme, templateConfig.shell.deleteBtn)"
+                  [title]="templateConfig.labels.deleteTitle"
+                  (click)="deleteItem(getArray(field.binding, context), iIdx); $event.stopPropagation()">
+            {{ templateConfig.labels.deleteIcon }}
+          </button>
+                
+          <!-- Object list -->
+          <ng-container *ngIf="field.fields">
+            <ng-container *ngFor="let childField of field.fields">
+              <ng-container *ngTemplateOutlet="fieldRenderer; context: { field: childField, context: item, parentArray: getArray(field.binding, context), index: iIdx }"></ng-container>
+            </ng-container>
+          </ng-container>
+
+          <!-- String list -->
+          <ng-container *ngIf="!field.fields">
+              <ng-container *ngIf="field.itemRenderer">
+                 <ng-container *ngTemplateOutlet="fieldRenderer; context: { field: field.itemRenderer, context: item, parentArray: getArray(field.binding, context), index: iIdx }"></ng-container>
+              </ng-container>
+              <ng-container *ngIf="!field.itemRenderer">
+                <span [attr.contenteditable]="templateConfig.renderMode === 'edit' ? 'true' : null"
+                      (input)="updateListValue($event, field.binding, context, iIdx)"
+                      [innerText]="item"
+                      [class.editable-field]="templateConfig.renderMode === 'edit'"></span>
+              </ng-container>
+          </ng-container>
+
+        </div>
+      </div>
+    </ng-container>
+</ng-template>
+
+<div class="layout-wrapper" [style]="getThemeCssVariables()" [ngStyle]="layoutEngine.computeShellStyle(templateConfig.theme, templateConfig.shell.wrapper)">
+  <div class="save-bar" *ngIf="templateConfig.renderMode === 'edit'" [ngStyle]="layoutEngine.computeShellStyle(templateConfig.theme, templateConfig.shell.saveBar)">
+    <button class="save-btn" (click)="saveResume()">{{ templateConfig.labels.saveBtn }}</button>
+  </div>
+
+  <div *ngIf="errorMsg" class="error-banner" [ngStyle]="layoutEngine.computeShellStyle(templateConfig.theme, templateConfig.shell.errorBanner)">
+    {{ errorMsg }}
+  </div>
+
+  <div *ngIf="!resume && !errorMsg" class="loading-state">
+    {{ templateConfig.labels.loadingData }}
+  </div>
+
+  <div *ngIf="resume" class="page-container" 
+       [ngStyle]="layoutEngine.computeShellStyle(templateConfig.theme, templateConfig.shell.pageContainer)">
+    
+    <!-- Generic Decorations -->
+    <ng-container *ngFor="let dec of templateConfig.decorations">
+      <app-decoration-renderer [decoration]="dec" [theme]="templateConfig.theme"></app-decoration-renderer>
+    </ng-container>
+
+    <div class="layout-content" [ngStyle]="layoutEngine.computeShellStyle(templateConfig.theme, templateConfig.shell.layoutContent)">
+
+        <!-- SINGLE COLUMN LAYOUT -->
+        <ng-container *ngIf="templateConfig.layoutType === 'single'">
+            <ng-container *ngTemplateOutlet="fieldRenderer; context: { field: templateConfig.structure, context: resume }"></ng-container>
+        </ng-container>
+
+        <!-- MULTI COLUMN LAYOUT (E.G. TWO-COLUMN / SIDEBAR) -->
+        <ng-container *ngIf="templateConfig.layoutType !== 'single'">
+            <div [ngStyle]="layoutEngine.computeShellStyle(templateConfig.theme, templateConfig.shell.layoutContainer)">
+                <div *ngFor="let col of templateConfig.layoutConfig.columns" [ngStyle]="layoutEngine.computeShellStyle(templateConfig.theme, col)">
+                   <ng-container *ngTemplateOutlet="fieldRenderer; context: { field: col.structure, context: resume }"></ng-container>
+                </div>
+            </div>
+        </ng-container>
+
+    </div>
+  </div>
+</div>

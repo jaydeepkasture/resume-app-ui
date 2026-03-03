@@ -1,0 +1,73 @@
+/* BASE RESET / STRUCTURE */
+.layout-wrapper {
+  transition: all var(--ui-transitionSpeed);
+}
+.error-banner {
+  font-weight: var(--typography-fontWeightMedium);
+}
+.loading-state {
+  font-size: var(--typography-loadingSize);
+  color: var(--colors-loadingColor);
+  padding: var(--spacing-loadingPadding);
+}
+.save-btn {
+  background-color: var(--colors-primary);
+  color: var(--colors-white);
+  border: var(--ui-disableBorder);
+  padding: var(--ui-saveButtonPadding);
+  border-radius: var(--ui-borderRadius);
+  font-weight: var(--typography-fontWeightBold);
+  cursor: var(--ui-cursorPointer);
+  font-size: var(--ui-saveButtonFontSize);
+  transition: opacity var(--ui-transitionSpeed);
+  box-shadow: var(--layout-pageShadow);
+}
+.save-btn:hover {
+  opacity: var(--ui-opacityHover);
+}
+
+.page-container {
+  overflow: var(--ui-overflowHidden);
+  box-sizing: var(--ui-boxSizingBorderBox);
+  transition: all var(--ui-transitionSpeed);
+}
+.list-item {
+  transition: background-color var(--ui-transitionSpeed);
+}
+.list-item:hover {
+  background-color: var(--colors-hoverBackground);
+}
+.delete-btn {
+  background: var(--colors-transparent);
+  border: var(--ui-disableBorder);
+  cursor: var(--ui-cursorPointer);
+  opacity: var(--ui-opacityZero);
+  transition: opacity var(--ui-transitionSpeed);
+}
+.list-item:hover > .item-del-btn {
+  opacity: var(--ui-opacityFull);
+}
+.item-del-btn {
+  font-size: var(--ui-deleteIconFontSize);
+}
+
+.editable-field {
+  outline: var(--ui-disableOutline);
+  border: var(--ui-editableBorder);
+  transition: border-color var(--ui-transitionSpeed), min-width var(--ui-transitionSpeed);
+  min-width: var(--ui-editorMinWidth);
+  min-height: var(--ui-editorMinHeight);
+}
+.editable-field:empty:before,
+.editable-field:empty {
+  min-width: var(--ui-editorEmptyMinWidth);
+  background: var(--colors-editorEmpty);
+  border-radius: var(--ui-borderRadiusSmall);
+}
+.editable-field:hover {
+  border-color: var(--colors-hoverBorderColor);
+}
+.editable-field:focus {
+  border-color: var(--colors-borderColorPrimary);
+  background: var(--colors-editorFocus);
+}

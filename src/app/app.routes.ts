@@ -113,7 +113,7 @@ export const routes: Routes = [
   // Fully JSON-driven Single Layout
   {
     path: 'single-layout',
-    loadComponent: () => import('./single-layout/single-layout.component').then(m => m.SingleLayoutComponent)
+    loadComponent: () => import('./templates/single-layout.component').then(m => m.SingleLayoutComponent)
   },
 
   // Resume Preview (public)

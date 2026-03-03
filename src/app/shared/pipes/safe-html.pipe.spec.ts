@@ -2,7 +2,8 @@ import { SafeHtmlPipe } from './safe-html.pipe';
 
 describe('SafeHtmlPipe', () => {
   it('create an instance', () => {
-    const pipe = new SafeHtmlPipe();
+    const sanitizer: any = { bypassSecurityTrustHtml: (html: string) => html };
+    const pipe = new SafeHtmlPipe(sanitizer);
     expect(pipe).toBeTruthy();
   });
 });

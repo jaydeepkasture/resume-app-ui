@@ -5,7 +5,7 @@
  * It integrates with Angular environment files for environment-specific values.
  */
 
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 export const AppSettings = {
   /**
