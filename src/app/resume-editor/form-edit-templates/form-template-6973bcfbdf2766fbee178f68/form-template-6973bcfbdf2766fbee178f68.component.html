@@ -37,9 +37,16 @@
         </div>
       </div>
       <input style="font-style: italic; margin-bottom: 5px;" [(ngModel)]="job.company" (ngModelChange)="onModelChange()" placeholder="Company Name">
-      <textarea class="job-desc" [(ngModel)]="job.description" (ngModelChange)="onModelChange()" placeholder="Description of responsibilities..."></textarea>
+      <div class="bullets-section">
+          <div class="bullet-item" *ngFor="let point of job.description; let bpIndex = index; trackBy: trackByIndex">
+              <span class="bullet-point">•</span>
+              <textarea class="bullet-input" [(ngModel)]="job.description[bpIndex]" (ngModelChange)="onModelChange()" rows="1" placeholder="Achievement..."></textarea>
+              <button class="remove-bullet-btn" (click)="removeExpBullet(i, bpIndex)" title="Remove bullet">×</button>
+          </div>
+          <button class="add-bullet-btn" (click)="addExpBullet(i)">+ Add Bullet</button>
+      </div>
       
-      <button class="remove-btn" (click)="removeExperience(i)">Remove Role</button>
+      <button class="remove-btn" (click)="removeExperience(i)">Remove Position</button>
     </div>
 
     <button class="add-btn" (click)="addExperience()">+ Add Experience</button>
@@ -54,14 +61,20 @@
   <!-- Education -->
    <div class="section">
     <div class="section-title">Education</div>
-    <!-- Simple flexible education list for now -->
+    <!-- Simple flexible education list -->
     <div *ngIf="resumeData.education">
-         <div *ngFor="let edu of resumeData.education; let i = index" style="margin-bottom: 10px;">
-             <input style="font-weight: bold;" [(ngModel)]="edu.degree" (ngModelChange)="onModelChange()" placeholder="Degree">
-             <input style="font-style: italic;" [(ngModel)]="edu.institution" (ngModelChange)="onModelChange()" placeholder="University">
-             <input [(ngModel)]="edu.year" (ngModelChange)="onModelChange()" placeholder="Year">
+         <div *ngFor="let edu of resumeData.education; let i = index" class="edu-item" style="margin-bottom: 15px;">
+             <div class="job-header">
+                <input style="font-weight: bold; width: 48%;" [(ngModel)]="edu.degree" (ngModelChange)="onModelChange()" placeholder="Degree">
+                <input style="text-align: right; width: 48%;" [(ngModel)]="edu.year" (ngModelChange)="onModelChange()" placeholder="Year">
+             </div>
+             <input style="font-style: italic; margin-bottom: 5px;" [(ngModel)]="edu.institution" (ngModelChange)="onModelChange()" placeholder="University">
+             
+             <textarea class="item-desc" [(ngModel)]="edu.description" (ngModelChange)="onModelChange()" placeholder="Details/Achievements..."></textarea>
+             <button class="remove-btn" (click)="removeEducation(i)">Remove Education</button>
          </div>
     </div>
+    <button class="add-btn" (click)="addEducation()">+ Add Education</button>
   </div>
 
 </div>

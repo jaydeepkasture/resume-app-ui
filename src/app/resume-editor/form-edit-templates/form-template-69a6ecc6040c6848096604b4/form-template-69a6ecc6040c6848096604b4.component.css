@@ -1,0 +1,351 @@
+@import url('https://fonts.cdnfonts.com/css/garet');
+
+.resume-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 60px 50px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-family: 'Garet', sans-serif;
+    color: #333;
+    box-sizing: border-box;
+}
+
+input, textarea {
+    border: 1px dashed transparent;
+    background: transparent;
+    font-family: inherit;
+    color: inherit;
+    width: 100%;
+    max-width: 100%;
+    outline: none;
+    transition: all 0.2s;
+    box-sizing: border-box;
+    resize: none;
+    overflow: hidden;
+}
+
+input:hover, textarea:hover, input:focus, textarea:focus {
+    border: 1px dashed #ccc;
+    background: #fdfdfd;
+}
+
+.header-section {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.name-input {
+    font-size: 38px;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 0px;
+    color: #222;
+}
+
+.role-input {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 4px;
+    color: #444;
+}
+
+.contact-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    font-size: 11px;
+    color: #666;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contact-item svg {
+    color: #222;
+    margin-right: 4px;
+}
+
+.contact-item input {
+    width: auto;
+    min-width: 10px;
+    field-sizing: content;
+    text-align: center;
+    padding: 0;
+}
+
+.section-divider {
+    border: none;
+    border-top: 1px solid #000;
+    margin: 20px 0;
+}
+
+.section {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.summary-text {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #222;
+}
+
+.item-block {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.item-header {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 3px;
+}
+
+.item-subtitle {
+    width: auto;
+    min-width: 10px;
+    max-width: none;
+    field-sizing: content;
+    padding: 0;
+}
+
+.separator {
+    margin: 0 8px;
+}
+
+.date-range {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.item-date {
+    width: auto;
+    min-width: 10px;
+    max-width: none;
+    text-align: center;
+    field-sizing: content;
+    padding: 0;
+}
+
+.item-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 8px;
+    width: auto;
+    min-width: 10px;
+    field-sizing: content;
+}
+
+.item-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #222;
+}
+
+.edu-block {
+    margin-bottom: 6px;
+}
+
+.edu-block .item-title {
+    margin-bottom: 0;
+}
+
+.footer-bar {
+    height: 50px;
+    background-color: #444;
+    margin: 40px -50px -60px -50px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px 20px;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.skill-item input {
+    width: auto;
+    min-width: 10px;
+    field-sizing: content;
+    font-size: 13px;
+    color: #444;
+}
+
+.skill-item .bullet {
+    margin-right: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.remove-btn-small {
+    background: transparent;
+    color: #c00;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.2s;
+    padding: 0 5px;
+}
+
+.skill-item:hover .remove-btn-small {
+    opacity: 1;
+}
+
+.add-btn, .remove-btn {
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 5px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+    color: #555;
+    transition: all 0.2s;
+}
+
+.add-btn:hover {
+    background: #e0e0e0;
+}
+
+.remove-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #ffeeee;
+    color: #c00;
+    border-color: #fcc;
+    opacity: 0;
+    margin-top: 0;
+}
+
+.item-block:hover .remove-btn {
+    opacity: 1;
+}
+
+.remove-btn:hover {
+    background: #fcc;
+}
+
+.bullets-section {
+    margin-top: 5px;
+    padding-left: 5px;
+}
+
+.bullet-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 4px;
+    position: relative;
+    padding-right: 20px;
+}
+
+.bullet-point {
+    margin-right: 10px;
+    margin-top: 2px;
+    font-size: 14px;
+    color: #333;
+    flex-shrink: 0;
+}
+
+.bullet-input {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #222;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.remove-bullet-btn {
+    background: transparent;
+    color: #c00;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.2s;
+    padding: 0 4px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.bullet-item:hover .remove-bullet-btn {
+    opacity: 1;
+}
+
+.add-bullet-btn {
+    background: transparent;
+    border: none;
+    color: #0088cc;
+    font-size: 11px;
+    cursor: pointer;
+    padding: 2px 0;
+    margin-top: 4px;
+    font-weight: 600;
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+.add-bullet-btn:hover {
+    opacity: 1;
+}
+@media (max-width: 600px) {
+    .resume-container {
+        padding: 30px 20px;
+    }
+
+    .name-input {
+        font-size: 24px;
+        letter-spacing: 1px;
+    }
+
+    .role-input {
+        font-size: 16px;
+    }
+
+    .contact-row {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .section-title {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}

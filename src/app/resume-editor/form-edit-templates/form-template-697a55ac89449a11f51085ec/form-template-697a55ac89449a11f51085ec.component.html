@@ -42,9 +42,15 @@
                         <input [(ngModel)]="job.to" (ngModelChange)="onModelChange()" placeholder="Present">
                     </div>
                     
-                    <textarea class="job-desc" [(ngModel)]="job.description" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="Job description..."></textarea>
-                    
-                    <button class="remove-btn" (click)="removeExperience(i)">Remove</button>
+                    <div class="bullets-section">
+                        <div class="bullet-item" *ngFor="let point of job.description; let bpIndex = index; trackBy: trackByIndex">
+                            <span class="bullet-point">•</span>
+                            <textarea class="bullet-input" [(ngModel)]="job.description[bpIndex]" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="Achievement..."></textarea>
+                            <button class="remove-bullet-btn" (click)="removeExpBullet(i, bpIndex)" title="Remove bullet">×</button>
+                        </div>
+                        <button class="add-bullet-btn" (click)="addExpBullet(i)">+ Add Bullet</button>
+                    </div>
+                    <button class="remove-btn" (click)="removeExperience(i)">Remove Position</button>
                 </div>
                 
                 <button class="add-btn" (click)="addExperience()">+ Add Position</button>
@@ -68,10 +74,9 @@
                     <textarea class="edu-degree" [(ngModel)]="edu.degree" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="DEGREE"></textarea>
                     <input class="edu-school" [(ngModel)]="edu.institution" (ngModelChange)="onModelChange()" placeholder="University/College">
                     <input class="edu-date" [(ngModel)]="edu.year" (ngModelChange)="onModelChange()" placeholder="Year">
-                    <!-- description/details for education if needed, mapped to field? -->
-                    <!-- The interface has field?, but let's just use a description text -->
-                    <!-- <textarea class="edu-desc" [(ngModel)]="edu.description" ... -->
-                     <button class="remove-btn" (click)="removeEducation(i)">Remove</button>
+                    
+                    <textarea class="edu-desc" [(ngModel)]="edu.description" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="Achievement..."></textarea>
+                    <button class="remove-btn" (click)="removeEducation(i)">Remove Education</button>
                 </div>
 
                 <button class="add-btn" (click)="addEducation()">+ Add Education</button>

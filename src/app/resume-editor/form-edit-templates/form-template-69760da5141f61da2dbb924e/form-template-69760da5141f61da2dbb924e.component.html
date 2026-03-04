@@ -65,9 +65,16 @@
              <input [(ngModel)]="job.to" (ngModelChange)="onModelChange()" placeholder="Present">
           </div>
           
-          <textarea class="job-desc" [(ngModel)]="job.description" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="Describe your responsibilities..."></textarea>
+          <div class="bullets-section">
+              <div class="bullet-item" *ngFor="let point of job.description; let bpIndex = index; trackBy: trackByIndex">
+                  <span class="bullet-point">•</span>
+                  <textarea class="bullet-input" [(ngModel)]="job.description[bpIndex]" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="Achievement..."></textarea>
+                  <button class="remove-bullet-btn" (click)="removeExpBullet(i, bpIndex)" title="Remove bullet">×</button>
+              </div>
+              <button class="add-bullet-btn" (click)="addExpBullet(i)">+ Add Bullet</button>
+          </div>
           
-          <button class="remove-btn" (click)="removeExperience(i)">Remove</button>
+          <button class="remove-btn" (click)="removeExperience(i)">Remove Position</button>
         </div>
 
         <button class="add-btn" (click)="addExperience()">+ Add Position</button>
@@ -90,8 +97,9 @@
         <div class="edu-item" *ngFor="let edu of resumeData.education; let i = index">
           <input class="school-name" [(ngModel)]="edu.institution" (ngModelChange)="onModelChange()" placeholder="UNIVERSITY NAME">
           <input class="edu-date" [(ngModel)]="edu.year" (ngModelChange)="onModelChange()" placeholder="20XX - 20XX">
-          <textarea class="edu-details" [(ngModel)]="edu.degree" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="Degree and details..."></textarea>
-           <button class="remove-btn" (click)="removeEducation(i)">Remove</button>
+          <textarea class="edu-degree" [(ngModel)]="edu.degree" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="Degree"></textarea>
+          <textarea class="edu-desc" [(ngModel)]="edu.description" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="Details..."></textarea>
+          <button class="remove-btn" (click)="removeEducation(i)">Remove Education</button>
         </div>
         <button class="add-btn" (click)="addEducation()">+ Add Education</button>
       </div>

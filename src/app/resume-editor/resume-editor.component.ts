@@ -4,7 +4,8 @@ import { Component, OnInit, OnDestroy, AfterViewInit, ChangeDetectorRef, HostLis
 const FORM_TEMPLATE_COMPONENTS: { [key: string]: Type<any> } = {
   '6973bcfbdf2766fbee178f68': FormTemplate6973bcfbdf2766fbee178f68Component,
   '69760da5141f61da2dbb924e': FormTemplate69760da5141f61da2dbb924eComponent,
-  '697a55ac89449a11f51085ec': FormTemplate697a55ac89449a11f51085ecComponent
+  '697a55ac89449a11f51085ec': FormTemplate697a55ac89449a11f51085ecComponent,
+  '69a6ecc6040c6848096604b4': FormTemplate69a6ecc6040c6848096604b4Component
 };
 
 import { CommonModule } from '@angular/common';
@@ -36,6 +37,7 @@ import { TemplateDropdownComponent } from '../components/template-dropdown/templ
 import { FormTemplate6973bcfbdf2766fbee178f68Component } from './form-edit-templates/form-template-6973bcfbdf2766fbee178f68/form-template-6973bcfbdf2766fbee178f68.component';
 import { FormTemplate69760da5141f61da2dbb924eComponent } from './form-edit-templates/form-template-69760da5141f61da2dbb924e/form-template-69760da5141f61da2dbb924e.component';
 import { FormTemplate697a55ac89449a11f51085ecComponent } from './form-edit-templates/form-template-697a55ac89449a11f51085ec/form-template-697a55ac89449a11f51085ec.component';
+import { FormTemplate69a6ecc6040c6848096604b4Component } from './form-edit-templates/form-template-69a6ecc6040c6848096604b4/form-template-69a6ecc6040c6848096604b4.component';
 // HistorySidebarComponent removed in favor of embedded implementation
 
 
@@ -121,12 +123,10 @@ const DivExtension = Node.create({
   },
 });
 
-import { SafeHtmlPipe } from '../shared/pipes/safe-html.pipe';
-
 @Component({
   selector: 'app-resume-editor',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, FormsModule, ChatSidebarComponent, TemplateDropdownComponent, FormTemplate6973bcfbdf2766fbee178f68Component, FormTemplate69760da5141f61da2dbb924eComponent, FormTemplate697a55ac89449a11f51085ecComponent, SafeHtmlPipe],
+  imports: [CommonModule, HttpClientModule, FormsModule, ChatSidebarComponent, TemplateDropdownComponent, FormTemplate6973bcfbdf2766fbee178f68Component, FormTemplate69760da5141f61da2dbb924eComponent, FormTemplate697a55ac89449a11f51085ecComponent, FormTemplate69a6ecc6040c6848096604b4Component],
   templateUrl: './resume-editor.component.html',
   styleUrl: './resume-editor.component.css'
 })
@@ -484,14 +484,15 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
           position: 'SENIOR SOFTWARE ENGINEER',
           from: '2020',
           to: 'PRESENT',
-          description: 'Led development of enterprise applications using modern technologies.'
+          description: ['Led development of enterprise applications using modern technologies.']
         }
       ],
       education: [
         {
           institution: 'STANFORD UNIVERSITY',
           degree: 'Bachelor of Science in Computer Science',
-          year: '2016 - 2020'
+          year: '2016 - 2020',
+          description: 'Maintained a high GPA and participated in computer science research.'
         }
       ],
       skills: ['JavaScript', 'TypeScript', 'Angular', 'React', 'Node.js', 'Python', 'AWS'],
@@ -2058,149 +2059,37 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Download as PDF
   async downloadPdf(): Promise<void> {
-    let exportElement: HTMLElement | null = null;
-    let isTemp = false;
+    let resumeDataToSend = this.currentResumeData;
 
-    // 1. Prepare Content
-    if (this.isFormEditMode) {
-        console.log('📄 Preparing PDF for Form Template...');
-        exportElement = await this.prepareFormForExport();
-        if (!exportElement) return;
-        isTemp = true;
-    } else {
-        // Free Edit Mode - Use existing logic via Free Edit helper but adapted to specific flow if needed
-        return this.downloadPdfFreeEdit();
+    if (!this.isFormEditMode) {
+      // In Free Edit mode, ensure data is up-to-date from HTML
+      const resumeHtml = this.getHTML();
+      resumeDataToSend = this.extractDataFromHTML(resumeHtml);
     }
 
-    try {
-        // 2. Setup jsPDF
-        const a4WidthPx = 794;
-        const a4HeightPx = 1123;
-        
-        const pdf = new jsPDF({
-            orientation: 'portrait',
-            unit: 'px', 
-            format: [a4WidthPx, a4HeightPx],
-            compress: true,
-            hotfixes: ['px_scaling']
-        });
+    if (!this.currentTemplateId || !resumeDataToSend) {
+      alert('Please select a template and ensure resume data exists before downloading.');
+      return;
+    }
 
-        // 3. Render HTML to PDF
-        // Using pdf.html which creates selectable text vectors mostly
-        await pdf.html(exportElement, {
-            callback: function(doc) {
-                doc.save(`resume_${new Date().toISOString().split('T')[0]}.pdf`);
-                
-                // Cleanup inside callback
-                if (isTemp && exportElement && exportElement.parentNode) {
-                    exportElement.parentNode.removeChild(exportElement);
-                }
-                console.log('PDF generated.');
-            },
-            x: 0,
-            y: 0,
-            width: a4WidthPx,
-            windowWidth: a4WidthPx,
-            margin: [0, 0, 0, 0], // No extra margins, we control padding in CSS
-            autoPaging: 'text',
-            html2canvas: {
-                scale: 1,
-                useCORS: true, 
-                logging: false,
-                letterRendering: true,
-                backgroundColor: '#ffffff'
-            }
-        });
-
-    } catch (err) {
-        console.error('Error generating PDF:', err);
-        if (isTemp && exportElement && exportElement.parentNode) {
-            exportElement.parentNode.removeChild(exportElement);
+    const filename = `resume_${new Date().toISOString().split('T')[0]}.pdf`;
+    
+    console.log('📄 Requesting PDF generation from API...');
+    this.templateService.generatePdf(this.currentTemplateId, resumeDataToSend, filename).subscribe({
+        next: () => {
+            console.log('✅ PDF generated and downloaded successfully.');
+        },
+        error: (err) => {
+            console.error('❌ Failed to generate PDF:', err);
+            alert('Failed to generate PDF. Please try again.');
         }
-    }
+    });
   }
 
   // Legacy PDF Logic for Free Edit (Preserved/Renamed)
   async downloadPdfFreeEdit(): Promise<void> {
-    try {
-       // ... (Original logic from downloadPdf lines 1727-1867)
-       // We need to include this entire block here
-      if (typeof window !== 'undefined') {
-        (window as any).html2canvas = html2canvas;
-      }
-      const htmlContent = this.editor.getHTML();
-      let templateCss = '';
-      const templateStyleElement = document.querySelector('style[data-template-styles="true"]');
-      if (templateStyleElement) {
-        templateCss = templateStyleElement.textContent || '';
-        templateCss = templateCss.replace(/\.editor\s+/g, '');
-      }
-      
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(htmlContent, 'text/html');
-      
-      const tempContainer = document.createElement('div');
-      tempContainer.id = 'pdf-temp-container';
-      const a4WidthPx = 794;
-      const pagePadding = 40;
-      
-      tempContainer.style.width = `${a4WidthPx}px`; 
-      tempContainer.style.minHeight = '1123px';
-      tempContainer.style.padding = `${pagePadding}px`; 
-      tempContainer.style.backgroundColor = '#ffffff';
-      tempContainer.style.boxSizing = 'border-box';
-      tempContainer.style.fontFamily = 'Arial, Helvetica, sans-serif';
-      tempContainer.style.fontSize = '16px'; 
-      tempContainer.style.lineHeight = '1.5';
-      tempContainer.style.color = '#000000';
-      tempContainer.style.position = 'fixed';
-      tempContainer.style.top = '0';
-      tempContainer.style.left = '0';
-      tempContainer.style.zIndex = '-1000';
-      
-      const styleElement = document.createElement('style');
-      styleElement.textContent = `
-        ${templateCss}
-        #pdf-temp-container { box-sizing: border-box; }
-        .resume-container, .container { width: 100% !important; box-shadow: none !important; }
-        table { width: 100%; border-collapse: collapse; }
-      `;
-      tempContainer.appendChild(styleElement);
-      
-      const contentDiv = document.createElement('div');
-      contentDiv.innerHTML = doc.body.innerHTML;
-      tempContainer.appendChild(contentDiv);
-      document.body.appendChild(tempContainer);
-      
-      await new Promise(resolve => setTimeout(resolve, 500));
-      
-      const a4HeightPx = 1123;
-      const pdf = new jsPDF({
-        orientation: 'portrait',
-        unit: 'px', 
-        format: [a4WidthPx, a4HeightPx],
-        compress: true,
-        hotfixes: ['px_scaling']
-      });
-      
-      await pdf.html(tempContainer, {
-        callback: function(doc) {
-          doc.save(`resume_${new Date().toISOString().split('T')[0]}.pdf`);
-          if (document.body.contains(tempContainer)) {
-            document.body.removeChild(tempContainer);
-          }
-        },
-        x: 0, y: 0,
-        width: a4WidthPx, windowWidth: a4WidthPx,
-        margin: [0, 0, 0, 0],
-        autoPaging: 'text',
-        html2canvas: { scale: 1, useCORS: true, logging: false, letterRendering: true, backgroundColor: '#ffffff' }
-      });
-    } catch (error) {
-       console.error('Error generating PDF (Free Edit):', error);
-       const temp = document.getElementById('pdf-temp-container');
-       if (temp) temp.remove();
-    }
+    // Deprecated: Now handled by the backend API via downloadPdf()
+    await this.downloadPdf();
   }
 
 
@@ -2591,6 +2480,28 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
       resumeData.eduction = resumeData.education;
     } else if (resumeData.eduction && !resumeData.education) {
       resumeData.education = resumeData.eduction;
+    }
+
+    // Ensure description is an array for experience
+    if (resumeData.experience) {
+        resumeData.experience.forEach((exp: any) => {
+            if (typeof exp.description === 'string') {
+                exp.description = [exp.description];
+            } else if (!exp.description) {
+                exp.description = [''];
+            }
+        });
+    }
+
+    // Ensure description is a string for education
+    if (resumeData.education) {
+        resumeData.education.forEach((edu: any) => {
+            if (Array.isArray(edu.description)) {
+                edu.description = edu.description.join('\n');
+            } else if (!edu.description) {
+                edu.description = '';
+            }
+        });
     }
 
     // Handle Phone

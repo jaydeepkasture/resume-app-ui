@@ -264,6 +264,48 @@ export class HttpService {
     );
   }
 
+  /**
+   * Download file via POST
+   */
+  downloadPostFile(url: string, body: any, defaultFilename?: string): Observable<Blob> {
+    const fullUrl = this.prepareUrl(url);
+    const headers = this.buildHeaders();
+    return this.http.post<any>(fullUrl, body, { headers }).pipe(
+      map(response => {
+        if (response && response.status && response.data && response.data.fileData) {
+          const fileData = response.data.fileData;
+          const contentType = response.data.contentType || 'application/pdf';
+          const filename = response.data.fileName || defaultFilename || 'download_file.pdf';
+          
+          let byteArray: Uint8Array;
+          if (Array.isArray(fileData)) {
+            byteArray = new Uint8Array(fileData);
+          } else {
+            // Assume base64 string
+            const byteCharacters = atob(fileData);
+            const byteNumbers = new Array(byteCharacters.length);
+            for (let i = 0; i < byteCharacters.length; i++) {
+              byteNumbers[i] = byteCharacters.charCodeAt(i);
+            }
+            byteArray = new Uint8Array(byteNumbers);
+          }
+          
+          const blob = new Blob([byteArray as any], { type: contentType });
+
+          const link = document.createElement('a');
+          link.href = window.URL.createObjectURL(blob);
+          link.download = filename;
+          link.click();
+          window.URL.revokeObjectURL(link.href);
+
+          return blob;
+        }
+        throw new Error(response?.message || 'Failed to download file');
+      }),
+      catchError(error => this.handleError(error, () => this.downloadPostFile(url, body, defaultFilename)))
+    );
+  }
+
   // ============================================
   // HELPER METHODS
   // ============================================

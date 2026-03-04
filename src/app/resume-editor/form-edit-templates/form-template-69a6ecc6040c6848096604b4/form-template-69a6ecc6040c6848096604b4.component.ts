@@ -2,15 +2,16 @@ import { Component, Input, Output, EventEmitter, OnInit, AfterViewInit, ElementR
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ResumeData } from '../../template.service';
+import { AutowidthDirective } from '../../../directives/autowidth.directive';
 
 @Component({
-  selector: 'app-form-template-697a55ac89449a11f51085ec',
+  selector: 'app-form-template-69a6ecc6040c6848096604b4',
   standalone: true,
-  imports: [CommonModule, FormsModule],
-  templateUrl: './form-template-697a55ac89449a11f51085ec.component.html',
-  styleUrls: ['./form-template-697a55ac89449a11f51085ec.component.css']
+  imports: [CommonModule, FormsModule, AutowidthDirective],
+  templateUrl: './form-template-69a6ecc6040c6848096604b4.component.html',
+  styleUrls: ['./form-template-69a6ecc6040c6848096604b4.component.css']
 })
-export class FormTemplate697a55ac89449a11f51085ecComponent implements OnInit, AfterViewInit {
+export class FormTemplate69a6ecc6040c6848096604b4Component implements OnInit, AfterViewInit {
   private _resumeData!: ResumeData;
 
   @Input() 
@@ -28,6 +29,7 @@ export class FormTemplate697a55ac89449a11f51085ecComponent implements OnInit, Af
   constructor(private elementRef: ElementRef) {}
 
   ngOnInit() {
+    console.log('hsere');
     if (!this._resumeData) {
       this._resumeData = {
         name: '',
@@ -43,22 +45,12 @@ export class FormTemplate697a55ac89449a11f51085ecComponent implements OnInit, Af
         education: []
       };
     }
-    // Initialize arrays if missing to prevent errors
+    // Initialize arrays if missing
     if (!this._resumeData.experience) this._resumeData.experience = [];
     if (!this._resumeData.education) this._resumeData.education = [];
     if (!this._resumeData.skills) this._resumeData.skills = [];
 
     this.ensureDescriptionArray();
-    // Ensure contact structure exists
-    if (!this._resumeData['contact']) {
-        this._resumeData['contact'] = {
-            phone: this._resumeData.phoneNo || '',
-            email: this._resumeData.email || '',
-            website: '',
-            linkedin: this._resumeData.linkedIn || '',
-            location: this._resumeData.location || ''
-        };
-    }
   }
 
   private ensureDescriptionArray() {
@@ -115,13 +107,12 @@ export class FormTemplate697a55ac89449a11f51085ecComponent implements OnInit, Af
 
   addExperience() {
     this.resumeData.experience.push({
-      position: 'JOB TITLE',
-      company: 'Company Name',
+      position: 'Job Title',
+      company: 'Company',
       from: 'YYYY',
       to: 'Present',
-      description: ['Description of your responsibilities and achievements...']
+      description: ['Responsibilities and achievements']
     });
-    // Trigger height adjustment
     this.resizeAllTextareas();
     this.onModelChange();
   }
@@ -148,7 +139,7 @@ export class FormTemplate697a55ac89449a11f51085ecComponent implements OnInit, Af
   addEducation() {
       this.resumeData.education.push({
           degree: 'Degree',
-          institution: 'University Name',
+          institution: 'Institution',
           year: 'Year',
           description: ''
       });
@@ -164,5 +155,15 @@ export class FormTemplate697a55ac89449a11f51085ecComponent implements OnInit, Af
 
   trackByIndex(index: number, obj: any): any {
     return index;
+  }
+
+  addSkill() {
+    this.resumeData.skills.push('');
+    this.onModelChange();
+  }
+
+  removeSkill(index: number) {
+    this.resumeData.skills.splice(index, 1);
+    this.onModelChange();
   }
 }

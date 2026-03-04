@@ -38,7 +38,7 @@ export interface ResumeExperience {
   company: string;
   from?: string;
   to?: string;
-  description: string;
+  description: string[];
 }
 
 export interface ResumeEducation {
@@ -46,6 +46,7 @@ export interface ResumeEducation {
   field?: string;
   institution: string;
   year: string;
+  description: string;
 }
 
 export interface ResumeData {
@@ -256,5 +257,20 @@ export class TemplateService {
     };
     
     return this.httpService.put(`resume/save?chatId=${chatId}&templateId=${templateId}`, resumeData);
+  }
+
+  /**
+   * Generate PDF using the backend API
+   * @param templateId - The template ID
+   * @param resumeData - The resume data
+   * @param filename - Optional filename for the downloaded PDF
+   * @returns Observable with the Blob containing the PDF
+   */
+  generatePdf(templateId: string, resumeData: ResumeData, filename: string = 'resume.pdf'): Observable<Blob> {
+    const payload = {
+      templateid: templateId,
+      resume: resumeData
+    };
+    return this.httpService.downloadPostFile('pdf/generate', payload, filename);
   }
 }

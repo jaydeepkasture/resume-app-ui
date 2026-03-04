@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TemplateService } from '../resume-editor/template.service'; 
-import { SafeHtmlPipe } from '../shared/pipes/safe-html.pipe';
 import { ChatSidebarComponent } from '../components/chat-sidebar/chat-sidebar.component';
 import { BenefitsService } from '../billing/services/benefits.service';
 import { HttpService } from '../services/http.service';

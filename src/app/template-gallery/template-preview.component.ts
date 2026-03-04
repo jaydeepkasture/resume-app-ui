@@ -1,6 +1,5 @@
 import { Component, Input, ViewEncapsulation, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SafeHtmlPipe } from '../shared/pipes/safe-html.pipe';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({

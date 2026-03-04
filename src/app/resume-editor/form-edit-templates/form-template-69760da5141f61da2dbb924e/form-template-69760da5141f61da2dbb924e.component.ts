@@ -16,6 +16,7 @@ export class FormTemplate69760da5141f61da2dbb924eComponent implements OnInit, Af
   @Input() 
   set resumeData(value: ResumeData) {
     this._resumeData = value;
+    this.ensureDescriptionArray();
     this.resizeAllTextareas();
   }
   get resumeData(): ResumeData {
@@ -55,6 +56,31 @@ export class FormTemplate69760da5141f61da2dbb924eComponent implements OnInit, Af
             linkedin: this._resumeData.linkedIn || '',
             location: this._resumeData.location || ''
         };
+    }
+    this.ensureDescriptionArray();
+  }
+
+  private ensureDescriptionArray() {
+    if (this._resumeData) {
+      if (this._resumeData.experience) {
+        this._resumeData.experience.forEach(exp => {
+          if (typeof exp.description === 'string') {
+            exp.description = [(exp.description as string)];
+          }
+          if (!exp.description || !Array.isArray(exp.description) || exp.description.length === 0) {
+            exp.description = [''];
+          }
+        });
+      }
+      if (this._resumeData.education) {
+        this._resumeData.education.forEach(edu => {
+          if (Array.isArray(edu.description)) {
+            edu.description = edu.description.join('\n');
+          } else if (!edu.description) {
+            edu.description = '';
+          }
+        });
+      }
     }
   }
 
@@ -99,14 +125,24 @@ export class FormTemplate69760da5141f61da2dbb924eComponent implements OnInit, Af
       company: 'Company Name',
       from: 'YYYY',
       to: 'Present',
-      description: 'Description of your responsibilities and achievements...'
+      description: ['Description of your responsibilities and achievements...']
     });
     // Trigger height adjustment after DOM update
-    setTimeout(() => {
-        const textareas = this.elementRef.nativeElement.querySelectorAll('textarea');
-        const lastTextarea = textareas[textareas.length - 1]; // Assume newly added is last or close to end
-        if(lastTextarea) this.adjustTextAreaHeight({ target: lastTextarea });
-    }, 0);
+    this.resizeAllTextareas();
+    this.onModelChange();
+  }
+
+  addExpBullet(index: number) {
+    this.resumeData.experience[index].description.push('');
+    this.onModelChange();
+    this.resizeAllTextareas();
+  }
+
+  removeExpBullet(expIndex: number, bulletIndex: number) {
+    this.resumeData.experience[expIndex].description.splice(bulletIndex, 1);
+    if (this.resumeData.experience[expIndex].description.length === 0) {
+      this.resumeData.experience[expIndex].description.push('');
+    }
     this.onModelChange();
   }
 
@@ -119,9 +155,15 @@ export class FormTemplate69760da5141f61da2dbb924eComponent implements OnInit, Af
       this.resumeData.education.push({
           degree: 'Degree',
           institution: 'University Name',
-          year: 'Year'
+          year: 'Year',
+          description: ''
       });
       this.onModelChange();
+  }
+
+
+  trackByIndex(index: number, obj: any): any {
+    return index;
   }
 
   removeEducation(index: number) {

@@ -125,3 +125,69 @@ textarea {
     flex-wrap: wrap;
   }
 }
+
+.bullets-section {
+    margin-top: 5px;
+    padding-left: 5px;
+}
+
+.bullet-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 4px;
+    position: relative;
+    padding-right: 20px;
+}
+
+.bullet-point {
+    margin-right: 10px;
+    margin-top: 2px;
+    font-size: 14px;
+    color: #333;
+    flex-shrink: 0;
+}
+
+.bullet-input {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #222;
+    padding: 0;
+    flex-grow: 1;
+    min-height: auto;
+}
+
+.remove-bullet-btn {
+    background: transparent;
+    color: #c00;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.2s;
+    padding: 0 4px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.bullet-item:hover .remove-bullet-btn {
+    opacity: 1;
+}
+
+.add-bullet-btn {
+    background: transparent;
+    border: none;
+    color: #0088cc;
+    font-size: 11px;
+    cursor: pointer;
+    padding: 2px 0;
+    margin-top: 4px;
+    font-weight: 600;
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+.add-bullet-btn:hover {
+    opacity: 1;
+}

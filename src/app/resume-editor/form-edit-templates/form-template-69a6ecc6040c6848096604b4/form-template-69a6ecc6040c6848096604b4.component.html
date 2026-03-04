@@ -1,0 +1,93 @@
+<div class="resume-container">
+    <div class="header-section">
+        <div class="name-container">
+            <input class="name-input" appAutowidth [(ngModel)]="resumeData.name" (ngModelChange)="onModelChange()" placeholder="SEBASTIAN BENNETT">
+        </div>
+        <div class="role-container">
+            <input class="role-input" appAutowidth [(ngModel)]="resumeData.role" (ngModelChange)="onModelChange()" placeholder="Professional Accountant">
+        </div>
+        
+        <div class="contact-row">
+            <div class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <input appAutowidth [(ngModel)]="resumeData.phoneNo" (ngModelChange)="onModelChange()" placeholder="+123-456-7890">
+            </div>
+            <div class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <input appAutowidth [(ngModel)]="resumeData.email" (ngModelChange)="onModelChange()" placeholder="hello@reallygreatsite.com">
+            </div>
+            <div class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <input appAutowidth [(ngModel)]="resumeData.location" (ngModelChange)="onModelChange()" placeholder="123 Anywhere St., Any City">
+            </div>
+        </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <div class="section">
+        <div class="section-title">ABOUT ME</div>
+        <textarea class="summary-text" [(ngModel)]="resumeData.summary" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="2" placeholder="Summary of your background..."></textarea>
+    </div>
+
+    <hr class="section-divider">
+
+    <div class="section">
+        <div class="section-title">WORK EXPERIENCE</div>
+        <div class="item-block" *ngFor="let job of resumeData.experience; let i = index">
+            <div class="item-header">
+                <input class="item-subtitle" appAutowidth [(ngModel)]="job.company" (ngModelChange)="onModelChange()" placeholder="Company">
+                <span class="separator">|</span>
+                <div class="date-range">
+                    <input class="item-date" appAutowidth [(ngModel)]="job.from" (ngModelChange)="onModelChange()" placeholder="YYYY">
+                    <span>-</span>
+                    <input class="item-date" appAutowidth [(ngModel)]="job.to" (ngModelChange)="onModelChange()" placeholder="YYYY">
+                </div>
+            </div>
+            <input class="item-title" appAutowidth [(ngModel)]="job.position" (ngModelChange)="onModelChange()" placeholder="Position">
+            <div class="bullets-section">
+                <div class="bullet-item" *ngFor="let point of job.description; let bpIndex = index; trackBy: trackByIndex">
+                    <span class="bullet-point">•</span>
+                    <textarea class="bullet-input" [(ngModel)]="job.description[bpIndex]" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="Achievement..."></textarea>
+                    <button class="remove-bullet-btn" (click)="removeExpBullet(i, bpIndex)" title="Remove bullet">×</button>
+                </div>
+                <button class="add-bullet-btn" (click)="addExpBullet(i)">+ Add Bullet</button>
+            </div>
+            <button class="remove-btn" (click)="removeExperience(i)">Remove Position</button>
+        </div>
+        <button class="add-btn" (click)="addExperience()">+ Add Position</button>
+    </div>
+
+    <hr class="section-divider">
+
+    <div class="section">
+        <div class="section-title">SKILLS</div>
+        <div class="skills-grid">
+            <div class="skill-item" *ngFor="let skill of resumeData.skills; let i = index; trackBy: trackByIndex">
+                <span class="bullet">•</span>
+                <input appAutowidth [(ngModel)]="resumeData.skills[i]" (ngModelChange)="onModelChange()" placeholder="Skill">
+                <button class="remove-btn-small" (click)="removeSkill(i)">x</button>
+            </div>
+        </div>
+        <button class="add-btn" (click)="addSkill()">+ Add Skill</button>
+    </div>
+
+    <hr class="section-divider">
+
+    <div class="section">
+        <div class="section-title">EDUCATION</div>
+        <div class="item-block edu-block" *ngFor="let edu of resumeData.education; let i = index">
+            <div class="item-header">
+                <input class="item-subtitle" appAutowidth [(ngModel)]="edu.institution" (ngModelChange)="onModelChange()" placeholder="University">
+                <span class="separator">|</span>
+                <input class="item-date" appAutowidth [(ngModel)]="edu.year" (ngModelChange)="onModelChange()" placeholder="2026-2030">
+            </div>
+            <input class="item-title" appAutowidth [(ngModel)]="edu.degree" (ngModelChange)="onModelChange()" placeholder="Degree">
+            <textarea class="item-desc" [(ngModel)]="edu.description" (ngModelChange)="onModelChange()" (input)="adjustTextAreaHeight($event)" rows="1" placeholder="Details..."></textarea>
+            <button class="remove-btn" (click)="removeEducation(i)">Remove Education</button>
+        </div>
+        <button class="add-btn" (click)="addEducation()">+ Add Education</button>
+    </div>
+
+    <div class="footer-bar"></div>
+</div>
