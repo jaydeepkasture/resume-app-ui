@@ -142,6 +142,17 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
 
   isManualEdit: boolean = false;
   isSaving: boolean = false;
+  isDownloadingPdf: boolean = false;
+  downloadSlogan: string = '';
+  private downloadSlogans: string[] = [
+    "Sit tight! We're pixel-perfecting your resume... 🪄✨",
+    "Brewing some coffee while we generate your PDF... ☕🚀",
+    "Polishing the fonts so you look like a CEO... 👔💼",
+    "Bribing the printer elves... almost done! 🧝📄",
+    "Adding a sprinkle of magic to your experience... ✨🪄",
+    "Consulting the resume gurus... give us a sec! 🧘‍♂️📜",
+    "Packing your skills into a beautiful PDF... 🎒✨"
+  ];
   private isProgrammaticUpdate: boolean = false;
 
   saveResume(): void {
@@ -2074,14 +2085,20 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
 
     const filename = `resume_${new Date().toISOString().split('T')[0]}.pdf`;
     
+    // Pick a random funny slogan to show while downloading
+    this.downloadSlogan = this.downloadSlogans[Math.floor(Math.random() * this.downloadSlogans.length)];
+    this.isDownloadingPdf = true;
+    
     console.log('📄 Requesting PDF generation from API...');
     this.templateService.generatePdf(this.currentTemplateId, resumeDataToSend, filename).subscribe({
         next: () => {
             console.log('✅ PDF generated and downloaded successfully.');
+            this.isDownloadingPdf = false;
         },
         error: (err) => {
             console.error('❌ Failed to generate PDF:', err);
             alert('Failed to generate PDF. Please try again.');
+            this.isDownloadingPdf = false;
         }
     });
   }

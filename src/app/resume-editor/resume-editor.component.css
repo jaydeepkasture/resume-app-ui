@@ -216,6 +216,75 @@
   letter-spacing: 0.5px;
 }
 
+/* Download Animation Styles */
+.download-btn.downloading {
+  position: relative;
+  overflow: hidden;
+  background-color: #e8eaf6 !important;
+  color: #1976d2 !important;
+  border-color: #1976d2 !important;
+}
+
+.downloading .download-arrow {
+  animation: download-bounce 1s infinite ease-in-out;
+}
+
+@keyframes download-bounce {
+  0% { transform: translateY(-6px); opacity: 0; }
+  30% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: translateY(6px); opacity: 0; }
+}
+
+.downloading::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(25, 118, 210, 0.2), transparent);
+  animation: download-shimmer 1.5s infinite linear;
+}
+
+@keyframes download-shimmer {
+  100% { left: 200%; }
+}
+
+/* Download Slogan Popup */
+.download-slogan-popup {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 10px;
+  background-color: #333;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: slogan-pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  pointer-events: none;
+  z-index: 105;
+}
+
+.download-slogan-popup::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  right: 20px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent #333 transparent;
+}
+
+@keyframes slogan-pop {
+  0% { transform: translateY(10px) scale(0.9); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
 /* Enhancement Mode Toggle Button */
 .enhancement-mode-toggle {
   width: auto !important;

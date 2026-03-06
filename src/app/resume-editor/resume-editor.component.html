@@ -477,7 +477,7 @@
     <div class="toolbar-divider" *ngIf="!isFormEditMode"></div>
 
     <!-- Download -->
-    <div class="toolbar-group">
+    <div class="toolbar-group" style="position: relative;">
       <!-- Hidden as per user request
       <button 
         class="toolbar-btn download-btn" 
@@ -492,15 +492,24 @@
       </button> -->
       <button 
         class="toolbar-btn download-btn" 
+        [class.downloading]="isDownloadingPdf"
+        [disabled]="isDownloadingPdf"
         (click)="downloadPdf()" 
         title="Download as PDF (Best for templates with graphics and styling)">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-          <polyline points="7 10 12 15 17 10"></polyline>
-          <line x1="12" y1="15" x2="12" y2="3"></line>
+          <g class="download-arrow">
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </g>
         </svg>
-        <span class="download-label">PDF</span>
+        <span class="download-label">{{ isDownloadingPdf ? 'Generating...' : 'PDF' }}</span>
       </button>
+
+      <!-- Funny Slogan Popup -->
+      <div class="download-slogan-popup" *ngIf="isDownloadingPdf">
+        {{ downloadSlogan }}
+      </div>
     </div>
     
     <div class="toolbar-divider"></div>
