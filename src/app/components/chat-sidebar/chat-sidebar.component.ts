@@ -70,6 +70,19 @@ export class ChatSidebarComponent implements OnInit, OnDestroy {
   editingChatId: string | null = null;
   editingTitle: string = '';
 
+  // Upload Slogan Properties
+  isUploadingResume: boolean = false;
+  uploadSlogan: string = '';
+  private uploadSlogans: string[] = [
+    "Feeding your resume to the AI machine... 🤖📜",
+    "Gaining incredible insights from your experience... 🧠💼",
+    "Cooking up some tailored improvements... 🍳✨",
+    "Scanning for superpowers... 🦸‍♂️🔎",
+    "Crunching action verbs and keywords... 💪📊",
+    "Our robots are reading your career journey... 🤖📖",
+    "Prepping the magic enhancement tools... 🪄🛠️"
+  ];
+
   constructor(
     private httpService: HttpService,
     private authService: AuthService,
@@ -252,6 +265,9 @@ export class ChatSidebarComponent implements OnInit, OnDestroy {
     }
 
     this.loading = true;
+    this.isUploadingResume = true;
+    this.uploadSlogan = this.uploadSlogans[Math.floor(Math.random() * this.uploadSlogans.length)];
+    
     console.log('📤 Uploading resume:', file.name);
 
     this.httpService.uploadFile<ApiResponse<any>>('resume/upload', file).subscribe({
@@ -265,6 +281,7 @@ export class ChatSidebarComponent implements OnInit, OnDestroy {
           alert(response.message || 'Failed to upload resume.');
         }
         this.loading = false;
+        this.isUploadingResume = false;
         // Reset file input
         event.target.value = '';
       },
@@ -276,6 +293,7 @@ export class ChatSidebarComponent implements OnInit, OnDestroy {
         }
         alert('An error occurred during upload. Please try again.');
         this.loading = false;
+        this.isUploadingResume = false;
         // Reset file input
         event.target.value = '';
       }

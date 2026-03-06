@@ -263,7 +263,10 @@
   border-radius: 8px;
   font-size: 13px;
   font-weight: 500;
-  white-space: nowrap;
+  white-space: normal;
+  width: max-content;
+  max-width: 230px;
+  line-height: 1.4;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   animation: slogan-pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   pointer-events: none;
