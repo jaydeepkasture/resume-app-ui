@@ -1,7 +1,7 @@
 import {
   ChatSidebarComponent,
   TemplateService
-} from "./chunk-LXW27I2M.js";
+} from "./chunk-7Q2IJ6AP.js";
 import "./chunk-GTDY7AB5.js";
 import "./chunk-3TINBZO2.js";
 import {
@@ -27620,7 +27620,7 @@ function ResumeEditorComponent__svg_svg_28_Template(rf, ctx) {
 function ResumeEditorComponent_div_29_div_26_Template(rf, ctx) {
   if (rf & 1) {
     const _r5 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 62)(1, "button", 95);
+    \u0275\u0275elementStart(0, "div", 62)(1, "button", 98);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_26_Template_button_click_1_listener() {
       \u0275\u0275restoreView(_r5);
       const ctx_r0 = \u0275\u0275nextContext(2);
@@ -27628,10 +27628,10 @@ function ResumeEditorComponent_div_29_div_26_Template(rf, ctx) {
     });
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(2, "svg", 37);
-    \u0275\u0275element(3, "path", 96)(4, "path", 97);
+    \u0275\u0275element(3, "path", 99)(4, "path", 100);
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(5, "button", 98);
+    \u0275\u0275elementStart(5, "button", 101);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_26_Template_button_click_5_listener() {
       \u0275\u0275restoreView(_r5);
       const ctx_r0 = \u0275\u0275nextContext(2);
@@ -27639,7 +27639,7 @@ function ResumeEditorComponent_div_29_div_26_Template(rf, ctx) {
     });
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(6, "svg", 37);
-    \u0275\u0275element(7, "path", 99)(8, "path", 100);
+    \u0275\u0275element(7, "path", 102)(8, "path", 103);
     \u0275\u0275elementEnd()()();
   }
   if (rf & 2) {
@@ -27658,7 +27658,7 @@ function ResumeEditorComponent_div_29_div_27_Template(rf, ctx) {
 function ResumeEditorComponent_div_29_div_28_Template(rf, ctx) {
   if (rf & 1) {
     const _r6 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 62)(1, "button", 101);
+    \u0275\u0275elementStart(0, "div", 62)(1, "button", 104);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_28_Template_button_click_1_listener() {
       \u0275\u0275restoreView(_r6);
       const ctx_r0 = \u0275\u0275nextContext(2);
@@ -27667,7 +27667,7 @@ function ResumeEditorComponent_div_29_div_28_Template(rf, ctx) {
     \u0275\u0275elementStart(2, "strong");
     \u0275\u0275text(3, "B");
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(4, "button", 102);
+    \u0275\u0275elementStart(4, "button", 105);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_28_Template_button_click_4_listener() {
       \u0275\u0275restoreView(_r6);
       const ctx_r0 = \u0275\u0275nextContext(2);
@@ -27676,7 +27676,7 @@ function ResumeEditorComponent_div_29_div_28_Template(rf, ctx) {
     \u0275\u0275elementStart(5, "em");
     \u0275\u0275text(6, "I");
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(7, "button", 103);
+    \u0275\u0275elementStart(7, "button", 106);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_28_Template_button_click_7_listener() {
       \u0275\u0275restoreView(_r6);
       const ctx_r0 = \u0275\u0275nextContext(2);
@@ -27685,7 +27685,7 @@ function ResumeEditorComponent_div_29_div_28_Template(rf, ctx) {
     \u0275\u0275elementStart(8, "u");
     \u0275\u0275text(9, "U");
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(10, "button", 104);
+    \u0275\u0275elementStart(10, "button", 107);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_28_Template_button_click_10_listener() {
       \u0275\u0275restoreView(_r6);
       const ctx_r0 = \u0275\u0275nextContext(2);
@@ -27715,103 +27715,103 @@ function ResumeEditorComponent_div_29_div_29_Template(rf, ctx) {
 function ResumeEditorComponent_div_29_div_30_Template(rf, ctx) {
   if (rf & 1) {
     const _r7 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 62)(1, "select", 105);
+    \u0275\u0275elementStart(0, "div", 62)(1, "select", 108);
     \u0275\u0275listener("change", function ResumeEditorComponent_div_29_div_30_Template_select_change_1_listener($event) {
       \u0275\u0275restoreView(_r7);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.setFontFamily($event.target.value));
     });
-    \u0275\u0275elementStart(2, "option", 106);
+    \u0275\u0275elementStart(2, "option", 109);
     \u0275\u0275text(3, "Font Family");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(4, "option", 107);
+    \u0275\u0275elementStart(4, "option", 110);
     \u0275\u0275text(5, "Arial");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(6, "option", 108);
+    \u0275\u0275elementStart(6, "option", 111);
     \u0275\u0275text(7, "Helvetica");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(8, "option", 109);
+    \u0275\u0275elementStart(8, "option", 112);
     \u0275\u0275text(9, "Times New Roman");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(10, "option", 110);
+    \u0275\u0275elementStart(10, "option", 113);
     \u0275\u0275text(11, "Courier New");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(12, "option", 111);
+    \u0275\u0275elementStart(12, "option", 114);
     \u0275\u0275text(13, "Verdana");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(14, "option", 112);
+    \u0275\u0275elementStart(14, "option", 115);
     \u0275\u0275text(15, "Georgia");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(16, "option", 113);
+    \u0275\u0275elementStart(16, "option", 116);
     \u0275\u0275text(17, "Palatino");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(18, "option", 114);
+    \u0275\u0275elementStart(18, "option", 117);
     \u0275\u0275text(19, "Garamond");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(20, "option", 115);
+    \u0275\u0275elementStart(20, "option", 118);
     \u0275\u0275text(21, "Bookman");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(22, "option", 116);
+    \u0275\u0275elementStart(22, "option", 119);
     \u0275\u0275text(23, "Comic Sans MS");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(24, "option", 117);
+    \u0275\u0275elementStart(24, "option", 120);
     \u0275\u0275text(25, "Trebuchet MS");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(26, "option", 118);
+    \u0275\u0275elementStart(26, "option", 121);
     \u0275\u0275text(27, "Arial Black");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(28, "option", 119);
+    \u0275\u0275elementStart(28, "option", 122);
     \u0275\u0275text(29, "Impact");
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(30, "select", 120);
+    \u0275\u0275elementStart(30, "select", 123);
     \u0275\u0275listener("change", function ResumeEditorComponent_div_29_div_30_Template_select_change_30_listener($event) {
       \u0275\u0275restoreView(_r7);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.setFontSize($event.target.value));
     });
-    \u0275\u0275elementStart(31, "option", 106);
+    \u0275\u0275elementStart(31, "option", 109);
     \u0275\u0275text(32, "Size");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(33, "option", 121);
+    \u0275\u0275elementStart(33, "option", 124);
     \u0275\u0275text(34, "8pt");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(35, "option", 122);
+    \u0275\u0275elementStart(35, "option", 125);
     \u0275\u0275text(36, "9pt");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(37, "option", 123);
+    \u0275\u0275elementStart(37, "option", 126);
     \u0275\u0275text(38, "10pt");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(39, "option", 124);
+    \u0275\u0275elementStart(39, "option", 127);
     \u0275\u0275text(40, "11pt");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(41, "option", 125);
+    \u0275\u0275elementStart(41, "option", 128);
     \u0275\u0275text(42, "12pt");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(43, "option", 126);
+    \u0275\u0275elementStart(43, "option", 129);
     \u0275\u0275text(44, "14pt");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(45, "option", 127);
+    \u0275\u0275elementStart(45, "option", 130);
     \u0275\u0275text(46, "16pt");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(47, "option", 128);
+    \u0275\u0275elementStart(47, "option", 131);
     \u0275\u0275text(48, "18pt");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(49, "option", 129);
+    \u0275\u0275elementStart(49, "option", 132);
     \u0275\u0275text(50, "24pt");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(51, "option", 130);
+    \u0275\u0275elementStart(51, "option", 133);
     \u0275\u0275text(52, "30pt");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(53, "option", 131);
+    \u0275\u0275elementStart(53, "option", 134);
     \u0275\u0275text(54, "36pt");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(55, "option", 132);
+    \u0275\u0275elementStart(55, "option", 135);
     \u0275\u0275text(56, "48pt");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(57, "option", 133);
+    \u0275\u0275elementStart(57, "option", 136);
     \u0275\u0275text(58, "60pt");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(59, "option", 134);
+    \u0275\u0275elementStart(59, "option", 137);
     \u0275\u0275text(60, "72pt");
     \u0275\u0275elementEnd()()();
   }
@@ -27824,31 +27824,31 @@ function ResumeEditorComponent_div_29_div_31_Template(rf, ctx) {
 function ResumeEditorComponent_div_29_div_32_Template(rf, ctx) {
   if (rf & 1) {
     const _r8 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 62)(1, "select", 135);
+    \u0275\u0275elementStart(0, "div", 62)(1, "select", 138);
     \u0275\u0275listener("ngModelChange", function ResumeEditorComponent_div_29_div_32_Template_select_ngModelChange_1_listener($event) {
       \u0275\u0275restoreView(_r8);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.setHeadingValue($event));
     });
-    \u0275\u0275elementStart(2, "option", 136);
+    \u0275\u0275elementStart(2, "option", 139);
     \u0275\u0275text(3, "Paragraph");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(4, "option", 137);
+    \u0275\u0275elementStart(4, "option", 140);
     \u0275\u0275text(5, "Heading 1");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(6, "option", 138);
+    \u0275\u0275elementStart(6, "option", 141);
     \u0275\u0275text(7, "Heading 2");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(8, "option", 139);
+    \u0275\u0275elementStart(8, "option", 142);
     \u0275\u0275text(9, "Heading 3");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(10, "option", 140);
+    \u0275\u0275elementStart(10, "option", 143);
     \u0275\u0275text(11, "Heading 4");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(12, "option", 141);
+    \u0275\u0275elementStart(12, "option", 144);
     \u0275\u0275text(13, "Heading 5");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(14, "option", 142);
+    \u0275\u0275elementStart(14, "option", 145);
     \u0275\u0275text(15, "Heading 6");
     \u0275\u0275elementEnd()()();
   }
@@ -27866,7 +27866,7 @@ function ResumeEditorComponent_div_29_div_33_Template(rf, ctx) {
 function ResumeEditorComponent_div_29_div_34_Template(rf, ctx) {
   if (rf & 1) {
     const _r9 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 62)(1, "button", 143);
+    \u0275\u0275elementStart(0, "div", 62)(1, "button", 146);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_34_Template_button_click_1_listener() {
       \u0275\u0275restoreView(_r9);
       const ctx_r0 = \u0275\u0275nextContext(2);
@@ -27874,10 +27874,10 @@ function ResumeEditorComponent_div_29_div_34_Template(rf, ctx) {
     });
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(2, "svg", 37);
-    \u0275\u0275element(3, "line", 144)(4, "line", 145)(5, "line", 146)(6, "circle", 147)(7, "circle", 148)(8, "circle", 149);
+    \u0275\u0275element(3, "line", 147)(4, "line", 148)(5, "line", 149)(6, "circle", 150)(7, "circle", 151)(8, "circle", 152);
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(9, "button", 150);
+    \u0275\u0275elementStart(9, "button", 153);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_34_Template_button_click_9_listener() {
       \u0275\u0275restoreView(_r9);
       const ctx_r0 = \u0275\u0275nextContext(2);
@@ -27885,7 +27885,7 @@ function ResumeEditorComponent_div_29_div_34_Template(rf, ctx) {
     });
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(10, "svg", 37);
-    \u0275\u0275element(11, "line", 151)(12, "line", 152)(13, "line", 153)(14, "path", 154)(15, "path", 155)(16, "path", 156);
+    \u0275\u0275element(11, "line", 154)(12, "line", 155)(13, "line", 156)(14, "path", 157)(15, "path", 158)(16, "path", 159);
     \u0275\u0275elementEnd()()();
   }
   if (rf & 2) {
@@ -27904,7 +27904,7 @@ function ResumeEditorComponent_div_29_div_35_Template(rf, ctx) {
 function ResumeEditorComponent_div_29_div_36_Template(rf, ctx) {
   if (rf & 1) {
     const _r10 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 62)(1, "button", 157);
+    \u0275\u0275elementStart(0, "div", 62)(1, "button", 160);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_36_Template_button_click_1_listener() {
       \u0275\u0275restoreView(_r10);
       const ctx_r0 = \u0275\u0275nextContext(2);
@@ -27912,10 +27912,10 @@ function ResumeEditorComponent_div_29_div_36_Template(rf, ctx) {
     });
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(2, "svg", 37);
-    \u0275\u0275element(3, "line", 158)(4, "line", 159)(5, "line", 160);
+    \u0275\u0275element(3, "line", 161)(4, "line", 162)(5, "line", 163);
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(6, "button", 161);
+    \u0275\u0275elementStart(6, "button", 164);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_36_Template_button_click_6_listener() {
       \u0275\u0275restoreView(_r10);
       const ctx_r0 = \u0275\u0275nextContext(2);
@@ -27923,10 +27923,10 @@ function ResumeEditorComponent_div_29_div_36_Template(rf, ctx) {
     });
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(7, "svg", 37);
-    \u0275\u0275element(8, "line", 158)(9, "line", 162)(10, "line", 163);
+    \u0275\u0275element(8, "line", 161)(9, "line", 165)(10, "line", 166);
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(11, "button", 164);
+    \u0275\u0275elementStart(11, "button", 167);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_36_Template_button_click_11_listener() {
       \u0275\u0275restoreView(_r10);
       const ctx_r0 = \u0275\u0275nextContext(2);
@@ -27934,10 +27934,10 @@ function ResumeEditorComponent_div_29_div_36_Template(rf, ctx) {
     });
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(12, "svg", 37);
-    \u0275\u0275element(13, "line", 158)(14, "line", 165)(15, "line", 166);
+    \u0275\u0275element(13, "line", 161)(14, "line", 168)(15, "line", 169);
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(16, "button", 167);
+    \u0275\u0275elementStart(16, "button", 170);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_36_Template_button_click_16_listener() {
       \u0275\u0275restoreView(_r10);
       const ctx_r0 = \u0275\u0275nextContext(2);
@@ -27945,7 +27945,7 @@ function ResumeEditorComponent_div_29_div_36_Template(rf, ctx) {
     });
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(17, "svg", 37);
-    \u0275\u0275element(18, "line", 158)(19, "line", 58)(20, "line", 168);
+    \u0275\u0275element(18, "line", 161)(19, "line", 58)(20, "line", 171);
     \u0275\u0275elementEnd()()();
   }
   if (rf & 2) {
@@ -27968,7 +27968,7 @@ function ResumeEditorComponent_div_29_div_37_Template(rf, ctx) {
 function ResumeEditorComponent_div_29_div_38_div_12_div_3_div_1_Template(rf, ctx) {
   if (rf & 1) {
     const _r12 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 185);
+    \u0275\u0275elementStart(0, "div", 188);
     \u0275\u0275listener("mouseenter", function ResumeEditorComponent_div_29_div_38_div_12_div_3_div_1_Template_div_mouseenter_0_listener() {
       const c_r13 = \u0275\u0275restoreView(_r12).$implicit;
       const r_r14 = \u0275\u0275nextContext().$implicit;
@@ -27991,8 +27991,8 @@ function ResumeEditorComponent_div_29_div_38_div_12_div_3_div_1_Template(rf, ctx
 }
 function ResumeEditorComponent_div_29_div_38_div_12_div_3_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 183);
-    \u0275\u0275template(1, ResumeEditorComponent_div_29_div_38_div_12_div_3_div_1_Template, 1, 2, "div", 184);
+    \u0275\u0275elementStart(0, "div", 186);
+    \u0275\u0275template(1, ResumeEditorComponent_div_29_div_38_div_12_div_3_div_1_Template, 1, 2, "div", 187);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -28002,10 +28002,10 @@ function ResumeEditorComponent_div_29_div_38_div_12_div_3_Template(rf, ctx) {
 }
 function ResumeEditorComponent_div_29_div_38_div_12_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 180)(1, "div", 181);
+    \u0275\u0275elementStart(0, "div", 183)(1, "div", 184);
     \u0275\u0275text(2);
     \u0275\u0275elementEnd();
-    \u0275\u0275template(3, ResumeEditorComponent_div_29_div_38_div_12_div_3_Template, 2, 2, "div", 182);
+    \u0275\u0275template(3, ResumeEditorComponent_div_29_div_38_div_12_div_3_Template, 2, 2, "div", 185);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -28019,7 +28019,7 @@ function ResumeEditorComponent_div_29_div_38_div_12_Template(rf, ctx) {
 function ResumeEditorComponent_div_29_div_38_Template(rf, ctx) {
   if (rf & 1) {
     const _r11 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 62)(1, "button", 169);
+    \u0275\u0275elementStart(0, "div", 62)(1, "button", 172);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_38_Template_button_click_1_listener() {
       \u0275\u0275restoreView(_r11);
       const ctx_r0 = \u0275\u0275nextContext(2);
@@ -28027,16 +28027,16 @@ function ResumeEditorComponent_div_29_div_38_Template(rf, ctx) {
     });
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(2, "svg", 37);
-    \u0275\u0275element(3, "path", 170)(4, "path", 171);
+    \u0275\u0275element(3, "path", 173)(4, "path", 174);
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(5, "div", 172);
+    \u0275\u0275elementStart(5, "div", 175);
     \u0275\u0275listener("mouseleave", function ResumeEditorComponent_div_29_div_38_Template_div_mouseleave_5_listener() {
       \u0275\u0275restoreView(_r11);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.isTableGridOpen = false);
     });
-    \u0275\u0275elementStart(6, "button", 173);
+    \u0275\u0275elementStart(6, "button", 176);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_38_Template_button_click_6_listener() {
       \u0275\u0275restoreView(_r11);
       const ctx_r0 = \u0275\u0275nextContext(2);
@@ -28044,12 +28044,12 @@ function ResumeEditorComponent_div_29_div_38_Template(rf, ctx) {
     });
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(7, "svg", 37);
-    \u0275\u0275element(8, "rect", 174)(9, "line", 175)(10, "line", 176)(11, "line", 177);
+    \u0275\u0275element(8, "rect", 177)(9, "line", 178)(10, "line", 179)(11, "line", 180);
     \u0275\u0275elementEnd()();
-    \u0275\u0275template(12, ResumeEditorComponent_div_29_div_38_div_12_Template, 4, 4, "div", 178);
+    \u0275\u0275template(12, ResumeEditorComponent_div_29_div_38_div_12_Template, 4, 4, "div", 181);
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(13, "button", 179);
+    \u0275\u0275elementStart(13, "button", 182);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_38_Template_button_click_13_listener() {
       \u0275\u0275restoreView(_r11);
       const ctx_r0 = \u0275\u0275nextContext(2);
@@ -28078,7 +28078,7 @@ function ResumeEditorComponent_div_29_div_39_Template(rf, ctx) {
 function ResumeEditorComponent_div_29_div_40_Template(rf, ctx) {
   if (rf & 1) {
     const _r15 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 62)(1, "button", 186);
+    \u0275\u0275elementStart(0, "div", 62)(1, "button", 189);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_40_Template_button_click_1_listener() {
       \u0275\u0275restoreView(_r15);
       const ctx_r0 = \u0275\u0275nextContext(2);
@@ -28086,10 +28086,10 @@ function ResumeEditorComponent_div_29_div_40_Template(rf, ctx) {
     });
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(2, "svg", 37);
-    \u0275\u0275element(3, "path", 187)(4, "path", 188)(5, "path", 189)(6, "line", 190)(7, "line", 191);
+    \u0275\u0275element(3, "path", 190)(4, "path", 191)(5, "path", 192)(6, "line", 193)(7, "line", 194);
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(8, "button", 192);
+    \u0275\u0275elementStart(8, "button", 195);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_40_Template_button_click_8_listener() {
       \u0275\u0275restoreView(_r15);
       const ctx_r0 = \u0275\u0275nextContext(2);
@@ -28097,10 +28097,10 @@ function ResumeEditorComponent_div_29_div_40_Template(rf, ctx) {
     });
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(9, "svg", 37);
-    \u0275\u0275element(10, "rect", 174)(11, "line", 193)(12, "line", 194)(13, "path", 195);
+    \u0275\u0275element(10, "rect", 177)(11, "line", 196)(12, "line", 197)(13, "path", 198);
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(14, "button", 196);
+    \u0275\u0275elementStart(14, "button", 199);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_40_Template_button_click_14_listener() {
       \u0275\u0275restoreView(_r15);
       const ctx_r0 = \u0275\u0275nextContext(2);
@@ -28108,10 +28108,10 @@ function ResumeEditorComponent_div_29_div_40_Template(rf, ctx) {
     });
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(15, "svg", 37);
-    \u0275\u0275element(16, "rect", 174)(17, "line", 193)(18, "line", 194)(19, "path", 197);
+    \u0275\u0275element(16, "rect", 177)(17, "line", 196)(18, "line", 197)(19, "path", 200);
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(20, "button", 198);
+    \u0275\u0275elementStart(20, "button", 201);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_40_Template_button_click_20_listener() {
       \u0275\u0275restoreView(_r15);
       const ctx_r0 = \u0275\u0275nextContext(2);
@@ -28119,10 +28119,10 @@ function ResumeEditorComponent_div_29_div_40_Template(rf, ctx) {
     });
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(21, "svg", 37);
-    \u0275\u0275element(22, "rect", 174)(23, "line", 58)(24, "path", 199)(25, "line", 200);
+    \u0275\u0275element(22, "rect", 177)(23, "line", 58)(24, "path", 202)(25, "line", 203);
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(26, "button", 201);
+    \u0275\u0275elementStart(26, "button", 204);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_40_Template_button_click_26_listener() {
       \u0275\u0275restoreView(_r15);
       const ctx_r0 = \u0275\u0275nextContext(2);
@@ -28130,10 +28130,10 @@ function ResumeEditorComponent_div_29_div_40_Template(rf, ctx) {
     });
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(27, "svg", 37);
-    \u0275\u0275element(28, "rect", 174)(29, "line", 193)(30, "line", 194)(31, "path", 202);
+    \u0275\u0275element(28, "rect", 177)(29, "line", 196)(30, "line", 197)(31, "path", 205);
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(32, "button", 203);
+    \u0275\u0275elementStart(32, "button", 206);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_40_Template_button_click_32_listener() {
       \u0275\u0275restoreView(_r15);
       const ctx_r0 = \u0275\u0275nextContext(2);
@@ -28141,10 +28141,10 @@ function ResumeEditorComponent_div_29_div_40_Template(rf, ctx) {
     });
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(33, "svg", 37);
-    \u0275\u0275element(34, "rect", 174)(35, "line", 193)(36, "line", 194)(37, "path", 204);
+    \u0275\u0275element(34, "rect", 177)(35, "line", 196)(36, "line", 197)(37, "path", 207);
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(38, "button", 205);
+    \u0275\u0275elementStart(38, "button", 208);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_40_Template_button_click_38_listener() {
       \u0275\u0275restoreView(_r15);
       const ctx_r0 = \u0275\u0275nextContext(2);
@@ -28152,14 +28152,14 @@ function ResumeEditorComponent_div_29_div_40_Template(rf, ctx) {
     });
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(39, "svg", 37);
-    \u0275\u0275element(40, "rect", 174)(41, "line", 177)(42, "path", 206)(43, "line", 207);
+    \u0275\u0275element(40, "rect", 177)(41, "line", 180)(42, "path", 209)(43, "line", 210);
     \u0275\u0275elementEnd()()();
   }
 }
 function ResumeEditorComponent_div_29_div_42_Template(rf, ctx) {
   if (rf & 1) {
     const _r16 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 62)(1, "button", 208);
+    \u0275\u0275elementStart(0, "div", 62)(1, "button", 211);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_42_Template_button_click_1_listener() {
       \u0275\u0275restoreView(_r16);
       const ctx_r0 = \u0275\u0275nextContext(2);
@@ -28167,7 +28167,7 @@ function ResumeEditorComponent_div_29_div_42_Template(rf, ctx) {
     });
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(2, "svg", 37);
-    \u0275\u0275element(3, "path", 209)(4, "path", 210);
+    \u0275\u0275element(3, "path", 212)(4, "path", 213);
     \u0275\u0275elementEnd()()();
   }
   if (rf & 2) {
@@ -28183,36 +28183,48 @@ function ResumeEditorComponent_div_29_div_43_Template(rf, ctx) {
 }
 function ResumeEditorComponent_div_29_div_53_Template(rf, ctx) {
   if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 214);
+    \u0275\u0275text(1);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext(2);
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate1(" ", ctx_r0.downloadSlogan, " ");
+  }
+}
+function ResumeEditorComponent_div_29_div_55_Template(rf, ctx) {
+  if (rf & 1) {
     \u0275\u0275element(0, "div", 70);
   }
 }
-function ResumeEditorComponent_div_29_div_54__svg_svg_2_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_56__svg_svg_2_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(0, "svg", 37);
-    \u0275\u0275element(1, "path", 213)(2, "polyline", 214)(3, "line", 215)(4, "line", 216);
+    \u0275\u0275element(1, "path", 217)(2, "polyline", 218)(3, "line", 219)(4, "line", 220);
     \u0275\u0275elementEnd();
   }
 }
-function ResumeEditorComponent_div_29_div_54__svg_svg_3_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_56__svg_svg_3_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(0, "svg", 37);
-    \u0275\u0275element(1, "polyline", 217)(2, "polyline", 218);
+    \u0275\u0275element(1, "polyline", 221)(2, "polyline", 222);
     \u0275\u0275elementEnd();
   }
 }
-function ResumeEditorComponent_div_29_div_54_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_56_Template(rf, ctx) {
   if (rf & 1) {
     const _r17 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 62)(1, "button", 211);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_54_Template_button_click_1_listener() {
+    \u0275\u0275elementStart(0, "div", 62)(1, "button", 215);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_56_Template_button_click_1_listener() {
       \u0275\u0275restoreView(_r17);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.toggleEnhancementMode());
     });
-    \u0275\u0275template(2, ResumeEditorComponent_div_29_div_54__svg_svg_2_Template, 5, 0, "svg", 15)(3, ResumeEditorComponent_div_29_div_54__svg_svg_3_Template, 3, 0, "svg", 15);
-    \u0275\u0275elementStart(4, "span", 212);
+    \u0275\u0275template(2, ResumeEditorComponent_div_29_div_56__svg_svg_2_Template, 5, 0, "svg", 15)(3, ResumeEditorComponent_div_29_div_56__svg_svg_3_Template, 3, 0, "svg", 15);
+    \u0275\u0275elementStart(4, "span", 216);
     \u0275\u0275text(5);
     \u0275\u0275elementEnd()()();
   }
@@ -28229,7 +28241,7 @@ function ResumeEditorComponent_div_29_div_54_Template(rf, ctx) {
     \u0275\u0275textInterpolate(ctx_r0.useHtmlMode ? "HTML" : "JSON");
   }
 }
-function ResumeEditorComponent_div_29_div_55_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_57_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275element(0, "div", 70);
   }
@@ -28283,7 +28295,7 @@ function ResumeEditorComponent_div_29_Template(rf, ctx) {
     \u0275\u0275template(26, ResumeEditorComponent_div_29_div_26_Template, 9, 2, "div", 78)(27, ResumeEditorComponent_div_29_div_27_Template, 1, 0, "div", 79)(28, ResumeEditorComponent_div_29_div_28_Template, 13, 8, "div", 78)(29, ResumeEditorComponent_div_29_div_29_Template, 1, 0, "div", 79)(30, ResumeEditorComponent_div_29_div_30_Template, 61, 0, "div", 78)(31, ResumeEditorComponent_div_29_div_31_Template, 1, 0, "div", 79)(32, ResumeEditorComponent_div_29_div_32_Template, 16, 1, "div", 78)(33, ResumeEditorComponent_div_29_div_33_Template, 1, 0, "div", 79)(34, ResumeEditorComponent_div_29_div_34_Template, 17, 4, "div", 78)(35, ResumeEditorComponent_div_29_div_35_Template, 1, 0, "div", 79)(36, ResumeEditorComponent_div_29_div_36_Template, 21, 12, "div", 78)(37, ResumeEditorComponent_div_29_div_37_Template, 1, 0, "div", 79)(38, ResumeEditorComponent_div_29_div_38_Template, 16, 5, "div", 78)(39, ResumeEditorComponent_div_29_div_39_Template, 1, 0, "div", 79)(40, ResumeEditorComponent_div_29_div_40_Template, 44, 0, "div", 78);
     \u0275\u0275element(41, "div", 70);
     \u0275\u0275template(42, ResumeEditorComponent_div_29_div_42_Template, 5, 2, "div", 78)(43, ResumeEditorComponent_div_29_div_43_Template, 1, 0, "div", 79);
-    \u0275\u0275elementStart(44, "div", 62)(45, "button", 80);
+    \u0275\u0275elementStart(44, "div", 80)(45, "button", 81);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_45_listener() {
       \u0275\u0275restoreView(_r4);
       const ctx_r0 = \u0275\u0275nextContext();
@@ -28291,78 +28303,82 @@ function ResumeEditorComponent_div_29_Template(rf, ctx) {
     });
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(46, "svg", 37);
-    \u0275\u0275element(47, "path", 81)(48, "polyline", 82)(49, "line", 83);
-    \u0275\u0275elementEnd();
+    \u0275\u0275element(47, "path", 82);
+    \u0275\u0275elementStart(48, "g", 83);
+    \u0275\u0275element(49, "polyline", 84)(50, "line", 85);
+    \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(50, "span", 84);
-    \u0275\u0275text(51, "PDF");
-    \u0275\u0275elementEnd()()();
-    \u0275\u0275element(52, "div", 70);
-    \u0275\u0275template(53, ResumeEditorComponent_div_29_div_53_Template, 1, 0, "div", 79)(54, ResumeEditorComponent_div_29_div_54_Template, 6, 6, "div", 78)(55, ResumeEditorComponent_div_29_div_55_Template, 1, 0, "div", 79);
-    \u0275\u0275elementStart(56, "div", 62)(57, "button", 85);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_57_listener() {
+    \u0275\u0275elementStart(51, "span", 86);
+    \u0275\u0275text(52);
+    \u0275\u0275elementEnd()();
+    \u0275\u0275template(53, ResumeEditorComponent_div_29_div_53_Template, 2, 1, "div", 87);
+    \u0275\u0275elementEnd();
+    \u0275\u0275element(54, "div", 70);
+    \u0275\u0275template(55, ResumeEditorComponent_div_29_div_55_Template, 1, 0, "div", 79)(56, ResumeEditorComponent_div_29_div_56_Template, 6, 6, "div", 78)(57, ResumeEditorComponent_div_29_div_57_Template, 1, 0, "div", 79);
+    \u0275\u0275elementStart(58, "div", 62)(59, "button", 88);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_59_listener() {
       \u0275\u0275restoreView(_r4);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.toggleHistorySidebar());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(58, "svg", 37);
-    \u0275\u0275element(59, "circle", 86)(60, "polyline", 87);
+    \u0275\u0275elementStart(60, "svg", 37);
+    \u0275\u0275element(61, "circle", 89)(62, "polyline", 90);
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(61, "span");
-    \u0275\u0275text(62, "History");
+    \u0275\u0275elementStart(63, "span");
+    \u0275\u0275text(64, "History");
     \u0275\u0275elementEnd()()();
-    \u0275\u0275element(63, "div", 70);
-    \u0275\u0275elementStart(64, "div", 88)(65, "button", 89);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_65_listener() {
+    \u0275\u0275element(65, "div", 70);
+    \u0275\u0275elementStart(66, "div", 91)(67, "button", 92);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_67_listener() {
       \u0275\u0275restoreView(_r4);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.applyQuickPrompt("summary"));
     });
-    \u0275\u0275text(66, " \u2728 ");
-    \u0275\u0275elementStart(67, "span", 90);
-    \u0275\u0275text(68, "Summary");
+    \u0275\u0275text(68, " \u2728 ");
+    \u0275\u0275elementStart(69, "span", 93);
+    \u0275\u0275text(70, "Summary");
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(69, "button", 91);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_69_listener() {
+    \u0275\u0275elementStart(71, "button", 94);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_71_listener() {
       \u0275\u0275restoreView(_r4);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.applyQuickPrompt("experience"));
     });
-    \u0275\u0275text(70, " \u{1F4BC} ");
-    \u0275\u0275elementStart(71, "span", 90);
-    \u0275\u0275text(72, "Experience");
+    \u0275\u0275text(72, " \u{1F4BC} ");
+    \u0275\u0275elementStart(73, "span", 93);
+    \u0275\u0275text(74, "Experience");
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(73, "button", 92);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_73_listener() {
+    \u0275\u0275elementStart(75, "button", 95);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_75_listener() {
       \u0275\u0275restoreView(_r4);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.applyQuickPrompt("skills"));
     });
-    \u0275\u0275text(74, " \u{1F6E0}\uFE0F ");
-    \u0275\u0275elementStart(75, "span", 90);
-    \u0275\u0275text(76, "Skills");
+    \u0275\u0275text(76, " \u{1F6E0}\uFE0F ");
+    \u0275\u0275elementStart(77, "span", 93);
+    \u0275\u0275text(78, "Skills");
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(77, "button", 93);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_77_listener() {
+    \u0275\u0275elementStart(79, "button", 96);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_79_listener() {
       \u0275\u0275restoreView(_r4);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.applyQuickPrompt("professional"));
     });
-    \u0275\u0275text(78, " \u{1F454} ");
-    \u0275\u0275elementStart(79, "span", 90);
-    \u0275\u0275text(80, "Tone");
+    \u0275\u0275text(80, " \u{1F454} ");
+    \u0275\u0275elementStart(81, "span", 93);
+    \u0275\u0275text(82, "Tone");
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(81, "button", 94);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_81_listener() {
+    \u0275\u0275elementStart(83, "button", 97);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_83_listener() {
       \u0275\u0275restoreView(_r4);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.applyQuickPrompt("grammar"));
     });
-    \u0275\u0275text(82, " \u2705 ");
-    \u0275\u0275elementStart(83, "span", 90);
-    \u0275\u0275text(84, "Grammar");
+    \u0275\u0275text(84, " \u2705 ");
+    \u0275\u0275elementStart(85, "span", 93);
+    \u0275\u0275text(86, "Grammar");
     \u0275\u0275elementEnd()()()();
   }
   if (rf & 2) {
@@ -28408,7 +28424,14 @@ function ResumeEditorComponent_div_29_Template(rf, ctx) {
     \u0275\u0275property("ngIf", !ctx_r0.isFormEditMode);
     \u0275\u0275advance();
     \u0275\u0275property("ngIf", !ctx_r0.isFormEditMode);
-    \u0275\u0275advance(10);
+    \u0275\u0275advance(2);
+    \u0275\u0275classProp("downloading", ctx_r0.isDownloadingPdf);
+    \u0275\u0275property("disabled", ctx_r0.isDownloadingPdf);
+    \u0275\u0275advance(7);
+    \u0275\u0275textInterpolate(ctx_r0.isDownloadingPdf ? "Generating..." : "PDF");
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", ctx_r0.isDownloadingPdf);
+    \u0275\u0275advance(2);
     \u0275\u0275property("ngIf", !ctx_r0.isFormEditMode);
     \u0275\u0275advance();
     \u0275\u0275property("ngIf", !ctx_r0.isFormEditMode);
@@ -28432,7 +28455,7 @@ function ResumeEditorComponent_div_32_ng_template_1_Template(rf, ctx) {
 }
 function ResumeEditorComponent_div_32_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 219);
+    \u0275\u0275elementStart(0, "div", 223);
     \u0275\u0275template(1, ResumeEditorComponent_div_32_ng_template_1_Template, 0, 0, "ng-template", null, 0, \u0275\u0275templateRefExtractor);
     \u0275\u0275elementEnd();
   }
@@ -28440,8 +28463,8 @@ function ResumeEditorComponent_div_32_Template(rf, ctx) {
 function ResumeEditorComponent__svg_svg_38_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(0, "svg", 220);
-    \u0275\u0275element(1, "line", 221)(2, "polygon", 222);
+    \u0275\u0275elementStart(0, "svg", 224);
+    \u0275\u0275element(1, "line", 225)(2, "polygon", 226);
     \u0275\u0275elementEnd();
   }
 }
@@ -29202,6 +29225,17 @@ var ResumeEditorComponent = class _ResumeEditorComponent {
     this.currentFormComponentRef = null;
     this.isManualEdit = false;
     this.isSaving = false;
+    this.isDownloadingPdf = false;
+    this.downloadSlogan = "";
+    this.downloadSlogans = [
+      "Sit tight! We're pixel-perfecting your resume... \u{1FA84}\u2728",
+      "Brewing some coffee while we generate your PDF... \u2615\u{1F680}",
+      "Polishing the fonts so you look like a CEO... \u{1F454}\u{1F4BC}",
+      "Bribing the printer elves... almost done! \u{1F9DD}\u{1F4C4}",
+      "Adding a sprinkle of magic to your experience... \u2728\u{1FA84}",
+      "Consulting the resume gurus... give us a sec! \u{1F9D8}\u200D\u2642\uFE0F\u{1F4DC}",
+      "Packing your skills into a beautiful PDF... \u{1F392}\u2728"
+    ];
     this.isProgrammaticUpdate = false;
     this.templates = [];
     this.backendTemplates = [];
@@ -29990,14 +30024,18 @@ var ResumeEditorComponent = class _ResumeEditorComponent {
         return;
       }
       const filename = `resume_${(/* @__PURE__ */ new Date()).toISOString().split("T")[0]}.pdf`;
+      this.downloadSlogan = this.downloadSlogans[Math.floor(Math.random() * this.downloadSlogans.length)];
+      this.isDownloadingPdf = true;
       console.log("\u{1F4C4} Requesting PDF generation from API...");
       this.templateService.generatePdf(this.currentTemplateId, resumeDataToSend, filename).subscribe({
         next: () => {
           console.log("\u2705 PDF generated and downloaded successfully.");
+          this.isDownloadingPdf = false;
         },
         error: (err) => {
           console.error("\u274C Failed to generate PDF:", err);
           alert("Failed to generate PDF. Please try again.");
+          this.isDownloadingPdf = false;
         }
       });
     });
@@ -30444,7 +30482,7 @@ var ResumeEditorComponent = class _ResumeEditorComponent {
           return ctx.onResize();
         }, false, \u0275\u0275resolveWindow);
       }
-    }, standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 40, vars: 25, consts: [["dynamicFormContainer", ""], [1, "embedded-history-sidebar"], [1, "sidebar-header"], [1, "close-btn", 3, "click"], ["width", "24", "height", "24", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["x1", "18", "y1", "6", "x2", "6", "y2", "18"], ["x1", "6", "y1", "6", "x2", "18", "y2", "18"], [1, "history-controls"], [1, "search-box"], ["type", "text", "placeholder", "Search history...", 1, "search-input", 3, "ngModelChange", "keyup.enter", "ngModel"], [1, "search-btn", 3, "click"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["cx", "11", "cy", "11", "r", "8"], ["x1", "21", "y1", "21", "x2", "16.65", "y2", "16.65"], [1, "sort-btn", 3, "click", "title"], ["width", "16", "height", "16", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", 4, "ngIf"], [1, "history-list", 3, "scroll"], ["class", "loading-indicator", 4, "ngIf"], ["class", "error-message", 4, "ngIf"], ["class", "empty-state-history", 4, "ngIf"], ["class", "history-card", 3, "click", 4, "ngFor", "ngForOf"], ["class", "loading-more", 4, "ngIf"], [3, "chatSelected", "sidebarToggled"], [1, "editor-container", 3, "hidden"], [1, "floating-toggle-btn", 3, "click", "title"], ["width", "24", "height", "24", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", 4, "ngIf"], ["class", "toolbar", 4, "ngIf"], [1, "editor-wrapper"], [1, "editor", 3, "hidden"], ["class", "form-template-container", "id", "form-template-container", 4, "ngIf"], [1, "chat-interface"], [1, "chat-container"], [1, "chat-input-wrapper"], ["placeholder", "Ask AI to update your resume (e.g., 'Make the summary more professional')", "rows", "1", 1, "chat-input", 3, "ngModelChange", "keydown", "ngModel", "disabled"], [1, "chat-send-btn", 3, "click", "disabled"], ["width", "16", "height", "16", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round", 4, "ngIf"], ["class", "spinner", 4, "ngIf"], ["width", "16", "height", "16", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["x1", "12", "y1", "5", "x2", "12", "y2", "19"], ["points", "19 12 12 19 5 12"], ["x1", "12", "y1", "19", "x2", "12", "y2", "5"], ["points", "5 12 12 5 19 12"], [1, "loading-indicator"], [1, "spinner"], [1, "error-message"], [1, "empty-state-history"], [1, "history-card", 3, "click"], [1, "card-content", 3, "title"], [1, "message-text"], [1, "card-footer"], [1, "date"], ["title", "Copy full message", 1, "copy-btn", 3, "click"], ["x", "9", "y", "9", "width", "13", "height", "13", "rx", "2", "ry", "2"], ["d", "M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"], [1, "copy-feedback"], [1, "loading-more"], [1, "spinner-small"], ["x1", "3", "y1", "7", "x2", "21", "y2", "7"], ["x1", "3", "y1", "12", "x2", "21", "y2", "12"], ["x1", "3", "y1", "17", "x2", "21", "y2", "17"], ["points", "6 15 12 9 18 15"], [1, "toolbar"], [1, "toolbar-group"], [1, "toolbar-logo-item"], [1, "logo-text"], ["title", "Back to Gallery", 1, "toolbar-btn", "back-btn", 3, "click"], ["width", "20", "height", "20", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["d", "M19 12H5"], ["d", "M12 19l-7-7 7-7"], [1, "back-text"], [1, "toolbar-divider"], ["title", "Save Resume (Enabled only after manual edits)", 1, "toolbar-btn", "save-btn", 2, "display", "flex", "align-items", "center", "gap", "5px", 3, "click", "disabled"], ["width", "18", "height", "18", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["d", "M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v13a2 2 0 0 1-2 2z"], ["points", "17 21 17 13 7 13 7 21"], ["points", "7 3 7 8 15 8"], [2, "font-weight", "600"], [3, "templateSelected", "currentTemplateName"], ["class", "toolbar-group", 4, "ngIf"], ["class", "toolbar-divider", 4, "ngIf"], ["title", "Download as PDF (Best for templates with graphics and styling)", 1, "toolbar-btn", "download-btn", 3, "click"], ["d", "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"], ["points", "7 10 12 15 17 10"], ["x1", "12", "y1", "15", "x2", "12", "y2", "3"], [1, "download-label"], ["title", "View Enhancement History", 1, "toolbar-btn", 2, "width", "auto", "padding", "0 8px", "gap", "4px", 3, "click"], ["cx", "12", "cy", "12", "r", "10"], ["points", "12 6 12 12 16 14"], [1, "toolbar-group", "ai-quick-actions"], ["title", "Improve Summary", 1, "toolbar-btn", "ai-btn", 3, "click", "disabled"], [1, "btn-label"], ["title", "Enhance Experience", 1, "toolbar-btn", "ai-btn", 3, "click", "disabled"], ["title", "Suggest Skills", 1, "toolbar-btn", "ai-btn", 3, "click", "disabled"], ["title", "Professional Tone", 1, "toolbar-btn", "ai-btn", 3, "click", "disabled"], ["title", "Fix Grammar", 1, "toolbar-btn", "ai-btn", 3, "click", "disabled"], ["title", "Undo", 1, "toolbar-btn", 3, "click", "disabled"], ["d", "M3 7v6h6"], ["d", "M21 17a9 9 0 00-9-9 9 9 0 00-6 2.3L3 13"], ["title", "Redo", 1, "toolbar-btn", 3, "click", "disabled"], ["d", "M21 7v6h-6"], ["d", "M3 17a9 9 0 019-9 9 9 0 016 2.3l3 2.7"], ["title", "Bold", 1, "toolbar-btn", 3, "click"], ["title", "Italic", 1, "toolbar-btn", 3, "click"], ["title", "Underline", 1, "toolbar-btn", 3, "click"], ["title", "Strikethrough", 1, "toolbar-btn", 3, "click"], [1, "toolbar-select", "font-family-select", 2, "width", "140px", 3, "change"], ["value", "", "disabled", "", "selected", ""], ["value", "Arial", 2, "font-family", "Arial"], ["value", "Helvetica", 2, "font-family", "Helvetica"], ["value", "Times New Roman", 2, "font-family", "'Times New Roman'"], ["value", "Courier New", 2, "font-family", "'Courier New'"], ["value", "Verdana", 2, "font-family", "Verdana"], ["value", "Georgia", 2, "font-family", "Georgia"], ["value", "Palatino", 2, "font-family", "Palatino"], ["value", "Garamond", 2, "font-family", "Garamond"], ["value", "Bookman", 2, "font-family", "Bookman"], ["value", "Comic Sans MS", 2, "font-family", "'Comic Sans MS'"], ["value", "Trebuchet MS", 2, "font-family", "'Trebuchet MS'"], ["value", "Arial Black", 2, "font-family", "'Arial Black'"], ["value", "Impact", 2, "font-family", "Impact"], [1, "toolbar-select", "font-size-select", 2, "width", "80px", 3, "change"], ["value", "8pt"], ["value", "9pt"], ["value", "10pt"], ["value", "11pt"], ["value", "12pt"], ["value", "14pt"], ["value", "16pt"], ["value", "18pt"], ["value", "24pt"], ["value", "30pt"], ["value", "36pt"], ["value", "48pt"], ["value", "60pt"], ["value", "72pt"], [1, "toolbar-select", 3, "ngModelChange", "ngModel"], ["value", "paragraph"], ["value", "1"], ["value", "2"], ["value", "3"], ["value", "4"], ["value", "5"], ["value", "6"], ["title", "Bullet List", 1, "toolbar-btn", 3, "click"], ["x1", "8", "y1", "6", "x2", "21", "y2", "6"], ["x1", "8", "y1", "12", "x2", "21", "y2", "12"], ["x1", "8", "y1", "18", "x2", "21", "y2", "18"], ["cx", "4", "cy", "6", "r", "1", "fill", "currentColor"], ["cx", "4", "cy", "12", "r", "1", "fill", "currentColor"], ["cx", "4", "cy", "18", "r", "1", "fill", "currentColor"], ["title", "Numbered List", 1, "toolbar-btn", 3, "click"], ["x1", "10", "y1", "6", "x2", "21", "y2", "6"], ["x1", "10", "y1", "12", "x2", "21", "y2", "12"], ["x1", "10", "y1", "18", "x2", "21", "y2", "18"], ["d", "M4 6h1v4"], ["d", "M4 10h2"], ["d", "M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"], ["title", "Align Left", 1, "toolbar-btn", 3, "click"], ["x1", "3", "y1", "6", "x2", "21", "y2", "6"], ["x1", "3", "y1", "12", "x2", "15", "y2", "12"], ["x1", "3", "y1", "18", "x2", "18", "y2", "18"], ["title", "Align Center", 1, "toolbar-btn", 3, "click"], ["x1", "6", "y1", "12", "x2", "18", "y2", "12"], ["x1", "4", "y1", "18", "x2", "20", "y2", "18"], ["title", "Align Right", 1, "toolbar-btn", 3, "click"], ["x1", "9", "y1", "12", "x2", "21", "y2", "12"], ["x1", "6", "y1", "18", "x2", "21", "y2", "18"], ["title", "Justify", 1, "toolbar-btn", 3, "click"], ["x1", "3", "y1", "18", "x2", "21", "y2", "18"], ["title", "Insert Link", 1, "toolbar-btn", 3, "click"], ["d", "M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"], ["d", "M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"], [1, "toolbar-dropdown-container", 3, "mouseleave"], ["title", "Insert Table", 1, "toolbar-btn", 3, "click"], ["x", "3", "y", "3", "width", "18", "height", "18", "rx", "2", "ry", "2"], ["x1", "3", "y1", "9", "x2", "21", "y2", "9"], ["x1", "3", "y1", "15", "x2", "21", "y2", "15"], ["x1", "12", "y1", "3", "x2", "12", "y2", "21"], ["class", "table-grid-popup", 4, "ngIf"], ["title", "Horizontal Rule", 1, "toolbar-btn", 3, "click"], [1, "table-grid-popup"], [1, "grid-label"], ["class", "grid-row", 4, "ngFor", "ngForOf"], [1, "grid-row"], ["class", "grid-cell", 3, "active", "mouseenter", "click", 4, "ngFor", "ngForOf"], [1, "grid-cell", 3, "mouseenter", "click"], ["title", "Delete Table", 1, "toolbar-btn", 3, "click"], ["d", "M3 6h18"], ["d", "M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"], ["d", "M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"], ["x1", "10", "y1", "11", "x2", "10", "y2", "17"], ["x1", "14", "y1", "11", "x2", "14", "y2", "17"], ["title", "Add Row Before", 1, "toolbar-btn", 3, "click"], ["x1", "12", "y1", "8", "x2", "12", "y2", "16"], ["x1", "8", "y1", "12", "x2", "16", "y2", "12"], ["d", "M3 9h18"], ["title", "Add Row After", 1, "toolbar-btn", 3, "click"], ["d", "M3 15h18"], ["title", "Delete Row", 1, "toolbar-btn", 3, "click"], ["d", "M12 3v18"], ["x1", "5", "y1", "7", "x2", "19", "y2", "7", "stroke", "red"], ["title", "Add Column Before", 1, "toolbar-btn", 3, "click"], ["d", "M9 3v18"], ["title", "Add Column After", 1, "toolbar-btn", 3, "click"], ["d", "M15 3v18"], ["title", "Delete Column", 1, "toolbar-btn", 3, "click"], ["d", "M3 12h18"], ["x1", "7", "y1", "5", "x2", "7", "y2", "19", "stroke", "red"], ["title", "Blockquote", 1, "toolbar-btn", 3, "click"], ["d", "M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"], ["d", "M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"], [1, "toolbar-btn", "enhancement-mode-toggle", 2, "width", "auto", "padding", "0 8px", "gap", "4px", 3, "click", "title"], [2, "font-size", "11px", "font-weight", "600"], ["d", "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"], ["points", "14 2 14 8 20 8"], ["x1", "12", "y1", "18", "x2", "12", "y2", "12"], ["x1", "9", "y1", "15", "x2", "15", "y2", "15"], ["points", "16 18 22 12 16 6"], ["points", "8 6 2 12 8 18"], ["id", "form-template-container", 1, "form-template-container"], ["width", "16", "height", "16", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round"], ["x1", "22", "y1", "2", "x2", "11", "y2", "13"], ["points", "22 2 15 22 11 13 2 9 22 2"]], template: function ResumeEditorComponent_Template(rf, ctx) {
+    }, standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 40, vars: 25, consts: [["dynamicFormContainer", ""], [1, "embedded-history-sidebar"], [1, "sidebar-header"], [1, "close-btn", 3, "click"], ["width", "24", "height", "24", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["x1", "18", "y1", "6", "x2", "6", "y2", "18"], ["x1", "6", "y1", "6", "x2", "18", "y2", "18"], [1, "history-controls"], [1, "search-box"], ["type", "text", "placeholder", "Search history...", 1, "search-input", 3, "ngModelChange", "keyup.enter", "ngModel"], [1, "search-btn", 3, "click"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["cx", "11", "cy", "11", "r", "8"], ["x1", "21", "y1", "21", "x2", "16.65", "y2", "16.65"], [1, "sort-btn", 3, "click", "title"], ["width", "16", "height", "16", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", 4, "ngIf"], [1, "history-list", 3, "scroll"], ["class", "loading-indicator", 4, "ngIf"], ["class", "error-message", 4, "ngIf"], ["class", "empty-state-history", 4, "ngIf"], ["class", "history-card", 3, "click", 4, "ngFor", "ngForOf"], ["class", "loading-more", 4, "ngIf"], [3, "chatSelected", "sidebarToggled"], [1, "editor-container", 3, "hidden"], [1, "floating-toggle-btn", 3, "click", "title"], ["width", "24", "height", "24", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", 4, "ngIf"], ["class", "toolbar", 4, "ngIf"], [1, "editor-wrapper"], [1, "editor", 3, "hidden"], ["class", "form-template-container", "id", "form-template-container", 4, "ngIf"], [1, "chat-interface"], [1, "chat-container"], [1, "chat-input-wrapper"], ["placeholder", "Ask AI to update your resume (e.g., 'Make the summary more professional')", "rows", "1", 1, "chat-input", 3, "ngModelChange", "keydown", "ngModel", "disabled"], [1, "chat-send-btn", 3, "click", "disabled"], ["width", "16", "height", "16", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round", 4, "ngIf"], ["class", "spinner", 4, "ngIf"], ["width", "16", "height", "16", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["x1", "12", "y1", "5", "x2", "12", "y2", "19"], ["points", "19 12 12 19 5 12"], ["x1", "12", "y1", "19", "x2", "12", "y2", "5"], ["points", "5 12 12 5 19 12"], [1, "loading-indicator"], [1, "spinner"], [1, "error-message"], [1, "empty-state-history"], [1, "history-card", 3, "click"], [1, "card-content", 3, "title"], [1, "message-text"], [1, "card-footer"], [1, "date"], ["title", "Copy full message", 1, "copy-btn", 3, "click"], ["x", "9", "y", "9", "width", "13", "height", "13", "rx", "2", "ry", "2"], ["d", "M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"], [1, "copy-feedback"], [1, "loading-more"], [1, "spinner-small"], ["x1", "3", "y1", "7", "x2", "21", "y2", "7"], ["x1", "3", "y1", "12", "x2", "21", "y2", "12"], ["x1", "3", "y1", "17", "x2", "21", "y2", "17"], ["points", "6 15 12 9 18 15"], [1, "toolbar"], [1, "toolbar-group"], [1, "toolbar-logo-item"], [1, "logo-text"], ["title", "Back to Gallery", 1, "toolbar-btn", "back-btn", 3, "click"], ["width", "20", "height", "20", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["d", "M19 12H5"], ["d", "M12 19l-7-7 7-7"], [1, "back-text"], [1, "toolbar-divider"], ["title", "Save Resume (Enabled only after manual edits)", 1, "toolbar-btn", "save-btn", 2, "display", "flex", "align-items", "center", "gap", "5px", 3, "click", "disabled"], ["width", "18", "height", "18", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["d", "M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v13a2 2 0 0 1-2 2z"], ["points", "17 21 17 13 7 13 7 21"], ["points", "7 3 7 8 15 8"], [2, "font-weight", "600"], [3, "templateSelected", "currentTemplateName"], ["class", "toolbar-group", 4, "ngIf"], ["class", "toolbar-divider", 4, "ngIf"], [1, "toolbar-group", 2, "position", "relative"], ["title", "Download as PDF (Best for templates with graphics and styling)", 1, "toolbar-btn", "download-btn", 3, "click", "disabled"], ["d", "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"], [1, "download-arrow"], ["points", "7 10 12 15 17 10"], ["x1", "12", "y1", "15", "x2", "12", "y2", "3"], [1, "download-label"], ["class", "download-slogan-popup", 4, "ngIf"], ["title", "View Enhancement History", 1, "toolbar-btn", 2, "width", "auto", "padding", "0 8px", "gap", "4px", 3, "click"], ["cx", "12", "cy", "12", "r", "10"], ["points", "12 6 12 12 16 14"], [1, "toolbar-group", "ai-quick-actions"], ["title", "Improve Summary", 1, "toolbar-btn", "ai-btn", 3, "click", "disabled"], [1, "btn-label"], ["title", "Enhance Experience", 1, "toolbar-btn", "ai-btn", 3, "click", "disabled"], ["title", "Suggest Skills", 1, "toolbar-btn", "ai-btn", 3, "click", "disabled"], ["title", "Professional Tone", 1, "toolbar-btn", "ai-btn", 3, "click", "disabled"], ["title", "Fix Grammar", 1, "toolbar-btn", "ai-btn", 3, "click", "disabled"], ["title", "Undo", 1, "toolbar-btn", 3, "click", "disabled"], ["d", "M3 7v6h6"], ["d", "M21 17a9 9 0 00-9-9 9 9 0 00-6 2.3L3 13"], ["title", "Redo", 1, "toolbar-btn", 3, "click", "disabled"], ["d", "M21 7v6h-6"], ["d", "M3 17a9 9 0 019-9 9 9 0 016 2.3l3 2.7"], ["title", "Bold", 1, "toolbar-btn", 3, "click"], ["title", "Italic", 1, "toolbar-btn", 3, "click"], ["title", "Underline", 1, "toolbar-btn", 3, "click"], ["title", "Strikethrough", 1, "toolbar-btn", 3, "click"], [1, "toolbar-select", "font-family-select", 2, "width", "140px", 3, "change"], ["value", "", "disabled", "", "selected", ""], ["value", "Arial", 2, "font-family", "Arial"], ["value", "Helvetica", 2, "font-family", "Helvetica"], ["value", "Times New Roman", 2, "font-family", "'Times New Roman'"], ["value", "Courier New", 2, "font-family", "'Courier New'"], ["value", "Verdana", 2, "font-family", "Verdana"], ["value", "Georgia", 2, "font-family", "Georgia"], ["value", "Palatino", 2, "font-family", "Palatino"], ["value", "Garamond", 2, "font-family", "Garamond"], ["value", "Bookman", 2, "font-family", "Bookman"], ["value", "Comic Sans MS", 2, "font-family", "'Comic Sans MS'"], ["value", "Trebuchet MS", 2, "font-family", "'Trebuchet MS'"], ["value", "Arial Black", 2, "font-family", "'Arial Black'"], ["value", "Impact", 2, "font-family", "Impact"], [1, "toolbar-select", "font-size-select", 2, "width", "80px", 3, "change"], ["value", "8pt"], ["value", "9pt"], ["value", "10pt"], ["value", "11pt"], ["value", "12pt"], ["value", "14pt"], ["value", "16pt"], ["value", "18pt"], ["value", "24pt"], ["value", "30pt"], ["value", "36pt"], ["value", "48pt"], ["value", "60pt"], ["value", "72pt"], [1, "toolbar-select", 3, "ngModelChange", "ngModel"], ["value", "paragraph"], ["value", "1"], ["value", "2"], ["value", "3"], ["value", "4"], ["value", "5"], ["value", "6"], ["title", "Bullet List", 1, "toolbar-btn", 3, "click"], ["x1", "8", "y1", "6", "x2", "21", "y2", "6"], ["x1", "8", "y1", "12", "x2", "21", "y2", "12"], ["x1", "8", "y1", "18", "x2", "21", "y2", "18"], ["cx", "4", "cy", "6", "r", "1", "fill", "currentColor"], ["cx", "4", "cy", "12", "r", "1", "fill", "currentColor"], ["cx", "4", "cy", "18", "r", "1", "fill", "currentColor"], ["title", "Numbered List", 1, "toolbar-btn", 3, "click"], ["x1", "10", "y1", "6", "x2", "21", "y2", "6"], ["x1", "10", "y1", "12", "x2", "21", "y2", "12"], ["x1", "10", "y1", "18", "x2", "21", "y2", "18"], ["d", "M4 6h1v4"], ["d", "M4 10h2"], ["d", "M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"], ["title", "Align Left", 1, "toolbar-btn", 3, "click"], ["x1", "3", "y1", "6", "x2", "21", "y2", "6"], ["x1", "3", "y1", "12", "x2", "15", "y2", "12"], ["x1", "3", "y1", "18", "x2", "18", "y2", "18"], ["title", "Align Center", 1, "toolbar-btn", 3, "click"], ["x1", "6", "y1", "12", "x2", "18", "y2", "12"], ["x1", "4", "y1", "18", "x2", "20", "y2", "18"], ["title", "Align Right", 1, "toolbar-btn", 3, "click"], ["x1", "9", "y1", "12", "x2", "21", "y2", "12"], ["x1", "6", "y1", "18", "x2", "21", "y2", "18"], ["title", "Justify", 1, "toolbar-btn", 3, "click"], ["x1", "3", "y1", "18", "x2", "21", "y2", "18"], ["title", "Insert Link", 1, "toolbar-btn", 3, "click"], ["d", "M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"], ["d", "M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"], [1, "toolbar-dropdown-container", 3, "mouseleave"], ["title", "Insert Table", 1, "toolbar-btn", 3, "click"], ["x", "3", "y", "3", "width", "18", "height", "18", "rx", "2", "ry", "2"], ["x1", "3", "y1", "9", "x2", "21", "y2", "9"], ["x1", "3", "y1", "15", "x2", "21", "y2", "15"], ["x1", "12", "y1", "3", "x2", "12", "y2", "21"], ["class", "table-grid-popup", 4, "ngIf"], ["title", "Horizontal Rule", 1, "toolbar-btn", 3, "click"], [1, "table-grid-popup"], [1, "grid-label"], ["class", "grid-row", 4, "ngFor", "ngForOf"], [1, "grid-row"], ["class", "grid-cell", 3, "active", "mouseenter", "click", 4, "ngFor", "ngForOf"], [1, "grid-cell", 3, "mouseenter", "click"], ["title", "Delete Table", 1, "toolbar-btn", 3, "click"], ["d", "M3 6h18"], ["d", "M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"], ["d", "M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"], ["x1", "10", "y1", "11", "x2", "10", "y2", "17"], ["x1", "14", "y1", "11", "x2", "14", "y2", "17"], ["title", "Add Row Before", 1, "toolbar-btn", 3, "click"], ["x1", "12", "y1", "8", "x2", "12", "y2", "16"], ["x1", "8", "y1", "12", "x2", "16", "y2", "12"], ["d", "M3 9h18"], ["title", "Add Row After", 1, "toolbar-btn", 3, "click"], ["d", "M3 15h18"], ["title", "Delete Row", 1, "toolbar-btn", 3, "click"], ["d", "M12 3v18"], ["x1", "5", "y1", "7", "x2", "19", "y2", "7", "stroke", "red"], ["title", "Add Column Before", 1, "toolbar-btn", 3, "click"], ["d", "M9 3v18"], ["title", "Add Column After", 1, "toolbar-btn", 3, "click"], ["d", "M15 3v18"], ["title", "Delete Column", 1, "toolbar-btn", 3, "click"], ["d", "M3 12h18"], ["x1", "7", "y1", "5", "x2", "7", "y2", "19", "stroke", "red"], ["title", "Blockquote", 1, "toolbar-btn", 3, "click"], ["d", "M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"], ["d", "M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"], [1, "download-slogan-popup"], [1, "toolbar-btn", "enhancement-mode-toggle", 2, "width", "auto", "padding", "0 8px", "gap", "4px", 3, "click", "title"], [2, "font-size", "11px", "font-weight", "600"], ["d", "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"], ["points", "14 2 14 8 20 8"], ["x1", "12", "y1", "18", "x2", "12", "y2", "12"], ["x1", "9", "y1", "15", "x2", "15", "y2", "15"], ["points", "16 18 22 12 16 6"], ["points", "8 6 2 12 8 18"], ["id", "form-template-container", 1, "form-template-container"], ["width", "16", "height", "16", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round"], ["x1", "22", "y1", "2", "x2", "11", "y2", "13"], ["points", "22 2 15 22 11 13 2 9 22 2"]], template: function ResumeEditorComponent_Template(rf, ctx) {
       if (rf & 1) {
         \u0275\u0275elementStart(0, "div", 1)(1, "div", 2)(2, "h3");
         \u0275\u0275text(3, "History");
@@ -30501,7 +30539,7 @@ var ResumeEditorComponent = class _ResumeEditorComponent {
         });
         \u0275\u0275template(27, ResumeEditorComponent__svg_svg_27_Template, 4, 0, "svg", 25)(28, ResumeEditorComponent__svg_svg_28_Template, 2, 0, "svg", 25);
         \u0275\u0275elementEnd();
-        \u0275\u0275template(29, ResumeEditorComponent_div_29_Template, 85, 32, "div", 26);
+        \u0275\u0275template(29, ResumeEditorComponent_div_29_Template, 87, 37, "div", 26);
         \u0275\u0275elementStart(30, "div", 27);
         \u0275\u0275element(31, "div", 28);
         \u0275\u0275template(32, ResumeEditorComponent_div_32_Template, 3, 0, "div", 29);
@@ -30567,7 +30605,7 @@ var ResumeEditorComponent = class _ResumeEditorComponent {
         \u0275\u0275advance();
         \u0275\u0275property("ngIf", ctx.isSending);
       }
-    }, dependencies: [CommonModule, NgForOf, NgIf, DatePipe, HttpClientModule, FormsModule, NgSelectOption, \u0275NgSelectMultipleOption, DefaultValueAccessor, SelectControlValueAccessor, NgControlStatus, NgModel, ChatSidebarComponent, TemplateDropdownComponent], styles: ['\n\n.editor-container[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  height: 100vh;\n  background: #f5f5f5;\n  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);\n}\n@media (min-width: 769px) {\n  .editor-container[_ngcontent-%COMP%] {\n    margin-left: 60px;\n  }\n  .editor-container.sidebar-open[_ngcontent-%COMP%] {\n    margin-left: 280px;\n  }\n  .floating-toggle-btn[_ngcontent-%COMP%] {\n    display: none;\n  }\n}\n.floating-toggle-btn[_ngcontent-%COMP%] {\n  position: fixed;\n  top: 10px;\n  right: 10px;\n  z-index: 1001;\n  width: 40px;\n  height: 40px;\n  background: white;\n  border: 1px solid #ddd;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);\n  cursor: pointer;\n  color: #333;\n}\n.toolbar[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 4px;\n  padding: 8px 16px;\n  background: #ffffff;\n  border-bottom: 1px solid #e0e0e0;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);\n  flex-wrap: wrap;\n  position: sticky;\n  top: 0;\n  z-index: 100;\n}\n.toolbar-group[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n}\n.toolbar-divider[_ngcontent-%COMP%] {\n  width: 1px;\n  height: 24px;\n  background: #e0e0e0;\n  margin: 0 8px;\n}\n.toolbar-btn[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 32px;\n  height: 32px;\n  border: none;\n  background: transparent;\n  border-radius: 4px;\n  cursor: pointer;\n  color: #333;\n  font-size: 14px;\n  font-weight: 600;\n  transition: all 0.2s ease;\n  padding: 0;\n}\n.toolbar-btn[_ngcontent-%COMP%]:hover:not(:disabled) {\n  background: #f0f0f0;\n}\n.toolbar-btn[_ngcontent-%COMP%]:active:not(:disabled) {\n  background: #e0e0e0;\n}\n.toolbar-btn.active[_ngcontent-%COMP%] {\n  background: #e3f2fd;\n  color: #1976d2;\n}\n.toolbar-btn[_ngcontent-%COMP%]:disabled {\n  opacity: 0.4;\n  cursor: not-allowed;\n}\n.toolbar-btn[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  width: 16px;\n  height: 16px;\n}\n.ai-quick-actions[_ngcontent-%COMP%] {\n  display: flex;\n  gap: 6px;\n  margin-left: 8px;\n}\n.ai-btn[_ngcontent-%COMP%] {\n  background:\n    linear-gradient(\n      135deg,\n      #f0f7f7 0%,\n      #ffffff 100%) !important;\n  border: 1px solid #d0e2e3 !important;\n  color: #2f6f73 !important;\n  font-weight: 700 !important;\n  padding: 0 10px !important;\n  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;\n  display: flex !important;\n  align-items: center !important;\n  gap: 4px !important;\n  height: 32px !important;\n  width: auto !important;\n}\n.ai-btn[_ngcontent-%COMP%]:hover:not(:disabled) {\n  background:\n    linear-gradient(\n      135deg,\n      #e0efef 0%,\n      #f0f7f7 100%) !important;\n  border-color: #2f6f73 !important;\n  transform: translateY(-1px);\n  box-shadow: 0 2px 4px rgba(47, 111, 115, 0.15);\n}\n.ai-btn[_ngcontent-%COMP%]:active:not(:disabled) {\n  transform: translateY(0);\n  box-shadow: none;\n}\n@media (max-width: 1300px) {\n  .ai-quick-actions[_ngcontent-%COMP%]   .btn-label[_ngcontent-%COMP%] {\n    display: none;\n  }\n  .ai-btn[_ngcontent-%COMP%] {\n    width: 36px !important;\n    padding: 0 !important;\n    justify-content: center !important;\n  }\n}\n.toolbar-select[_ngcontent-%COMP%] {\n  height: 32px;\n  padding: 4px 8px;\n  border: 1px solid #d0d0d0;\n  border-radius: 4px;\n  background: white;\n  font-size: 13px;\n  color: #333;\n  cursor: pointer;\n  outline: none;\n  transition: all 0.2s ease;\n  min-width: 120px;\n}\n.toolbar-select[_ngcontent-%COMP%]:hover {\n  border-color: #999;\n}\n.toolbar-select[_ngcontent-%COMP%]:focus {\n  border-color: #1976d2;\n  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.1);\n}\n.template-select[_ngcontent-%COMP%] {\n  min-width: 180px;\n  font-weight: 600;\n  background:\n    linear-gradient(\n      135deg,\n      #667eea 0%,\n      #764ba2 100%);\n  color: white;\n  border-color: #667eea;\n}\n.template-select[_ngcontent-%COMP%]:hover {\n  border-color: #5568d3;\n}\n.template-select[_ngcontent-%COMP%]   option[_ngcontent-%COMP%] {\n  background: white;\n  color: #333;\n}\n.download-btn[_ngcontent-%COMP%] {\n  width: auto !important;\n  padding: 0 12px !important;\n  gap: 6px;\n  background: #1976d2 !important;\n  color: white !important;\n}\n.download-btn[_ngcontent-%COMP%]:hover:not(:disabled) {\n  background: #1565c0 !important;\n}\n.download-btn[_ngcontent-%COMP%]:active:not(:disabled) {\n  background: #0d47a1 !important;\n}\n.download-label[_ngcontent-%COMP%] {\n  font-size: 11px;\n  font-weight: 600;\n  letter-spacing: 0.5px;\n}\n.enhancement-mode-toggle[_ngcontent-%COMP%] {\n  width: auto !important;\n  padding: 0 8px !important;\n  gap: 4px;\n  background: #f0f0f0 !important;\n  color: #666 !important;\n  border: 1px solid #d0d0d0;\n  transition: all 0.2s ease;\n}\n.enhancement-mode-toggle[_ngcontent-%COMP%]:hover:not(:disabled) {\n  background: #e0e0e0 !important;\n  border-color: #999;\n}\n.enhancement-mode-toggle.active[_ngcontent-%COMP%] {\n  background:\n    linear-gradient(\n      135deg,\n      #667eea 0%,\n      #764ba2 100%) !important;\n  color: white !important;\n  border-color: #667eea;\n  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);\n}\n.enhancement-mode-toggle.active[_ngcontent-%COMP%]:hover {\n  background:\n    linear-gradient(\n      135deg,\n      #5568d3 0%,\n      #653a8f 100%) !important;\n}\n.editor-wrapper[_ngcontent-%COMP%] {\n  flex: 1;\n  overflow-y: auto;\n  overflow-x: hidden;\n  padding: 40px 20px;\n  background: #f5f5f5;\n}\n.editor[_ngcontent-%COMP%] {\n  max-width: 8.5in;\n  margin: 0 auto;\n  background: transparent;\n  outline: none;\n  position: relative;\n}\n.editor[_ngcontent-%COMP%]     .ProseMirror {\n  outline: none;\n  padding: 40px;\n  overflow: visible;\n  width: 100%;\n  min-height: 11in;\n  position: relative;\n  background: white;\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);\n}\n.editor[_ngcontent-%COMP%]     .resume-container, .editor[_ngcontent-%COMP%]     .container {\n  max-width: 100% !important;\n  width: 100% !important;\n  margin: 0 !important;\n  padding: 0 !important;\n  box-shadow: none !important;\n  background: transparent !important;\n}\n.editor[_ngcontent-%COMP%]     table {\n  border-collapse: collapse !important;\n}\n.editor[_ngcontent-%COMP%]     table[border="0"] {\n  border: none !important;\n}\n.editor[_ngcontent-%COMP%]     [style*="position:absolute"], .editor[_ngcontent-%COMP%]     [style*="position: absolute"] {\n  position: absolute !important;\n}\n.editor[_ngcontent-%COMP%]     p {\n  margin: 0 0 12pt 0;\n}\n.editor[_ngcontent-%COMP%]     h1 {\n  font-weight: bold;\n  margin: 24pt 0 12pt 0;\n  line-height: 1.3;\n}\n.editor[_ngcontent-%COMP%]     h2 {\n  font-weight: bold;\n  margin: 20pt 0 10pt 0;\n  line-height: 1.3;\n}\n.editor[_ngcontent-%COMP%]     h3 {\n  font-weight: bold;\n  margin: 16pt 0 8pt 0;\n  line-height: 1.3;\n}\n.editor[_ngcontent-%COMP%]     h4 {\n  font-weight: bold;\n  margin: 14pt 0 7pt 0;\n  line-height: 1.3;\n}\n.editor[_ngcontent-%COMP%]     h5 {\n  font-weight: bold;\n  margin: 13pt 0 6pt 0;\n  line-height: 1.3;\n}\n.editor[_ngcontent-%COMP%]     h6 {\n  font-weight: bold;\n  margin: 12pt 0 6pt 0;\n  line-height: 1.3;\n}\n.editor[_ngcontent-%COMP%]     ul, .editor[_ngcontent-%COMP%]     ol {\n  padding-left: 30pt;\n  margin: 0 0 12pt 0;\n}\n.editor[_ngcontent-%COMP%]     li {\n  margin-bottom: 6pt;\n}\n.editor[_ngcontent-%COMP%]     blockquote {\n  border-left: 3px solid #ccc;\n  padding-left: 16pt;\n  margin: 12pt 0;\n  color: #666;\n  font-style: italic;\n}\n.editor[_ngcontent-%COMP%]     hr {\n  border: none;\n  border-top: 1px solid #ccc;\n  margin: 24pt 0;\n}\n.editor[_ngcontent-%COMP%]     a {\n  color: #0066cc;\n  text-decoration: underline;\n  cursor: pointer;\n}\n.editor[_ngcontent-%COMP%]     a:hover {\n  color: #0052a3;\n}\n.editor[_ngcontent-%COMP%]     img {\n  max-width: 100%;\n  height: auto;\n  display: block;\n  margin: 12pt 0;\n}\n.editor[_ngcontent-%COMP%]     table {\n  border-collapse: collapse;\n  width: 100%;\n  margin: 12pt 0;\n  overflow: hidden;\n  table-layout: fixed;\n}\n.editor[_ngcontent-%COMP%]     table td, .editor[_ngcontent-%COMP%]     table th {\n  border: 1px solid #ccc;\n  padding: 8pt;\n  vertical-align: top;\n  position: relative;\n  min-width: 1em;\n}\n.editor[_ngcontent-%COMP%]     table th {\n  background-color: #f5f5f5;\n  font-weight: bold;\n  text-align: left;\n}\n.editor[_ngcontent-%COMP%]     .selectedCell {\n  background-color: #e3f2fd;\n}\n.editor[_ngcontent-%COMP%]     code {\n  background-color: #f5f5f5;\n  padding: 2px 4px;\n  border-radius: 3px;\n  font-family: "Courier New", monospace;\n  font-size: 11pt;\n}\n.editor[_ngcontent-%COMP%]     pre {\n  background-color: #f5f5f5;\n  padding: 12pt;\n  border-radius: 4px;\n  overflow-x: auto;\n  margin: 12pt 0;\n}\n.editor[_ngcontent-%COMP%]     pre code {\n  background: none;\n  padding: 0;\n}\n.editor[_ngcontent-%COMP%]   mark[_ngcontent-%COMP%] {\n  background-color: #ffeb3b;\n  padding: 0 2px;\n}\n.editor[_ngcontent-%COMP%]   [style*="text-align: left"][_ngcontent-%COMP%] {\n  text-align: left;\n}\n.editor[_ngcontent-%COMP%]   [style*="text-align: center"][_ngcontent-%COMP%] {\n  text-align: center;\n}\n.editor[_ngcontent-%COMP%]   [style*="text-align: right"][_ngcontent-%COMP%] {\n  text-align: right;\n}\n.editor[_ngcontent-%COMP%]   [style*="text-align: justify"][_ngcontent-%COMP%] {\n  text-align: justify;\n}\n.editor[_ngcontent-%COMP%]   [_ngcontent-%COMP%]:deep(.ProseMirror   p.is-editor-empty[_ngcontent-%COMP%]:first-child::before) {\n  content: attr(data-placeholder);\n  float: left;\n  color: #adb5bd;\n  pointer-events: none;\n  height: 0;\n}\n.editor-wrapper[_ngcontent-%COMP%]::-webkit-scrollbar {\n  width: 12px;\n}\n.editor-wrapper[_ngcontent-%COMP%]::-webkit-scrollbar-track {\n  background: #f5f5f5;\n}\n.editor-wrapper[_ngcontent-%COMP%]::-webkit-scrollbar-thumb {\n  background: #ccc;\n  border-radius: 6px;\n}\n.editor-wrapper[_ngcontent-%COMP%]::-webkit-scrollbar-thumb:hover {\n  background: #999;\n}\n@media print {\n  .toolbar[_ngcontent-%COMP%] {\n    display: none;\n  }\n  .editor-wrapper[_ngcontent-%COMP%] {\n    padding: 0;\n    background: white;\n  }\n  .editor[_ngcontent-%COMP%] {\n    box-shadow: none;\n    max-width: none;\n    padding: 0;\n  }\n}\n@media (max-width: 768px) {\n  .editor[_ngcontent-%COMP%] {\n    margin: 0 !important;\n  }\n  .editor-wrapper[_ngcontent-%COMP%] {\n    margin: 0 !important;\n  }\n  .editor-container[_ngcontent-%COMP%] {\n    margin: 0 !important;\n  }\n  .editor[_ngcontent-%COMP%]     .ProseMirror {\n    padding: 4px !important;\n    box-shadow: none !important;\n  }\n  .editor[_ngcontent-%COMP%]     .resume-container, .editor[_ngcontent-%COMP%]     .container {\n    width: 100% !important;\n    max-width: 100% !important;\n    margin: 0 !important;\n    padding: 8px !important;\n    box-sizing: border-box !important;\n  }\n  .editor[_ngcontent-%COMP%]     .resume-container p, .editor[_ngcontent-%COMP%]     .resume-container div, .editor[_ngcontent-%COMP%]     .resume-container span {\n    word-wrap: break-word !important;\n    word-break: break-word !important;\n    overflow-wrap: break-word !important;\n  }\n  .editor[_ngcontent-%COMP%]     div[class*=WordSection], .editor[_ngcontent-%COMP%]     div[class*=Section] {\n    width: 100% !important;\n    max-width: 100% !important;\n  }\n  .editor-wrapper[_ngcontent-%COMP%] {\n    padding: 0;\n    background: #ffffff;\n  }\n  .toolbar[_ngcontent-%COMP%] {\n    padding: 8px;\n  }\n  .toolbar-select[_ngcontent-%COMP%] {\n    min-width: 100px;\n    font-size: 12px;\n  }\n}\n.chat-interface[_ngcontent-%COMP%] {\n  border-top: 1px solid #e0e0e0;\n  background: white;\n  padding: 16px;\n  position: sticky;\n  bottom: 0;\n  z-index: 100;\n  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);\n}\n.chat-container[_ngcontent-%COMP%] {\n  max-width: 800px;\n  margin: 0 auto;\n}\n.chat-input-wrapper[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: flex-end;\n  background: white;\n  border: 1px solid #e0e0e0;\n  border-radius: 24px;\n  padding: 8px 16px;\n  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);\n  transition: all 0.2s ease;\n}\n.chat-input-wrapper[_ngcontent-%COMP%]:focus-within {\n  border-color: #1976d2;\n  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.15);\n}\n.chat-input[_ngcontent-%COMP%] {\n  flex: 1;\n  border: none;\n  outline: none;\n  font-size: 14px;\n  padding: 8px;\n  color: #333;\n  font-family: inherit;\n  resize: none;\n  max-height: 200px;\n  min-height: 20px;\n  overflow-y: auto;\n  line-height: 1.5;\n  transition: all 0.2s ease;\n}\n.chat-input[_ngcontent-%COMP%]::-webkit-scrollbar {\n  width: 6px;\n}\n.chat-input[_ngcontent-%COMP%]::-webkit-scrollbar-track {\n  background: transparent;\n}\n.chat-input[_ngcontent-%COMP%]::-webkit-scrollbar-thumb {\n  background: #d0d0d0;\n  border-radius: 3px;\n}\n.chat-input[_ngcontent-%COMP%]::-webkit-scrollbar-thumb:hover {\n  background: #b0b0b0;\n}\n.chat-input[_ngcontent-%COMP%]::placeholder {\n  color: #999;\n}\n.chat-send-btn[_ngcontent-%COMP%] {\n  background: #1976d2;\n  color: white;\n  border: none;\n  width: 32px;\n  height: 32px;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  transition: all 0.2s ease;\n  margin-left: 8px;\n}\n.chat-send-btn[_ngcontent-%COMP%]:hover:not(:disabled) {\n  background: #1565c0;\n  transform: scale(1.05);\n}\n.chat-send-btn[_ngcontent-%COMP%]:disabled {\n  background: #e0e0e0;\n  color: #999;\n  cursor: not-allowed;\n}\n.spinner[_ngcontent-%COMP%] {\n  width: 14px;\n  height: 14px;\n  border: 2px solid #ffffff;\n  border-top-color: transparent;\n  border-radius: 50%;\n  animation: _ngcontent-%COMP%_spin 0.8s linear infinite;\n}\n@keyframes _ngcontent-%COMP%_spin {\n  to {\n    transform: rotate(360deg);\n  }\n}\n.editor-wrapper[_ngcontent-%COMP%] {\n  padding-bottom: 100px;\n}\n.toolbar-dropdown-container[_ngcontent-%COMP%] {\n  position: relative;\n  display: inline-block;\n}\n.table-grid-popup[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 100%;\n  left: 0;\n  background: white;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  padding: 10px;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);\n  z-index: 1000;\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n}\n.grid-label[_ngcontent-%COMP%] {\n  text-align: center;\n  font-size: 12px;\n  color: #666;\n  margin-bottom: 5px;\n  font-weight: 600;\n}\n.grid-row[_ngcontent-%COMP%] {\n  display: flex;\n  gap: 2px;\n}\n.grid-cell[_ngcontent-%COMP%] {\n  width: 16px;\n  height: 16px;\n  border: 1px solid #e0e0e0;\n  background: white;\n  cursor: pointer;\n  transition: all 0.1s ease;\n}\n.grid-cell[_ngcontent-%COMP%]:hover, .grid-cell.active[_ngcontent-%COMP%] {\n  background: #e3f2fd;\n  border-color: #1976d2;\n}\n.gallery-container[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  height: 100vh;\n  margin-left: 60px;\n  background-color: #f8f9fa;\n  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);\n  padding: 20px 40px;\n  overflow-y: auto;\n}\n.gallery-container.sidebar-open[_ngcontent-%COMP%] {\n  margin-left: 280px;\n}\n@media (max-width: 768px) {\n  .gallery-container[_ngcontent-%COMP%] {\n    margin-left: 0;\n    padding: 20px;\n  }\n}\n.gallery-header[_ngcontent-%COMP%] {\n  margin-bottom: 30px;\n}\n.gallery-header[_ngcontent-%COMP%]   h2[_ngcontent-%COMP%] {\n  font-size: 24px;\n  color: #333;\n  margin-bottom: 20px;\n}\n.gallery-controls[_ngcontent-%COMP%] {\n  display: flex;\n  gap: 15px;\n  align-items: center;\n  flex-wrap: wrap;\n}\n.gallery-search[_ngcontent-%COMP%] {\n  flex: 1;\n  min-width: 250px;\n  padding: 10px 15px;\n  border: 1px solid #ddd;\n  border-radius: 6px;\n  font-size: 14px;\n}\n.gallery-filter[_ngcontent-%COMP%] {\n  padding: 10px 15px;\n  border: 1px solid #ddd;\n  border-radius: 6px;\n  font-size: 14px;\n  background: white;\n  cursor: pointer;\n}\n.view-toggle[_ngcontent-%COMP%] {\n  display: flex;\n  border: 1px solid #ddd;\n  border-radius: 6px;\n  overflow: hidden;\n}\n.view-toggle[_ngcontent-%COMP%]   button[_ngcontent-%COMP%] {\n  padding: 10px;\n  border: none;\n  background: white;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.view-toggle[_ngcontent-%COMP%]   button[_ngcontent-%COMP%]:hover {\n  background: #f5f5f5;\n}\n.view-toggle[_ngcontent-%COMP%]   button.active[_ngcontent-%COMP%] {\n  background: #e3f2fd;\n  color: #1976d2;\n}\n.gallery-content[_ngcontent-%COMP%] {\n  display: grid;\n  gap: 20px;\n  padding-bottom: 40px;\n}\n.gallery-content.grid-view[_ngcontent-%COMP%] {\n  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));\n}\n.gallery-content.list-view[_ngcontent-%COMP%] {\n  grid-template-columns: 1fr;\n}\n.template-card[_ngcontent-%COMP%] {\n  background: white;\n  border-radius: 8px;\n  overflow: hidden;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);\n  transition: transform 0.2s, box-shadow 0.2s;\n  cursor: pointer;\n  border: 1px solid #eee;\n}\n.template-card[_ngcontent-%COMP%]:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);\n  border-color: #1976d2;\n}\n.template-preview[_ngcontent-%COMP%] {\n  height: 200px;\n  background: #f0f0f0;\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.list-view[_ngcontent-%COMP%]   .template-card[_ngcontent-%COMP%] {\n  display: flex;\n  height: 120px;\n}\n.list-view[_ngcontent-%COMP%]   .template-preview[_ngcontent-%COMP%] {\n  width: 120px;\n  height: 100%;\n}\n.preview-placeholder[_ngcontent-%COMP%] {\n  font-size: 48px;\n  font-weight: bold;\n  color: #ccc;\n  text-transform: uppercase;\n}\n.template-badge[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  background: #4caf50;\n  color: white;\n  padding: 4px 8px;\n  border-radius: 4px;\n  font-size: 11px;\n  font-weight: 600;\n  text-transform: uppercase;\n  z-index: 10;\n}\n.template-badge.form-badge[_ngcontent-%COMP%] {\n  background: #2196f3;\n}\n.template-info[_ngcontent-%COMP%] {\n  padding: 15px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.list-view[_ngcontent-%COMP%]   .template-info[_ngcontent-%COMP%] {\n  flex: 1;\n  padding: 20px;\n  flex-direction: row;\n  align-items: center;\n}\n.template-info[_ngcontent-%COMP%]   h3[_ngcontent-%COMP%] {\n  margin: 0 0 10px 0;\n  font-size: 16px;\n  font-weight: 600;\n  color: #333;\n}\n.list-view[_ngcontent-%COMP%]   .template-info[_ngcontent-%COMP%]   h3[_ngcontent-%COMP%] {\n  margin: 0;\n  font-size: 18px;\n}\n.select-btn[_ngcontent-%COMP%] {\n  background: #f5f5f5;\n  color: #333;\n  border: none;\n  padding: 8px 12px;\n  border-radius: 4px;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.2s;\n  align-self: flex-start;\n}\n.template-card[_ngcontent-%COMP%]:hover   .select-btn[_ngcontent-%COMP%] {\n  background: #1976d2;\n  color: white;\n}\n.list-view[_ngcontent-%COMP%]   .select-btn[_ngcontent-%COMP%] {\n  align-self: center;\n}\n.no-results[_ngcontent-%COMP%] {\n  text-align: center;\n  padding: 40px;\n  color: #666;\n  grid-column: 1 / -1;\n}\n[hidden][_ngcontent-%COMP%] {\n  display: none !important;\n}\n  .change-highlight {\n  background-color: #ffeb3b;\n  border-radius: 3px;\n  padding: 2px 4px;\n  box-shadow: 0 0 0 2px rgba(255, 235, 59, 0.3);\n  animation: _ngcontent-%COMP%_highlightPulse 2s ease-in-out infinite;\n  transition: all 0.3s ease;\n}\n@keyframes _ngcontent-%COMP%_highlightPulse {\n  0%, 100% {\n    background-color: #ffeb3b;\n    box-shadow: 0 0 0 2px rgba(255, 235, 59, 0.3);\n  }\n  50% {\n    background-color: #ffd54f;\n    box-shadow: 0 0 0 4px rgba(255, 213, 79, 0.4);\n  }\n}\n.embedded-history-sidebar[_ngcontent-%COMP%] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  width: 320px;\n  background-color: #f8fafc;\n  border-left: 1px solid #e2e8f0;\n  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.05);\n  display: flex;\n  flex-direction: column;\n  transform: translateX(100%);\n  transition: transform 0.3s ease-in-out;\n  z-index: 3000;\n}\n.embedded-history-sidebar.open[_ngcontent-%COMP%] {\n  transform: translateX(0);\n}\n.sidebar-header[_ngcontent-%COMP%] {\n  padding: 1rem;\n  border-bottom: 1px solid #e2e8f0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  background-color: white;\n}\n.sidebar-header[_ngcontent-%COMP%]   h3[_ngcontent-%COMP%] {\n  margin: 0;\n  font-size: 1.1rem;\n  font-weight: 600;\n  color: #1e293b;\n}\n.close-btn[_ngcontent-%COMP%] {\n  background: none;\n  border: none;\n  color: #64748b;\n  cursor: pointer;\n  padding: 4px;\n  border-radius: 4px;\n  transition: all 0.2s;\n}\n.close-btn[_ngcontent-%COMP%]:hover {\n  background-color: #f1f5f9;\n  color: #0f172a;\n}\n.history-list[_ngcontent-%COMP%] {\n  flex: 1;\n  overflow-y: auto;\n  padding: 1rem;\n}\n.history-card[_ngcontent-%COMP%] {\n  background-color: white;\n  border: 1px solid #e2e8f0;\n  border-radius: 8px;\n  padding: 1rem;\n  margin-bottom: 0.75rem;\n  transition: all 0.2s;\n  cursor: pointer;\n}\n.history-card[_ngcontent-%COMP%]:hover {\n  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);\n  border-color: #cbd5e1;\n}\n.message-text[_ngcontent-%COMP%] {\n  margin: 0 0 0.75rem 0;\n  font-size: 0.9rem;\n  color: #334155;\n  line-height: 1.5;\n  word-wrap: break-word;\n}\n.card-footer[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  font-size: 0.75rem;\n  color: #94a3b8;\n}\n.copy-btn[_ngcontent-%COMP%] {\n  background: none;\n  border: none;\n  color: #94a3b8;\n  cursor: pointer;\n  padding: 4px;\n  border-radius: 4px;\n  display: flex;\n  align-items: center;\n  transition: all 0.2s;\n  position: relative;\n}\n.copy-btn[_ngcontent-%COMP%]:hover {\n  color: #3b82f6;\n  background-color: #eff6ff;\n}\n.copy-feedback[_ngcontent-%COMP%] {\n  position: absolute;\n  top: -25px;\n  right: 0;\n  background-color: #0f172a;\n  color: white;\n  padding: 2px 6px;\n  border-radius: 4px;\n  font-size: 0.7rem;\n  opacity: 0;\n  transition: opacity 0.2s;\n  pointer-events: none;\n}\n.copy-btn.copied[_ngcontent-%COMP%]   .copy-feedback[_ngcontent-%COMP%] {\n  opacity: 1;\n}\n.copy-btn.copied[_ngcontent-%COMP%] {\n  color: #22c55e;\n}\n.loading-indicator[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: center;\n  padding: 1rem;\n}\n.empty-state-history[_ngcontent-%COMP%] {\n  text-align: center;\n  padding: 2rem 1rem;\n  color: #94a3b8;\n}\n.error-message[_ngcontent-%COMP%] {\n  color: #ef4444;\n  text-align: center;\n  padding: 1rem;\n  font-size: 0.9rem;\n}\n.loading-more[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n  padding: 12px;\n  color: #94a3b8;\n  font-size: 13px;\n}\n.spinner-small[_ngcontent-%COMP%] {\n  width: 16px;\n  height: 16px;\n  border: 2px solid #e2e8f0;\n  border-top-color: #3b82f6;\n  border-radius: 50%;\n  animation: _ngcontent-%COMP%_spin 0.8s linear infinite;\n}\n.history-controls[_ngcontent-%COMP%] {\n  padding: 12px;\n  border-bottom: 1px solid #e2e8f0;\n  display: flex;\n  gap: 8px;\n  background: white;\n  align-items: center;\n}\n.search-box[_ngcontent-%COMP%] {\n  flex: 1;\n  display: flex;\n  align-items: center;\n  background: #f1f5f9;\n  border-radius: 6px;\n  padding: 0 8px;\n  border: 1px solid transparent;\n  transition: all 0.2s;\n}\n.search-box[_ngcontent-%COMP%]:focus-within {\n  background: white;\n  border-color: #3b82f6;\n  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);\n}\n.search-input[_ngcontent-%COMP%] {\n  flex: 1;\n  border: none;\n  background: transparent;\n  padding: 8px 4px;\n  font-size: 13px;\n  outline: none;\n  color: #334155;\n  min-width: 0;\n}\n.search-btn[_ngcontent-%COMP%] {\n  background: none;\n  border: none;\n  padding: 4px;\n  color: #94a3b8;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n}\n.search-btn[_ngcontent-%COMP%]:hover {\n  color: #3b82f6;\n}\n.sort-btn[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n  width: 32px;\n  height: 32px;\n  background: white;\n  border: 1px solid #e2e8f0;\n  border-radius: 6px;\n  color: #64748b;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  transition: all 0.2s;\n}\n.sort-btn[_ngcontent-%COMP%]:hover {\n  border-color: #cbd5e1;\n  color: #0f172a;\n  background: #f8fafc;\n}\n.html-preview-container[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  position: relative;\n  background: white;\n}\n.scaled-preview[_ngcontent-%COMP%] {\n  width: 8.5in;\n  min-height: 11in;\n  transform-origin: top left;\n  transform: scale(0.25);\n  pointer-events: none;\n  background: white;\n}\n.scaled-preview[_ngcontent-%COMP%]     body {\n  margin: 0;\n  padding: 0;\n  overflow: hidden;\n}\n.back-btn[_ngcontent-%COMP%] {\n  width: auto !important;\n  padding: 0 10px !important;\n  gap: 6px;\n  color: #555;\n  font-weight: 600;\n}\n.back-btn[_ngcontent-%COMP%]:hover {\n  background: #f0f0f0;\n  color: #1976d2;\n}\n.back-text[_ngcontent-%COMP%] {\n  font-size: 14px;\n}\n@media (max-width: 600px) {\n  .back-text[_ngcontent-%COMP%] {\n    display: none;\n  }\n}\n.toolbar-logo[_ngcontent-%COMP%] {\n  height: 32px;\n  width: auto;\n  margin-right: 8px;\n  cursor: pointer;\n}\n.form-preview-placeholder[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 12px;\n  color: #2196f3;\n  padding: 20px;\n}\n.form-preview-placeholder[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));\n}\n.form-label[_ngcontent-%COMP%] {\n  margin: 0;\n  font-size: 13px;\n  font-weight: 600;\n  color: #666;\n  text-align: center;\n}\n.form-preview-container[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  position: relative;\n  background: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.form-scaled-preview[_ngcontent-%COMP%] {\n  transform: scale(0.15);\n  transform-origin: top left;\n  width: 666.67%;\n  height: 666.67%;\n  position: absolute;\n  top: 0;\n  left: 0;\n  pointer-events: none;\n}\n.preview-render-container[_ngcontent-%COMP%] {\n  position: fixed;\n  top: -10000px;\n  left: -10000px;\n  width: 850px;\n  visibility: hidden;\n  pointer-events: none;\n}\n.image-preview-container[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  background: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.preview-image[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 100%;\n  object-fit: contain;\n}\n.loading-spinner-preview[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin-bottom: 12px;\n}\n/*# sourceMappingURL=resume-editor.component.css.map */'] });
+    }, dependencies: [CommonModule, NgForOf, NgIf, DatePipe, HttpClientModule, FormsModule, NgSelectOption, \u0275NgSelectMultipleOption, DefaultValueAccessor, SelectControlValueAccessor, NgControlStatus, NgModel, ChatSidebarComponent, TemplateDropdownComponent], styles: ['\n\n.editor-container[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  height: 100vh;\n  background: #f5f5f5;\n  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);\n}\n@media (min-width: 769px) {\n  .editor-container[_ngcontent-%COMP%] {\n    margin-left: 60px;\n  }\n  .editor-container.sidebar-open[_ngcontent-%COMP%] {\n    margin-left: 280px;\n  }\n  .floating-toggle-btn[_ngcontent-%COMP%] {\n    display: none;\n  }\n}\n.floating-toggle-btn[_ngcontent-%COMP%] {\n  position: fixed;\n  top: 10px;\n  right: 10px;\n  z-index: 1001;\n  width: 40px;\n  height: 40px;\n  background: white;\n  border: 1px solid #ddd;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);\n  cursor: pointer;\n  color: #333;\n}\n.toolbar[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 4px;\n  padding: 8px 16px;\n  background: #ffffff;\n  border-bottom: 1px solid #e0e0e0;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);\n  flex-wrap: wrap;\n  position: sticky;\n  top: 0;\n  z-index: 100;\n}\n.toolbar-group[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n}\n.toolbar-divider[_ngcontent-%COMP%] {\n  width: 1px;\n  height: 24px;\n  background: #e0e0e0;\n  margin: 0 8px;\n}\n.toolbar-btn[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 32px;\n  height: 32px;\n  border: none;\n  background: transparent;\n  border-radius: 4px;\n  cursor: pointer;\n  color: #333;\n  font-size: 14px;\n  font-weight: 600;\n  transition: all 0.2s ease;\n  padding: 0;\n}\n.toolbar-btn[_ngcontent-%COMP%]:hover:not(:disabled) {\n  background: #f0f0f0;\n}\n.toolbar-btn[_ngcontent-%COMP%]:active:not(:disabled) {\n  background: #e0e0e0;\n}\n.toolbar-btn.active[_ngcontent-%COMP%] {\n  background: #e3f2fd;\n  color: #1976d2;\n}\n.toolbar-btn[_ngcontent-%COMP%]:disabled {\n  opacity: 0.4;\n  cursor: not-allowed;\n}\n.toolbar-btn[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  width: 16px;\n  height: 16px;\n}\n.ai-quick-actions[_ngcontent-%COMP%] {\n  display: flex;\n  gap: 6px;\n  margin-left: 8px;\n}\n.ai-btn[_ngcontent-%COMP%] {\n  background:\n    linear-gradient(\n      135deg,\n      #f0f7f7 0%,\n      #ffffff 100%) !important;\n  border: 1px solid #d0e2e3 !important;\n  color: #2f6f73 !important;\n  font-weight: 700 !important;\n  padding: 0 10px !important;\n  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;\n  display: flex !important;\n  align-items: center !important;\n  gap: 4px !important;\n  height: 32px !important;\n  width: auto !important;\n}\n.ai-btn[_ngcontent-%COMP%]:hover:not(:disabled) {\n  background:\n    linear-gradient(\n      135deg,\n      #e0efef 0%,\n      #f0f7f7 100%) !important;\n  border-color: #2f6f73 !important;\n  transform: translateY(-1px);\n  box-shadow: 0 2px 4px rgba(47, 111, 115, 0.15);\n}\n.ai-btn[_ngcontent-%COMP%]:active:not(:disabled) {\n  transform: translateY(0);\n  box-shadow: none;\n}\n@media (max-width: 1300px) {\n  .ai-quick-actions[_ngcontent-%COMP%]   .btn-label[_ngcontent-%COMP%] {\n    display: none;\n  }\n  .ai-btn[_ngcontent-%COMP%] {\n    width: 36px !important;\n    padding: 0 !important;\n    justify-content: center !important;\n  }\n}\n.toolbar-select[_ngcontent-%COMP%] {\n  height: 32px;\n  padding: 4px 8px;\n  border: 1px solid #d0d0d0;\n  border-radius: 4px;\n  background: white;\n  font-size: 13px;\n  color: #333;\n  cursor: pointer;\n  outline: none;\n  transition: all 0.2s ease;\n  min-width: 120px;\n}\n.toolbar-select[_ngcontent-%COMP%]:hover {\n  border-color: #999;\n}\n.toolbar-select[_ngcontent-%COMP%]:focus {\n  border-color: #1976d2;\n  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.1);\n}\n.template-select[_ngcontent-%COMP%] {\n  min-width: 180px;\n  font-weight: 600;\n  background:\n    linear-gradient(\n      135deg,\n      #667eea 0%,\n      #764ba2 100%);\n  color: white;\n  border-color: #667eea;\n}\n.template-select[_ngcontent-%COMP%]:hover {\n  border-color: #5568d3;\n}\n.template-select[_ngcontent-%COMP%]   option[_ngcontent-%COMP%] {\n  background: white;\n  color: #333;\n}\n.download-btn[_ngcontent-%COMP%] {\n  width: auto !important;\n  padding: 0 12px !important;\n  gap: 6px;\n  background: #1976d2 !important;\n  color: white !important;\n}\n.download-btn[_ngcontent-%COMP%]:hover:not(:disabled) {\n  background: #1565c0 !important;\n}\n.download-btn[_ngcontent-%COMP%]:active:not(:disabled) {\n  background: #0d47a1 !important;\n}\n.download-label[_ngcontent-%COMP%] {\n  font-size: 11px;\n  font-weight: 600;\n  letter-spacing: 0.5px;\n}\n.download-btn.downloading[_ngcontent-%COMP%] {\n  position: relative;\n  overflow: hidden;\n  background-color: #e8eaf6 !important;\n  color: #1976d2 !important;\n  border-color: #1976d2 !important;\n}\n.downloading[_ngcontent-%COMP%]   .download-arrow[_ngcontent-%COMP%] {\n  animation: _ngcontent-%COMP%_download-bounce 1s infinite ease-in-out;\n}\n@keyframes _ngcontent-%COMP%_download-bounce {\n  0% {\n    transform: translateY(-6px);\n    opacity: 0;\n  }\n  30% {\n    opacity: 1;\n  }\n  70% {\n    opacity: 1;\n  }\n  100% {\n    transform: translateY(6px);\n    opacity: 0;\n  }\n}\n.downloading[_ngcontent-%COMP%]::after {\n  content: "";\n  position: absolute;\n  top: 0;\n  left: -100%;\n  width: 40%;\n  height: 100%;\n  background:\n    linear-gradient(\n      90deg,\n      transparent,\n      rgba(25, 118, 210, 0.2),\n      transparent);\n  animation: _ngcontent-%COMP%_download-shimmer 1.5s infinite linear;\n}\n@keyframes _ngcontent-%COMP%_download-shimmer {\n  100% {\n    left: 200%;\n  }\n}\n.download-slogan-popup[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 100%;\n  right: 0;\n  margin-top: 10px;\n  background-color: #333;\n  color: white;\n  padding: 8px 14px;\n  border-radius: 8px;\n  font-size: 13px;\n  font-weight: 500;\n  white-space: normal;\n  width: max-content;\n  max-width: 230px;\n  line-height: 1.4;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);\n  animation: _ngcontent-%COMP%_slogan-pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;\n  pointer-events: none;\n  z-index: 105;\n}\n.download-slogan-popup[_ngcontent-%COMP%]::before {\n  content: "";\n  position: absolute;\n  bottom: 100%;\n  right: 20px;\n  border-width: 6px;\n  border-style: solid;\n  border-color: transparent transparent #333 transparent;\n}\n@keyframes _ngcontent-%COMP%_slogan-pop {\n  0% {\n    transform: translateY(10px) scale(0.9);\n    opacity: 0;\n  }\n  100% {\n    transform: translateY(0) scale(1);\n    opacity: 1;\n  }\n}\n.enhancement-mode-toggle[_ngcontent-%COMP%] {\n  width: auto !important;\n  padding: 0 8px !important;\n  gap: 4px;\n  background: #f0f0f0 !important;\n  color: #666 !important;\n  border: 1px solid #d0d0d0;\n  transition: all 0.2s ease;\n}\n.enhancement-mode-toggle[_ngcontent-%COMP%]:hover:not(:disabled) {\n  background: #e0e0e0 !important;\n  border-color: #999;\n}\n.enhancement-mode-toggle.active[_ngcontent-%COMP%] {\n  background:\n    linear-gradient(\n      135deg,\n      #667eea 0%,\n      #764ba2 100%) !important;\n  color: white !important;\n  border-color: #667eea;\n  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);\n}\n.enhancement-mode-toggle.active[_ngcontent-%COMP%]:hover {\n  background:\n    linear-gradient(\n      135deg,\n      #5568d3 0%,\n      #653a8f 100%) !important;\n}\n.editor-wrapper[_ngcontent-%COMP%] {\n  flex: 1;\n  overflow-y: auto;\n  overflow-x: hidden;\n  padding: 40px 20px;\n  background: #f5f5f5;\n}\n.editor[_ngcontent-%COMP%] {\n  max-width: 8.5in;\n  margin: 0 auto;\n  background: transparent;\n  outline: none;\n  position: relative;\n}\n.editor[_ngcontent-%COMP%]     .ProseMirror {\n  outline: none;\n  padding: 40px;\n  overflow: visible;\n  width: 100%;\n  min-height: 11in;\n  position: relative;\n  background: white;\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);\n}\n.editor[_ngcontent-%COMP%]     .resume-container, .editor[_ngcontent-%COMP%]     .container {\n  max-width: 100% !important;\n  width: 100% !important;\n  margin: 0 !important;\n  padding: 0 !important;\n  box-shadow: none !important;\n  background: transparent !important;\n}\n.editor[_ngcontent-%COMP%]     table {\n  border-collapse: collapse !important;\n}\n.editor[_ngcontent-%COMP%]     table[border="0"] {\n  border: none !important;\n}\n.editor[_ngcontent-%COMP%]     [style*="position:absolute"], .editor[_ngcontent-%COMP%]     [style*="position: absolute"] {\n  position: absolute !important;\n}\n.editor[_ngcontent-%COMP%]     p {\n  margin: 0 0 12pt 0;\n}\n.editor[_ngcontent-%COMP%]     h1 {\n  font-weight: bold;\n  margin: 24pt 0 12pt 0;\n  line-height: 1.3;\n}\n.editor[_ngcontent-%COMP%]     h2 {\n  font-weight: bold;\n  margin: 20pt 0 10pt 0;\n  line-height: 1.3;\n}\n.editor[_ngcontent-%COMP%]     h3 {\n  font-weight: bold;\n  margin: 16pt 0 8pt 0;\n  line-height: 1.3;\n}\n.editor[_ngcontent-%COMP%]     h4 {\n  font-weight: bold;\n  margin: 14pt 0 7pt 0;\n  line-height: 1.3;\n}\n.editor[_ngcontent-%COMP%]     h5 {\n  font-weight: bold;\n  margin: 13pt 0 6pt 0;\n  line-height: 1.3;\n}\n.editor[_ngcontent-%COMP%]     h6 {\n  font-weight: bold;\n  margin: 12pt 0 6pt 0;\n  line-height: 1.3;\n}\n.editor[_ngcontent-%COMP%]     ul, .editor[_ngcontent-%COMP%]     ol {\n  padding-left: 30pt;\n  margin: 0 0 12pt 0;\n}\n.editor[_ngcontent-%COMP%]     li {\n  margin-bottom: 6pt;\n}\n.editor[_ngcontent-%COMP%]     blockquote {\n  border-left: 3px solid #ccc;\n  padding-left: 16pt;\n  margin: 12pt 0;\n  color: #666;\n  font-style: italic;\n}\n.editor[_ngcontent-%COMP%]     hr {\n  border: none;\n  border-top: 1px solid #ccc;\n  margin: 24pt 0;\n}\n.editor[_ngcontent-%COMP%]     a {\n  color: #0066cc;\n  text-decoration: underline;\n  cursor: pointer;\n}\n.editor[_ngcontent-%COMP%]     a:hover {\n  color: #0052a3;\n}\n.editor[_ngcontent-%COMP%]     img {\n  max-width: 100%;\n  height: auto;\n  display: block;\n  margin: 12pt 0;\n}\n.editor[_ngcontent-%COMP%]     table {\n  border-collapse: collapse;\n  width: 100%;\n  margin: 12pt 0;\n  overflow: hidden;\n  table-layout: fixed;\n}\n.editor[_ngcontent-%COMP%]     table td, .editor[_ngcontent-%COMP%]     table th {\n  border: 1px solid #ccc;\n  padding: 8pt;\n  vertical-align: top;\n  position: relative;\n  min-width: 1em;\n}\n.editor[_ngcontent-%COMP%]     table th {\n  background-color: #f5f5f5;\n  font-weight: bold;\n  text-align: left;\n}\n.editor[_ngcontent-%COMP%]     .selectedCell {\n  background-color: #e3f2fd;\n}\n.editor[_ngcontent-%COMP%]     code {\n  background-color: #f5f5f5;\n  padding: 2px 4px;\n  border-radius: 3px;\n  font-family: "Courier New", monospace;\n  font-size: 11pt;\n}\n.editor[_ngcontent-%COMP%]     pre {\n  background-color: #f5f5f5;\n  padding: 12pt;\n  border-radius: 4px;\n  overflow-x: auto;\n  margin: 12pt 0;\n}\n.editor[_ngcontent-%COMP%]     pre code {\n  background: none;\n  padding: 0;\n}\n.editor[_ngcontent-%COMP%]   mark[_ngcontent-%COMP%] {\n  background-color: #ffeb3b;\n  padding: 0 2px;\n}\n.editor[_ngcontent-%COMP%]   [style*="text-align: left"][_ngcontent-%COMP%] {\n  text-align: left;\n}\n.editor[_ngcontent-%COMP%]   [style*="text-align: center"][_ngcontent-%COMP%] {\n  text-align: center;\n}\n.editor[_ngcontent-%COMP%]   [style*="text-align: right"][_ngcontent-%COMP%] {\n  text-align: right;\n}\n.editor[_ngcontent-%COMP%]   [style*="text-align: justify"][_ngcontent-%COMP%] {\n  text-align: justify;\n}\n.editor[_ngcontent-%COMP%]   [_ngcontent-%COMP%]:deep(.ProseMirror   p.is-editor-empty[_ngcontent-%COMP%]:first-child::before) {\n  content: attr(data-placeholder);\n  float: left;\n  color: #adb5bd;\n  pointer-events: none;\n  height: 0;\n}\n.editor-wrapper[_ngcontent-%COMP%]::-webkit-scrollbar {\n  width: 12px;\n}\n.editor-wrapper[_ngcontent-%COMP%]::-webkit-scrollbar-track {\n  background: #f5f5f5;\n}\n.editor-wrapper[_ngcontent-%COMP%]::-webkit-scrollbar-thumb {\n  background: #ccc;\n  border-radius: 6px;\n}\n.editor-wrapper[_ngcontent-%COMP%]::-webkit-scrollbar-thumb:hover {\n  background: #999;\n}\n@media print {\n  .toolbar[_ngcontent-%COMP%] {\n    display: none;\n  }\n  .editor-wrapper[_ngcontent-%COMP%] {\n    padding: 0;\n    background: white;\n  }\n  .editor[_ngcontent-%COMP%] {\n    box-shadow: none;\n    max-width: none;\n    padding: 0;\n  }\n}\n@media (max-width: 768px) {\n  .editor[_ngcontent-%COMP%] {\n    margin: 0 !important;\n  }\n  .editor-wrapper[_ngcontent-%COMP%] {\n    margin: 0 !important;\n  }\n  .editor-container[_ngcontent-%COMP%] {\n    margin: 0 !important;\n  }\n  .editor[_ngcontent-%COMP%]     .ProseMirror {\n    padding: 4px !important;\n    box-shadow: none !important;\n  }\n  .editor[_ngcontent-%COMP%]     .resume-container, .editor[_ngcontent-%COMP%]     .container {\n    width: 100% !important;\n    max-width: 100% !important;\n    margin: 0 !important;\n    padding: 8px !important;\n    box-sizing: border-box !important;\n  }\n  .editor[_ngcontent-%COMP%]     .resume-container p, .editor[_ngcontent-%COMP%]     .resume-container div, .editor[_ngcontent-%COMP%]     .resume-container span {\n    word-wrap: break-word !important;\n    word-break: break-word !important;\n    overflow-wrap: break-word !important;\n  }\n  .editor[_ngcontent-%COMP%]     div[class*=WordSection], .editor[_ngcontent-%COMP%]     div[class*=Section] {\n    width: 100% !important;\n    max-width: 100% !important;\n  }\n  .editor-wrapper[_ngcontent-%COMP%] {\n    padding: 0;\n    background: #ffffff;\n  }\n  .toolbar[_ngcontent-%COMP%] {\n    padding: 8px;\n  }\n  .toolbar-select[_ngcontent-%COMP%] {\n    min-width: 100px;\n    font-size: 12px;\n  }\n}\n.chat-interface[_ngcontent-%COMP%] {\n  border-top: 1px solid #e0e0e0;\n  background: white;\n  padding: 16px;\n  position: sticky;\n  bottom: 0;\n  z-index: 100;\n  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);\n}\n.chat-container[_ngcontent-%COMP%] {\n  max-width: 800px;\n  margin: 0 auto;\n}\n.chat-input-wrapper[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: flex-end;\n  background: white;\n  border: 1px solid #e0e0e0;\n  border-radius: 24px;\n  padding: 8px 16px;\n  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);\n  transition: all 0.2s ease;\n}\n.chat-input-wrapper[_ngcontent-%COMP%]:focus-within {\n  border-color: #1976d2;\n  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.15);\n}\n.chat-input[_ngcontent-%COMP%] {\n  flex: 1;\n  border: none;\n  outline: none;\n  font-size: 14px;\n  padding: 8px;\n  color: #333;\n  font-family: inherit;\n  resize: none;\n  max-height: 200px;\n  min-height: 20px;\n  overflow-y: auto;\n  line-height: 1.5;\n  transition: all 0.2s ease;\n}\n.chat-input[_ngcontent-%COMP%]::-webkit-scrollbar {\n  width: 6px;\n}\n.chat-input[_ngcontent-%COMP%]::-webkit-scrollbar-track {\n  background: transparent;\n}\n.chat-input[_ngcontent-%COMP%]::-webkit-scrollbar-thumb {\n  background: #d0d0d0;\n  border-radius: 3px;\n}\n.chat-input[_ngcontent-%COMP%]::-webkit-scrollbar-thumb:hover {\n  background: #b0b0b0;\n}\n.chat-input[_ngcontent-%COMP%]::placeholder {\n  color: #999;\n}\n.chat-send-btn[_ngcontent-%COMP%] {\n  background: #1976d2;\n  color: white;\n  border: none;\n  width: 32px;\n  height: 32px;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  transition: all 0.2s ease;\n  margin-left: 8px;\n}\n.chat-send-btn[_ngcontent-%COMP%]:hover:not(:disabled) {\n  background: #1565c0;\n  transform: scale(1.05);\n}\n.chat-send-btn[_ngcontent-%COMP%]:disabled {\n  background: #e0e0e0;\n  color: #999;\n  cursor: not-allowed;\n}\n.spinner[_ngcontent-%COMP%] {\n  width: 14px;\n  height: 14px;\n  border: 2px solid #ffffff;\n  border-top-color: transparent;\n  border-radius: 50%;\n  animation: _ngcontent-%COMP%_spin 0.8s linear infinite;\n}\n@keyframes _ngcontent-%COMP%_spin {\n  to {\n    transform: rotate(360deg);\n  }\n}\n.editor-wrapper[_ngcontent-%COMP%] {\n  padding-bottom: 100px;\n}\n.toolbar-dropdown-container[_ngcontent-%COMP%] {\n  position: relative;\n  display: inline-block;\n}\n.table-grid-popup[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 100%;\n  left: 0;\n  background: white;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  padding: 10px;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);\n  z-index: 1000;\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n}\n.grid-label[_ngcontent-%COMP%] {\n  text-align: center;\n  font-size: 12px;\n  color: #666;\n  margin-bottom: 5px;\n  font-weight: 600;\n}\n.grid-row[_ngcontent-%COMP%] {\n  display: flex;\n  gap: 2px;\n}\n.grid-cell[_ngcontent-%COMP%] {\n  width: 16px;\n  height: 16px;\n  border: 1px solid #e0e0e0;\n  background: white;\n  cursor: pointer;\n  transition: all 0.1s ease;\n}\n.grid-cell[_ngcontent-%COMP%]:hover, .grid-cell.active[_ngcontent-%COMP%] {\n  background: #e3f2fd;\n  border-color: #1976d2;\n}\n.gallery-container[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  height: 100vh;\n  margin-left: 60px;\n  background-color: #f8f9fa;\n  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);\n  padding: 20px 40px;\n  overflow-y: auto;\n}\n.gallery-container.sidebar-open[_ngcontent-%COMP%] {\n  margin-left: 280px;\n}\n@media (max-width: 768px) {\n  .gallery-container[_ngcontent-%COMP%] {\n    margin-left: 0;\n    padding: 20px;\n  }\n}\n.gallery-header[_ngcontent-%COMP%] {\n  margin-bottom: 30px;\n}\n.gallery-header[_ngcontent-%COMP%]   h2[_ngcontent-%COMP%] {\n  font-size: 24px;\n  color: #333;\n  margin-bottom: 20px;\n}\n.gallery-controls[_ngcontent-%COMP%] {\n  display: flex;\n  gap: 15px;\n  align-items: center;\n  flex-wrap: wrap;\n}\n.gallery-search[_ngcontent-%COMP%] {\n  flex: 1;\n  min-width: 250px;\n  padding: 10px 15px;\n  border: 1px solid #ddd;\n  border-radius: 6px;\n  font-size: 14px;\n}\n.gallery-filter[_ngcontent-%COMP%] {\n  padding: 10px 15px;\n  border: 1px solid #ddd;\n  border-radius: 6px;\n  font-size: 14px;\n  background: white;\n  cursor: pointer;\n}\n.view-toggle[_ngcontent-%COMP%] {\n  display: flex;\n  border: 1px solid #ddd;\n  border-radius: 6px;\n  overflow: hidden;\n}\n.view-toggle[_ngcontent-%COMP%]   button[_ngcontent-%COMP%] {\n  padding: 10px;\n  border: none;\n  background: white;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.view-toggle[_ngcontent-%COMP%]   button[_ngcontent-%COMP%]:hover {\n  background: #f5f5f5;\n}\n.view-toggle[_ngcontent-%COMP%]   button.active[_ngcontent-%COMP%] {\n  background: #e3f2fd;\n  color: #1976d2;\n}\n.gallery-content[_ngcontent-%COMP%] {\n  display: grid;\n  gap: 20px;\n  padding-bottom: 40px;\n}\n.gallery-content.grid-view[_ngcontent-%COMP%] {\n  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));\n}\n.gallery-content.list-view[_ngcontent-%COMP%] {\n  grid-template-columns: 1fr;\n}\n.template-card[_ngcontent-%COMP%] {\n  background: white;\n  border-radius: 8px;\n  overflow: hidden;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);\n  transition: transform 0.2s, box-shadow 0.2s;\n  cursor: pointer;\n  border: 1px solid #eee;\n}\n.template-card[_ngcontent-%COMP%]:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);\n  border-color: #1976d2;\n}\n.template-preview[_ngcontent-%COMP%] {\n  height: 200px;\n  background: #f0f0f0;\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.list-view[_ngcontent-%COMP%]   .template-card[_ngcontent-%COMP%] {\n  display: flex;\n  height: 120px;\n}\n.list-view[_ngcontent-%COMP%]   .template-preview[_ngcontent-%COMP%] {\n  width: 120px;\n  height: 100%;\n}\n.preview-placeholder[_ngcontent-%COMP%] {\n  font-size: 48px;\n  font-weight: bold;\n  color: #ccc;\n  text-transform: uppercase;\n}\n.template-badge[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  background: #4caf50;\n  color: white;\n  padding: 4px 8px;\n  border-radius: 4px;\n  font-size: 11px;\n  font-weight: 600;\n  text-transform: uppercase;\n  z-index: 10;\n}\n.template-badge.form-badge[_ngcontent-%COMP%] {\n  background: #2196f3;\n}\n.template-info[_ngcontent-%COMP%] {\n  padding: 15px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.list-view[_ngcontent-%COMP%]   .template-info[_ngcontent-%COMP%] {\n  flex: 1;\n  padding: 20px;\n  flex-direction: row;\n  align-items: center;\n}\n.template-info[_ngcontent-%COMP%]   h3[_ngcontent-%COMP%] {\n  margin: 0 0 10px 0;\n  font-size: 16px;\n  font-weight: 600;\n  color: #333;\n}\n.list-view[_ngcontent-%COMP%]   .template-info[_ngcontent-%COMP%]   h3[_ngcontent-%COMP%] {\n  margin: 0;\n  font-size: 18px;\n}\n.select-btn[_ngcontent-%COMP%] {\n  background: #f5f5f5;\n  color: #333;\n  border: none;\n  padding: 8px 12px;\n  border-radius: 4px;\n  font-size: 13px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: background 0.2s;\n  align-self: flex-start;\n}\n.template-card[_ngcontent-%COMP%]:hover   .select-btn[_ngcontent-%COMP%] {\n  background: #1976d2;\n  color: white;\n}\n.list-view[_ngcontent-%COMP%]   .select-btn[_ngcontent-%COMP%] {\n  align-self: center;\n}\n.no-results[_ngcontent-%COMP%] {\n  text-align: center;\n  padding: 40px;\n  color: #666;\n  grid-column: 1 / -1;\n}\n[hidden][_ngcontent-%COMP%] {\n  display: none !important;\n}\n  .change-highlight {\n  background-color: #ffeb3b;\n  border-radius: 3px;\n  padding: 2px 4px;\n  box-shadow: 0 0 0 2px rgba(255, 235, 59, 0.3);\n  animation: _ngcontent-%COMP%_highlightPulse 2s ease-in-out infinite;\n  transition: all 0.3s ease;\n}\n@keyframes _ngcontent-%COMP%_highlightPulse {\n  0%, 100% {\n    background-color: #ffeb3b;\n    box-shadow: 0 0 0 2px rgba(255, 235, 59, 0.3);\n  }\n  50% {\n    background-color: #ffd54f;\n    box-shadow: 0 0 0 4px rgba(255, 213, 79, 0.4);\n  }\n}\n.embedded-history-sidebar[_ngcontent-%COMP%] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  width: 320px;\n  background-color: #f8fafc;\n  border-left: 1px solid #e2e8f0;\n  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.05);\n  display: flex;\n  flex-direction: column;\n  transform: translateX(100%);\n  transition: transform 0.3s ease-in-out;\n  z-index: 3000;\n}\n.embedded-history-sidebar.open[_ngcontent-%COMP%] {\n  transform: translateX(0);\n}\n.sidebar-header[_ngcontent-%COMP%] {\n  padding: 1rem;\n  border-bottom: 1px solid #e2e8f0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  background-color: white;\n}\n.sidebar-header[_ngcontent-%COMP%]   h3[_ngcontent-%COMP%] {\n  margin: 0;\n  font-size: 1.1rem;\n  font-weight: 600;\n  color: #1e293b;\n}\n.close-btn[_ngcontent-%COMP%] {\n  background: none;\n  border: none;\n  color: #64748b;\n  cursor: pointer;\n  padding: 4px;\n  border-radius: 4px;\n  transition: all 0.2s;\n}\n.close-btn[_ngcontent-%COMP%]:hover {\n  background-color: #f1f5f9;\n  color: #0f172a;\n}\n.history-list[_ngcontent-%COMP%] {\n  flex: 1;\n  overflow-y: auto;\n  padding: 1rem;\n}\n.history-card[_ngcontent-%COMP%] {\n  background-color: white;\n  border: 1px solid #e2e8f0;\n  border-radius: 8px;\n  padding: 1rem;\n  margin-bottom: 0.75rem;\n  transition: all 0.2s;\n  cursor: pointer;\n}\n.history-card[_ngcontent-%COMP%]:hover {\n  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);\n  border-color: #cbd5e1;\n}\n.message-text[_ngcontent-%COMP%] {\n  margin: 0 0 0.75rem 0;\n  font-size: 0.9rem;\n  color: #334155;\n  line-height: 1.5;\n  word-wrap: break-word;\n}\n.card-footer[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  font-size: 0.75rem;\n  color: #94a3b8;\n}\n.copy-btn[_ngcontent-%COMP%] {\n  background: none;\n  border: none;\n  color: #94a3b8;\n  cursor: pointer;\n  padding: 4px;\n  border-radius: 4px;\n  display: flex;\n  align-items: center;\n  transition: all 0.2s;\n  position: relative;\n}\n.copy-btn[_ngcontent-%COMP%]:hover {\n  color: #3b82f6;\n  background-color: #eff6ff;\n}\n.copy-feedback[_ngcontent-%COMP%] {\n  position: absolute;\n  top: -25px;\n  right: 0;\n  background-color: #0f172a;\n  color: white;\n  padding: 2px 6px;\n  border-radius: 4px;\n  font-size: 0.7rem;\n  opacity: 0;\n  transition: opacity 0.2s;\n  pointer-events: none;\n}\n.copy-btn.copied[_ngcontent-%COMP%]   .copy-feedback[_ngcontent-%COMP%] {\n  opacity: 1;\n}\n.copy-btn.copied[_ngcontent-%COMP%] {\n  color: #22c55e;\n}\n.loading-indicator[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: center;\n  padding: 1rem;\n}\n.empty-state-history[_ngcontent-%COMP%] {\n  text-align: center;\n  padding: 2rem 1rem;\n  color: #94a3b8;\n}\n.error-message[_ngcontent-%COMP%] {\n  color: #ef4444;\n  text-align: center;\n  padding: 1rem;\n  font-size: 0.9rem;\n}\n.loading-more[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n  padding: 12px;\n  color: #94a3b8;\n  font-size: 13px;\n}\n.spinner-small[_ngcontent-%COMP%] {\n  width: 16px;\n  height: 16px;\n  border: 2px solid #e2e8f0;\n  border-top-color: #3b82f6;\n  border-radius: 50%;\n  animation: _ngcontent-%COMP%_spin 0.8s linear infinite;\n}\n.history-controls[_ngcontent-%COMP%] {\n  padding: 12px;\n  border-bottom: 1px solid #e2e8f0;\n  display: flex;\n  gap: 8px;\n  background: white;\n  align-items: center;\n}\n.search-box[_ngcontent-%COMP%] {\n  flex: 1;\n  display: flex;\n  align-items: center;\n  background: #f1f5f9;\n  border-radius: 6px;\n  padding: 0 8px;\n  border: 1px solid transparent;\n  transition: all 0.2s;\n}\n.search-box[_ngcontent-%COMP%]:focus-within {\n  background: white;\n  border-color: #3b82f6;\n  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);\n}\n.search-input[_ngcontent-%COMP%] {\n  flex: 1;\n  border: none;\n  background: transparent;\n  padding: 8px 4px;\n  font-size: 13px;\n  outline: none;\n  color: #334155;\n  min-width: 0;\n}\n.search-btn[_ngcontent-%COMP%] {\n  background: none;\n  border: none;\n  padding: 4px;\n  color: #94a3b8;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n}\n.search-btn[_ngcontent-%COMP%]:hover {\n  color: #3b82f6;\n}\n.sort-btn[_ngcontent-%COMP%] {\n  flex-shrink: 0;\n  width: 32px;\n  height: 32px;\n  background: white;\n  border: 1px solid #e2e8f0;\n  border-radius: 6px;\n  color: #64748b;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  transition: all 0.2s;\n}\n.sort-btn[_ngcontent-%COMP%]:hover {\n  border-color: #cbd5e1;\n  color: #0f172a;\n  background: #f8fafc;\n}\n.html-preview-container[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  position: relative;\n  background: white;\n}\n.scaled-preview[_ngcontent-%COMP%] {\n  width: 8.5in;\n  min-height: 11in;\n  transform-origin: top left;\n  transform: scale(0.25);\n  pointer-events: none;\n  background: white;\n}\n.scaled-preview[_ngcontent-%COMP%]     body {\n  margin: 0;\n  padding: 0;\n  overflow: hidden;\n}\n.back-btn[_ngcontent-%COMP%] {\n  width: auto !important;\n  padding: 0 10px !important;\n  gap: 6px;\n  color: #555;\n  font-weight: 600;\n}\n.back-btn[_ngcontent-%COMP%]:hover {\n  background: #f0f0f0;\n  color: #1976d2;\n}\n.back-text[_ngcontent-%COMP%] {\n  font-size: 14px;\n}\n@media (max-width: 600px) {\n  .back-text[_ngcontent-%COMP%] {\n    display: none;\n  }\n}\n.toolbar-logo[_ngcontent-%COMP%] {\n  height: 32px;\n  width: auto;\n  margin-right: 8px;\n  cursor: pointer;\n}\n.form-preview-placeholder[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 12px;\n  color: #2196f3;\n  padding: 20px;\n}\n.form-preview-placeholder[_ngcontent-%COMP%]   svg[_ngcontent-%COMP%] {\n  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));\n}\n.form-label[_ngcontent-%COMP%] {\n  margin: 0;\n  font-size: 13px;\n  font-weight: 600;\n  color: #666;\n  text-align: center;\n}\n.form-preview-container[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  position: relative;\n  background: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.form-scaled-preview[_ngcontent-%COMP%] {\n  transform: scale(0.15);\n  transform-origin: top left;\n  width: 666.67%;\n  height: 666.67%;\n  position: absolute;\n  top: 0;\n  left: 0;\n  pointer-events: none;\n}\n.preview-render-container[_ngcontent-%COMP%] {\n  position: fixed;\n  top: -10000px;\n  left: -10000px;\n  width: 850px;\n  visibility: hidden;\n  pointer-events: none;\n}\n.image-preview-container[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  background: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.preview-image[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 100%;\n  object-fit: contain;\n}\n.loading-spinner-preview[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin-bottom: 12px;\n}\n/*# sourceMappingURL=resume-editor.component.css.map */'] });
   }
 };
 (() => {
@@ -30576,4 +30614,4 @@ var ResumeEditorComponent = class _ResumeEditorComponent {
 export {
   ResumeEditorComponent
 };
-//# sourceMappingURL=chunk-AFLHZ47P.js.map
+//# sourceMappingURL=chunk-224SN2XO.js.map

@@ -1,7 +1,7 @@
 import {
   ChatSidebarComponent,
   TemplateService
-} from "./chunk-LXW27I2M.js";
+} from "./chunk-7Q2IJ6AP.js";
 import {
   BenefitsService
 } from "./chunk-GTDY7AB5.js";
@@ -483,4 +483,4 @@ var TemplateGalleryComponent = class _TemplateGalleryComponent {
 export {
   TemplateGalleryComponent
 };
-//# sourceMappingURL=chunk-RFEDS7AE.js.map
+//# sourceMappingURL=chunk-PQARC74K.js.map
