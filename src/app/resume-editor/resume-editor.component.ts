@@ -318,6 +318,7 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
           if (this.currentResumeData) {
             // If we have data, bind it to the new template
             this.processTemplateAndData(htmlContent, 'backend/template', this.currentResumeData);
+            this.saveStateToHistory(); // Save initial state
           } else {
             // Just load the empty template
             this.setContent(htmlContent);
@@ -590,7 +591,15 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   onFormDataChange(newData: ResumeData) {
       this.currentResumeData = newData;
       this.isManualEdit = true;
-      // Maybe auto-save or simple local state update
+      
+      // Throttle history saves to avoid bloating stack with every keystroke
+      if (this.historyThrottleTimeout) {
+        clearTimeout(this.historyThrottleTimeout);
+      }
+      
+      this.historyThrottleTimeout = setTimeout(() => {
+        this.saveStateToHistory();
+      }, 500); // 500ms debounce
   }
 
 
@@ -624,6 +633,7 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
              console.log('📥 Updating editor with remote resume data');
              this.currentResumeData = resumeData;
              this.normalizeResumeData(this.currentResumeData);
+             this.saveStateToHistory(); // Save initial state for undo
              this.cdr.detectChanges(); 
           }
 
@@ -1087,6 +1097,53 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   tableGridHover = { rows: 0, cols: 0 };
   maxTableGridSize = 10;
 
+  // Data History for Form Mode
+  private dataHistory: string[] = [];
+  private dataRedoStack: string[] = [];
+  private maxHistory = 50;
+  private historyThrottleTimeout: any;
+
+  private saveStateToHistory() {
+    if (!this.currentResumeData) return;
+    const state = JSON.stringify(this.currentResumeData);
+    
+    // Only save if different from last state
+    if (this.dataHistory.length === 0 || this.dataHistory[this.dataHistory.length - 1] !== state) {
+      this.dataHistory.push(state);
+      if (this.dataHistory.length > this.maxHistory) {
+        this.dataHistory.shift();
+      }
+      this.dataRedoStack = [];
+    }
+  }
+
+  // Global Keyboard Shortcuts for Undo/Redo
+  @HostListener('window:keydown', ['$event'])
+  handleGlobalShortcuts(event: KeyboardEvent) {
+    // Only handle if not typing in the AI chat input
+    if (document.activeElement?.className === 'chat-input') return;
+
+    if ((event.ctrlKey || event.metaKey) && event.key === 'z') {
+      if (!event.shiftKey) {
+        if (this.canUndo()) {
+          this.undo();
+          event.preventDefault();
+        }
+      } else {
+        if (this.canRedo()) {
+          this.redo();
+          event.preventDefault();
+        }
+      }
+    }
+    if ((event.ctrlKey || event.metaKey) && event.key === 'y') {
+      if (this.canRedo()) {
+        this.redo();
+        event.preventDefault();
+      }
+    }
+  }
+
   constructor(
     private templateService: TemplateService, 
     private cdr: ChangeDetectorRef,
@@ -1482,11 +1539,50 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   undo(): void {
-    this.editor.chain().focus().undo().run();
+    if (this.isFormEditMode) {
+      if (this.dataHistory.length > 1) {
+        // Current state is at the end, so we save it to redo stack and restore the previous one
+        const currentState = this.dataHistory.pop();
+        if (currentState) this.dataRedoStack.push(currentState);
+        
+        const previousState = this.dataHistory[this.dataHistory.length - 1];
+        this.currentResumeData = JSON.parse(previousState);
+        
+        // Update dynamic component
+        if (this.currentFormComponentRef) {
+          (this.currentFormComponentRef.instance as any).resumeData = this.currentResumeData;
+          if ((this.currentFormComponentRef.instance as any).cdr) {
+            (this.currentFormComponentRef.instance as any).cdr.markForCheck();
+          }
+        }
+        this.cdr.detectChanges();
+      }
+    } else {
+      this.editor.chain().focus().undo().run();
+    }
   }
 
   redo(): void {
-    this.editor.chain().focus().redo().run();
+    if (this.isFormEditMode) {
+      if (this.dataRedoStack.length > 0) {
+        const nextState = this.dataRedoStack.pop();
+        if (nextState) {
+          this.dataHistory.push(nextState);
+          this.currentResumeData = JSON.parse(nextState);
+          
+          // Update dynamic component
+          if (this.currentFormComponentRef) {
+            (this.currentFormComponentRef.instance as any).resumeData = this.currentResumeData;
+            if ((this.currentFormComponentRef.instance as any).cdr) {
+              (this.currentFormComponentRef.instance as any).cdr.markForCheck();
+            }
+          }
+          this.cdr.detectChanges();
+        }
+      }
+    } else {
+      this.editor.chain().focus().redo().run();
+    }
   }
 
   toggleTableGrid(): void {
@@ -1581,10 +1677,16 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   canUndo(): boolean {
+    if (this.isFormEditMode) {
+      return this.dataHistory.length > 1;
+    }
     return this.editor?.can().undo() || false;
   }
 
   canRedo(): boolean {
+    if (this.isFormEditMode) {
+      return this.dataRedoStack.length > 0;
+    }
     return this.editor?.can().redo() || false;
   }
 
@@ -2202,6 +2304,7 @@ export class ResumeEditorComponent implements OnInit, AfterViewInit, OnDestroy {
           
           if (response.status && response.data && response.data.currentResume) {
             this.currentResumeData = response.data.currentResume;
+            this.saveStateToHistory(); // Save AI-enhanced state to history
             this.updateResumeWithEnhancedData(response.data);
             
             // Clear the chat input if it was from the textarea

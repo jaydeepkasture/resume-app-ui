@@ -102,46 +102,21 @@
   <div class="toolbar" *ngIf="isToolbarVisible">
     <!-- Logo and Back Button -->
     <div class="toolbar-group">
-        <div class="toolbar-logo-item">
-            <div class="logo-text">1min<span>cv.com</span></div>
-        </div>
-        <button class="toolbar-btn back-btn" (click)="goBackToGallery()" title="Back to Gallery">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M19 12H5"></path>
-                <path d="M12 19l-7-7 7-7"></path>
-            </svg>
-            <span class="back-text">Back</span>
-        </button>
+      <button class="toolbar-btn back-btn" (click)="goBackToGallery()" title="Back to Gallery">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5"></path>
+          <path d="M12 19l-7-7 7-7"></path>
+        </svg>
+        <span class="back-text">Back</span>
+      </button>
+      <div class="toolbar-logo-item">
+          <div class="logo-text">1min<span>cv.com</span></div>
+      </div>
     </div>
 
     <div class="toolbar-divider"></div>
 
-    <!-- Save Button -->
     <div class="toolbar-group">
-         <button class="toolbar-btn save-btn" (click)="saveResume()" [disabled]="!isManualEdit || isSaving" title="Save Resume (Enabled only after manual edits)" [style.opacity]="(!isManualEdit || isSaving) ? 0.5 : 1" style="display: flex; align-items: center; gap: 5px;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v13a2 2 0 0 1-2 2z"></path>
-                <polyline points="17 21 17 13 7 13 7 21"></polyline>
-                <polyline points="7 3 7 8 15 8"></polyline>
-            </svg>
-            <span style="font-weight: 600;">{{ isSaving ? 'Saving...' : 'Save' }}</span>
-        </button>
-    </div>
-
-    <div class="toolbar-divider"></div>
-
-    <!-- Template Selector -->
-    <div class="toolbar-group">
-      <app-template-dropdown 
-        [currentTemplateName]="currentTemplateName" 
-        (templateSelected)="onBackendTemplateSelected($event)">
-      </app-template-dropdown>
-    </div>
-
-    <div class="toolbar-divider"></div>
-
-    <!-- History Controls -->
-    <div class="toolbar-group" *ngIf="!isFormEditMode">
       <button 
         class="toolbar-btn" 
         (click)="undo()" 
@@ -164,7 +139,29 @@
       </button>
     </div>
 
-    <div class="toolbar-divider" *ngIf="!isFormEditMode"></div>
+    <div class="toolbar-divider"></div>
+
+    <!-- Template Selector -->
+    <div class="toolbar-group">
+      <app-template-dropdown 
+        [currentTemplateName]="currentTemplateName" 
+        (templateSelected)="onBackendTemplateSelected($event)">
+      </app-template-dropdown>
+    </div>
+
+    <div class="toolbar-divider"></div>
+     <div class="toolbar-group">
+         <button class="toolbar-btn save-btn" (click)="saveResume()" [disabled]="!isManualEdit || isSaving" title="Save Resume (Enabled only after manual edits)" [style.opacity]="(!isManualEdit || isSaving) ? 0.5 : 1" style="display: flex; align-items: center; gap: 5px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v13a2 2 0 0 1-2 2z"></path>
+                <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                <polyline points="7 3 7 8 15 8"></polyline>
+            </svg>
+            <span style="font-weight: 600;">{{ isSaving ? 'Saving...' : 'Save' }}</span>
+        </button>
+    </div>
+    <div class="toolbar-divider"></div>
+
 
     <!-- Text Formatting -->
     <div class="toolbar-group" *ngIf="!isFormEditMode">
