@@ -27617,50 +27617,12 @@ function ResumeEditorComponent__svg_svg_28_Template(rf, ctx) {
     \u0275\u0275elementEnd();
   }
 }
-function ResumeEditorComponent_div_29_div_26_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_36_Template(rf, ctx) {
   if (rf & 1) {
     const _r5 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 62)(1, "button", 98);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_26_Template_button_click_1_listener() {
-      \u0275\u0275restoreView(_r5);
-      const ctx_r0 = \u0275\u0275nextContext(2);
-      return \u0275\u0275resetView(ctx_r0.undo());
-    });
-    \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(2, "svg", 37);
-    \u0275\u0275element(3, "path", 99)(4, "path", 100);
-    \u0275\u0275elementEnd()();
-    \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(5, "button", 101);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_26_Template_button_click_5_listener() {
-      \u0275\u0275restoreView(_r5);
-      const ctx_r0 = \u0275\u0275nextContext(2);
-      return \u0275\u0275resetView(ctx_r0.redo());
-    });
-    \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(6, "svg", 37);
-    \u0275\u0275element(7, "path", 102)(8, "path", 103);
-    \u0275\u0275elementEnd()()();
-  }
-  if (rf & 2) {
-    const ctx_r0 = \u0275\u0275nextContext(2);
-    \u0275\u0275advance();
-    \u0275\u0275property("disabled", !ctx_r0.canUndo());
-    \u0275\u0275advance(4);
-    \u0275\u0275property("disabled", !ctx_r0.canRedo());
-  }
-}
-function ResumeEditorComponent_div_29_div_27_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275element(0, "div", 70);
-  }
-}
-function ResumeEditorComponent_div_29_div_28_Template(rf, ctx) {
-  if (rf & 1) {
-    const _r6 = \u0275\u0275getCurrentView();
     \u0275\u0275elementStart(0, "div", 62)(1, "button", 104);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_28_Template_button_click_1_listener() {
-      \u0275\u0275restoreView(_r6);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_36_Template_button_click_1_listener() {
+      \u0275\u0275restoreView(_r5);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.toggleBold());
     });
@@ -27668,8 +27630,8 @@ function ResumeEditorComponent_div_29_div_28_Template(rf, ctx) {
     \u0275\u0275text(3, "B");
     \u0275\u0275elementEnd()();
     \u0275\u0275elementStart(4, "button", 105);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_28_Template_button_click_4_listener() {
-      \u0275\u0275restoreView(_r6);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_36_Template_button_click_4_listener() {
+      \u0275\u0275restoreView(_r5);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.toggleItalic());
     });
@@ -27677,8 +27639,8 @@ function ResumeEditorComponent_div_29_div_28_Template(rf, ctx) {
     \u0275\u0275text(6, "I");
     \u0275\u0275elementEnd()();
     \u0275\u0275elementStart(7, "button", 106);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_28_Template_button_click_7_listener() {
-      \u0275\u0275restoreView(_r6);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_36_Template_button_click_7_listener() {
+      \u0275\u0275restoreView(_r5);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.toggleUnderline());
     });
@@ -27686,8 +27648,8 @@ function ResumeEditorComponent_div_29_div_28_Template(rf, ctx) {
     \u0275\u0275text(9, "U");
     \u0275\u0275elementEnd()();
     \u0275\u0275elementStart(10, "button", 107);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_28_Template_button_click_10_listener() {
-      \u0275\u0275restoreView(_r6);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_36_Template_button_click_10_listener() {
+      \u0275\u0275restoreView(_r5);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.toggleStrike());
     });
@@ -27707,17 +27669,17 @@ function ResumeEditorComponent_div_29_div_28_Template(rf, ctx) {
     \u0275\u0275classProp("active", ctx_r0.isActive("strike"));
   }
 }
-function ResumeEditorComponent_div_29_div_29_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_37_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275element(0, "div", 70);
   }
 }
-function ResumeEditorComponent_div_29_div_30_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_38_Template(rf, ctx) {
   if (rf & 1) {
-    const _r7 = \u0275\u0275getCurrentView();
+    const _r6 = \u0275\u0275getCurrentView();
     \u0275\u0275elementStart(0, "div", 62)(1, "select", 108);
-    \u0275\u0275listener("change", function ResumeEditorComponent_div_29_div_30_Template_select_change_1_listener($event) {
-      \u0275\u0275restoreView(_r7);
+    \u0275\u0275listener("change", function ResumeEditorComponent_div_29_div_38_Template_select_change_1_listener($event) {
+      \u0275\u0275restoreView(_r6);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.setFontFamily($event.target.value));
     });
@@ -27764,8 +27726,8 @@ function ResumeEditorComponent_div_29_div_30_Template(rf, ctx) {
     \u0275\u0275text(29, "Impact");
     \u0275\u0275elementEnd()();
     \u0275\u0275elementStart(30, "select", 123);
-    \u0275\u0275listener("change", function ResumeEditorComponent_div_29_div_30_Template_select_change_30_listener($event) {
-      \u0275\u0275restoreView(_r7);
+    \u0275\u0275listener("change", function ResumeEditorComponent_div_29_div_38_Template_select_change_30_listener($event) {
+      \u0275\u0275restoreView(_r6);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.setFontSize($event.target.value));
     });
@@ -27816,17 +27778,17 @@ function ResumeEditorComponent_div_29_div_30_Template(rf, ctx) {
     \u0275\u0275elementEnd()()();
   }
 }
-function ResumeEditorComponent_div_29_div_31_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_39_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275element(0, "div", 70);
   }
 }
-function ResumeEditorComponent_div_29_div_32_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_40_Template(rf, ctx) {
   if (rf & 1) {
-    const _r8 = \u0275\u0275getCurrentView();
+    const _r7 = \u0275\u0275getCurrentView();
     \u0275\u0275elementStart(0, "div", 62)(1, "select", 138);
-    \u0275\u0275listener("ngModelChange", function ResumeEditorComponent_div_29_div_32_Template_select_ngModelChange_1_listener($event) {
-      \u0275\u0275restoreView(_r8);
+    \u0275\u0275listener("ngModelChange", function ResumeEditorComponent_div_29_div_40_Template_select_ngModelChange_1_listener($event) {
+      \u0275\u0275restoreView(_r7);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.setHeadingValue($event));
     });
@@ -27858,17 +27820,17 @@ function ResumeEditorComponent_div_29_div_32_Template(rf, ctx) {
     \u0275\u0275property("ngModel", ctx_r0.currentHeadingValue);
   }
 }
-function ResumeEditorComponent_div_29_div_33_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_41_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275element(0, "div", 70);
   }
 }
-function ResumeEditorComponent_div_29_div_34_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_42_Template(rf, ctx) {
   if (rf & 1) {
-    const _r9 = \u0275\u0275getCurrentView();
+    const _r8 = \u0275\u0275getCurrentView();
     \u0275\u0275elementStart(0, "div", 62)(1, "button", 146);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_34_Template_button_click_1_listener() {
-      \u0275\u0275restoreView(_r9);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_42_Template_button_click_1_listener() {
+      \u0275\u0275restoreView(_r8);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.toggleBulletList());
     });
@@ -27878,8 +27840,8 @@ function ResumeEditorComponent_div_29_div_34_Template(rf, ctx) {
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
     \u0275\u0275elementStart(9, "button", 153);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_34_Template_button_click_9_listener() {
-      \u0275\u0275restoreView(_r9);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_42_Template_button_click_9_listener() {
+      \u0275\u0275restoreView(_r8);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.toggleOrderedList());
     });
@@ -27896,17 +27858,17 @@ function ResumeEditorComponent_div_29_div_34_Template(rf, ctx) {
     \u0275\u0275classProp("active", ctx_r0.isActive("orderedList"));
   }
 }
-function ResumeEditorComponent_div_29_div_35_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_43_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275element(0, "div", 70);
   }
 }
-function ResumeEditorComponent_div_29_div_36_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_44_Template(rf, ctx) {
   if (rf & 1) {
-    const _r10 = \u0275\u0275getCurrentView();
+    const _r9 = \u0275\u0275getCurrentView();
     \u0275\u0275elementStart(0, "div", 62)(1, "button", 160);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_36_Template_button_click_1_listener() {
-      \u0275\u0275restoreView(_r10);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_44_Template_button_click_1_listener() {
+      \u0275\u0275restoreView(_r9);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.setTextAlign("left"));
     });
@@ -27916,8 +27878,8 @@ function ResumeEditorComponent_div_29_div_36_Template(rf, ctx) {
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
     \u0275\u0275elementStart(6, "button", 164);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_36_Template_button_click_6_listener() {
-      \u0275\u0275restoreView(_r10);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_44_Template_button_click_6_listener() {
+      \u0275\u0275restoreView(_r9);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.setTextAlign("center"));
     });
@@ -27927,8 +27889,8 @@ function ResumeEditorComponent_div_29_div_36_Template(rf, ctx) {
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
     \u0275\u0275elementStart(11, "button", 167);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_36_Template_button_click_11_listener() {
-      \u0275\u0275restoreView(_r10);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_44_Template_button_click_11_listener() {
+      \u0275\u0275restoreView(_r9);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.setTextAlign("right"));
     });
@@ -27938,8 +27900,8 @@ function ResumeEditorComponent_div_29_div_36_Template(rf, ctx) {
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
     \u0275\u0275elementStart(16, "button", 170);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_36_Template_button_click_16_listener() {
-      \u0275\u0275restoreView(_r10);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_44_Template_button_click_16_listener() {
+      \u0275\u0275restoreView(_r9);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.setTextAlign("justify"));
     });
@@ -27960,39 +27922,39 @@ function ResumeEditorComponent_div_29_div_36_Template(rf, ctx) {
     \u0275\u0275classProp("active", ctx_r0.isActive("textAlign", \u0275\u0275pureFunction0(11, _c4)));
   }
 }
-function ResumeEditorComponent_div_29_div_37_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_45_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275element(0, "div", 70);
   }
 }
-function ResumeEditorComponent_div_29_div_38_div_12_div_3_div_1_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_46_div_12_div_3_div_1_Template(rf, ctx) {
   if (rf & 1) {
-    const _r12 = \u0275\u0275getCurrentView();
+    const _r11 = \u0275\u0275getCurrentView();
     \u0275\u0275elementStart(0, "div", 188);
-    \u0275\u0275listener("mouseenter", function ResumeEditorComponent_div_29_div_38_div_12_div_3_div_1_Template_div_mouseenter_0_listener() {
-      const c_r13 = \u0275\u0275restoreView(_r12).$implicit;
-      const r_r14 = \u0275\u0275nextContext().$implicit;
+    \u0275\u0275listener("mouseenter", function ResumeEditorComponent_div_29_div_46_div_12_div_3_div_1_Template_div_mouseenter_0_listener() {
+      const c_r12 = \u0275\u0275restoreView(_r11).$implicit;
+      const r_r13 = \u0275\u0275nextContext().$implicit;
       const ctx_r0 = \u0275\u0275nextContext(4);
-      return \u0275\u0275resetView(ctx_r0.onTableGridHover(r_r14, c_r13));
-    })("click", function ResumeEditorComponent_div_29_div_38_div_12_div_3_div_1_Template_div_click_0_listener() {
-      const c_r13 = \u0275\u0275restoreView(_r12).$implicit;
-      const r_r14 = \u0275\u0275nextContext().$implicit;
+      return \u0275\u0275resetView(ctx_r0.onTableGridHover(r_r13, c_r12));
+    })("click", function ResumeEditorComponent_div_29_div_46_div_12_div_3_div_1_Template_div_click_0_listener() {
+      const c_r12 = \u0275\u0275restoreView(_r11).$implicit;
+      const r_r13 = \u0275\u0275nextContext().$implicit;
       const ctx_r0 = \u0275\u0275nextContext(4);
-      return \u0275\u0275resetView(ctx_r0.insertCustomTable(r_r14, c_r13));
+      return \u0275\u0275resetView(ctx_r0.insertCustomTable(r_r13, c_r12));
     });
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
-    const c_r13 = ctx.$implicit;
-    const r_r14 = \u0275\u0275nextContext().$implicit;
+    const c_r12 = ctx.$implicit;
+    const r_r13 = \u0275\u0275nextContext().$implicit;
     const ctx_r0 = \u0275\u0275nextContext(4);
-    \u0275\u0275classProp("active", r_r14 <= ctx_r0.tableGridHover.rows && c_r13 <= ctx_r0.tableGridHover.cols);
+    \u0275\u0275classProp("active", r_r13 <= ctx_r0.tableGridHover.rows && c_r12 <= ctx_r0.tableGridHover.cols);
   }
 }
-function ResumeEditorComponent_div_29_div_38_div_12_div_3_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_46_div_12_div_3_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementStart(0, "div", 186);
-    \u0275\u0275template(1, ResumeEditorComponent_div_29_div_38_div_12_div_3_div_1_Template, 1, 2, "div", 187);
+    \u0275\u0275template(1, ResumeEditorComponent_div_29_div_46_div_12_div_3_div_1_Template, 1, 2, "div", 187);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -28000,12 +27962,12 @@ function ResumeEditorComponent_div_29_div_38_div_12_div_3_Template(rf, ctx) {
     \u0275\u0275property("ngForOf", \u0275\u0275pureFunction0(1, _c5));
   }
 }
-function ResumeEditorComponent_div_29_div_38_div_12_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_46_div_12_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementStart(0, "div", 183)(1, "div", 184);
     \u0275\u0275text(2);
     \u0275\u0275elementEnd();
-    \u0275\u0275template(3, ResumeEditorComponent_div_29_div_38_div_12_div_3_Template, 2, 2, "div", 185);
+    \u0275\u0275template(3, ResumeEditorComponent_div_29_div_46_div_12_div_3_Template, 2, 2, "div", 185);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -28016,12 +27978,12 @@ function ResumeEditorComponent_div_29_div_38_div_12_Template(rf, ctx) {
     \u0275\u0275property("ngForOf", \u0275\u0275pureFunction0(3, _c5));
   }
 }
-function ResumeEditorComponent_div_29_div_38_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_46_Template(rf, ctx) {
   if (rf & 1) {
-    const _r11 = \u0275\u0275getCurrentView();
+    const _r10 = \u0275\u0275getCurrentView();
     \u0275\u0275elementStart(0, "div", 62)(1, "button", 172);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_38_Template_button_click_1_listener() {
-      \u0275\u0275restoreView(_r11);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_46_Template_button_click_1_listener() {
+      \u0275\u0275restoreView(_r10);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.setLink());
     });
@@ -28031,14 +27993,14 @@ function ResumeEditorComponent_div_29_div_38_Template(rf, ctx) {
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
     \u0275\u0275elementStart(5, "div", 175);
-    \u0275\u0275listener("mouseleave", function ResumeEditorComponent_div_29_div_38_Template_div_mouseleave_5_listener() {
-      \u0275\u0275restoreView(_r11);
+    \u0275\u0275listener("mouseleave", function ResumeEditorComponent_div_29_div_46_Template_div_mouseleave_5_listener() {
+      \u0275\u0275restoreView(_r10);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.isTableGridOpen = false);
     });
     \u0275\u0275elementStart(6, "button", 176);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_38_Template_button_click_6_listener() {
-      \u0275\u0275restoreView(_r11);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_46_Template_button_click_6_listener() {
+      \u0275\u0275restoreView(_r10);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.toggleTableGrid());
     });
@@ -28046,12 +28008,12 @@ function ResumeEditorComponent_div_29_div_38_Template(rf, ctx) {
     \u0275\u0275elementStart(7, "svg", 37);
     \u0275\u0275element(8, "rect", 177)(9, "line", 178)(10, "line", 179)(11, "line", 180);
     \u0275\u0275elementEnd()();
-    \u0275\u0275template(12, ResumeEditorComponent_div_29_div_38_div_12_Template, 4, 4, "div", 181);
+    \u0275\u0275template(12, ResumeEditorComponent_div_29_div_46_div_12_Template, 4, 4, "div", 181);
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
     \u0275\u0275elementStart(13, "button", 182);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_38_Template_button_click_13_listener() {
-      \u0275\u0275restoreView(_r11);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_46_Template_button_click_13_listener() {
+      \u0275\u0275restoreView(_r10);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.setHorizontalRule());
     });
@@ -28070,17 +28032,17 @@ function ResumeEditorComponent_div_29_div_38_Template(rf, ctx) {
     \u0275\u0275property("ngIf", ctx_r0.isTableGridOpen);
   }
 }
-function ResumeEditorComponent_div_29_div_39_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_47_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275element(0, "div", 70);
   }
 }
-function ResumeEditorComponent_div_29_div_40_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_48_Template(rf, ctx) {
   if (rf & 1) {
-    const _r15 = \u0275\u0275getCurrentView();
+    const _r14 = \u0275\u0275getCurrentView();
     \u0275\u0275elementStart(0, "div", 62)(1, "button", 189);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_40_Template_button_click_1_listener() {
-      \u0275\u0275restoreView(_r15);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_48_Template_button_click_1_listener() {
+      \u0275\u0275restoreView(_r14);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.deleteTable());
     });
@@ -28090,8 +28052,8 @@ function ResumeEditorComponent_div_29_div_40_Template(rf, ctx) {
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
     \u0275\u0275elementStart(8, "button", 195);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_40_Template_button_click_8_listener() {
-      \u0275\u0275restoreView(_r15);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_48_Template_button_click_8_listener() {
+      \u0275\u0275restoreView(_r14);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.addRowBefore());
     });
@@ -28101,8 +28063,8 @@ function ResumeEditorComponent_div_29_div_40_Template(rf, ctx) {
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
     \u0275\u0275elementStart(14, "button", 199);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_40_Template_button_click_14_listener() {
-      \u0275\u0275restoreView(_r15);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_48_Template_button_click_14_listener() {
+      \u0275\u0275restoreView(_r14);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.addRowAfter());
     });
@@ -28112,8 +28074,8 @@ function ResumeEditorComponent_div_29_div_40_Template(rf, ctx) {
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
     \u0275\u0275elementStart(20, "button", 201);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_40_Template_button_click_20_listener() {
-      \u0275\u0275restoreView(_r15);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_48_Template_button_click_20_listener() {
+      \u0275\u0275restoreView(_r14);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.deleteRow());
     });
@@ -28123,8 +28085,8 @@ function ResumeEditorComponent_div_29_div_40_Template(rf, ctx) {
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
     \u0275\u0275elementStart(26, "button", 204);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_40_Template_button_click_26_listener() {
-      \u0275\u0275restoreView(_r15);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_48_Template_button_click_26_listener() {
+      \u0275\u0275restoreView(_r14);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.addColumnBefore());
     });
@@ -28134,8 +28096,8 @@ function ResumeEditorComponent_div_29_div_40_Template(rf, ctx) {
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
     \u0275\u0275elementStart(32, "button", 206);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_40_Template_button_click_32_listener() {
-      \u0275\u0275restoreView(_r15);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_48_Template_button_click_32_listener() {
+      \u0275\u0275restoreView(_r14);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.addColumnAfter());
     });
@@ -28145,8 +28107,8 @@ function ResumeEditorComponent_div_29_div_40_Template(rf, ctx) {
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
     \u0275\u0275elementStart(38, "button", 208);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_40_Template_button_click_38_listener() {
-      \u0275\u0275restoreView(_r15);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_48_Template_button_click_38_listener() {
+      \u0275\u0275restoreView(_r14);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.deleteColumn());
     });
@@ -28156,12 +28118,12 @@ function ResumeEditorComponent_div_29_div_40_Template(rf, ctx) {
     \u0275\u0275elementEnd()()();
   }
 }
-function ResumeEditorComponent_div_29_div_42_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_50_Template(rf, ctx) {
   if (rf & 1) {
-    const _r16 = \u0275\u0275getCurrentView();
+    const _r15 = \u0275\u0275getCurrentView();
     \u0275\u0275elementStart(0, "div", 62)(1, "button", 211);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_42_Template_button_click_1_listener() {
-      \u0275\u0275restoreView(_r16);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_50_Template_button_click_1_listener() {
+      \u0275\u0275restoreView(_r15);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.toggleBlockquote());
     });
@@ -28176,12 +28138,12 @@ function ResumeEditorComponent_div_29_div_42_Template(rf, ctx) {
     \u0275\u0275classProp("active", ctx_r0.isActive("blockquote"));
   }
 }
-function ResumeEditorComponent_div_29_div_43_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_51_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275element(0, "div", 70);
   }
 }
-function ResumeEditorComponent_div_29_div_53_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_61_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementStart(0, "div", 214);
     \u0275\u0275text(1);
@@ -28193,12 +28155,12 @@ function ResumeEditorComponent_div_29_div_53_Template(rf, ctx) {
     \u0275\u0275textInterpolate1(" ", ctx_r0.downloadSlogan, " ");
   }
 }
-function ResumeEditorComponent_div_29_div_55_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_63_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275element(0, "div", 70);
   }
 }
-function ResumeEditorComponent_div_29_div_56__svg_svg_2_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_64__svg_svg_2_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(0, "svg", 37);
@@ -28206,7 +28168,7 @@ function ResumeEditorComponent_div_29_div_56__svg_svg_2_Template(rf, ctx) {
     \u0275\u0275elementEnd();
   }
 }
-function ResumeEditorComponent_div_29_div_56__svg_svg_3_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_64__svg_svg_3_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275namespaceSVG();
     \u0275\u0275elementStart(0, "svg", 37);
@@ -28214,16 +28176,16 @@ function ResumeEditorComponent_div_29_div_56__svg_svg_3_Template(rf, ctx) {
     \u0275\u0275elementEnd();
   }
 }
-function ResumeEditorComponent_div_29_div_56_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_64_Template(rf, ctx) {
   if (rf & 1) {
-    const _r17 = \u0275\u0275getCurrentView();
+    const _r16 = \u0275\u0275getCurrentView();
     \u0275\u0275elementStart(0, "div", 62)(1, "button", 215);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_56_Template_button_click_1_listener() {
-      \u0275\u0275restoreView(_r17);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_div_64_Template_button_click_1_listener() {
+      \u0275\u0275restoreView(_r16);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.toggleEnhancementMode());
     });
-    \u0275\u0275template(2, ResumeEditorComponent_div_29_div_56__svg_svg_2_Template, 5, 0, "svg", 15)(3, ResumeEditorComponent_div_29_div_56__svg_svg_3_Template, 3, 0, "svg", 15);
+    \u0275\u0275template(2, ResumeEditorComponent_div_29_div_64__svg_svg_2_Template, 5, 0, "svg", 15)(3, ResumeEditorComponent_div_29_div_64__svg_svg_3_Template, 3, 0, "svg", 15);
     \u0275\u0275elementStart(4, "span", 216);
     \u0275\u0275text(5);
     \u0275\u0275elementEnd()()();
@@ -28241,7 +28203,7 @@ function ResumeEditorComponent_div_29_div_56_Template(rf, ctx) {
     \u0275\u0275textInterpolate(ctx_r0.useHtmlMode ? "HTML" : "JSON");
   }
 }
-function ResumeEditorComponent_div_29_div_57_Template(rf, ctx) {
+function ResumeEditorComponent_div_29_div_65_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275element(0, "div", 70);
   }
@@ -28249,152 +28211,175 @@ function ResumeEditorComponent_div_29_div_57_Template(rf, ctx) {
 function ResumeEditorComponent_div_29_Template(rf, ctx) {
   if (rf & 1) {
     const _r4 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 61)(1, "div", 62)(2, "div", 63)(3, "div", 64);
-    \u0275\u0275text(4, "1min");
-    \u0275\u0275elementStart(5, "span");
-    \u0275\u0275text(6, "cv.com");
-    \u0275\u0275elementEnd()()();
-    \u0275\u0275elementStart(7, "button", 65);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_7_listener() {
+    \u0275\u0275elementStart(0, "div", 61)(1, "div", 62)(2, "button", 63);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_2_listener() {
       \u0275\u0275restoreView(_r4);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.goBackToGallery());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(8, "svg", 66);
-    \u0275\u0275element(9, "path", 67)(10, "path", 68);
+    \u0275\u0275elementStart(3, "svg", 64);
+    \u0275\u0275element(4, "path", 65)(5, "path", 66);
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(11, "span", 69);
-    \u0275\u0275text(12, "Back");
-    \u0275\u0275elementEnd()()();
+    \u0275\u0275elementStart(6, "span", 67);
+    \u0275\u0275text(7, "Back");
+    \u0275\u0275elementEnd()();
+    \u0275\u0275elementStart(8, "div", 68)(9, "div", 69);
+    \u0275\u0275text(10, "1min");
+    \u0275\u0275elementStart(11, "span");
+    \u0275\u0275text(12, "cv.com");
+    \u0275\u0275elementEnd()()()();
     \u0275\u0275element(13, "div", 70);
     \u0275\u0275elementStart(14, "div", 62)(15, "button", 71);
     \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_15_listener() {
       \u0275\u0275restoreView(_r4);
       const ctx_r0 = \u0275\u0275nextContext();
-      return \u0275\u0275resetView(ctx_r0.saveResume());
+      return \u0275\u0275resetView(ctx_r0.undo());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(16, "svg", 72);
-    \u0275\u0275element(17, "path", 73)(18, "polyline", 74)(19, "polyline", 75);
-    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(16, "svg", 37);
+    \u0275\u0275element(17, "path", 72)(18, "path", 73);
+    \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(20, "span", 76);
-    \u0275\u0275text(21);
+    \u0275\u0275elementStart(19, "button", 74);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_19_listener() {
+      \u0275\u0275restoreView(_r4);
+      const ctx_r0 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r0.redo());
+    });
+    \u0275\u0275namespaceSVG();
+    \u0275\u0275elementStart(20, "svg", 37);
+    \u0275\u0275element(21, "path", 75)(22, "path", 76);
     \u0275\u0275elementEnd()()();
-    \u0275\u0275element(22, "div", 70);
-    \u0275\u0275elementStart(23, "div", 62)(24, "app-template-dropdown", 77);
-    \u0275\u0275listener("templateSelected", function ResumeEditorComponent_div_29_Template_app_template_dropdown_templateSelected_24_listener($event) {
+    \u0275\u0275namespaceHTML();
+    \u0275\u0275element(23, "div", 70);
+    \u0275\u0275elementStart(24, "div", 62)(25, "app-template-dropdown", 77);
+    \u0275\u0275listener("templateSelected", function ResumeEditorComponent_div_29_Template_app_template_dropdown_templateSelected_25_listener($event) {
       \u0275\u0275restoreView(_r4);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.onBackendTemplateSelected($event));
     });
     \u0275\u0275elementEnd()();
-    \u0275\u0275element(25, "div", 70);
-    \u0275\u0275template(26, ResumeEditorComponent_div_29_div_26_Template, 9, 2, "div", 78)(27, ResumeEditorComponent_div_29_div_27_Template, 1, 0, "div", 79)(28, ResumeEditorComponent_div_29_div_28_Template, 13, 8, "div", 78)(29, ResumeEditorComponent_div_29_div_29_Template, 1, 0, "div", 79)(30, ResumeEditorComponent_div_29_div_30_Template, 61, 0, "div", 78)(31, ResumeEditorComponent_div_29_div_31_Template, 1, 0, "div", 79)(32, ResumeEditorComponent_div_29_div_32_Template, 16, 1, "div", 78)(33, ResumeEditorComponent_div_29_div_33_Template, 1, 0, "div", 79)(34, ResumeEditorComponent_div_29_div_34_Template, 17, 4, "div", 78)(35, ResumeEditorComponent_div_29_div_35_Template, 1, 0, "div", 79)(36, ResumeEditorComponent_div_29_div_36_Template, 21, 12, "div", 78)(37, ResumeEditorComponent_div_29_div_37_Template, 1, 0, "div", 79)(38, ResumeEditorComponent_div_29_div_38_Template, 16, 5, "div", 78)(39, ResumeEditorComponent_div_29_div_39_Template, 1, 0, "div", 79)(40, ResumeEditorComponent_div_29_div_40_Template, 44, 0, "div", 78);
-    \u0275\u0275element(41, "div", 70);
-    \u0275\u0275template(42, ResumeEditorComponent_div_29_div_42_Template, 5, 2, "div", 78)(43, ResumeEditorComponent_div_29_div_43_Template, 1, 0, "div", 79);
-    \u0275\u0275elementStart(44, "div", 80)(45, "button", 81);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_45_listener() {
+    \u0275\u0275element(26, "div", 70);
+    \u0275\u0275elementStart(27, "div", 62)(28, "button", 78);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_28_listener() {
+      \u0275\u0275restoreView(_r4);
+      const ctx_r0 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r0.saveResume());
+    });
+    \u0275\u0275namespaceSVG();
+    \u0275\u0275elementStart(29, "svg", 79);
+    \u0275\u0275element(30, "path", 80)(31, "polyline", 81)(32, "polyline", 82);
+    \u0275\u0275elementEnd();
+    \u0275\u0275namespaceHTML();
+    \u0275\u0275elementStart(33, "span", 83);
+    \u0275\u0275text(34);
+    \u0275\u0275elementEnd()()();
+    \u0275\u0275element(35, "div", 70);
+    \u0275\u0275template(36, ResumeEditorComponent_div_29_div_36_Template, 13, 8, "div", 84)(37, ResumeEditorComponent_div_29_div_37_Template, 1, 0, "div", 85)(38, ResumeEditorComponent_div_29_div_38_Template, 61, 0, "div", 84)(39, ResumeEditorComponent_div_29_div_39_Template, 1, 0, "div", 85)(40, ResumeEditorComponent_div_29_div_40_Template, 16, 1, "div", 84)(41, ResumeEditorComponent_div_29_div_41_Template, 1, 0, "div", 85)(42, ResumeEditorComponent_div_29_div_42_Template, 17, 4, "div", 84)(43, ResumeEditorComponent_div_29_div_43_Template, 1, 0, "div", 85)(44, ResumeEditorComponent_div_29_div_44_Template, 21, 12, "div", 84)(45, ResumeEditorComponent_div_29_div_45_Template, 1, 0, "div", 85)(46, ResumeEditorComponent_div_29_div_46_Template, 16, 5, "div", 84)(47, ResumeEditorComponent_div_29_div_47_Template, 1, 0, "div", 85)(48, ResumeEditorComponent_div_29_div_48_Template, 44, 0, "div", 84);
+    \u0275\u0275element(49, "div", 70);
+    \u0275\u0275template(50, ResumeEditorComponent_div_29_div_50_Template, 5, 2, "div", 84)(51, ResumeEditorComponent_div_29_div_51_Template, 1, 0, "div", 85);
+    \u0275\u0275elementStart(52, "div", 86)(53, "button", 87);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_53_listener() {
       \u0275\u0275restoreView(_r4);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.downloadPdf());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(46, "svg", 37);
-    \u0275\u0275element(47, "path", 82);
-    \u0275\u0275elementStart(48, "g", 83);
-    \u0275\u0275element(49, "polyline", 84)(50, "line", 85);
+    \u0275\u0275elementStart(54, "svg", 37);
+    \u0275\u0275element(55, "path", 88);
+    \u0275\u0275elementStart(56, "g", 89);
+    \u0275\u0275element(57, "polyline", 90)(58, "line", 91);
     \u0275\u0275elementEnd()();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(51, "span", 86);
-    \u0275\u0275text(52);
+    \u0275\u0275elementStart(59, "span", 92);
+    \u0275\u0275text(60);
     \u0275\u0275elementEnd()();
-    \u0275\u0275template(53, ResumeEditorComponent_div_29_div_53_Template, 2, 1, "div", 87);
+    \u0275\u0275template(61, ResumeEditorComponent_div_29_div_61_Template, 2, 1, "div", 93);
     \u0275\u0275elementEnd();
-    \u0275\u0275element(54, "div", 70);
-    \u0275\u0275template(55, ResumeEditorComponent_div_29_div_55_Template, 1, 0, "div", 79)(56, ResumeEditorComponent_div_29_div_56_Template, 6, 6, "div", 78)(57, ResumeEditorComponent_div_29_div_57_Template, 1, 0, "div", 79);
-    \u0275\u0275elementStart(58, "div", 62)(59, "button", 88);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_59_listener() {
+    \u0275\u0275element(62, "div", 70);
+    \u0275\u0275template(63, ResumeEditorComponent_div_29_div_63_Template, 1, 0, "div", 85)(64, ResumeEditorComponent_div_29_div_64_Template, 6, 6, "div", 84)(65, ResumeEditorComponent_div_29_div_65_Template, 1, 0, "div", 85);
+    \u0275\u0275elementStart(66, "div", 62)(67, "button", 94);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_67_listener() {
       \u0275\u0275restoreView(_r4);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.toggleHistorySidebar());
     });
     \u0275\u0275namespaceSVG();
-    \u0275\u0275elementStart(60, "svg", 37);
-    \u0275\u0275element(61, "circle", 89)(62, "polyline", 90);
+    \u0275\u0275elementStart(68, "svg", 37);
+    \u0275\u0275element(69, "circle", 95)(70, "polyline", 96);
     \u0275\u0275elementEnd();
     \u0275\u0275namespaceHTML();
-    \u0275\u0275elementStart(63, "span");
-    \u0275\u0275text(64, "History");
+    \u0275\u0275elementStart(71, "span");
+    \u0275\u0275text(72, "History");
     \u0275\u0275elementEnd()()();
-    \u0275\u0275element(65, "div", 70);
-    \u0275\u0275elementStart(66, "div", 91)(67, "button", 92);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_67_listener() {
+    \u0275\u0275element(73, "div", 70);
+    \u0275\u0275elementStart(74, "div", 97)(75, "button", 98);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_75_listener() {
       \u0275\u0275restoreView(_r4);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.applyQuickPrompt("summary"));
     });
-    \u0275\u0275text(68, " \u2728 ");
-    \u0275\u0275elementStart(69, "span", 93);
-    \u0275\u0275text(70, "Summary");
+    \u0275\u0275text(76, " \u2728 ");
+    \u0275\u0275elementStart(77, "span", 99);
+    \u0275\u0275text(78, "Summary");
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(71, "button", 94);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_71_listener() {
+    \u0275\u0275elementStart(79, "button", 100);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_79_listener() {
       \u0275\u0275restoreView(_r4);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.applyQuickPrompt("experience"));
     });
-    \u0275\u0275text(72, " \u{1F4BC} ");
-    \u0275\u0275elementStart(73, "span", 93);
-    \u0275\u0275text(74, "Experience");
+    \u0275\u0275text(80, " \u{1F4BC} ");
+    \u0275\u0275elementStart(81, "span", 99);
+    \u0275\u0275text(82, "Experience");
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(75, "button", 95);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_75_listener() {
+    \u0275\u0275elementStart(83, "button", 101);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_83_listener() {
       \u0275\u0275restoreView(_r4);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.applyQuickPrompt("skills"));
     });
-    \u0275\u0275text(76, " \u{1F6E0}\uFE0F ");
-    \u0275\u0275elementStart(77, "span", 93);
-    \u0275\u0275text(78, "Skills");
+    \u0275\u0275text(84, " \u{1F6E0}\uFE0F ");
+    \u0275\u0275elementStart(85, "span", 99);
+    \u0275\u0275text(86, "Skills");
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(79, "button", 96);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_79_listener() {
+    \u0275\u0275elementStart(87, "button", 102);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_87_listener() {
       \u0275\u0275restoreView(_r4);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.applyQuickPrompt("professional"));
     });
-    \u0275\u0275text(80, " \u{1F454} ");
-    \u0275\u0275elementStart(81, "span", 93);
-    \u0275\u0275text(82, "Tone");
+    \u0275\u0275text(88, " \u{1F454} ");
+    \u0275\u0275elementStart(89, "span", 99);
+    \u0275\u0275text(90, "Tone");
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(83, "button", 97);
-    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_83_listener() {
+    \u0275\u0275elementStart(91, "button", 103);
+    \u0275\u0275listener("click", function ResumeEditorComponent_div_29_Template_button_click_91_listener() {
       \u0275\u0275restoreView(_r4);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.applyQuickPrompt("grammar"));
     });
-    \u0275\u0275text(84, " \u2705 ");
-    \u0275\u0275elementStart(85, "span", 93);
-    \u0275\u0275text(86, "Grammar");
+    \u0275\u0275text(92, " \u2705 ");
+    \u0275\u0275elementStart(93, "span", 99);
+    \u0275\u0275text(94, "Grammar");
     \u0275\u0275elementEnd()()()();
   }
   if (rf & 2) {
     const ctx_r0 = \u0275\u0275nextContext();
     \u0275\u0275advance(15);
+    \u0275\u0275property("disabled", !ctx_r0.canUndo());
+    \u0275\u0275advance(4);
+    \u0275\u0275property("disabled", !ctx_r0.canRedo());
+    \u0275\u0275advance(6);
+    \u0275\u0275property("currentTemplateName", ctx_r0.currentTemplateName);
+    \u0275\u0275advance(3);
     \u0275\u0275styleProp("opacity", !ctx_r0.isManualEdit || ctx_r0.isSaving ? 0.5 : 1);
     \u0275\u0275property("disabled", !ctx_r0.isManualEdit || ctx_r0.isSaving);
     \u0275\u0275advance(6);
     \u0275\u0275textInterpolate(ctx_r0.isSaving ? "Saving..." : "Save");
-    \u0275\u0275advance(3);
-    \u0275\u0275property("currentTemplateName", ctx_r0.currentTemplateName);
     \u0275\u0275advance(2);
-    \u0275\u0275property("ngIf", !ctx_r0.isFormEditMode);
-    \u0275\u0275advance();
-    \u0275\u0275property("ngIf", !ctx_r0.isFormEditMode);
-    \u0275\u0275advance();
     \u0275\u0275property("ngIf", !ctx_r0.isFormEditMode);
     \u0275\u0275advance();
     \u0275\u0275property("ngIf", !ctx_r0.isFormEditMode);
@@ -28661,6 +28646,7 @@ var ResumeEditorComponent = class _ResumeEditorComponent {
           const htmlContent = response.data.htmlTemplate;
           if (this.currentResumeData) {
             this.processTemplateAndData(htmlContent, "backend/template", this.currentResumeData);
+            this.saveStateToHistory();
           } else {
             this.setContent(htmlContent);
           }
@@ -28866,6 +28852,12 @@ var ResumeEditorComponent = class _ResumeEditorComponent {
   onFormDataChange(newData) {
     this.currentResumeData = newData;
     this.isManualEdit = true;
+    if (this.historyThrottleTimeout) {
+      clearTimeout(this.historyThrottleTimeout);
+    }
+    this.historyThrottleTimeout = setTimeout(() => {
+      this.saveStateToHistory();
+    }, 500);
   }
   // Sidebar Handlers
   onChatSelected(chatId) {
@@ -28887,6 +28879,7 @@ var ResumeEditorComponent = class _ResumeEditorComponent {
             console.log("\u{1F4E5} Updating editor with remote resume data");
             this.currentResumeData = resumeData;
             this.normalizeResumeData(this.currentResumeData);
+            this.saveStateToHistory();
             this.cdr.detectChanges();
           }
           if (data.templateId) {
@@ -29216,6 +29209,42 @@ var ResumeEditorComponent = class _ResumeEditorComponent {
     this.useHtmlMode = !this.useHtmlMode;
     console.log(`\u{1F504} Enhancement mode switched to: ${this.useHtmlMode ? "HTML Mode" : "JSON Mode (Preserve Styling)"}`);
   }
+  saveStateToHistory() {
+    if (!this.currentResumeData)
+      return;
+    const state = JSON.stringify(this.currentResumeData);
+    if (this.dataHistory.length === 0 || this.dataHistory[this.dataHistory.length - 1] !== state) {
+      this.dataHistory.push(state);
+      if (this.dataHistory.length > this.maxHistory) {
+        this.dataHistory.shift();
+      }
+      this.dataRedoStack = [];
+    }
+  }
+  // Global Keyboard Shortcuts for Undo/Redo
+  handleGlobalShortcuts(event) {
+    if (document.activeElement?.className === "chat-input")
+      return;
+    if ((event.ctrlKey || event.metaKey) && event.key === "z") {
+      if (!event.shiftKey) {
+        if (this.canUndo()) {
+          this.undo();
+          event.preventDefault();
+        }
+      } else {
+        if (this.canRedo()) {
+          this.redo();
+          event.preventDefault();
+        }
+      }
+    }
+    if ((event.ctrlKey || event.metaKey) && event.key === "y") {
+      if (this.canRedo()) {
+        this.redo();
+        event.preventDefault();
+      }
+    }
+  }
   constructor(templateService, cdr, router, route, http) {
     this.templateService = templateService;
     this.cdr = cdr;
@@ -29271,6 +29300,9 @@ var ResumeEditorComponent = class _ResumeEditorComponent {
     this.isTableGridOpen = false;
     this.tableGridHover = { rows: 0, cols: 0 };
     this.maxTableGridSize = 10;
+    this.dataHistory = [];
+    this.dataRedoStack = [];
+    this.maxHistory = 50;
     this.templateService.getTemplates().subscribe((templates) => {
       this.templates = templates;
     });
@@ -29587,10 +29619,44 @@ var ResumeEditorComponent = class _ResumeEditorComponent {
     this.editor.chain().focus().insertContent({ type: "horizontalRule", attrs }).run();
   }
   undo() {
-    this.editor.chain().focus().undo().run();
+    if (this.isFormEditMode) {
+      if (this.dataHistory.length > 1) {
+        const currentState = this.dataHistory.pop();
+        if (currentState)
+          this.dataRedoStack.push(currentState);
+        const previousState = this.dataHistory[this.dataHistory.length - 1];
+        this.currentResumeData = JSON.parse(previousState);
+        if (this.currentFormComponentRef) {
+          this.currentFormComponentRef.instance.resumeData = this.currentResumeData;
+          if (this.currentFormComponentRef.instance.cdr) {
+            this.currentFormComponentRef.instance.cdr.markForCheck();
+          }
+        }
+        this.cdr.detectChanges();
+      }
+    } else {
+      this.editor.chain().focus().undo().run();
+    }
   }
   redo() {
-    this.editor.chain().focus().redo().run();
+    if (this.isFormEditMode) {
+      if (this.dataRedoStack.length > 0) {
+        const nextState = this.dataRedoStack.pop();
+        if (nextState) {
+          this.dataHistory.push(nextState);
+          this.currentResumeData = JSON.parse(nextState);
+          if (this.currentFormComponentRef) {
+            this.currentFormComponentRef.instance.resumeData = this.currentResumeData;
+            if (this.currentFormComponentRef.instance.cdr) {
+              this.currentFormComponentRef.instance.cdr.markForCheck();
+            }
+          }
+          this.cdr.detectChanges();
+        }
+      }
+    } else {
+      this.editor.chain().focus().redo().run();
+    }
   }
   toggleTableGrid() {
     this.isTableGridOpen = !this.isTableGridOpen;
@@ -29665,9 +29731,15 @@ var ResumeEditorComponent = class _ResumeEditorComponent {
     return this.editor?.isActive(name, attrs) || false;
   }
   canUndo() {
+    if (this.isFormEditMode) {
+      return this.dataHistory.length > 1;
+    }
     return this.editor?.can().undo() || false;
   }
   canRedo() {
+    if (this.isFormEditMode) {
+      return this.dataRedoStack.length > 0;
+    }
     return this.editor?.can().redo() || false;
   }
   // Get content
@@ -30126,6 +30198,7 @@ var ResumeEditorComponent = class _ResumeEditorComponent {
             console.log("Enhancement Response:", response);
             if (response.status && response.data && response.data.currentResume) {
               this.currentResumeData = response.data.currentResume;
+              this.saveStateToHistory();
               this.updateResumeWithEnhancedData(response.data);
               if (!customMessage) {
                 this.chatInput = "";
@@ -30478,11 +30551,13 @@ var ResumeEditorComponent = class _ResumeEditorComponent {
           return ctx.onUserInteraction();
         }, false, \u0275\u0275resolveDocument)("popstate", function ResumeEditorComponent_popstate_HostBindingHandler($event) {
           return ctx.onPopState($event);
+        }, false, \u0275\u0275resolveWindow)("keydown", function ResumeEditorComponent_keydown_HostBindingHandler($event) {
+          return ctx.handleGlobalShortcuts($event);
         }, false, \u0275\u0275resolveWindow)("resize", function ResumeEditorComponent_resize_HostBindingHandler() {
           return ctx.onResize();
         }, false, \u0275\u0275resolveWindow);
       }
-    }, standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 40, vars: 25, consts: [["dynamicFormContainer", ""], [1, "embedded-history-sidebar"], [1, "sidebar-header"], [1, "close-btn", 3, "click"], ["width", "24", "height", "24", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["x1", "18", "y1", "6", "x2", "6", "y2", "18"], ["x1", "6", "y1", "6", "x2", "18", "y2", "18"], [1, "history-controls"], [1, "search-box"], ["type", "text", "placeholder", "Search history...", 1, "search-input", 3, "ngModelChange", "keyup.enter", "ngModel"], [1, "search-btn", 3, "click"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["cx", "11", "cy", "11", "r", "8"], ["x1", "21", "y1", "21", "x2", "16.65", "y2", "16.65"], [1, "sort-btn", 3, "click", "title"], ["width", "16", "height", "16", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", 4, "ngIf"], [1, "history-list", 3, "scroll"], ["class", "loading-indicator", 4, "ngIf"], ["class", "error-message", 4, "ngIf"], ["class", "empty-state-history", 4, "ngIf"], ["class", "history-card", 3, "click", 4, "ngFor", "ngForOf"], ["class", "loading-more", 4, "ngIf"], [3, "chatSelected", "sidebarToggled"], [1, "editor-container", 3, "hidden"], [1, "floating-toggle-btn", 3, "click", "title"], ["width", "24", "height", "24", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", 4, "ngIf"], ["class", "toolbar", 4, "ngIf"], [1, "editor-wrapper"], [1, "editor", 3, "hidden"], ["class", "form-template-container", "id", "form-template-container", 4, "ngIf"], [1, "chat-interface"], [1, "chat-container"], [1, "chat-input-wrapper"], ["placeholder", "Ask AI to update your resume (e.g., 'Make the summary more professional')", "rows", "1", 1, "chat-input", 3, "ngModelChange", "keydown", "ngModel", "disabled"], [1, "chat-send-btn", 3, "click", "disabled"], ["width", "16", "height", "16", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round", 4, "ngIf"], ["class", "spinner", 4, "ngIf"], ["width", "16", "height", "16", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["x1", "12", "y1", "5", "x2", "12", "y2", "19"], ["points", "19 12 12 19 5 12"], ["x1", "12", "y1", "19", "x2", "12", "y2", "5"], ["points", "5 12 12 5 19 12"], [1, "loading-indicator"], [1, "spinner"], [1, "error-message"], [1, "empty-state-history"], [1, "history-card", 3, "click"], [1, "card-content", 3, "title"], [1, "message-text"], [1, "card-footer"], [1, "date"], ["title", "Copy full message", 1, "copy-btn", 3, "click"], ["x", "9", "y", "9", "width", "13", "height", "13", "rx", "2", "ry", "2"], ["d", "M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"], [1, "copy-feedback"], [1, "loading-more"], [1, "spinner-small"], ["x1", "3", "y1", "7", "x2", "21", "y2", "7"], ["x1", "3", "y1", "12", "x2", "21", "y2", "12"], ["x1", "3", "y1", "17", "x2", "21", "y2", "17"], ["points", "6 15 12 9 18 15"], [1, "toolbar"], [1, "toolbar-group"], [1, "toolbar-logo-item"], [1, "logo-text"], ["title", "Back to Gallery", 1, "toolbar-btn", "back-btn", 3, "click"], ["width", "20", "height", "20", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["d", "M19 12H5"], ["d", "M12 19l-7-7 7-7"], [1, "back-text"], [1, "toolbar-divider"], ["title", "Save Resume (Enabled only after manual edits)", 1, "toolbar-btn", "save-btn", 2, "display", "flex", "align-items", "center", "gap", "5px", 3, "click", "disabled"], ["width", "18", "height", "18", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["d", "M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v13a2 2 0 0 1-2 2z"], ["points", "17 21 17 13 7 13 7 21"], ["points", "7 3 7 8 15 8"], [2, "font-weight", "600"], [3, "templateSelected", "currentTemplateName"], ["class", "toolbar-group", 4, "ngIf"], ["class", "toolbar-divider", 4, "ngIf"], [1, "toolbar-group", 2, "position", "relative"], ["title", "Download as PDF (Best for templates with graphics and styling)", 1, "toolbar-btn", "download-btn", 3, "click", "disabled"], ["d", "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"], [1, "download-arrow"], ["points", "7 10 12 15 17 10"], ["x1", "12", "y1", "15", "x2", "12", "y2", "3"], [1, "download-label"], ["class", "download-slogan-popup", 4, "ngIf"], ["title", "View Enhancement History", 1, "toolbar-btn", 2, "width", "auto", "padding", "0 8px", "gap", "4px", 3, "click"], ["cx", "12", "cy", "12", "r", "10"], ["points", "12 6 12 12 16 14"], [1, "toolbar-group", "ai-quick-actions"], ["title", "Improve Summary", 1, "toolbar-btn", "ai-btn", 3, "click", "disabled"], [1, "btn-label"], ["title", "Enhance Experience", 1, "toolbar-btn", "ai-btn", 3, "click", "disabled"], ["title", "Suggest Skills", 1, "toolbar-btn", "ai-btn", 3, "click", "disabled"], ["title", "Professional Tone", 1, "toolbar-btn", "ai-btn", 3, "click", "disabled"], ["title", "Fix Grammar", 1, "toolbar-btn", "ai-btn", 3, "click", "disabled"], ["title", "Undo", 1, "toolbar-btn", 3, "click", "disabled"], ["d", "M3 7v6h6"], ["d", "M21 17a9 9 0 00-9-9 9 9 0 00-6 2.3L3 13"], ["title", "Redo", 1, "toolbar-btn", 3, "click", "disabled"], ["d", "M21 7v6h-6"], ["d", "M3 17a9 9 0 019-9 9 9 0 016 2.3l3 2.7"], ["title", "Bold", 1, "toolbar-btn", 3, "click"], ["title", "Italic", 1, "toolbar-btn", 3, "click"], ["title", "Underline", 1, "toolbar-btn", 3, "click"], ["title", "Strikethrough", 1, "toolbar-btn", 3, "click"], [1, "toolbar-select", "font-family-select", 2, "width", "140px", 3, "change"], ["value", "", "disabled", "", "selected", ""], ["value", "Arial", 2, "font-family", "Arial"], ["value", "Helvetica", 2, "font-family", "Helvetica"], ["value", "Times New Roman", 2, "font-family", "'Times New Roman'"], ["value", "Courier New", 2, "font-family", "'Courier New'"], ["value", "Verdana", 2, "font-family", "Verdana"], ["value", "Georgia", 2, "font-family", "Georgia"], ["value", "Palatino", 2, "font-family", "Palatino"], ["value", "Garamond", 2, "font-family", "Garamond"], ["value", "Bookman", 2, "font-family", "Bookman"], ["value", "Comic Sans MS", 2, "font-family", "'Comic Sans MS'"], ["value", "Trebuchet MS", 2, "font-family", "'Trebuchet MS'"], ["value", "Arial Black", 2, "font-family", "'Arial Black'"], ["value", "Impact", 2, "font-family", "Impact"], [1, "toolbar-select", "font-size-select", 2, "width", "80px", 3, "change"], ["value", "8pt"], ["value", "9pt"], ["value", "10pt"], ["value", "11pt"], ["value", "12pt"], ["value", "14pt"], ["value", "16pt"], ["value", "18pt"], ["value", "24pt"], ["value", "30pt"], ["value", "36pt"], ["value", "48pt"], ["value", "60pt"], ["value", "72pt"], [1, "toolbar-select", 3, "ngModelChange", "ngModel"], ["value", "paragraph"], ["value", "1"], ["value", "2"], ["value", "3"], ["value", "4"], ["value", "5"], ["value", "6"], ["title", "Bullet List", 1, "toolbar-btn", 3, "click"], ["x1", "8", "y1", "6", "x2", "21", "y2", "6"], ["x1", "8", "y1", "12", "x2", "21", "y2", "12"], ["x1", "8", "y1", "18", "x2", "21", "y2", "18"], ["cx", "4", "cy", "6", "r", "1", "fill", "currentColor"], ["cx", "4", "cy", "12", "r", "1", "fill", "currentColor"], ["cx", "4", "cy", "18", "r", "1", "fill", "currentColor"], ["title", "Numbered List", 1, "toolbar-btn", 3, "click"], ["x1", "10", "y1", "6", "x2", "21", "y2", "6"], ["x1", "10", "y1", "12", "x2", "21", "y2", "12"], ["x1", "10", "y1", "18", "x2", "21", "y2", "18"], ["d", "M4 6h1v4"], ["d", "M4 10h2"], ["d", "M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"], ["title", "Align Left", 1, "toolbar-btn", 3, "click"], ["x1", "3", "y1", "6", "x2", "21", "y2", "6"], ["x1", "3", "y1", "12", "x2", "15", "y2", "12"], ["x1", "3", "y1", "18", "x2", "18", "y2", "18"], ["title", "Align Center", 1, "toolbar-btn", 3, "click"], ["x1", "6", "y1", "12", "x2", "18", "y2", "12"], ["x1", "4", "y1", "18", "x2", "20", "y2", "18"], ["title", "Align Right", 1, "toolbar-btn", 3, "click"], ["x1", "9", "y1", "12", "x2", "21", "y2", "12"], ["x1", "6", "y1", "18", "x2", "21", "y2", "18"], ["title", "Justify", 1, "toolbar-btn", 3, "click"], ["x1", "3", "y1", "18", "x2", "21", "y2", "18"], ["title", "Insert Link", 1, "toolbar-btn", 3, "click"], ["d", "M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"], ["d", "M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"], [1, "toolbar-dropdown-container", 3, "mouseleave"], ["title", "Insert Table", 1, "toolbar-btn", 3, "click"], ["x", "3", "y", "3", "width", "18", "height", "18", "rx", "2", "ry", "2"], ["x1", "3", "y1", "9", "x2", "21", "y2", "9"], ["x1", "3", "y1", "15", "x2", "21", "y2", "15"], ["x1", "12", "y1", "3", "x2", "12", "y2", "21"], ["class", "table-grid-popup", 4, "ngIf"], ["title", "Horizontal Rule", 1, "toolbar-btn", 3, "click"], [1, "table-grid-popup"], [1, "grid-label"], ["class", "grid-row", 4, "ngFor", "ngForOf"], [1, "grid-row"], ["class", "grid-cell", 3, "active", "mouseenter", "click", 4, "ngFor", "ngForOf"], [1, "grid-cell", 3, "mouseenter", "click"], ["title", "Delete Table", 1, "toolbar-btn", 3, "click"], ["d", "M3 6h18"], ["d", "M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"], ["d", "M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"], ["x1", "10", "y1", "11", "x2", "10", "y2", "17"], ["x1", "14", "y1", "11", "x2", "14", "y2", "17"], ["title", "Add Row Before", 1, "toolbar-btn", 3, "click"], ["x1", "12", "y1", "8", "x2", "12", "y2", "16"], ["x1", "8", "y1", "12", "x2", "16", "y2", "12"], ["d", "M3 9h18"], ["title", "Add Row After", 1, "toolbar-btn", 3, "click"], ["d", "M3 15h18"], ["title", "Delete Row", 1, "toolbar-btn", 3, "click"], ["d", "M12 3v18"], ["x1", "5", "y1", "7", "x2", "19", "y2", "7", "stroke", "red"], ["title", "Add Column Before", 1, "toolbar-btn", 3, "click"], ["d", "M9 3v18"], ["title", "Add Column After", 1, "toolbar-btn", 3, "click"], ["d", "M15 3v18"], ["title", "Delete Column", 1, "toolbar-btn", 3, "click"], ["d", "M3 12h18"], ["x1", "7", "y1", "5", "x2", "7", "y2", "19", "stroke", "red"], ["title", "Blockquote", 1, "toolbar-btn", 3, "click"], ["d", "M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"], ["d", "M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"], [1, "download-slogan-popup"], [1, "toolbar-btn", "enhancement-mode-toggle", 2, "width", "auto", "padding", "0 8px", "gap", "4px", 3, "click", "title"], [2, "font-size", "11px", "font-weight", "600"], ["d", "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"], ["points", "14 2 14 8 20 8"], ["x1", "12", "y1", "18", "x2", "12", "y2", "12"], ["x1", "9", "y1", "15", "x2", "15", "y2", "15"], ["points", "16 18 22 12 16 6"], ["points", "8 6 2 12 8 18"], ["id", "form-template-container", 1, "form-template-container"], ["width", "16", "height", "16", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round"], ["x1", "22", "y1", "2", "x2", "11", "y2", "13"], ["points", "22 2 15 22 11 13 2 9 22 2"]], template: function ResumeEditorComponent_Template(rf, ctx) {
+    }, standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 40, vars: 25, consts: [["dynamicFormContainer", ""], [1, "embedded-history-sidebar"], [1, "sidebar-header"], [1, "close-btn", 3, "click"], ["width", "24", "height", "24", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["x1", "18", "y1", "6", "x2", "6", "y2", "18"], ["x1", "6", "y1", "6", "x2", "18", "y2", "18"], [1, "history-controls"], [1, "search-box"], ["type", "text", "placeholder", "Search history...", 1, "search-input", 3, "ngModelChange", "keyup.enter", "ngModel"], [1, "search-btn", 3, "click"], ["width", "14", "height", "14", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["cx", "11", "cy", "11", "r", "8"], ["x1", "21", "y1", "21", "x2", "16.65", "y2", "16.65"], [1, "sort-btn", 3, "click", "title"], ["width", "16", "height", "16", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", 4, "ngIf"], [1, "history-list", 3, "scroll"], ["class", "loading-indicator", 4, "ngIf"], ["class", "error-message", 4, "ngIf"], ["class", "empty-state-history", 4, "ngIf"], ["class", "history-card", 3, "click", 4, "ngFor", "ngForOf"], ["class", "loading-more", 4, "ngIf"], [3, "chatSelected", "sidebarToggled"], [1, "editor-container", 3, "hidden"], [1, "floating-toggle-btn", 3, "click", "title"], ["width", "24", "height", "24", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", 4, "ngIf"], ["class", "toolbar", 4, "ngIf"], [1, "editor-wrapper"], [1, "editor", 3, "hidden"], ["class", "form-template-container", "id", "form-template-container", 4, "ngIf"], [1, "chat-interface"], [1, "chat-container"], [1, "chat-input-wrapper"], ["placeholder", "Ask AI to update your resume (e.g., 'Make the summary more professional')", "rows", "1", 1, "chat-input", 3, "ngModelChange", "keydown", "ngModel", "disabled"], [1, "chat-send-btn", 3, "click", "disabled"], ["width", "16", "height", "16", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round", 4, "ngIf"], ["class", "spinner", 4, "ngIf"], ["width", "16", "height", "16", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["x1", "12", "y1", "5", "x2", "12", "y2", "19"], ["points", "19 12 12 19 5 12"], ["x1", "12", "y1", "19", "x2", "12", "y2", "5"], ["points", "5 12 12 5 19 12"], [1, "loading-indicator"], [1, "spinner"], [1, "error-message"], [1, "empty-state-history"], [1, "history-card", 3, "click"], [1, "card-content", 3, "title"], [1, "message-text"], [1, "card-footer"], [1, "date"], ["title", "Copy full message", 1, "copy-btn", 3, "click"], ["x", "9", "y", "9", "width", "13", "height", "13", "rx", "2", "ry", "2"], ["d", "M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"], [1, "copy-feedback"], [1, "loading-more"], [1, "spinner-small"], ["x1", "3", "y1", "7", "x2", "21", "y2", "7"], ["x1", "3", "y1", "12", "x2", "21", "y2", "12"], ["x1", "3", "y1", "17", "x2", "21", "y2", "17"], ["points", "6 15 12 9 18 15"], [1, "toolbar"], [1, "toolbar-group"], ["title", "Back to Gallery", 1, "toolbar-btn", "back-btn", 3, "click"], ["width", "20", "height", "20", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["d", "M19 12H5"], ["d", "M12 19l-7-7 7-7"], [1, "back-text"], [1, "toolbar-logo-item"], [1, "logo-text"], [1, "toolbar-divider"], ["title", "Undo", 1, "toolbar-btn", 3, "click", "disabled"], ["d", "M3 7v6h6"], ["d", "M21 17a9 9 0 00-9-9 9 9 0 00-6 2.3L3 13"], ["title", "Redo", 1, "toolbar-btn", 3, "click", "disabled"], ["d", "M21 7v6h-6"], ["d", "M3 17a9 9 0 019-9 9 9 0 016 2.3l3 2.7"], [3, "templateSelected", "currentTemplateName"], ["title", "Save Resume (Enabled only after manual edits)", 1, "toolbar-btn", "save-btn", 2, "display", "flex", "align-items", "center", "gap", "5px", 3, "click", "disabled"], ["width", "18", "height", "18", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2"], ["d", "M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v13a2 2 0 0 1-2 2z"], ["points", "17 21 17 13 7 13 7 21"], ["points", "7 3 7 8 15 8"], [2, "font-weight", "600"], ["class", "toolbar-group", 4, "ngIf"], ["class", "toolbar-divider", 4, "ngIf"], [1, "toolbar-group", 2, "position", "relative"], ["title", "Download as PDF (Best for templates with graphics and styling)", 1, "toolbar-btn", "download-btn", 3, "click", "disabled"], ["d", "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"], [1, "download-arrow"], ["points", "7 10 12 15 17 10"], ["x1", "12", "y1", "15", "x2", "12", "y2", "3"], [1, "download-label"], ["class", "download-slogan-popup", 4, "ngIf"], ["title", "View Enhancement History", 1, "toolbar-btn", 2, "width", "auto", "padding", "0 8px", "gap", "4px", 3, "click"], ["cx", "12", "cy", "12", "r", "10"], ["points", "12 6 12 12 16 14"], [1, "toolbar-group", "ai-quick-actions"], ["title", "Improve Summary", 1, "toolbar-btn", "ai-btn", 3, "click", "disabled"], [1, "btn-label"], ["title", "Enhance Experience", 1, "toolbar-btn", "ai-btn", 3, "click", "disabled"], ["title", "Suggest Skills", 1, "toolbar-btn", "ai-btn", 3, "click", "disabled"], ["title", "Professional Tone", 1, "toolbar-btn", "ai-btn", 3, "click", "disabled"], ["title", "Fix Grammar", 1, "toolbar-btn", "ai-btn", 3, "click", "disabled"], ["title", "Bold", 1, "toolbar-btn", 3, "click"], ["title", "Italic", 1, "toolbar-btn", 3, "click"], ["title", "Underline", 1, "toolbar-btn", 3, "click"], ["title", "Strikethrough", 1, "toolbar-btn", 3, "click"], [1, "toolbar-select", "font-family-select", 2, "width", "140px", 3, "change"], ["value", "", "disabled", "", "selected", ""], ["value", "Arial", 2, "font-family", "Arial"], ["value", "Helvetica", 2, "font-family", "Helvetica"], ["value", "Times New Roman", 2, "font-family", "'Times New Roman'"], ["value", "Courier New", 2, "font-family", "'Courier New'"], ["value", "Verdana", 2, "font-family", "Verdana"], ["value", "Georgia", 2, "font-family", "Georgia"], ["value", "Palatino", 2, "font-family", "Palatino"], ["value", "Garamond", 2, "font-family", "Garamond"], ["value", "Bookman", 2, "font-family", "Bookman"], ["value", "Comic Sans MS", 2, "font-family", "'Comic Sans MS'"], ["value", "Trebuchet MS", 2, "font-family", "'Trebuchet MS'"], ["value", "Arial Black", 2, "font-family", "'Arial Black'"], ["value", "Impact", 2, "font-family", "Impact"], [1, "toolbar-select", "font-size-select", 2, "width", "80px", 3, "change"], ["value", "8pt"], ["value", "9pt"], ["value", "10pt"], ["value", "11pt"], ["value", "12pt"], ["value", "14pt"], ["value", "16pt"], ["value", "18pt"], ["value", "24pt"], ["value", "30pt"], ["value", "36pt"], ["value", "48pt"], ["value", "60pt"], ["value", "72pt"], [1, "toolbar-select", 3, "ngModelChange", "ngModel"], ["value", "paragraph"], ["value", "1"], ["value", "2"], ["value", "3"], ["value", "4"], ["value", "5"], ["value", "6"], ["title", "Bullet List", 1, "toolbar-btn", 3, "click"], ["x1", "8", "y1", "6", "x2", "21", "y2", "6"], ["x1", "8", "y1", "12", "x2", "21", "y2", "12"], ["x1", "8", "y1", "18", "x2", "21", "y2", "18"], ["cx", "4", "cy", "6", "r", "1", "fill", "currentColor"], ["cx", "4", "cy", "12", "r", "1", "fill", "currentColor"], ["cx", "4", "cy", "18", "r", "1", "fill", "currentColor"], ["title", "Numbered List", 1, "toolbar-btn", 3, "click"], ["x1", "10", "y1", "6", "x2", "21", "y2", "6"], ["x1", "10", "y1", "12", "x2", "21", "y2", "12"], ["x1", "10", "y1", "18", "x2", "21", "y2", "18"], ["d", "M4 6h1v4"], ["d", "M4 10h2"], ["d", "M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"], ["title", "Align Left", 1, "toolbar-btn", 3, "click"], ["x1", "3", "y1", "6", "x2", "21", "y2", "6"], ["x1", "3", "y1", "12", "x2", "15", "y2", "12"], ["x1", "3", "y1", "18", "x2", "18", "y2", "18"], ["title", "Align Center", 1, "toolbar-btn", 3, "click"], ["x1", "6", "y1", "12", "x2", "18", "y2", "12"], ["x1", "4", "y1", "18", "x2", "20", "y2", "18"], ["title", "Align Right", 1, "toolbar-btn", 3, "click"], ["x1", "9", "y1", "12", "x2", "21", "y2", "12"], ["x1", "6", "y1", "18", "x2", "21", "y2", "18"], ["title", "Justify", 1, "toolbar-btn", 3, "click"], ["x1", "3", "y1", "18", "x2", "21", "y2", "18"], ["title", "Insert Link", 1, "toolbar-btn", 3, "click"], ["d", "M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"], ["d", "M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"], [1, "toolbar-dropdown-container", 3, "mouseleave"], ["title", "Insert Table", 1, "toolbar-btn", 3, "click"], ["x", "3", "y", "3", "width", "18", "height", "18", "rx", "2", "ry", "2"], ["x1", "3", "y1", "9", "x2", "21", "y2", "9"], ["x1", "3", "y1", "15", "x2", "21", "y2", "15"], ["x1", "12", "y1", "3", "x2", "12", "y2", "21"], ["class", "table-grid-popup", 4, "ngIf"], ["title", "Horizontal Rule", 1, "toolbar-btn", 3, "click"], [1, "table-grid-popup"], [1, "grid-label"], ["class", "grid-row", 4, "ngFor", "ngForOf"], [1, "grid-row"], ["class", "grid-cell", 3, "active", "mouseenter", "click", 4, "ngFor", "ngForOf"], [1, "grid-cell", 3, "mouseenter", "click"], ["title", "Delete Table", 1, "toolbar-btn", 3, "click"], ["d", "M3 6h18"], ["d", "M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"], ["d", "M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"], ["x1", "10", "y1", "11", "x2", "10", "y2", "17"], ["x1", "14", "y1", "11", "x2", "14", "y2", "17"], ["title", "Add Row Before", 1, "toolbar-btn", 3, "click"], ["x1", "12", "y1", "8", "x2", "12", "y2", "16"], ["x1", "8", "y1", "12", "x2", "16", "y2", "12"], ["d", "M3 9h18"], ["title", "Add Row After", 1, "toolbar-btn", 3, "click"], ["d", "M3 15h18"], ["title", "Delete Row", 1, "toolbar-btn", 3, "click"], ["d", "M12 3v18"], ["x1", "5", "y1", "7", "x2", "19", "y2", "7", "stroke", "red"], ["title", "Add Column Before", 1, "toolbar-btn", 3, "click"], ["d", "M9 3v18"], ["title", "Add Column After", 1, "toolbar-btn", 3, "click"], ["d", "M15 3v18"], ["title", "Delete Column", 1, "toolbar-btn", 3, "click"], ["d", "M3 12h18"], ["x1", "7", "y1", "5", "x2", "7", "y2", "19", "stroke", "red"], ["title", "Blockquote", 1, "toolbar-btn", 3, "click"], ["d", "M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"], ["d", "M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"], [1, "download-slogan-popup"], [1, "toolbar-btn", "enhancement-mode-toggle", 2, "width", "auto", "padding", "0 8px", "gap", "4px", 3, "click", "title"], [2, "font-size", "11px", "font-weight", "600"], ["d", "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"], ["points", "14 2 14 8 20 8"], ["x1", "12", "y1", "18", "x2", "12", "y2", "12"], ["x1", "9", "y1", "15", "x2", "15", "y2", "15"], ["points", "16 18 22 12 16 6"], ["points", "8 6 2 12 8 18"], ["id", "form-template-container", 1, "form-template-container"], ["width", "16", "height", "16", "viewBox", "0 0 24 24", "fill", "none", "stroke", "currentColor", "stroke-width", "2", "stroke-linecap", "round", "stroke-linejoin", "round"], ["x1", "22", "y1", "2", "x2", "11", "y2", "13"], ["points", "22 2 15 22 11 13 2 9 22 2"]], template: function ResumeEditorComponent_Template(rf, ctx) {
       if (rf & 1) {
         \u0275\u0275elementStart(0, "div", 1)(1, "div", 2)(2, "h3");
         \u0275\u0275text(3, "History");
@@ -30539,7 +30614,7 @@ var ResumeEditorComponent = class _ResumeEditorComponent {
         });
         \u0275\u0275template(27, ResumeEditorComponent__svg_svg_27_Template, 4, 0, "svg", 25)(28, ResumeEditorComponent__svg_svg_28_Template, 2, 0, "svg", 25);
         \u0275\u0275elementEnd();
-        \u0275\u0275template(29, ResumeEditorComponent_div_29_Template, 87, 37, "div", 26);
+        \u0275\u0275template(29, ResumeEditorComponent_div_29_Template, 95, 37, "div", 26);
         \u0275\u0275elementStart(30, "div", 27);
         \u0275\u0275element(31, "div", 28);
         \u0275\u0275template(32, ResumeEditorComponent_div_32_Template, 3, 0, "div", 29);
@@ -30614,4 +30689,4 @@ var ResumeEditorComponent = class _ResumeEditorComponent {
 export {
   ResumeEditorComponent
 };
-//# sourceMappingURL=chunk-224SN2XO.js.map
+//# sourceMappingURL=chunk-ACIFMJBO.js.map

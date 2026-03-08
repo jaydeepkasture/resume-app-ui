@@ -2166,12 +2166,12 @@ var routes = [
   // Protected routes (require authentication)
   {
     path: "editor",
-    loadComponent: () => import("./chunk-224SN2XO.js").then((m) => m.ResumeEditorComponent),
+    loadComponent: () => import("./chunk-ACIFMJBO.js").then((m) => m.ResumeEditorComponent),
     canActivate: [AuthGuard]
   },
   {
     path: "editor/:chatId",
-    loadComponent: () => import("./chunk-224SN2XO.js").then((m) => m.ResumeEditorComponent),
+    loadComponent: () => import("./chunk-ACIFMJBO.js").then((m) => m.ResumeEditorComponent),
     canActivate: [AuthGuard]
   },
   {
